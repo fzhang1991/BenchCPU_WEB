@@ -112,7 +112,6 @@ function SortArrows({
 export default function LeaderboardClient() {
   const [population, setPopulation] = useState<Population>("Curated");
   const isHF = population === "HF";
-  const isCurated = !isHF;
 
   const datasets = useMemo<readonly Dataset[]>(() => (isHF ? DATASETS_HF : DATASETS_CURATED), [isHF]);
   const [dataset, setDataset] = useState<Dataset>("Avg");
@@ -130,19 +129,20 @@ export default function LeaderboardClient() {
   const [data, setData] = useState<ApiLeaderboard | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // ✅ only used for HF paging
-  const PAGE_SIZE = 50;
-  const [page, setPage] = useState(1);
-
   // ✅ Bar toggle
   const [showBars, setShowBars] = useState(true);
 
   // tooltip state
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
 
+  // ✅ HF: cancel paging, but limit visible area to ~50 rows (scroll inside table)
+  const HF_VISIBLE_ROWS = 50;
+  const HF_ROW_PX = 44; // approximate row height
+  const HF_TABLE_MAX_HEIGHT_PX = HF_VISIBLE_ROWS * HF_ROW_PX + 120; // header + tableTop allowance
+
   useEffect(() => {
+    // switching population resets controls
     setDataset("Avg");
-    setPage(1);
     setSelected([ACC_METRIC]);
     setSortBy(ACC_METRIC);
     setSortDir("desc");
@@ -187,7 +187,6 @@ export default function LeaderboardClient() {
       setSelected([ACC_METRIC]);
       setSortBy(ACC_METRIC);
       setSortDir("desc");
-      setPage(1);
     })();
   }, [dataset, population]);
 
@@ -203,7 +202,6 @@ export default function LeaderboardClient() {
   const onSort = (col: string, dir: SortDir) => {
     setSortBy(col);
     setSortDir(dir);
-    setPage(1);
   };
 
   // fetch leaderboard
@@ -217,7 +215,6 @@ export default function LeaderboardClient() {
     if (!selected.includes(sortBy)) {
       setSortBy(ACC_METRIC);
       setSortDir("desc");
-      setPage(1);
       return;
     }
 
@@ -232,15 +229,10 @@ export default function LeaderboardClient() {
         params.set("sort_by", sortBy);
         params.set("sort_dir", sortDir);
 
-        // ✅ Curated: no paging; HF: paging
-        if (isHF) {
-          params.set("limit", String(PAGE_SIZE));
-          params.set("offset", String((page - 1) * PAGE_SIZE));
-        } else {
-          // Curated: ask for all rows (backend will ignore paging anyway)
-          params.set("limit", String(1000000));
-          params.set("offset", "0");
-        }
+        // ✅ HF: cancel paging -> request all rows once
+        // ✅ Curated: still request all rows
+        params.set("limit", String(1000000));
+        params.set("offset", "0");
 
         // Curated 才传 modes/vendors；HF 不传
         if (!isHF) {
@@ -256,7 +248,7 @@ export default function LeaderboardClient() {
         setLoading(false);
       }
     })();
-  }, [selected, sortBy, sortDir, dataset, population, isHF, selectedModes, selectedVendors, page]);
+  }, [selected, sortBy, sortDir, dataset, population, isHF, selectedModes, selectedVendors]);
 
   const toggleMetric = (m: string) => {
     if (m === ACC_METRIC) return;
@@ -270,55 +262,28 @@ export default function LeaderboardClient() {
       }
       return next;
     });
-    setPage(1);
   };
 
   const toggleMode = (m: Mode) => {
     setSelectedModes((prev) => (prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m]));
-    setPage(1);
   };
 
   const toggleVendor = (v: Vendor) => {
     setSelectedVendors((prev) => (prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v]));
-    setPage(1);
   };
 
-  const selectAllModes = () => {
-    setSelectedModes([...MODES]);
-    setPage(1);
-  };
-  const clearAllModes = () => {
-    setSelectedModes([]);
-    setPage(1);
-  };
+  const selectAllModes = () => setSelectedModes([...MODES]);
+  const clearAllModes = () => setSelectedModes([]);
 
-  const selectAllVendors = () => {
-    setSelectedVendors([...VENDORS]);
-    setPage(1);
-  };
-  const clearAllVendors = () => {
-    setSelectedVendors([]);
-    setPage(1);
-  };
+  const selectAllVendors = () => setSelectedVendors([...VENDORS]);
+  const clearAllVendors = () => setSelectedVendors([]);
 
   const cols = data?.selected_metrics ?? selected;
 
   const total = data?.total ?? nModels;
 
-  // ✅ paging only for HF
-  const totalPages = isHF ? Math.max(1, Math.ceil(total / PAGE_SIZE)) : 1;
-  const pageSafe = isHF ? Math.min(page, totalPages) : 1;
-
-  useEffect(() => {
-    if (isHF) {
-      if (pageSafe !== page) setPage(pageSafe);
-    } else {
-      if (page !== 1) setPage(1);
-    }
-  }, [isHF, pageSafe, page]);
-
-  const startRank = isHF ? (pageSafe - 1) * PAGE_SIZE + 1 : (total > 0 ? 1 : 0);
-  const endRank = isHF ? Math.min(pageSafe * PAGE_SIZE, total) : total;
+  const startRank = total > 0 ? 1 : 0;
+  const endRank = total;
 
   const showTip = (e: React.MouseEvent, text: string) => {
     setTip({ x: e.clientX + 12, y: e.clientY + 12, text });
@@ -476,7 +441,17 @@ export default function LeaderboardClient() {
       <div className={styles.grayBar} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
         <span>Leaderboard（排序：点表头右侧 ▲/▼）</span>
 
-        <label style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13, fontWeight: 800, color: "rgba(15,23,42,0.78)", userSelect: "none" }}>
+        <label
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            fontSize: 13,
+            fontWeight: 800,
+            color: "rgba(15,23,42,0.78)",
+            userSelect: "none",
+          }}
+        >
           <input
             type="checkbox"
             checked={showBars}
@@ -491,7 +466,18 @@ export default function LeaderboardClient() {
         <BarLeaderboard rows={data.rows} metric={data.sort_by} title={`Bar Leaderboard · Sorted by ${data.sort_by} (${data.sort_dir})`} topK={10} />
       )}
 
-      <div className={styles.tableWrap}>
+      <div
+        className={styles.tableWrap}
+        // ✅ only HF: internal scroll, visible area ~50 rows
+        style={
+          isHF
+            ? {
+                overflowY: "auto",
+                maxHeight: HF_TABLE_MAX_HEIGHT_PX,
+              }
+            : undefined
+        }
+      >
         <div className={styles.tableTop}>
           <div className={styles.hint}>
             Population: <b>{population}</b> · Dataset: <b>{dataset}</b> · Models: {total} · Showing: {startRank}-{endRank}
@@ -555,29 +541,6 @@ export default function LeaderboardClient() {
             )}
           </tbody>
         </table>
-
-        {/* ✅ Pager: HF only */}
-        {isHF && (
-          <div className={styles.pager}>
-            <button className={styles.btn} type="button" onClick={() => setPage(1)} disabled={pageSafe <= 1 || loading}>
-              First
-            </button>
-            <button className={styles.btn} type="button" onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={pageSafe <= 1 || loading}>
-              Prev
-            </button>
-
-            <div className={styles.pagerText}>
-              Page <b>{pageSafe}</b> / {totalPages}
-            </div>
-
-            <button className={styles.btn} type="button" onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={pageSafe >= totalPages || loading}>
-              Next
-            </button>
-            <button className={styles.btn} type="button" onClick={() => setPage(totalPages)} disabled={pageSafe >= totalPages || loading}>
-              Last
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

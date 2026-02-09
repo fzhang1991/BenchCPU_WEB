@@ -339,6 +339,12 @@
   padding-bottom: 6px;
 }
 
+/* （可选）如果你以后想用 class 来控制 HF 滚动，也可以用这个 */
+.tableWrapScrollable{
+  overflow-y: auto;
+  max-height: min(2200px, 78vh);
+}
+
 .tableTop{
   padding: 10px;
   display: flex;
@@ -432,7 +438,7 @@
   color: rgba(15,23,42,0.95);
 }
 
-/* Pager */
+/* Pager（现在 HF 不用了，但保留也无妨） */
 .pager{
   display: flex;
   align-items: center;
