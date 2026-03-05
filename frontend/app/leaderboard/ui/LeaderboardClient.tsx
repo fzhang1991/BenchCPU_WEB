@@ -119,7 +119,7 @@ export default function LeaderboardClient() {
   const [allMetrics, setAllMetrics] = useState<string[]>([]);
   const [nModels, setNModels] = useState(0);
 
-  const [selected, setSelected] = useState<string[]>([ACC_METRIC]);
+  const [selected, setSelected] = useState<string[]>([ACC_METRIC, "Difficulty"]);
   const [sortBy, setSortBy] = useState<string>(ACC_METRIC);
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
@@ -143,7 +143,7 @@ export default function LeaderboardClient() {
   useEffect(() => {
     // switching population resets controls
     setDataset("Avg");
-    setSelected([ACC_METRIC]);
+    setSelected([ACC_METRIC, "Difficulty"]);
     setSortBy(ACC_METRIC);
     setSortDir("desc");
     setSelectedModes([...MODES]);
@@ -184,7 +184,7 @@ export default function LeaderboardClient() {
       setAllMetrics(ordered);
       setNModels(js.n_models ?? 0);
 
-      setSelected([ACC_METRIC]);
+      setSelected([ACC_METRIC, "Difficulty"]);
       setSortBy(ACC_METRIC);
       setSortDir("desc");
     })();
@@ -330,7 +330,7 @@ export default function LeaderboardClient() {
       {/* Filters */}
       {isHF ? (
         <div className={styles.card} style={{ marginTop: 10 }}>
-          <div className={styles.cardTitle}>Dataset（单选）</div>
+          <div className={styles.cardTitle}>Dataset</div>
           <div className={styles.radioList}>
             {datasets.map((ds) => (
               <label key={ds} className={styles.radioItem}>
@@ -344,7 +344,7 @@ export default function LeaderboardClient() {
         <div className={styles.filtersGrid}>
           <div className={styles.filtersLeft}>
             <div className={styles.card}>
-              <div className={styles.cardTitle}>Dataset（单选）</div>
+              <div className={styles.cardTitle}>Dataset</div>
               <div className={styles.radioList}>
                 {datasets.map((ds) => (
                   <label key={ds} className={styles.radioItem}>
