@@ -39,8 +39,6 @@ export default function BarLeaderboard({
           const vRaw = r[metric];
           const v = typeof vRaw === "number" && Number.isFinite(vRaw) ? vRaw : null;
 
-          // ✅ 不做 normalization：直接用原始值（通常你的指标在 0~1）
-          // 为了避免超出轨道，这里只做 0~1 的 clamp
           const w = v === null ? 0 : clamp01(v);
 
           const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "";

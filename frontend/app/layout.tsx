@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "./globals.css";
 import Navbar from "../components/Navbar";
 

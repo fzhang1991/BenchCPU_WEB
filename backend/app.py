@@ -7,9 +7,6 @@ import pandas as pd
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-# -------------------------
-# Dataset -> CSV mapping
-# -------------------------
 CURATED_DATASET_TO_CSV = {
     "Avg": "data/model_avg_benchmark_scores.csv",
     "MATH-500": "data/MATH-500_benchmark_scores.csv",
@@ -29,9 +26,6 @@ HF_DATASET_TO_CSV = {
 
 POP_TO_MAP = {"Curated": CURATED_DATASET_TO_CSV, "HF": HF_DATASET_TO_CSV}
 
-# -------------------------
-# Vendor lineage
-# -------------------------
 GEMINI_LINEAGE = ["gemini-2.5-flash", "gemini-2.5-pro"]
 QWEN_LINEAGE = ["qwen3-30b-a3b", "qwen3-32b", "qwen3-235b-a22b"]
 DEEPSEEK_LINEAGE = ["deepseek-V3", "deepseek-R1"]
@@ -68,9 +62,6 @@ VENDOR_LINEAGE: Dict[str, List[str]] = {
     "Ark": DOUBAO_LINEAGE,
 }
 
-# -------------------------
-# App
-# -------------------------
 app = FastAPI(title="Leaderboard API")
 
 app.add_middleware(
@@ -198,7 +189,6 @@ def api_leaderboard(
     metrics: Optional[str] = Query(default=None, description="comma-separated metric names"),
     sort_by: Optional[str] = Query(default=None, description="metric used for ranking"),
     sort_dir: str = Query(default="desc", pattern="^(asc|desc)$"),
-    # ✅ allow missing limit (Curated ignores paging)
     limit: Optional[int] = Query(default=50, ge=1, le=2_000_000),
     offset: int = Query(default=0, ge=0),
     dataset: str = Query(default="Avg"),
@@ -211,7 +201,6 @@ def api_leaderboard(
     df = _df_cache[(pop, dataset)]
     valid_metrics = _metrics_cache[(pop, dataset)]
 
-    # Curated only: apply modes/vendors
     if pop != "HF":
         selected_modes = [m.strip() for m in (modes.split(",") if modes else []) if m.strip()]
         selected_vendors = [v.strip() for v in (vendors.split(",") if vendors else []) if v.strip()]
@@ -276,7 +265,6 @@ def api_leaderboard(
 
     total = int(out.shape[0])
 
-    # ✅ Curated: no paging (return all)
     if pop != "HF":
         out_page = out
         used_offset = 0
@@ -299,3 +287,45 @@ def api_leaderboard(
         "limit": used_limit,
         "rows": out_page.to_dict(orient="records"),
     }
+
+from probe_analysis_routes import router as probe_analysis_router
+from probe_analysis_routes import preload_probe_overview, preload_dataset_stats
+from probe_analysis_routes import preload_question_tables
+
+try:
+    app.include_router(probe_analysis_router)
+except Exception as e:
+    import logging
+
+    logging.getLogger(__name__).error("Failed to include probe_analysis_router: %s", e)
+
+
+@app.on_event("startup")
+def _preload_probe_analysis_caches():
+    import logging
+
+    log = logging.getLogger(__name__)
+
+    try:
+        info1 = preload_probe_overview(populations=["Curated", "HF"], pclip=5.0)
+        if info1.get("errors"):
+            log.warning("Probe overview preload completed with errors: %s", info1["errors"])
+        else:
+            log.info("Probe overview preload OK: %s", info1.get("loaded"))
+    except Exception as e:
+        log.warning("Probe overview preload failed (server will still run; first request will compute): %s", e)
+
+    try:
+        info2 = preload_dataset_stats(populations=["Curated", "HF"])
+        if info2.get("errors"):
+            log.warning("Probe dataset-stats preload completed with errors: %s", info2["errors"])
+        else:
+            log.info("Probe dataset-stats preload OK: %s", info2.get("loaded"))
+    except Exception as e:
+        log.warning("Probe dataset-stats preload failed (server will still run; first click will compute): %s", e)
+
+    try:
+        info3 = preload_question_tables(populations=["Curated"])
+        log.info("Probe question tables preload: %s", info3)
+    except Exception as e:
+        log.warning("Probe question tables preload failed (server will still run; first request may 404): %s", e)

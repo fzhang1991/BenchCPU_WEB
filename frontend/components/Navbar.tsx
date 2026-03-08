@@ -1,4 +1,4 @@
-// components/Navbar.tsx
+ 
 "use client";
 
 import Link from "next/link";
@@ -68,20 +68,9 @@ export default function Navbar() {
 
   const nav = useMemo(
     () => ({
-      home: { label: "Home", href: "/" },
-      leaderboard: { label: "Leaderboard", href: "/leaderboard" },
-      probe: { label: "Probe Analysis", href: "/probe-analysis" },
-
-      // ✅ 改成路由页，而不是 /explore#hash
-      explore: {
-        label: "Explore",
-        items: [
-          { label: "Overview", href: "/explore/overview" },
-          { label: "Probe Properties", href: "/explore/probe-properties" },
-          { label: "MemeScores", href: "/explore/meme-scores" },
-          { label: "The Paradigm", href: "/explore/the-paradigm" },
-        ],
-      },
+      leaderboard: { label: "Model Leaderboard", href: "/leaderboard" },
+      probe: { label: "Dataset Analysis", href: "/probe-analysis" },
+            explore: { label: "Explore", href: "/explore" },
 
       about: {
         label: "About",
@@ -102,19 +91,18 @@ export default function Navbar() {
   return (
     <header className={styles.navbar}>
       <div className={styles.container}>
-        <Link href="/" className={styles.logo}>
+  {}
+        <Link
+          href="/"
+          aria-label="Home"
+          title="Home"
+          className={`${styles.logo} ${isActive("/") ? styles.logoActive : ""}`}
+        >
           <span className={styles.logoA}>Probing</span>
           <span className={styles.logoB}>Memes</span>
         </Link>
 
         <nav className={styles.nav}>
-          <Link
-            href={nav.home.href}
-            className={`${styles.navItem} ${isActive(nav.home.href) ? styles.navActive : ""}`}
-          >
-            {nav.home.label}
-          </Link>
-
           <Link
             href={nav.leaderboard.href}
             className={`${styles.navItem} ${isActive(nav.leaderboard.href) ? styles.navActive : ""}`}
@@ -129,17 +117,15 @@ export default function Navbar() {
             {nav.probe.label}
           </Link>
 
-          <Dropdown
-            label={nav.explore.label}
-            items={nav.explore.items}
-            active={pathname.startsWith("/explore")}
-          />
+          {}
+          <Link
+            href={nav.explore.href}
+            className={`${styles.navItem} ${isActive(nav.explore.href) ? styles.navActive : ""}`}
+          >
+            {nav.explore.label}
+          </Link>
 
-          <Dropdown
-            label={nav.about.label}
-            items={nav.about.items}
-            active={pathname.startsWith("/about")}
-          />
+          <Dropdown label={nav.about.label} items={nav.about.items} active={pathname.startsWith("/about")} />
         </nav>
       </div>
     </header>

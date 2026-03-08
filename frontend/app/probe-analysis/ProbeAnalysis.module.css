@@ -1,0 +1,401 @@
+.page {
+  padding: 20px 18px 40px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.62);
+  line-height: 1.35;
+  max-width: 920px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: 580px minmax(420px, auto);
+  gap: 14px;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.cardHeader {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.cardBody {
+  padding: 14px;
+  height: calc(100% - 52px);
+}
+
+.muted {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 12px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 12px;
+}
+
+.panelPlaceholder {
+  height: 100%;
+  border-radius: 12px;
+  border: 1px dashed rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table th,
+.table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.table th {
+  text-align: left;
+  font-weight: 650;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.70);
+}
+
+.rowButton {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+}
+
+/* =========================
+   Overview layout (legend left + plot right)
+   ========================= */
+.overviewWrap {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 5px;
+  align-items: stretch;
+}
+
+/* Legend: make it vertically centered with reasonable spacing */
+.legendCard {
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.015);
+  padding: 1px 12px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  height: 100%;
+}
+
+.legendTitle {
+  font-size: 12px;
+  font-weight: 750;
+  color: rgba(0, 0, 0, 0.80);
+  line-height: 1.25;
+}
+
+.legendRow {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.legendLabel {
+  font-size: 12px;
+  font-weight: 650;
+  color: rgba(0, 0, 0, 0.70);
+}
+
+.legendIcons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.iconBox {
+  width: 72px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.iconCaption {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.60);
+  white-space: nowrap;
+}
+
+.arrow {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+.arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: -4px;
+  border-left: 6px solid rgba(0, 0, 0, 0.65);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.gradBarWrap {
+  margin-top: 4px;
+}
+
+.gradLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 650;
+  color: rgba(0, 0, 0, 0.70);
+}
+
+.gradBar {
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: linear-gradient(
+    90deg,
+    rgb(68, 1, 84),
+    rgb(59, 82, 139),
+    rgb(33, 145, 140),
+    rgb(94, 201, 98),
+    rgb(181, 222, 43),
+    rgb(253, 231, 37)
+  );
+}
+
+.gradTicks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* ✅ Key: keep rounded clipping, but add inner padding to avoid cutting axis ticks */
+.plotWrap {
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 12px 10px 26px 28px;
+  height: 100%;
+  min-height: 520px;
+}
+
+.drawerMask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 9999;
+}
+
+.drawer {
+  width: min(560px, 92vw);
+  height: 100%;
+  background: #fff;
+  box-shadow: -16px 0 40px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerHeader {
+  padding: 14px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.drawerTitle {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.drawerBody {
+  padding: 14px;
+  overflow: auto;
+}
+
+.closeBtn {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+/* =========================
+   Dataset stats table (drawer)
+   ========================= */
+.statsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.statsTable th,
+.statsTable td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.statsTable th {
+  text-align: left;
+  font-weight: 650;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.70);
+}
+
+/* =========================
+   Overview 3-column layout: legend | plot | details
+   ========================= */
+.overviewWrap3 {
+  height: 100%;
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 280px 1fr 360px;
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* Right details panel */
+.detailCard {
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.015);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailHeader {
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.detailTitle {
+  font-size: 13px;
+  font-weight: 750;
+  color: rgba(0, 0, 0, 0.80);
+}
+
+.detailClearBtn {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.detailBody {
+  padding: 12px 12px;
+  overflow: auto;
+}
+
+.detailDatasetName {
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.detailPop {
+  color: rgba(0, 0, 0, 0.45);
+  font-weight: 650;
+  margin-left: 6px;
+}
