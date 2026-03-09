@@ -1,80 +1,373 @@
-/* frontend/app/explore/Explore.module.css */
-
 .page{
-  max-width: 1000px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 22px 18px 60px;
+  padding: 24px 18px 72px;
 }
 
 .heroCard{
-  border-radius: 18px;
-  border: 1px solid rgba(15,23,42,0.10);
-  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(248,250,252,1) 100%);
-  box-shadow: 0 14px 34px rgba(15,23,42,0.08);
-  padding: 18px;
-  margin-top: 10px;
+  border-radius: 24px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(99, 102, 241, 0.08), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.heroText{
+  padding: 28px 28px 18px;
+}
+
+.eyebrow{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .heroTitle{
-  font-size: 26px;
-  font-weight: 950;
-  letter-spacing: -0.02em;
-  color: rgba(15,23,42,0.92);
-  margin-bottom: 6px;
+  margin: 14px 0 10px;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  color: #0f172a;
+  font-weight: 800;
 }
 
 .heroSub{
-  font-size: 13px;
-  color: rgba(15,23,42,0.68);
-  line-height: 1.55;
+  margin: 0;
+  max-width: 860px;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.heroImageWrap{
+  padding: 10px 18px 24px;
+}
+
+.heroImage{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  object-fit: contain;
+}
+
+.section{
+  margin-top: 34px;
+}
+
+.sectionHeader{
+  margin-bottom: 18px;
+}
+
+.sectionKicker{
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.sectionTitle{
+  margin: 0;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.18;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.sectionLead{
+  margin: 12px 0 0;
+  max-width: 920px;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.inlineCode{
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: #e2e8f0;
+  color: #0f172a;
+  font-size: 0.95em;
+}
+
+.subsectionTitle{
+  margin: 22px 0 14px;
+  font-size: 22px;
+  font-weight: 750;
+  color: #0f172a;
 }
 
 .card{
-  margin-top: 14px;
-  border-radius: 18px;
-  border: 1px solid rgba(15,23,42,0.10);
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 12px 30px rgba(15,23,42,0.07);
-  padding: 16px;
+  margin-top: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+  padding: 22px 22px 20px;
 }
 
 .cardTitle{
-  font-weight: 950;
-  font-size: 14px;
-  color: rgba(15,23,42,0.90);
+  font-size: 18px;
+  font-weight: 750;
+  color: #0f172a;
   margin-bottom: 12px;
 }
 
-.flow{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.richText{
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.richText p{
+  margin: 0 0 14px;
+}
+
+.richText p:last-child{
+  margin-bottom: 0;
+}
+
+.mathInline{
+  display: inline-flex;
   align-items: center;
-  padding: 12px;
+  margin: 0 0.25em;
+  vertical-align: middle;
+}
+
+.displayFormula{
+  margin: 14px 0 18px;
+  padding: 14px 16px;
   border-radius: 16px;
-  border: 1px solid rgba(15,23,42,0.08);
-  background: rgba(15,23,42,0.02);
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  overflow-x: auto;
 }
 
-.node{
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(15,23,42,0.10);
-  background: rgba(255,255,255,0.92);
-  font-weight: 900;
+.formulaGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.formulaCard{
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  padding: 18px;
+}
+
+.formulaCardTitle{
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.formulaDesc{
+  margin: 0 0 12px;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.formulaBox{
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  background: linear-gradient(180deg, #fbfdff 0%, #f8fafc 100%);
+  padding: 14px 14px;
+  overflow-x: auto;
+}
+
+.multiFormula{
+  display: grid;
+  gap: 10px;
+}
+
+.scoreTableWrap{
+  overflow-x: auto;
+}
+
+.scoreTable{
+  width: 100%;
+  min-width: 860px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  color: #334155;
+}
+
+.scoreTable thead th{
+  text-align: left;
+  padding: 14px 14px;
+  background: #f8fafc;
+  color: #0f172a;
   font-size: 13px;
-  color: rgba(15,23,42,0.86);
-  box-shadow: 0 10px 22px rgba(15,23,42,0.05);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
-.arrow{
-  font-weight: 950;
-  color: rgba(15,23,42,0.45);
+.scoreTable thead th:first-child{
+  border-left: 1px solid rgba(15, 23, 42, 0.08);
+  border-top-left-radius: 14px;
 }
 
-.note{
-  margin-top: 10px;
+.scoreTable thead th:last-child{
+  border-right: 1px solid rgba(15, 23, 42, 0.08);
+  border-top-right-radius: 14px;
+}
+
+.scoreTable tbody td{
+  padding: 14px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+}
+
+.scoreTable tbody tr td:first-child{
+  border-left: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.scoreTable tbody tr td:last-child{
+  border-right: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.scoreTable tbody tr:last-child td:first-child{
+  border-bottom-left-radius: 14px;
+}
+
+.scoreTable tbody tr:last-child td:last-child{
+  border-bottom-right-radius: 14px;
+}
+
+.scoreTable tbody tr:nth-child(even) td{
+  background: #fcfdff;
+}
+
+.scoreName{
+  font-weight: 800;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.typeBadge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #0f172a;
   font-size: 12px;
-  color: rgba(15,23,42,0.65);
-  line-height: 1.5;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.page :global(math){
+  font-size: 1rem;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+.page :global(math[display="block"]){
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  margin: 0 auto;
+}
+
+.page :global(mfrac),
+.page :global(msup),
+.page :global(msub),
+.page :global(msqrt),
+.page :global(munderover),
+.page :global(munder),
+.page :global(mover),
+.page :global(msubsup){
+  font-size: 1em;
+}
+
+.page :global(mi),
+.page :global(mn),
+.page :global(mo),
+.page :global(mtext){
+  color: #0f172a;
+}
+
+.page :global(mtable){
+  border-spacing: 0;
+}
+
+.page :global(mtd){
+  padding: 2px 6px;
+}
+
+@media (max-width: 920px){
+  .formulaGrid{
+    grid-template-columns: 1fr;
+  }
+
+  .heroText{
+    padding: 24px 20px 16px;
+  }
+
+  .heroImageWrap{
+    padding: 8px 14px 18px;
+  }
+
+  .card{
+    padding: 18px 16px;
+  }
+
+  .scoreTable{
+    min-width: 760px;
+  }
+}
+
+@media (max-width: 640px){
+  .page{
+    padding: 18px 12px 56px;
+  }
+
+  .heroTitle{
+    font-size: 30px;
+  }
+
+  .sectionTitle{
+    font-size: 25px;
+  }
+
+  .heroSub,
+  .sectionLead,
+  .richText,
+  .formulaDesc{
+    font-size: 14px;
+  }
+
+  .scoreTable{
+    min-width: 700px;
+  }
+
+  .page :global(math){
+    font-size: 0.96rem;
+  }
 }
