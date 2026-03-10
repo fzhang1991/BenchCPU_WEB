@@ -209,7 +209,9 @@ export default function ProbeAnalysisClient() {
     (names: string[]) => {
       setDatasetOptions(names);
 
-      if (population === "Curated" && names.length > 0) {
+      // Default-select the first dataset for Curated (existing behavior)
+      // and also for HF so HF will show the first dataset by default.
+      if ((population === "Curated" || population === "HF") && names.length > 0) {
         setSelectedDataset((prev) => prev ?? names[0]);
       }
     },

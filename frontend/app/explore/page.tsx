@@ -47,7 +47,20 @@ const BASE_TEXT = {
     "The paradigm starts from a Perception Matrix, where each entry records whether a model answers an item correctly. Each item is treated as a probe, and its population-level success/failure pattern becomes the basis for computing probe properties.",
 
   formalization: "Formalization",
-  sixProbeProps: "Six Meme Probe Properties",
+  memeProbeProps: "Meme Probe Properties",
+
+  clusterConstructionTitle: "Cluster Construction for Population-Level Behavioral Analysis",
+  clusterConstructionP1:
+    "Given two probes i and k, their similarity is measured by Hamming similarity over their perception spans, comparing model-wise success and failure patterns element-wise.",
+  clusterConstructionP2:
+    "Based on these similarities, an undirected weighted graph is built: each node corresponds to a probe, and an edge is kept when the probe-pair similarity is no smaller than a threshold τ, with the edge weight set to that similarity value.",
+  clusterConstructionP3:
+    "A hierarchical clustering procedure is then applied to obtain a partition of probes into behavioral clusters. In implementation, probes with identical perception spans are first merged for efficiency; then weak similarities are filtered by thresholding, and complete-linkage hierarchical agglomerative clustering is performed within each connected component.",
+  clusterConstructionP4:
+    "This clustering structure provides the population-level behavioral organization used by Typicality and Bridge. Typicality evaluates whether a probe acts as a prototype or a central member within its cluster, while Bridge measures whether a probe connects multiple clusters rather than concentrating within only one.",
+  clusterUsedByTitle: "Used by",
+  clusterUsedByTypicality: "Typicality",
+  clusterUsedByBridge: "Bridge",
 
   difficultyDesc:
     "Difficulty measures how many models fail on a probe. A higher value means the item is harder relative to the model population.",
@@ -384,7 +397,7 @@ export default function ExplorePage() {
                 </div>
               </div>
 
-              <div className={styles.subsectionTitle}>{t.sixProbeProps}</div>
+              <div className={styles.subsectionTitle}>{t.memeProbeProps}</div>
 
               <div className={styles.formulaGrid}>
                 <FormulaCard title="Difficulty" desc={t.difficultyDesc}>
@@ -592,6 +605,71 @@ export default function ExplorePage() {
                     </mrow>
                   </math>
                 </FormulaCard>
+              </div>
+
+              <div className={styles.minorSubsectionTitle}>{t.clusterConstructionTitle}</div>
+
+              <div className={styles.card}>
+                <div className={styles.richText}>
+                  <p>{t.clusterConstructionP1}</p>
+
+                  <div className={styles.displayFormula}>
+                    <math display="block">
+                      <mrow>
+                        <mi>sim</mi>
+                        <mo stretchy="false">(</mo>
+                        <msub><mi>P</mi><mi>i</mi></msub>
+                        <mo>,</mo>
+                        <msub><mi>P</mi><mi>k</mi></msub>
+                        <mo stretchy="false">)</mo>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mi>m</mi></mfrac>
+                        <munderover>
+                          <mo>∑</mo>
+                          <mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow>
+                          <mi>m</mi>
+                        </munderover>
+                        <mn>1</mn>
+                        <mo>[</mo>
+                        <msub><mi>P</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub>
+                        <mo>=</mo>
+                        <msub><mi>P</mi><mrow><mi>k</mi><mi>j</mi></mrow></msub>
+                        <mo>]</mo>
+                        <mo>.</mo>
+                      </mrow>
+                    </math>
+                  </div>
+
+                  <p>{t.clusterConstructionP2}</p>
+                  <p>{t.clusterConstructionP3}</p>
+
+                  <div className={styles.displayFormula}>
+                    <math display="block">
+                      <mrow>
+                        <mi>C</mi>
+                        <mo>=</mo>
+                        <mo>{"{"}</mo>
+                        <msub><mi>C</mi><mn>1</mn></msub>
+                        <mo>,</mo>
+                        <msub><mi>C</mi><mn>2</mn></msub>
+                        <mo>,</mo>
+                        <mo>…</mo>
+                        <mo>,</mo>
+                        <msub><mi>C</mi><mi>L</mi></msub>
+                        <mo>{"}"}</mo>
+                        <mo>.</mo>
+                      </mrow>
+                    </math>
+                  </div>
+
+                  <p>{t.clusterConstructionP4}</p>
+
+                  <div className={styles.usedByRow}>
+                    <span className={styles.usedByLabel}>{t.clusterUsedByTitle}</span>
+                    <span className={styles.usedByBadge}>{t.clusterUsedByTypicality}</span>
+                    <span className={styles.usedByBadge}>{t.clusterUsedByBridge}</span>
+                  </div>
+                </div>
               </div>
             </section>
 

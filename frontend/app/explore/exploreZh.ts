@@ -15,7 +15,20 @@ export const exploreZh = {
     "该范式从一个 Perception Matrix 开始，其中每个元素记录一个模型是否正确回答某个题目。每个题目都被视为一个 probe，而它在模型群体上的成功/失败模式则构成了计算 probe properties 的基础。",
 
   formalization: "形式化定义",
-  sixProbeProps: "六个 Meme Probe Properties",
+  memeProbeProps: "Meme Probe Properties",
+
+  clusterConstructionTitle: "用于群体行为分析的簇构建",
+  clusterConstructionP1:
+    "对于两个 probe i 和 k，它们之间的相似度由 perception span 上的 Hamming similarity 衡量，也就是逐个模型比较它们的成功/失败模式是否一致。",
+  clusterConstructionP2:
+    "基于这些相似度，可以构建一个无向加权图：每个节点对应一个 probe，当两个 probes 的相似度不小于阈值 τ 时保留一条边，并将相似度本身作为边权。",
+  clusterConstructionP3:
+    "随后，对该结构执行层次聚类以得到 probes 的行为簇划分。在实现上，首先会把 perception span 完全相同的 probes 合并以提升效率；然后通过阈值筛除较弱相似度，并在每个连通分量内部执行 complete-linkage 的 hierarchical agglomerative clustering。",
+  clusterConstructionP4:
+    "这种簇结构提供了群体层面的行为组织形式，并被 Typicality 和 Bridge 直接使用。Typicality 衡量一个 probe 是否是其簇中的原型或中心成员，而 Bridge 衡量一个 probe 是否连接多个簇，而不是只集中在单一簇内部。",
+  clusterUsedByTitle: "用于",
+  clusterUsedByTypicality: "Typicality",
+  clusterUsedByBridge: "Bridge",
 
   difficultyDesc:
     "Difficulty 衡量有多少模型会在该 probe 上失败。值越高，说明这个题目相对于模型群体越难。",

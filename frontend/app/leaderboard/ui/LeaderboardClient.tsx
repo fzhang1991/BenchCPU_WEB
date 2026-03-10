@@ -165,54 +165,47 @@ function metricLabel(m: string, t: UIText) {
   return m === ACC_METRIC ? t.accuracyLabel : m;
 }
 
-function ArrowGlyph({
+function SortArrow({
   direction,
-  className,
+  active,
+  onClick,
+  title,
+  ariaLabel,
 }: {
   direction: "asc" | "desc";
-  className?: string;
+  active: boolean;
+  onClick: () => void;
+  title: string;
+  ariaLabel: string;
 }) {
   return (
-    <svg className={className} viewBox="0 0 10 18" fill="none" aria-hidden="true">
-      {direction === "asc" ? (
-        <path
-          d="M5 16V3M5 3L2.7 5.3M5 3L7.3 5.3"
-          stroke="currentColor"
-          strokeWidth="1.9"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      ) : (
-        <path
-          d="M5 2V15M5 15L2.7 12.7M5 15L7.3 12.7"
-          stroke="currentColor"
-          strokeWidth="1.9"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      )}
-    </svg>
-  );
-}
-
-function DualSortHintIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 18 20" fill="none" aria-hidden="true">
-      <path
-        d="M6 17V4M6 4L3.7 6.3M6 4L8.3 6.3"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 3V16M12 16L9.7 13.7M12 16L14.3 13.7"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <button
+      type="button"
+      className={`${styles.sortArrowBtn} ${active ? styles.sortArrowActive : ""}`}
+      onClick={onClick}
+      title={title}
+      aria-label={ariaLabel}
+    >
+      <svg className={styles.sortArrowSvg} viewBox="0 0 10 18" fill="none" aria-hidden="true">
+        {direction === "asc" ? (
+          <path
+            d="M5 16V3M5 3L2.7 5.3M5 3L7.3 5.3"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        ) : (
+          <path
+            d="M5 2V15M5 15L2.7 12.7M5 15L7.3 12.7"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        )}
+      </svg>
+    </button>
   );
 }
 
@@ -233,27 +226,43 @@ function SortArrows({
   const label = metricLabel(col, t);
 
   return (
-    <span className={styles.sortControl} aria-label={`${t.sortLabel} ${label}`}>
-      <button
-        type="button"
-        className={`${styles.sortHalf} ${isActive && sortDir === "asc" ? styles.sortHalfActive : ""}`}
+    <span className={styles.sortInline} aria-label={`${t.sortLabel} ${label}`}>
+      <SortArrow
+        direction="asc"
+        active={isActive && sortDir === "asc"}
         onClick={() => onSort(col, "asc")}
-        aria-label={`${t.sortAscending}: ${label}`}
         title={t.sortAscending}
-      >
-        <ArrowGlyph direction="asc" className={styles.sortArrowIcon} />
-      </button>
-
-      <button
-        type="button"
-        className={`${styles.sortHalf} ${isActive && sortDir === "desc" ? styles.sortHalfActive : ""}`}
+        ariaLabel={`${t.sortAscending}: ${label}`}
+      />
+      <SortArrow
+        direction="desc"
+        active={isActive && sortDir === "desc"}
         onClick={() => onSort(col, "desc")}
-        aria-label={`${t.sortDescending}: ${label}`}
         title={t.sortDescending}
-      >
-        <ArrowGlyph direction="desc" className={styles.sortArrowIcon} />
-      </button>
+        ariaLabel={`${t.sortDescending}: ${label}`}
+      />
     </span>
+  );
+}
+
+function MetaSortHintIcon() {
+  return (
+    <svg className={styles.sortHintIcon} viewBox="0 0 18 20" fill="none" aria-hidden="true">
+      <path
+        d="M6 17V4M6 4L3.7 6.3M6 4L8.3 6.3"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 3V16M12 16L9.7 13.7M12 16L14.3 13.7"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
@@ -1052,12 +1061,13 @@ export default function LeaderboardClient() {
 
       <div className={styles.tableWrap}>
         <div className={styles.tableTop}>
-          <div className={styles.tableTopLeft}>
-            <div className={styles.tableMetaLine}>
-              <span>{t.leaderboardBarPrefix} (</span>
+          <div className={styles.leaderboardTitle}>{t.leaderboardBarPrefix}</div>
+
+          <div className={styles.tableMetaRow}>
+            <div className={styles.tableMetaInfo}>
               <span>{t.leaderboardBarSortHintPrefix}</span>
-              <DualSortHintIcon className={styles.sortHintIcon} />
-              <span>{t.leaderboardBarSortHintSuffix})</span>
+              <MetaSortHintIcon />
+              <span>{t.leaderboardBarSortHintSuffix}</span>
               <span>·</span>
               <span>
                 {t.population}: <b>{population}</b>
@@ -1072,25 +1082,27 @@ export default function LeaderboardClient() {
               </span>
             </div>
 
-            <div className={styles.tableStatus}>
+            <div className={styles.tableMetaRight}>
               {loading ? t.loading : data ? `${t.sortedBy} ${metricLabel(data.sort_by, t)} (${data.sort_dir})` : ""}
             </div>
           </div>
 
-          <div className={styles.searchWrap}>
-            <span className={styles.searchLabel}>{t.search}</span>
-            <input
-              className={styles.searchInput}
-              value={modelQuery}
-              onChange={(e) => setModelQuery(e.target.value)}
-              placeholder={t.searchPlaceholder}
-              aria-label={t.searchAria}
-            />
-            {modelQuery && (
-              <button className={styles.searchClear} type="button" onClick={() => setModelQuery("")} title={t.searchClearTitle}>
-                ×
-              </button>
-            )}
+          <div className={styles.tableTopTools}>
+            <div className={styles.searchWrap}>
+              <span className={styles.searchLabel}>{t.search}</span>
+              <input
+                className={styles.searchInput}
+                value={modelQuery}
+                onChange={(e) => setModelQuery(e.target.value)}
+                placeholder={t.searchPlaceholder}
+                aria-label={t.searchAria}
+              />
+              {modelQuery && (
+                <button className={styles.searchClear} type="button" onClick={() => setModelQuery("")} title={t.searchClearTitle}>
+                  ×
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -1124,7 +1136,7 @@ export default function LeaderboardClient() {
                 {cols.map((c) => (
                   <th key={c} className={styles.th}>
                     <div className={styles.thInner}>
-                      <span>{metricLabel(c, t)}</span>
+                      <span className={styles.thLabel}>{metricLabel(c, t)}</span>
                       <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
                     </div>
                   </th>
