@@ -3,10 +3,12 @@
 import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import styles from "../Leaderboard.module.css";
 import PopulationSelector, { type Population } from "./PopulationSelector";
+import { leaderboardZh } from "../ui/leaderboardZh";
 
 type ApiMetrics = { metrics: string[]; n_models: number; population?: string; dataset?: string };
 type Row = Record<string, any>;
 type SortDir = "asc" | "desc";
+type Lang = "en" | "zh";
 
 type ApiLeaderboard = {
   selected_metrics: string[];
@@ -45,10 +47,6 @@ function signed(n: number) {
 const ACC_METRIC = "ACC";
 const ACC_LABEL = "Accuracy";
 
-function metricLabel(m: string) {
-  return m === ACC_METRIC ? ACC_LABEL : m;
-}
-
 const MEME_SCORES_2D = new Set(["Mastery", "Ingenuity", "Robustness"]);
 const MEME_SCORES_3D = new Set(["Caution"]);
 const MEME_SCORES_1D = new Set(["Difficulty", "Uniqueness", "Risk", "Surprise", "Typicality", "Bridge"]);
@@ -63,19 +61,6 @@ const DATASETS_HF = ["Avg", "BBH", "GPQA-Diamond", "IFEval", "MATH", "MMLU-Pro",
 type CuratedDataset = (typeof DATASETS_CURATED)[number];
 type HFDataset = (typeof DATASETS_HF)[number];
 type Dataset = CuratedDataset | HFDataset;
-
-const MEME_DEFS: Record<string, string> = {
-  Difficulty: "模型是否擅长解决困难题。",
-  Uniqueness: "模型是否擅长对于模型群体而言行为模式少见的题目。",
-  Risk: "模型能否解决那些一旦出错会增加其他题目错误风险的题目。",
-  Surprise: "模型能否处理对于模型群体而言出人意料的题目。",
-  Typicality: "模型能否解决能代表多数模型行为模式的题目。",
-  Bridge: "模型能否解决跨越多种行为模式交界处的题目。",
-  Mastery: "模型能否真正解决既难又在模型群体中典型的核心题目。",
-  Ingenuity: "模型能否在稀有并且异常的题目上灵活应对。",
-  Robustness: "模型能否在高风险、易错且跨多种题型的题目上保持稳健。",
-  Caution: "模型能否保持谨慎，避免在看似简单但后果严重的典型题目上犯低级错误。",
-};
 
 const MODES = ["Base", "CoT", "IR"] as const;
 type Mode = (typeof MODES)[number];
@@ -95,27 +80,114 @@ const VENDORS = [
 ] as const;
 type Vendor = (typeof VENDORS)[number];
 
+const BASE_TEXT = {
+  sectionTitle: "Probing Memes Leaderboard",
+  bannerTitle: "Choose metrics, filters, and sort by clicking header arrows.",
+  memeScoreSelect: "Choose Meme Scores",
+  memePatternHint:
+    "Behavioral pattern: a population-level correct/incorrect pattern on a set of probes. For example, all non-reasoning models fail while reasoning models succeed, or all Qwen-family models fail while others succeed.",
+  filters: "Filters",
+  datasetSingle: "Dataset (single choice)",
+  reasoningModes: "Reasoning Modes",
+  reasoningModesHintLine1: "Base: answer directly without explicitly requesting reasoning;",
+  reasoningModesHintLine2: "Chain-of-Thought (CoT): prompt the model to generate explicit intermediate reasoning;",
+  reasoningModesHintLine3: "Intrinsic Reasoning (IR): enable the model’s internal reasoning capability.",
+  vendors: "Vendors",
+  selectAll: "Select all",
+  clear: "Clear",
+  show: "Show",
+  hide: "Hide",
+  modelComparison: "Model Comparison",
+  pick1st: "Pick 1st",
+  pick2nd: "Pick 2nd",
+  clearComparison: "Clear comparison",
+  compareHint:
+    "Please select two models: click the vs. button next to any model. The first selection will be highlighted; click a second one to generate the comparison panel.",
+  leaderboardBarPrefix: "Leaderboard",
+  leaderboardBarSortHint: "sorting: click ▲/▼ in column headers",
+  population: "Population",
+  dataset: "Dataset",
+  models: "Models",
+  search: "Search",
+  searchPlaceholder: "Type model name…",
+  searchAria: "Search model",
+  searchClearTitle: "Clear search",
+  showing: "Showing",
+  loading: "Loading...",
+  sortedBy: "Sorted by",
+  rank: "Rank",
+  model: "Model",
+  noData: "No data",
+  radarComparison: "Radar Comparison",
+  metricBars: "Metric Bars",
+  sortLabel: "Sort",
+  sortAscending: "Sort ascending",
+  sortDescending: "Sort descending",
+  clickToToggleMetric: "Click to toggle this metric",
+  compareAriaPrefix: "Compare",
+  compareVsTooltip: "vs.: choose models for comparison (after selecting 2 models, the comparison panel will appear)",
+  comparedWith: "Compared with",
+  accuracyLabel: "Accuracy",
+  modeSummary: "Modes",
+  vendorSummary: "Vendors",
+} as const;
+
+type UIText = Record<keyof typeof BASE_TEXT, string>;
+
+const MEME_DEFS_EN: Record<string, string> = {
+  Difficulty: "Performs well on difficult probes.",
+  Uniqueness: "Performs well on probes with rare behavioral patterns.",
+  Risk: "Resists probes that tend to fail alongside many other probes.",
+  Surprise: "Handles probes with anomalous behavioral patterns.",
+  Typicality: "Proficiency on prototypical probes that represent major behavior clusters.",
+  Bridge: "Proficiency on probes that connect multiple behavioral clusters.",
+  Mastery: "Performs well on difficult, prototypical probes.",
+  Ingenuity: "Flexibility on probes with rare and anomalous behavior patterns.",
+  Robustness: "Remains correct on high-risk probes at cross-cluster intersections.",
+  Caution: "Avoids errors on easy, prototypical, yet high-risk probes.",
+};
+
+const MEME_DEFS_ZH: Record<string, string> = {
+  Difficulty: "擅长处理困难 probes。",
+  Uniqueness: "擅长处理具有稀有行为模式的 probes。",
+  Risk: "能够抵抗那些往往会与许多其他 probes 一同失败的高风险 probes。",
+  Surprise: "能够处理具有异常行为模式的 probes。",
+  Typicality: "在代表主要行为簇的原型 probes 上表现熟练。",
+  Bridge: "在连接多个行为簇的 probes 上表现熟练。",
+  Mastery: "擅长处理既困难又具原型性的 probes。",
+  Ingenuity: "能够灵活处理稀有且异常的行为模式。",
+  Robustness: "在跨簇交界的高风险 probes 上依然保持正确。",
+  Caution: "避免在看似简单、具有原型性但高风险的 probes 上出错。",
+};
+
+function metricLabel(m: string, t: UIText) {
+  return m === ACC_METRIC ? t.accuracyLabel : m;
+}
+
 function SortArrows({
   col,
   sortBy,
   sortDir,
   onSort,
+  t,
 }: {
   col: string;
   sortBy: string;
   sortDir: SortDir;
   onSort: (col: string, dir: SortDir) => void;
+  t: UIText;
 }) {
   const isActive = col === sortBy;
-  const label = metricLabel(col);
+  const label = metricLabel(col, t);
+
   return (
-    <span className={styles.sortBtns} aria-label={`Sort ${label}`}>
+    <span className={styles.sortBtns} aria-label={`${t.sortLabel} ${label}`}>
       <button
         type="button"
         className={`${styles.sortBtn} ${isActive && sortDir === "asc" ? styles.sortActive : ""}`}
         onClick={() => onSort(col, "asc")}
-        aria-label={`Sort ${label} ascending`}
-        title="Sort ascending"
+        aria-label={`${t.sortAscending}: ${label}`}
+        title={t.sortAscending}
       >
         ▲
       </button>
@@ -123,8 +195,8 @@ function SortArrows({
         type="button"
         className={`${styles.sortBtn} ${isActive && sortDir === "desc" ? styles.sortActive : ""}`}
         onClick={() => onSort(col, "desc")}
-        aria-label={`Sort ${label} descending`}
-        title="Sort descending"
+        aria-label={`${t.sortDescending}: ${label}`}
+        title={t.sortDescending}
       >
         ▼
       </button>
@@ -154,6 +226,7 @@ function CombinedRadarSVG({
   valuesB,
   metrics,
   ranges,
+  t,
 }: {
   titleA: string;
   titleB: string;
@@ -161,6 +234,7 @@ function CombinedRadarSVG({
   valuesB: Record<string, number>;
   metrics: string[];
   ranges: Record<string, { min: number; max: number }>;
+  t: UIText;
 }) {
   const W = 460;
   const H = 330;
@@ -177,8 +251,8 @@ function CombinedRadarSVG({
     const { min, max } = r;
     if (!Number.isFinite(v)) return 0;
     if (max === min) return 0.5;
-    const t = (v - min) / (max - min);
-    return Math.max(0, Math.min(1, t));
+    const x = (v - min) / (max - min);
+    return Math.max(0, Math.min(1, x));
   };
 
   const pointAt = (radius: number, angle: number) => ({
@@ -197,8 +271,7 @@ function CombinedRadarSVG({
   const seriesPath = (vals: Record<string, number>) =>
     metrics
       .map((m, i) => {
-        const t = norm(m, vals[m]);
-        const p = pointAt(R * t, angles[i]);
+        const p = pointAt(R * norm(m, vals[m]), angles[i]);
         return `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
       })
       .join(" ") + " Z";
@@ -221,7 +294,7 @@ function CombinedRadarSVG({
 
   return (
     <div className={styles.radarCard}>
-      <div className={styles.radarTitle}>Radar Comparison</div>
+      <div className={styles.radarTitle}>{t.radarComparison}</div>
 
       <div className={styles.radarLegend}>
         <div className={styles.legendItem} title={titleA}>
@@ -234,14 +307,14 @@ function CombinedRadarSVG({
         </div>
       </div>
 
-      <svg className={styles.radarSvg} width="100%" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Radar comparison">
-        {rings.map((t) => (
+      <svg className={styles.radarSvg} width="100%" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={t.radarComparison}>
+        {rings.map((x) => (
           <path
-            key={t}
-            d={polygonPath(R * t)}
+            key={x}
+            d={polygonPath(R * x)}
             fill="none"
             stroke="rgba(120,120,120,0.18)"
-            strokeWidth={t === 1 ? 1.25 : 1}
+            strokeWidth={x === 1 ? 1.25 : 1}
             strokeLinejoin="round"
           />
         ))}
@@ -263,7 +336,7 @@ function CombinedRadarSVG({
               fill="rgba(110,110,110,0.92)"
               style={{ fontSize: 12, fontWeight: 500 }}
             >
-              {metricLabel(m)}
+              {metricLabel(m, t)}
             </text>
           );
         })}
@@ -279,6 +352,7 @@ function CompareBars({
   valuesB,
   metrics,
   ranges,
+  t,
 }: {
   titleA: string;
   titleB: string;
@@ -286,6 +360,7 @@ function CompareBars({
   valuesB: Record<string, number>;
   metrics: string[];
   ranges: Record<string, { min: number; max: number }>;
+  t: UIText;
 }) {
   const norm = (m: string, v: number) => {
     const r = ranges[m];
@@ -293,13 +368,13 @@ function CompareBars({
     const { min, max } = r;
     if (!Number.isFinite(v)) return 0;
     if (max === min) return 0.5;
-    const t = (v - min) / (max - min);
-    return Math.max(0, Math.min(1, t));
+    const x = (v - min) / (max - min);
+    return Math.max(0, Math.min(1, x));
   };
 
   return (
     <div className={styles.barsCard}>
-      <div className={styles.barsTitle}>Metric Bars</div>
+      <div className={styles.barsTitle}>{t.metricBars}</div>
 
       <div className={styles.barsLegend}>
         <div className={styles.legendItem} title={titleA}>
@@ -321,7 +396,7 @@ function CompareBars({
 
           return (
             <div key={m} className={styles.barMetricRow}>
-              <div className={styles.barMetricLabel}>{metricLabel(m)}</div>
+              <div className={styles.barMetricLabel}>{metricLabel(m, t)}</div>
 
               <div className={styles.barTracks}>
                 <div className={styles.barTrack}>
@@ -351,6 +426,17 @@ function CompareBars({
 }
 
 export default function LeaderboardClient() {
+  const [lang] = useState<Lang>("en");
+  const t: UIText = useMemo(
+    () => (lang === "zh" ? { ...BASE_TEXT, ...leaderboardZh } : BASE_TEXT),
+    [lang]
+  );
+
+  const memeDefs = useMemo(
+    () => (lang === "zh" ? MEME_DEFS_ZH : MEME_DEFS_EN),
+    [lang]
+  );
+
   const [population, setPopulation] = useState<Population>("Curated");
   const isHF = population === "HF";
 
@@ -456,11 +542,11 @@ export default function LeaderboardClient() {
   const memeDefList = useMemo(() => {
     const available = new Set(allMetrics);
     const out: { name: string; def: string; group: "1D" | "2D" | "3D" }[] = [];
-    for (const m of ORDER_1D) if (available.has(m) && MEME_DEFS[m]) out.push({ name: m, def: MEME_DEFS[m], group: "1D" });
-    for (const m of ORDER_2D) if (available.has(m) && MEME_DEFS[m]) out.push({ name: m, def: MEME_DEFS[m], group: "2D" });
-    for (const m of ORDER_3D) if (available.has(m) && MEME_DEFS[m]) out.push({ name: m, def: MEME_DEFS[m], group: "3D" });
+    for (const m of ORDER_1D) if (available.has(m) && memeDefs[m]) out.push({ name: m, def: memeDefs[m], group: "1D" });
+    for (const m of ORDER_2D) if (available.has(m) && memeDefs[m]) out.push({ name: m, def: memeDefs[m], group: "2D" });
+    for (const m of ORDER_3D) if (available.has(m) && memeDefs[m]) out.push({ name: m, def: memeDefs[m], group: "3D" });
     return out;
-  }, [allMetrics]);
+  }, [allMetrics, memeDefs]);
 
   const onSort = (col: string, dir: SortDir) => {
     setSortBy(col);
@@ -625,8 +711,8 @@ export default function LeaderboardClient() {
   const hideTip = () => setTip(null);
 
   const filterSummary = isHF
-    ? `Dataset: ${dataset}`
-    : `Dataset: ${dataset} · Modes: ${selectedModes.length}/${MODES.length} · Vendors: ${selectedVendors.length}/${VENDORS.length}`;
+    ? `${t.dataset}: ${dataset}`
+    : `${t.dataset}: ${dataset} · ${t.modeSummary}: ${selectedModes.length}/${MODES.length} · ${t.vendorSummary}: ${selectedVendors.length}/${VENDORS.length}`;
 
   const rowA = compareA ? rowByModel.get(compareA) : null;
   const rowB = compareB ? rowByModel.get(compareB) : null;
@@ -671,17 +757,15 @@ export default function LeaderboardClient() {
 
       <div className={styles.topRow}>
         <div>
-          <div className={styles.sectionTitle}>Probing Memes Leaderboard</div>
-          <div className={styles.bannerTitle}>Choose metrics, filters, and sort by clicking header arrows.</div>
+          <div className={styles.sectionTitle}>{t.sectionTitle}</div>
+          <div className={styles.bannerTitle}>{t.bannerTitle}</div>
         </div>
         <PopulationSelector value={population} onChange={setPopulation} />
       </div>
 
       <div className={styles.card} style={{ marginTop: 14 }}>
-        <div className={styles.memeDefTitle}>Meme Scores 选择</div>
-        <div className={styles.memeDefHint}>
-          行为模式：指模型群体在题目上的对/错模式，比如一套题目上，所有非推理模型都答错，而推理模型答对；或者所有 qwen family 模型都答错而其余模型答对。
-        </div>
+        <div className={styles.memeDefTitle}>{t.memeScoreSelect}</div>
+        <div className={styles.memeDefHint}>{t.memePatternHint}</div>
 
         <div className={styles.memeDefGrid}>
           {memeDefList.map((it) => {
@@ -693,7 +777,7 @@ export default function LeaderboardClient() {
                 className={`${styles.memeDefItem} ${active ? styles.memeDefActive : ""}`}
                 onClick={() => toggleMetric(it.name)}
                 aria-pressed={active}
-                title="Click to toggle this metric"
+                title={t.clickToToggleMetric}
               >
                 <div className={styles.memeDefHead}>
                   <span className={styles.memeDefName}>{it.name}</span>
@@ -709,7 +793,7 @@ export default function LeaderboardClient() {
       <div className={styles.card} style={{ marginTop: 10 }}>
         <div className={styles.collapseHead}>
           <div className={styles.collapseLeft}>
-            <div className={styles.cardTitle}>Filters 过滤</div>
+            <div className={styles.cardTitle}>{t.filters}</div>
             <div className={styles.collapseHint}>{filterSummary}</div>
           </div>
 
@@ -719,7 +803,7 @@ export default function LeaderboardClient() {
             onClick={() => setFiltersOpen((v) => !v)}
             aria-expanded={filtersOpen}
           >
-            {filtersOpen ? "Hide" : "Show"}
+            {filtersOpen ? t.hide : t.show}
             <span className={`${styles.collapseChevron} ${filtersOpen ? styles.chevOpen : ""}`} aria-hidden="true">
               ▼
             </span>
@@ -730,7 +814,7 @@ export default function LeaderboardClient() {
           (isHF ? (
             <div className={styles.filtersInnerSingle}>
               <div className={styles.sectionBlock}>
-                <div className={styles.sectionBlockTitle}>Dataset（单选）</div>
+                <div className={styles.sectionBlockTitle}>{t.datasetSingle}</div>
                 <div className={styles.radioList}>
                   {datasets.map((ds) => (
                     <label key={ds} className={styles.radioItem}>
@@ -745,7 +829,7 @@ export default function LeaderboardClient() {
             <div className={styles.filtersInnerGrid}>
               <div className={styles.filtersLeftCol}>
                 <div className={styles.sectionBlock}>
-                  <div className={styles.sectionBlockTitle}>Dataset（单选）</div>
+                  <div className={styles.sectionBlockTitle}>{t.datasetSingle}</div>
                   <div className={styles.radioList}>
                     {datasets.map((ds) => (
                       <label key={ds} className={styles.radioItem}>
@@ -757,19 +841,21 @@ export default function LeaderboardClient() {
                 </div>
 
                 <div className={styles.sectionBlock}>
-                  <div className={styles.sectionBlockTitle}>推理模式</div>
+                  <div className={styles.sectionBlockTitle}>{t.reasoningModes}</div>
                   <div className={styles.hint}>
-                    Base（直接回答）：不显式要求推理过程；<br />
-                    Chain-of-Thought（CoT）：引导模型生成显式中间推理；<br />
-                    Intrinsic Reasoning（IR）：启用模型内在推理能力（深度思考）
+                    {t.reasoningModesHintLine1}
+                    <br />
+                    {t.reasoningModesHintLine2}
+                    <br />
+                    {t.reasoningModesHintLine3}
                   </div>
 
                   <div className={styles.controlsRow} style={{ marginTop: 8 }}>
                     <button className={styles.btn} onClick={selectAllModes} type="button">
-                      Select all
+                      {t.selectAll}
                     </button>
                     <button className={styles.btn} onClick={clearAllModes} type="button">
-                      Clear
+                      {t.clear}
                     </button>
                   </div>
 
@@ -786,14 +872,14 @@ export default function LeaderboardClient() {
 
               <div className={styles.filtersRightCol}>
                 <div className={styles.sectionBlock} style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                  <div className={styles.sectionBlockTitle}>厂商</div>
+                  <div className={styles.sectionBlockTitle}>{t.vendors}</div>
 
                   <div className={styles.controlsRow} style={{ marginTop: 8 }}>
                     <button className={styles.btn} onClick={selectAllVendors} type="button">
-                      Select all
+                      {t.selectAll}
                     </button>
                     <button className={styles.btn} onClick={clearAllVendors} type="button">
-                      Clear
+                      {t.clear}
                     </button>
                   </div>
 
@@ -814,16 +900,16 @@ export default function LeaderboardClient() {
       {(compareA || compareB) && (
         <div ref={compareWrapRef} className={styles.compareWrap}>
           <div className={styles.compareHead}>
-            <div className={styles.compareTitle}>Model Comparison</div>
+            <div className={styles.compareTitle}>{t.modelComparison}</div>
 
             <div className={styles.compareSub}>
-              {compareA ? <span className={styles.compareChip}>{compareA}</span> : <span className={styles.compareChipEmpty}>Pick 1st</span>}
+              {compareA ? <span className={styles.compareChip}>{compareA}</span> : <span className={styles.compareChipEmpty}>{t.pick1st}</span>}
               <span className={styles.compareVs}>vs</span>
-              {compareB ? <span className={styles.compareChip}>{compareB}</span> : <span className={styles.compareChipEmpty}>Pick 2nd</span>}
+              {compareB ? <span className={styles.compareChip}>{compareB}</span> : <span className={styles.compareChipEmpty}>{t.pick2nd}</span>}
             </div>
 
             <button className={styles.btn} type="button" onClick={clearCompare}>
-              Clear comparison
+              {t.clearComparison}
             </button>
           </div>
 
@@ -836,6 +922,7 @@ export default function LeaderboardClient() {
                 valuesB={valuesB}
                 metrics={cols}
                 ranges={radarRanges}
+                t={t}
               />
               <CompareBars
                 titleA={compareA}
@@ -844,32 +931,31 @@ export default function LeaderboardClient() {
                 valuesB={valuesB}
                 metrics={cols}
                 ranges={radarRanges}
+                t={t}
               />
             </div>
           ) : (
-            <div className={styles.compareHint}>
-              请选择两个模型：点击任意模型右侧 <b>vs.</b> 按钮，第一个会高亮；再点第二个即可生成对比面板。
-            </div>
+            <div className={styles.compareHint}>{t.compareHint}</div>
           )}
         </div>
       )}
 
       <div className={styles.grayBar} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
         <span>
-          Leaderboard（排序：点表头右侧 ▲/▼） · Population: <b>{population}</b> · Dataset: <b>{dataset}</b> · Models: {total}
+          {t.leaderboardBarPrefix} ({t.leaderboardBarSortHint}) · {t.population}: <b>{population}</b> · {t.dataset}: <b>{dataset}</b> · {t.models}: {total}
         </span>
 
         <div className={styles.searchWrap}>
-          <span className={styles.searchLabel}>Search</span>
+          <span className={styles.searchLabel}>{t.search}</span>
           <input
             className={styles.searchInput}
             value={modelQuery}
             onChange={(e) => setModelQuery(e.target.value)}
-            placeholder="Type model name…"
-            aria-label="Search model"
+            placeholder={t.searchPlaceholder}
+            aria-label={t.searchAria}
           />
           {modelQuery && (
-            <button className={styles.searchClear} type="button" onClick={() => setModelQuery("")} title="Clear search">
+            <button className={styles.searchClear} type="button" onClick={() => setModelQuery("")} title={t.searchClearTitle}>
               ×
             </button>
           )}
@@ -889,21 +975,23 @@ export default function LeaderboardClient() {
       >
         <div className={styles.tableTop}>
           <div className={styles.hint}>
-            Showing: <b>{shownRows.length}</b>
+            {t.showing}: <b>{shownRows.length}</b>
           </div>
-          <div className={styles.hint}>{loading ? "Loading..." : data ? `Sorted by ${metricLabel(data.sort_by)} (${data.sort_dir})` : ""}</div>
+          <div className={styles.hint}>
+            {loading ? t.loading : data ? `${t.sortedBy} ${metricLabel(data.sort_by, t)} (${data.sort_dir})` : ""}
+          </div>
         </div>
 
         <table className={styles.table}>
           <thead>
             <tr>
-              <th className={styles.th}>Rank</th>
-              <th className={styles.th}>Model</th>
+              <th className={styles.th}>{t.rank}</th>
+              <th className={styles.th}>{t.model}</th>
               {cols.map((c) => (
                 <th key={c} className={styles.th}>
                   <div className={styles.thInner}>
-                    <span>{metricLabel(c)}</span>
-                    <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
+                    <span>{metricLabel(c, t)}</span>
+                    <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
                   </div>
                 </th>
               ))}
@@ -927,10 +1015,10 @@ export default function LeaderboardClient() {
                         type="button"
                         className={styles.vsBtn}
                         onClick={() => onPickCompare(model)}
-                        onMouseEnter={(e) => showTip(e, "vs.：选择模型进行对比（点 2 个模型后，会显示对比面板）")}
+                        onMouseEnter={(e) => showTip(e, t.compareVsTooltip)}
                         onMouseMove={(e) => moveTip(e)}
                         onMouseLeave={hideTip}
-                        aria-label={`Compare ${model}`}
+                        aria-label={`${t.compareAriaPrefix} ${model}`}
                         title="Compare (vs.)"
                       >
                         vs.
@@ -947,7 +1035,7 @@ export default function LeaderboardClient() {
                       const rAlt = rankMap[c]?.[model];
                       if (Number.isFinite(rSort) && Number.isFinite(rAlt)) {
                         const delta = (rAlt as number) - (rSort as number);
-                        tipText = `Compared with ${metricLabel(sortBy)}: ${signed(delta)}`;
+                        tipText = `${t.comparedWith} ${metricLabel(sortBy, t)}: ${signed(delta)}`;
                       }
                     }
 
@@ -974,7 +1062,7 @@ export default function LeaderboardClient() {
             {!loading && shownRows.length === 0 && (
               <tr>
                 <td className={styles.td} colSpan={2 + cols.length}>
-                  No data
+                  {t.noData}
                 </td>
               </tr>
             )}

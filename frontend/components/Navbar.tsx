@@ -215,7 +215,7 @@ export default function Navbar() {
       yangs: {
         label: "Yangs AI",
         href: "https://benchmarks.yangs.ai",
-        iconSrc: "/logos/YangsAI-32x32.png",
+        iconSrc: "/logos/YangsAI.png",
       },
       benchcouncil: {
         label: "BenchCouncil",

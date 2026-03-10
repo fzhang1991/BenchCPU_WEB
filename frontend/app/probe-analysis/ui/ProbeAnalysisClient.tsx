@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useState, type MouseEvent } from "react";
 import styles from "../ProbeAnalysis.module.css";
-
 import PopulationSelector, { type Population } from "../../leaderboard/ui/PopulationSelector";
 import Overview3DPanel from "./Overview3DPanel";
 import QuestionDrawer, { type DrawerContentStub } from "./QuestionDrawer";

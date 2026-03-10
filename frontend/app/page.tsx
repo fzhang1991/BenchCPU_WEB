@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import styles from "./Home.module.css";
 
 type ApiMetrics = { metrics: string[]; n_models: number; population?: string; dataset?: string };
-
+ 
 type ApiLeaderboard = {
   selected_metrics: string[];
   sort_by: string;
