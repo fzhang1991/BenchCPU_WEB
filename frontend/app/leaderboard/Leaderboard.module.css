@@ -8,7 +8,7 @@
   font-size: 34px;
   font-weight: 900;
   letter-spacing: -0.03em;
-  margin: 10px 0 6px;
+  margin: 10px 0 12px;
 }
 
 .bannerTitle{
@@ -39,11 +39,12 @@
 }
 
 .cardTitle{
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: -0.01em;
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 0;
   color: var(--text);
+  line-height: 1.15;
 }
 
 .hint{
@@ -108,16 +109,16 @@
 
 .collapseHead{
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 }
 
-.collapseLeft{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
+.collapseTitleRow{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .collapseHint{
@@ -126,16 +127,13 @@
   font-weight: 650;
   line-height: 1.25;
   margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .collapseBtn{
   border: 1px solid rgba(15,23,42,0.12);
   background: #fff;
-  height: 34px;
-  padding: 0 12px;
+  height: 32px;
+  padding: 0 10px;
   border-radius: 12px;
   cursor: pointer;
   font-weight: 850;
@@ -290,10 +288,11 @@
 }
 
 .memeDefTitle{
-  font-weight: 900;
-  font-size: 13px;
+  font-weight: 950;
+  font-size: 18px;
   color: var(--text);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.15;
 }
 
 .memeDefHint{
@@ -384,6 +383,8 @@
   background: rgba(15,23,42,0.02);
   cursor: pointer;
   transition: background 120ms ease, border-color 120ms ease, transform 80ms ease;
+  text-align: center;
+  min-height: 44px;
 }
 
 .radioItem:hover{
@@ -400,6 +401,7 @@
   height: 16px;
   accent-color: var(--accent);
   transform: translateY(1px);
+  flex: 0 0 auto;
 }
 
 .tableWrap{
@@ -408,16 +410,91 @@
   border: 1px solid var(--border);
   box-shadow: var(--shadow-md);
   background: var(--card-solid);
+  overflow: hidden;
+}
+
+.tableTop{
+  padding: 12px 12px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tableTopLeft{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 520px;
+}
+
+.tableMetaLine{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.tableStatus{
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.3;
+  min-height: 16px;
+}
+
+.sortHintIcon{
+  width: 16px;
+  height: 18px;
+  color: rgba(15,23,42,0.78);
+  flex: 0 0 auto;
+}
+
+.tableTopScroll{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 14px;
+  background: rgba(15,23,42,0.03);
+  border-top: 1px solid rgba(15,23,42,0.06);
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+  scrollbar-gutter: stable;
+}
+
+.tableTopScrollInner{
+  height: 1px;
+}
+
+.tableScroller{
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 6px;
 }
 
-.tableTop{
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+.tableTopScroll::-webkit-scrollbar,
+.tableScroller::-webkit-scrollbar{
+  height: 12px;
+}
+
+.tableTopScroll::-webkit-scrollbar-track,
+.tableScroller::-webkit-scrollbar-track{
+  background: rgba(15,23,42,0.06);
+}
+
+.tableTopScroll::-webkit-scrollbar-thumb,
+.tableScroller::-webkit-scrollbar-thumb{
+  background: rgba(15,23,42,0.24);
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.75);
+}
+
+.tableTopScroll::-webkit-scrollbar-thumb:hover,
+.tableScroller::-webkit-scrollbar-thumb:hover{
+  background: rgba(15,23,42,0.34);
 }
 
 .table{
@@ -512,42 +589,51 @@
   gap: 10px;
 }
 
-.sortBtns{
+.sortControl{
   display: inline-flex;
-  gap: 6px;
-  align-items: center;
+  align-items: stretch;
+  border: 1px solid rgba(15,23,42,0.10);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.92);
+  overflow: hidden;
 }
 
-.sortBtn{
+.sortHalf{
   width: 22px;
-  height: 22px;
-  border-radius: 8px;
-  border: 1px solid rgba(15,23,42,0.10);
-  background: rgba(255,255,255,0.9);
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
   cursor: pointer;
-  font-size: 11px;
-  line-height: 1;
-  color: rgba(15,23,42,0.55);
+  color: rgba(15,23,42,0.62);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 120ms ease, border-color 120ms ease, color 120ms ease, transform 80ms ease;
+  transition: background 120ms ease, color 120ms ease, transform 80ms ease;
 }
 
-.sortBtn:hover{
+.sortHalf + .sortHalf{
+  border-left: 1px solid rgba(15,23,42,0.10);
+}
+
+.sortHalf:hover{
   background: rgba(37,99,235,0.08);
-  border-color: rgba(37,99,235,0.18);
-  color: rgba(15,23,42,0.85);
+  color: rgba(15,23,42,0.88);
 }
 
-.sortBtn:active{
+.sortHalf:active{
   transform: translateY(1px);
 }
 
-.sortActive{
+.sortHalfActive{
   background: rgba(37,99,235,0.14);
-  border-color: rgba(37,99,235,0.26);
   color: rgba(15,23,42,0.95);
+}
+
+.sortArrowIcon{
+  width: 10px;
+  height: 18px;
+  display: block;
 }
 
 .searchWrap{
@@ -558,6 +644,8 @@
   border-radius: 14px;
   border: 1px solid rgba(15,23,42,0.12);
   background: rgba(255,255,255,0.88);
+  flex: 0 0 auto;
+  max-width: 100%;
 }
 
 .searchLabel{
@@ -574,6 +662,7 @@
   font-weight: 750;
   color: rgba(15,23,42,0.88);
   width: 220px;
+  min-width: 0;
 }
 
 .searchClear{
@@ -798,6 +887,7 @@
 
 .barFillA{
   height: 100%;
+  min-width: 0;
   border-radius: 999px;
   background: rgb(255, 190, 122);
   box-shadow: none;
@@ -805,6 +895,7 @@
 
 .barFillB{
   height: 100%;
+  min-width: 0;
   border-radius: 999px;
   background: rgb(142,207,201);
   box-shadow: none;
@@ -861,6 +952,20 @@
   .memeDefGrid{
     grid-template-columns: 1fr;
   }
+
+  .tableTop{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchWrap{
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .radioList{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 520px){
@@ -882,5 +987,9 @@
 
   .searchInput{
     width: 120px;
+  }
+
+  .tableMetaLine{
+    font-size: 12px;
   }
 }

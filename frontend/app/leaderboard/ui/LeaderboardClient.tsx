@@ -45,7 +45,6 @@ function signed(n: number) {
 }
 
 const ACC_METRIC = "ACC";
-const ACC_LABEL = "Accuracy";
 
 const MEME_SCORES_2D = new Set(["Mastery", "Ingenuity", "Robustness"]);
 const MEME_SCORES_3D = new Set(["Caution"]);
@@ -104,7 +103,9 @@ const BASE_TEXT = {
   compareHint:
     "Please select two models: click the vs. button next to any model. The first selection will be highlighted; click a second one to generate the comparison panel.",
   leaderboardBarPrefix: "Leaderboard",
-  leaderboardBarSortHint: "sorting: click ▲/▼ in column headers",
+  leaderboardBarSortHintPrefix: "sorting: click",
+  leaderboardBarSortHintSuffix: "in column headers",
+  leaderboardBarSortHint: "sorting: click header arrows",
   population: "Population",
   dataset: "Dataset",
   models: "Models",
@@ -164,6 +165,57 @@ function metricLabel(m: string, t: UIText) {
   return m === ACC_METRIC ? t.accuracyLabel : m;
 }
 
+function ArrowGlyph({
+  direction,
+  className,
+}: {
+  direction: "asc" | "desc";
+  className?: string;
+}) {
+  return (
+    <svg className={className} viewBox="0 0 10 18" fill="none" aria-hidden="true">
+      {direction === "asc" ? (
+        <path
+          d="M5 16V3M5 3L2.7 5.3M5 3L7.3 5.3"
+          stroke="currentColor"
+          strokeWidth="1.9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ) : (
+        <path
+          d="M5 2V15M5 15L2.7 12.7M5 15L7.3 12.7"
+          stroke="currentColor"
+          strokeWidth="1.9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
+    </svg>
+  );
+}
+
+function DualSortHintIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 18 20" fill="none" aria-hidden="true">
+      <path
+        d="M6 17V4M6 4L3.7 6.3M6 4L8.3 6.3"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 3V16M12 16L9.7 13.7M12 16L14.3 13.7"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function SortArrows({
   col,
   sortBy,
@@ -181,24 +233,25 @@ function SortArrows({
   const label = metricLabel(col, t);
 
   return (
-    <span className={styles.sortBtns} aria-label={`${t.sortLabel} ${label}`}>
+    <span className={styles.sortControl} aria-label={`${t.sortLabel} ${label}`}>
       <button
         type="button"
-        className={`${styles.sortBtn} ${isActive && sortDir === "asc" ? styles.sortActive : ""}`}
+        className={`${styles.sortHalf} ${isActive && sortDir === "asc" ? styles.sortHalfActive : ""}`}
         onClick={() => onSort(col, "asc")}
         aria-label={`${t.sortAscending}: ${label}`}
         title={t.sortAscending}
       >
-        ▲
+        <ArrowGlyph direction="asc" className={styles.sortArrowIcon} />
       </button>
+
       <button
         type="button"
-        className={`${styles.sortBtn} ${isActive && sortDir === "desc" ? styles.sortActive : ""}`}
+        className={`${styles.sortHalf} ${isActive && sortDir === "desc" ? styles.sortHalfActive : ""}`}
         onClick={() => onSort(col, "desc")}
         aria-label={`${t.sortDescending}: ${label}`}
         title={t.sortDescending}
       >
-        ▼
+        <ArrowGlyph direction="desc" className={styles.sortArrowIcon} />
       </button>
     </span>
   );
@@ -351,7 +404,6 @@ function CompareBars({
   valuesA,
   valuesB,
   metrics,
-  ranges,
   t,
 }: {
   titleA: string;
@@ -359,17 +411,12 @@ function CompareBars({
   valuesA: Record<string, number>;
   valuesB: Record<string, number>;
   metrics: string[];
-  ranges: Record<string, { min: number; max: number }>;
   t: UIText;
 }) {
-  const norm = (m: string, v: number) => {
-    const r = ranges[m];
-    if (!r) return 0.5;
-    const { min, max } = r;
-    if (!Number.isFinite(v)) return 0;
-    if (max === min) return 0.5;
-    const x = (v - min) / (max - min);
-    return Math.max(0, Math.min(1, x));
+  const widthPct = (v: number) => {
+    if (!Number.isFinite(v)) return "0%";
+    const clamped = Math.max(0, Math.min(1, v));
+    return `${(clamped * 100).toFixed(1)}%`;
   };
 
   return (
@@ -391,8 +438,6 @@ function CompareBars({
         {metrics.map((m) => {
           const va = valuesA[m];
           const vb = valuesB[m];
-          const wa = `${(norm(m, va) * 100).toFixed(1)}%`;
-          const wb = `${(norm(m, vb) * 100).toFixed(1)}%`;
 
           return (
             <div key={m} className={styles.barMetricRow}>
@@ -400,10 +445,10 @@ function CompareBars({
 
               <div className={styles.barTracks}>
                 <div className={styles.barTrack}>
-                  <div className={styles.barFillA} style={{ width: wa }} />
+                  <div className={styles.barFillA} style={{ width: widthPct(va) }} />
                 </div>
                 <div className={styles.barTrack}>
-                  <div className={styles.barFillB} style={{ width: wb }} />
+                  <div className={styles.barFillB} style={{ width: widthPct(vb) }} />
                 </div>
               </div>
 
@@ -442,6 +487,19 @@ export default function LeaderboardClient() {
   const isHF = population === "HF";
 
   const datasets = useMemo<readonly Dataset[]>(() => (isHF ? DATASETS_HF : DATASETS_CURATED), [isHF]);
+  const avgDatasetCount = Math.max(0, datasets.length - 1);
+
+  const datasetText = useMemo(() => {
+    return lang === "zh"
+      ? `数据集平均（${avgDatasetCount}）`
+      : `Averaged over Datasets (${avgDatasetCount})`;
+  }, [lang, avgDatasetCount]);
+
+  const renderDatasetName = (ds: Dataset) => {
+    if (ds === "Avg") return datasetText;
+    return ds;
+  };
+
   const [dataset, setDataset] = useState<Dataset>("Avg");
 
   const [allMetrics, setAllMetrics] = useState<string[]>([]);
@@ -471,6 +529,12 @@ export default function LeaderboardClient() {
   const [modelQuery, setModelQuery] = useState("");
 
   const compareWrapRef = useRef<HTMLDivElement | null>(null);
+
+  const topScrollRef = useRef<HTMLDivElement | null>(null);
+  const tableScrollerRef = useRef<HTMLDivElement | null>(null);
+  const tableRef = useRef<HTMLTableElement | null>(null);
+  const syncSourceRef = useRef<"top" | "bottom" | null>(null);
+  const [tableScrollWidth, setTableScrollWidth] = useState(0);
 
   useEffect(() => {
     setDataset("Avg");
@@ -539,6 +603,32 @@ export default function LeaderboardClient() {
       setSortDir("desc");
     })();
   }, [dataset, population]);
+
+  useEffect(() => {
+    const updateWidths = () => {
+      const tableW = tableRef.current?.scrollWidth ?? 0;
+      setTableScrollWidth(tableW);
+
+      if (topScrollRef.current && tableScrollerRef.current) {
+        topScrollRef.current.scrollLeft = tableScrollerRef.current.scrollLeft;
+      }
+    };
+
+    updateWidths();
+
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(updateWidths);
+      if (tableRef.current) ro.observe(tableRef.current);
+      if (tableScrollerRef.current) ro.observe(tableScrollerRef.current);
+    }
+
+    window.addEventListener("resize", updateWidths);
+    return () => {
+      window.removeEventListener("resize", updateWidths);
+      ro?.disconnect();
+    };
+  }, [allRowsKey(data?.rows ?? []), allMetrics.join("|"), modelQuery, population, dataset, lang]);
 
   const memeDefList = useMemo(() => {
     const available = new Set(allMetrics);
@@ -712,8 +802,8 @@ export default function LeaderboardClient() {
   const hideTip = () => setTip(null);
 
   const filterSummary = isHF
-    ? `${t.dataset}: ${dataset}`
-    : `${t.dataset}: ${dataset} · ${t.modeSummary}: ${selectedModes.length}/${MODES.length} · ${t.vendorSummary}: ${selectedVendors.length}/${VENDORS.length}`;
+    ? `${t.dataset}: ${renderDatasetName(dataset)}`
+    : `${t.dataset}: ${renderDatasetName(dataset)} · ${t.modeSummary}: ${selectedModes.length}/${MODES.length} · ${t.vendorSummary}: ${selectedVendors.length}/${VENDORS.length}`;
 
   const rowA = compareA ? rowByModel.get(compareA) : null;
   const rowB = compareB ? rowByModel.get(compareB) : null;
@@ -729,6 +819,26 @@ export default function LeaderboardClient() {
     for (const m of cols) out[m] = rowB ? numOrNaN(rowB[m]) : NaN;
     return out;
   }, [rowB, cols]);
+
+  const handleTopScroll = () => {
+    if (!topScrollRef.current || !tableScrollerRef.current) return;
+    if (syncSourceRef.current === "bottom") {
+      syncSourceRef.current = null;
+      return;
+    }
+    syncSourceRef.current = "top";
+    tableScrollerRef.current.scrollLeft = topScrollRef.current.scrollLeft;
+  };
+
+  const handleBottomScroll = () => {
+    if (!topScrollRef.current || !tableScrollerRef.current) return;
+    if (syncSourceRef.current === "top") {
+      syncSourceRef.current = null;
+      return;
+    }
+    syncSourceRef.current = "bottom";
+    topScrollRef.current.scrollLeft = tableScrollerRef.current.scrollLeft;
+  };
 
   return (
     <div onMouseLeave={hideTip}>
@@ -759,7 +869,6 @@ export default function LeaderboardClient() {
       <div className={styles.topRow}>
         <div>
           <div className={styles.sectionTitle}>{t.sectionTitle}</div>
-          <div className={styles.bannerTitle}>{t.bannerTitle}</div>
         </div>
         <PopulationSelector value={population} onChange={setPopulation} />
       </div>
@@ -793,22 +902,23 @@ export default function LeaderboardClient() {
 
       <div className={styles.card} style={{ marginTop: 10 }}>
         <div className={styles.collapseHead}>
-          <div className={styles.collapseLeft}>
+          <div className={styles.collapseTitleRow}>
             <div className={styles.cardTitle}>{t.filters}</div>
-            <div className={styles.collapseHint}>{filterSummary}</div>
+
+            <button
+              type="button"
+              className={styles.collapseBtn}
+              onClick={() => setFiltersOpen((v) => !v)}
+              aria-expanded={filtersOpen}
+            >
+              {filtersOpen ? t.hide : t.show}
+              <span className={`${styles.collapseChevron} ${filtersOpen ? styles.chevOpen : ""}`} aria-hidden="true">
+                ▼
+              </span>
+            </button>
           </div>
 
-          <button
-            type="button"
-            className={styles.collapseBtn}
-            onClick={() => setFiltersOpen((v) => !v)}
-            aria-expanded={filtersOpen}
-          >
-            {filtersOpen ? t.hide : t.show}
-            <span className={`${styles.collapseChevron} ${filtersOpen ? styles.chevOpen : ""}`} aria-hidden="true">
-              ▼
-            </span>
-          </button>
+          <div className={styles.collapseHint}>{filterSummary}</div>
         </div>
 
         {filtersOpen &&
@@ -820,7 +930,7 @@ export default function LeaderboardClient() {
                   {datasets.map((ds) => (
                     <label key={ds} className={styles.radioItem}>
                       <input type="radio" name="dataset" checked={dataset === ds} onChange={() => setDataset(ds)} />
-                      <span>{ds}</span>
+                      <span>{renderDatasetName(ds)}</span>
                     </label>
                   ))}
                 </div>
@@ -835,7 +945,7 @@ export default function LeaderboardClient() {
                     {datasets.map((ds) => (
                       <label key={ds} className={styles.radioItem}>
                         <input type="radio" name="dataset" checked={dataset === ds} onChange={() => setDataset(ds)} />
-                        <span>{ds}</span>
+                        <span>{renderDatasetName(ds)}</span>
                       </label>
                     ))}
                   </div>
@@ -931,7 +1041,6 @@ export default function LeaderboardClient() {
                 valuesA={valuesA}
                 valuesB={valuesB}
                 metrics={cols}
-                ranges={radarRanges}
                 t={t}
               />
             </div>
@@ -941,135 +1050,164 @@ export default function LeaderboardClient() {
         </div>
       )}
 
-      <div className={styles.grayBar} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-        <span>
-          {t.leaderboardBarPrefix} ({t.leaderboardBarSortHint}) · {t.population}: <b>{population}</b> · {t.dataset}: <b>{dataset}</b> · {t.models}: {total}
-        </span>
-
-        <div className={styles.searchWrap}>
-          <span className={styles.searchLabel}>{t.search}</span>
-          <input
-            className={styles.searchInput}
-            value={modelQuery}
-            onChange={(e) => setModelQuery(e.target.value)}
-            placeholder={t.searchPlaceholder}
-            aria-label={t.searchAria}
-          />
-          {modelQuery && (
-            <button className={styles.searchClear} type="button" onClick={() => setModelQuery("")} title={t.searchClearTitle}>
-              ×
-            </button>
-          )}
-        </div>
-      </div>
-
-      <div
-        className={styles.tableWrap}
-        style={
-          isHF
-            ? {
-                overflowY: "auto",
-                maxHeight: HF_TABLE_MAX_HEIGHT_PX,
-              }
-            : undefined
-        }
-      >
+      <div className={styles.tableWrap}>
         <div className={styles.tableTop}>
-          <div className={styles.hint}>
-            {t.showing}: <b>{shownRows.length}</b>
+          <div className={styles.tableTopLeft}>
+            <div className={styles.tableMetaLine}>
+              <span>{t.leaderboardBarPrefix} (</span>
+              <span>{t.leaderboardBarSortHintPrefix}</span>
+              <DualSortHintIcon className={styles.sortHintIcon} />
+              <span>{t.leaderboardBarSortHintSuffix})</span>
+              <span>·</span>
+              <span>
+                {t.population}: <b>{population}</b>
+              </span>
+              <span>·</span>
+              <span>
+                {t.dataset}: <b>{renderDatasetName(dataset)}</b>
+              </span>
+              <span>·</span>
+              <span>
+                {t.models}: <b>{total}</b>
+              </span>
+            </div>
+
+            <div className={styles.tableStatus}>
+              {loading ? t.loading : data ? `${t.sortedBy} ${metricLabel(data.sort_by, t)} (${data.sort_dir})` : ""}
+            </div>
           </div>
-          <div className={styles.hint}>
-            {loading ? t.loading : data ? `${t.sortedBy} ${metricLabel(data.sort_by, t)} (${data.sort_dir})` : ""}
+
+          <div className={styles.searchWrap}>
+            <span className={styles.searchLabel}>{t.search}</span>
+            <input
+              className={styles.searchInput}
+              value={modelQuery}
+              onChange={(e) => setModelQuery(e.target.value)}
+              placeholder={t.searchPlaceholder}
+              aria-label={t.searchAria}
+            />
+            {modelQuery && (
+              <button className={styles.searchClear} type="button" onClick={() => setModelQuery("")} title={t.searchClearTitle}>
+                ×
+              </button>
+            )}
           </div>
         </div>
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th className={styles.th}>{t.rank}</th>
-              <th className={styles.th}>{t.model}</th>
-              {cols.map((c) => (
-                <th key={c} className={styles.th}>
-                  <div className={styles.thInner}>
-                    <span>{metricLabel(c, t)}</span>
-                    <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
+        <div
+          ref={topScrollRef}
+          className={styles.tableTopScroll}
+          onScroll={handleTopScroll}
+          aria-label="Top horizontal scrollbar"
+        >
+          <div className={styles.tableTopScrollInner} style={{ width: tableScrollWidth }} />
+        </div>
 
-          <tbody>
-            {shownRows.map((r) => {
-              const model = String(r.model);
-              const picked = model === compareA || model === compareB;
-
-              return (
-                <tr key={`${r.model}-${r.rank}`} className={picked ? styles.rowPicked : ""}>
-                  <td className={styles.td}>{r.rank}</td>
-
-                  <td className={`${styles.td} ${styles.modelCell}`}>
-                    <div className={styles.modelCellInner}>
-                      <span className={styles.modelName}>{model}</span>
-
-                      <button
-                        type="button"
-                        className={styles.vsBtn}
-                        onClick={() => onPickCompare(model)}
-                        onMouseEnter={(e) => showTip(e, t.compareVsTooltip)}
-                        onMouseMove={(e) => moveTip(e)}
-                        onMouseLeave={hideTip}
-                        aria-label={`${t.compareAriaPrefix} ${model}`}
-                        title="Compare (vs.)"
-                      >
-                        vs.
-                      </button>
-                    </div>
-                  </td>
-
-                  {cols.map((c) => {
-                    const val = fmt(r[c]);
-
-                    let tipText = "";
-                    if (c !== sortBy) {
-                      const rSort = rankMap[sortBy]?.[model];
-                      const rAlt = rankMap[c]?.[model];
-                      if (Number.isFinite(rSort) && Number.isFinite(rAlt)) {
-                        const delta = (rAlt as number) - (rSort as number);
-                        tipText = `${t.comparedWith} ${metricLabel(sortBy, t)}: ${signed(delta)}`;
-                      }
-                    }
-
-                    return (
-                      <td
-                        key={c}
-                        className={styles.td}
-                        onMouseEnter={(e) => {
-                          if (tipText) showTip(e, tipText);
-                        }}
-                        onMouseMove={(e) => {
-                          if (tipText) moveTip(e);
-                        }}
-                        onMouseLeave={hideTip}
-                      >
-                        {val}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-
-            {!loading && shownRows.length === 0 && (
+        <div
+          ref={tableScrollerRef}
+          className={styles.tableScroller}
+          onScroll={handleBottomScroll}
+          style={
+            isHF
+              ? {
+                  overflowY: "auto",
+                  maxHeight: HF_TABLE_MAX_HEIGHT_PX,
+                }
+              : undefined
+          }
+        >
+          <table ref={tableRef} className={styles.table}>
+            <thead>
               <tr>
-                <td className={styles.td} colSpan={2 + cols.length}>
-                  {t.noData}
-                </td>
+                <th className={styles.th}>{t.rank}</th>
+                <th className={styles.th}>{t.model}</th>
+                {cols.map((c) => (
+                  <th key={c} className={styles.th}>
+                    <div className={styles.thInner}>
+                      <span>{metricLabel(c, t)}</span>
+                      <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
+                    </div>
+                  </th>
+                ))}
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {shownRows.map((r) => {
+                const model = String(r.model);
+                const picked = model === compareA || model === compareB;
+
+                return (
+                  <tr key={`${r.model}-${r.rank}`} className={picked ? styles.rowPicked : ""}>
+                    <td className={styles.td}>{r.rank}</td>
+
+                    <td className={`${styles.td} ${styles.modelCell}`}>
+                      <div className={styles.modelCellInner}>
+                        <span className={styles.modelName}>{model}</span>
+
+                        <button
+                          type="button"
+                          className={styles.vsBtn}
+                          onClick={() => onPickCompare(model)}
+                          onMouseEnter={(e) => showTip(e, t.compareVsTooltip)}
+                          onMouseMove={(e) => moveTip(e)}
+                          onMouseLeave={hideTip}
+                          aria-label={`${t.compareAriaPrefix} ${model}`}
+                          title="Compare (vs.)"
+                        >
+                          vs.
+                        </button>
+                      </div>
+                    </td>
+
+                    {cols.map((c) => {
+                      const val = fmt(r[c]);
+
+                      let tipText = "";
+                      if (c !== sortBy) {
+                        const rSort = rankMap[sortBy]?.[model];
+                        const rAlt = rankMap[c]?.[model];
+                        if (Number.isFinite(rSort) && Number.isFinite(rAlt)) {
+                          const delta = (rAlt as number) - (rSort as number);
+                          tipText = `${t.comparedWith} ${metricLabel(sortBy, t)}: ${signed(delta)}`;
+                        }
+                      }
+
+                      return (
+                        <td
+                          key={c}
+                          className={styles.td}
+                          onMouseEnter={(e) => {
+                            if (tipText) showTip(e, tipText);
+                          }}
+                          onMouseMove={(e) => {
+                            if (tipText) moveTip(e);
+                          }}
+                          onMouseLeave={hideTip}
+                        >
+                          {val}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+
+              {!loading && shownRows.length === 0 && (
+                <tr>
+                  <td className={styles.td} colSpan={2 + cols.length}>
+                    {t.noData}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
+}
+
+function allRowsKey(rows: Row[]) {
+  return rows.length ? `${rows.length}-${String(rows[0]?.model ?? "")}-${String(rows[rows.length - 1]?.model ?? "")}` : "0";
 }

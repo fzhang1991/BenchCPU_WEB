@@ -4,9 +4,11 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Home.module.css";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { homeZh } from "./homeZh";
 
 type ApiMetrics = { metrics: string[]; n_models: number; population?: string; dataset?: string };
- 
+
 type ApiLeaderboard = {
   selected_metrics: string[];
   sort_by: string;
@@ -50,16 +52,39 @@ const RADAR_THEME_B = {
   fill: "rgba(142,207,201,0.78)",
 };
 
+const BASE_TEXT = {
+  heroDesc:
+    "Below are quick previews of three sections (Model Comparison / Dataset Analysis / Experimental Workflow). Click a card to open the full page.",
+
+  modelLeaderboard: "Model Leaderboard",
+  datasetAnalysis: "Dataset Analysis",
+  probingMemesParadigm: "The Probing Memes Paradigm",
+
+  open: "Open →",
+
+  radarComparisonAria: "Radar comparison",
+  loading: "Loading…",
+  failed: "Failed: ",
+  modelNotFound: "Model not found: ",
+
+  datasetAnalysisAlt: "Dataset analysis overview",
+  exploreOverviewAlt: "Explore overview",
+};
+
+type HomeText = Record<keyof typeof BASE_TEXT, string>;
+
 function MiniCombinedRadarSVG({
   valuesA,
   valuesB,
   metrics,
   ranges,
+  t,
 }: {
   valuesA: Record<string, number>;
   valuesB: Record<string, number>;
   metrics: string[];
   ranges: Record<string, { min: number; max: number }>;
+  t: HomeText;
 }) {
   const W = 310;
   const H = 220;
@@ -115,14 +140,14 @@ function MiniCombinedRadarSVG({
 
   return (
     <div className={styles.radarWrap}>
-      <svg className={styles.radarSvg} width="100%" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Radar comparison">
-        {rings.map((t) => (
+      <svg className={styles.radarSvg} width="100%" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={t.radarComparisonAria}>
+        {rings.map((x) => (
           <path
-            key={t}
-            d={polygonPath(R * t)}
+            key={x}
+            d={polygonPath(R * x)}
             fill="none"
             stroke="rgba(120,120,120,0.18)"
-            strokeWidth={t === 1 ? 1.15 : 1}
+            strokeWidth={x === 1 ? 1.15 : 1}
             strokeLinejoin="round"
           />
         ))}
@@ -216,6 +241,13 @@ function MiniCompareBars({
 
 export default function HomePage() {
   const router = useRouter();
+  const { lang } = useLanguage();
+
+  const t: HomeText = useMemo(
+    () => (lang === "zh" ? { ...BASE_TEXT, ...homeZh } : BASE_TEXT),
+    [lang]
+  );
+
   const goto = (href: string) => router.push(href);
 
   const [metricsOrdered, setMetricsOrdered] = useState<string[]>([]);
@@ -295,7 +327,7 @@ export default function HomePage() {
 
         if (!a || !b) {
           const miss = [!a ? MODEL_A : null, !b ? MODEL_B : null].filter(Boolean).join(" / ");
-          setCompareErr(`Model not found: ${miss}`);
+          setCompareErr(`${t.modelNotFound}${miss}`);
         }
       } catch (e: any) {
         if (!alive) return;
@@ -312,7 +344,7 @@ export default function HomePage() {
     return () => {
       alive = false;
     };
-  }, [metricsOrdered]);
+  }, [metricsOrdered, t.modelNotFound]);
 
   const metricsToShow = useMemo(() => {
     return metricsOrdered.length ? metricsOrdered : [ACC, ...ORDER_1D, ...ORDER_2D, ...ORDER_3D];
@@ -354,21 +386,19 @@ export default function HomePage() {
     <div className={styles.page}>
       <div className={styles.heroCard}>
         <div className={styles.heroTitle}>Probing Memes</div>
-        <div className={styles.heroDesc}>
-          Below are quick previews of three sections (Model Comparison / Dataset Analysis / Experimental Workflow). Click a card to open the full page.
-        </div>
+        <div className={styles.heroDesc}>{t.heroDesc}</div>
       </div>
 
       <div className={styles.stack}>
         <div className={styles.previewCard} onClick={() => goto("/leaderboard")} role="button" tabIndex={0}>
           <div className={`${styles.cardHead} ${styles.cardHeadCenter}`}>
-            <div className={styles.cardTitle}>Model Leaderboard</div>
-            <div className={styles.cardCtaAbs}>Open →</div>
+            <div className={styles.cardTitle}>{t.modelLeaderboard}</div>
+            <div className={styles.cardCtaAbs}>{t.open}</div>
           </div>
 
           <div className={styles.cardBodyCompare}>
-            {compareLoading && <div className={styles.muted}>Loading…</div>}
-            {compareErr && <div className={styles.muted}>Failed: {compareErr}</div>}
+            {compareLoading && <div className={styles.muted}>{t.loading}</div>}
+            {compareErr && <div className={styles.muted}>{t.failed}{compareErr}</div>}
 
             {!compareLoading && !compareErr && rowA && rowB && (
               <>
@@ -387,8 +417,19 @@ export default function HomePage() {
                 </div>
 
                 <div className={styles.comparePreviewGrid}>
-                  <MiniCombinedRadarSVG valuesA={valuesA} valuesB={valuesB} metrics={metricsToShow} ranges={radarRanges} />
-                  <MiniCompareBars valuesA={valuesA} valuesB={valuesB} metrics={metricsToShow} ranges={radarRanges} />
+                  <MiniCombinedRadarSVG
+                    valuesA={valuesA}
+                    valuesB={valuesB}
+                    metrics={metricsToShow}
+                    ranges={radarRanges}
+                    t={t}
+                  />
+                  <MiniCompareBars
+                    valuesA={valuesA}
+                    valuesB={valuesB}
+                    metrics={metricsToShow}
+                    ranges={radarRanges}
+                  />
                 </div>
               </>
             )}
@@ -397,15 +438,15 @@ export default function HomePage() {
 
         <div className={styles.previewCard} onClick={() => goto("/probe-analysis")} role="button" tabIndex={0}>
           <div className={`${styles.cardHead} ${styles.cardHeadCenter}`}>
-            <div className={styles.cardTitle}>Dataset Analysis</div>
-            <div className={styles.cardCtaAbs}>Open →</div>
+            <div className={styles.cardTitle}>{t.datasetAnalysis}</div>
+            <div className={styles.cardCtaAbs}>{t.open}</div>
           </div>
 
           <div className={styles.cardBody}>
             <div className={styles.imgBoxPreview}>
               <Image
                 src="/probe-analysis/curated-overview.png"
-                alt="Dataset analysis overview"
+                alt={t.datasetAnalysisAlt}
                 fill
                 priority={false}
                 sizes="(max-width: 980px) 92vw, 900px"
@@ -417,15 +458,15 @@ export default function HomePage() {
 
         <div className={styles.previewCard} onClick={() => goto("/explore")} role="button" tabIndex={0}>
           <div className={`${styles.cardHead} ${styles.cardHeadCenter}`}>
-            <div className={styles.cardTitle}>The Probing Memes Paradigm</div>
-            <div className={styles.cardCtaAbs}>Open →</div>
+            <div className={styles.cardTitle}>{t.probingMemesParadigm}</div>
+            <div className={styles.cardCtaAbs}>{t.open}</div>
           </div>
 
           <div className={styles.cardBody}>
             <div className={styles.imgBoxPreview}>
               <Image
                 src="/explore/overview.png"
-                alt="Explore overview"
+                alt={t.exploreOverviewAlt}
                 fill
                 priority={false}
                 sizes="(max-width: 980px) 92vw, 900px"

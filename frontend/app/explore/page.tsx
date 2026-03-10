@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import styles from "./Explore.module.css";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { exploreZh } from "./exploreZh";
 
 function FormulaCard({
   title,
@@ -28,80 +30,187 @@ type MemeScoreRow = {
   description: string;
 };
 
-const memeScoreRows: MemeScoreRow[] = [
-  {
-    name: "Difficulty",
-    type: "1D",
-    from: "Difficulty",
-    description: "Performs well on difficult probes.",
-  },
-  {
-    name: "Uniqueness",
-    type: "1D",
-    from: "Uniqueness",
-    description: "Performs well on probes with rare behavioral patterns.",
-  },
-  {
-    name: "Risk",
-    type: "1D",
-    from: "Risk",
-    description: "Resists probes whose failure tends to co-occur with broader errors.",
-  },
-  {
-    name: "Surprise",
-    type: "1D",
-    from: "Surprise",
-    description: "Handles probes with anomalous behavioral patterns.",
-  },
-  {
-    name: "Typicality",
-    type: "1D",
-    from: "Typicality",
-    description: "Performs well on prototypical probes.",
-  },
-  {
-    name: "Bridge",
-    type: "1D",
-    from: "Bridge",
-    description: "Performs well on probes that connect clusters.",
-  },
-  {
-    name: "Mastery",
-    type: "2D",
-    from: "Difficulty, Typicality",
-    description: "Proficiency on difficult, prototypical probes.",
-  },
-  {
-    name: "Ingenuity",
-    type: "2D",
-    from: "Uniqueness, Surprise",
-    description: "Flexibility on rare and anomalous probes.",
-  },
-  {
-    name: "Robustness",
-    type: "2D",
-    from: "Risk, Bridge",
-    description: "Correctness on high-risk probes at cross-cluster intersections.",
-  },
-  {
-    name: "Caution",
-    type: "3D",
-    from: "Difficulty, Typicality, Risk",
-    description: "Avoids errors on easy, prototypical, yet high-risk probes.",
-  },
-];
+const BASE_TEXT = {
+  navParadigmOverview: "Paradigm Overview",
+  navMemeProbeProperties: "Meme Probe Properties",
+  navMemeScores: "Meme Scores",
+  navExperimentalSettings: "Experimental Settings",
 
-const navItems = [
-  { id: "paradigm-overview", label: "Paradigm Overview" },
-  { id: "meme-probe-properties", label: "Meme Probe Properties" },
-  { id: "meme-scores", label: "Meme Scores" },
-  { id: "experimental-settings", label: "Experimental Settings" },
-];
+  sectionParadigmOverviewTitle: "The Probing Memes Paradigm Overview",
+  sectionParadigmOverviewLead:
+    "Starting from the Perception Matrix, the paradigm computes diverse item-level properties to construct probes, which are then used to detect models’ memes, providing an interpretable view of fine-grained behavioral structure and underlying capabilities.",
+
+  overviewImageAlt: "Overview of the Probing Memes Paradigm",
+
+  sectionProbePropsTitle: "From Perception Matrix to Meme Probe Properties",
+  sectionProbePropsLead:
+    "The paradigm starts from a Perception Matrix, where each entry records whether a model answers an item correctly. Each item is treated as a probe, and its population-level success/failure pattern becomes the basis for computing probe properties.",
+
+  formalization: "Formalization",
+  sixProbeProps: "Six Meme Probe Properties",
+
+  difficultyDesc:
+    "Difficulty measures how many models fail on a probe. A higher value means the item is harder relative to the model population.",
+  riskDesc:
+    "Risk captures whether failing this probe tends to co-occur with broader failure on many other probes.",
+  surpriseDesc:
+    "Surprise captures anomalous behavior, such as stronger models failing on easy probes or weaker models succeeding on hard probes.",
+  uniquenessDesc:
+    "Uniqueness measures how dissimilar a probe’s perception span is from other probes’ spans.",
+  typicalityDesc:
+    "Typicality measures whether a probe acts like a prototype of its behavioral cluster, or how central it is within that cluster.",
+  bridgeDesc:
+    "Bridge measures whether a probe connects multiple behavioral clusters rather than remaining concentrated in a single one.",
+
+  sectionMemeScoresTitle: "Meme Scores of LLMs",
+  sectionMemeScoresLead:
+    "Once probe properties are defined, subsets of those properties can be mapped into latent behavioral traits, and each model receives a corresponding Meme Score through weighted aggregation over probes.",
+
+  genericDefinition: "Generic Definition",
+  genericDefinitionTail:
+    "The paper introduces both property-derived scores and predefined multi-property scores, allowing each model to be characterized by a richer and more interpretable behavioral profile.",
+
+  memeScoresCardTitle: "Meme Scores",
+  tableScore: "Score",
+  tableType: "Type",
+  tableFrom: "From MPP(s)",
+  tableInterpretation: "Interpretation",
+
+  sectionExperimentalSettingsTitle: "Experimental Settings",
+  sectionExperimentalSettingsLead:
+    "The following settings correspond to the Curated Population used in the paper, including reasoning modes, hyperparameters, prompt conventions, and the large-scale application based on public leaderboard results.",
+
+  curatedSetupTitle: "Curated Population Setup",
+
+  curatedSetupParagraph:
+    "The curated population analyzes three reasoning modes: Base, CoT, and IR. Base and CoT differ only in prompting template: CoT explicitly asks the model to reason step by step, while Base uses a default instruction without a reasoning cue. IR refers to models that perform multi-step reasoning intrinsically. Base and IR use the default template, while CoT uses the chain-of-thought template.",
+
+  reasoningModesTitle: "Reasoning Modes",
+  reasoningBaseDesc: "Default prompting without explicit reasoning cue.",
+  reasoningCoTDesc: "Prompt includes “Please reason step by step”.",
+  reasoningIRDesc: "Internal reasoning mode for models that support intrinsic reasoning.",
+
+  hyperparametersTitle: "Hyperparameters",
+  hyperNonIRDesc: "temperature = 0, top-p = 1, max tokens = 8192",
+  hyperIRDesc:
+    "max tokens = 28672, other parameters follow provider defaults (for Qwen-family IR models, max tokens = 8192 and thinking budget = 20480)",
+
+  promptConventionsTitle: "Prompt Conventions",
+  promptConventionsP1:
+    "Prompt templates follow a consistent structure across datasets. All prompts explicitly constrain the final output format and require the final answer to appear after Answer: with no extra explanation in the answer field. Under the CoT setting, the phrase Please reason step by step is added, and the model is instructed to separate its reasoning process from the final answer.",
+  promptConventionsP2:
+    "Dataset-specific answer formatting is kept minimal but strict: mathematical answers are enclosed in boxed form when needed, multiple-choice tasks require a single option letter, and free-form QA tasks only require the final answer after the Answer: tag.",
+
+  largeScaleTitle: "Application on Large-Scale Population (From Open LLM Leaderboard)",
+  largeScaleP1:
+    "Beyond the curated population, the paradigm is also instantiated at larger scale using results collected from the Open LLM Leaderboard.",
+  largeScaleP2:
+    "Results for 4,479 models across six datasets are used to construct a large-scale Perception Matrix. These leaderboard-reported results make it possible to apply the Probing Memes paradigm to a much broader and more heterogeneous model population.",
+  largeScaleP3:
+    "To ensure consistency, the construction process removes models with missing records and also removes items with incomplete information, so that the retained matrix remains aligned across models and probes.",
+
+  sidebarTitle: "On this page",
+
+  scoreDifficultyDesc: "Performs well on difficult probes.",
+  scoreUniquenessDesc: "Performs well on probes with rare behavioral patterns.",
+  scoreRiskDesc: "Resists probes whose failure tends to co-occur with broader errors.",
+  scoreSurpriseDesc: "Handles probes with anomalous behavioral patterns.",
+  scoreTypicalityDesc: "Performs well on prototypical probes.",
+  scoreBridgeDesc: "Performs well on probes that connect clusters.",
+  scoreMasteryDesc: "Proficiency on difficult, prototypical probes.",
+  scoreIngenuityDesc: "Flexibility on rare and anomalous probes.",
+  scoreRobustnessDesc: "Correctness on high-risk probes at cross-cluster intersections.",
+  scoreCautionDesc: "Avoids errors on easy, prototypical, yet high-risk probes.",
+};
+
+type ExploreText = Record<keyof typeof BASE_TEXT, string>;
 
 export default function ExplorePage() {
+  const { lang } = useLanguage();
+  const t: ExploreText = useMemo(
+    () => (lang === "zh" ? { ...BASE_TEXT, ...exploreZh } : BASE_TEXT),
+    [lang]
+  );
+
+  const memeScoreRows: MemeScoreRow[] = useMemo(
+    () => [
+      {
+        name: "Difficulty",
+        type: "1D",
+        from: "Difficulty",
+        description: t.scoreDifficultyDesc,
+      },
+      {
+        name: "Uniqueness",
+        type: "1D",
+        from: "Uniqueness",
+        description: t.scoreUniquenessDesc,
+      },
+      {
+        name: "Risk",
+        type: "1D",
+        from: "Risk",
+        description: t.scoreRiskDesc,
+      },
+      {
+        name: "Surprise",
+        type: "1D",
+        from: "Surprise",
+        description: t.scoreSurpriseDesc,
+      },
+      {
+        name: "Typicality",
+        type: "1D",
+        from: "Typicality",
+        description: t.scoreTypicalityDesc,
+      },
+      {
+        name: "Bridge",
+        type: "1D",
+        from: "Bridge",
+        description: t.scoreBridgeDesc,
+      },
+      {
+        name: "Mastery",
+        type: "2D",
+        from: "Difficulty, Typicality",
+        description: t.scoreMasteryDesc,
+      },
+      {
+        name: "Ingenuity",
+        type: "2D",
+        from: "Uniqueness, Surprise",
+        description: t.scoreIngenuityDesc,
+      },
+      {
+        name: "Robustness",
+        type: "2D",
+        from: "Risk, Bridge",
+        description: t.scoreRobustnessDesc,
+      },
+      {
+        name: "Caution",
+        type: "3D",
+        from: "Difficulty, Typicality, Risk",
+        description: t.scoreCautionDesc,
+      },
+    ],
+    [t]
+  );
+
+  const navItems = useMemo(
+    () => [
+      { id: "paradigm-overview", label: t.navParadigmOverview },
+      { id: "meme-probe-properties", label: t.navMemeProbeProperties },
+      { id: "meme-scores", label: t.navMemeScores },
+      { id: "experimental-settings", label: t.navExperimentalSettings },
+    ],
+    [t]
+  );
+
   const [activeId, setActiveId] = useState<string>("paradigm-overview");
 
-  const sectionIds = useMemo(() => navItems.map((x) => x.id), []);
+  const sectionIds = useMemo(() => navItems.map((x) => x.id), [navItems]);
 
   useEffect(() => {
     const sections = sectionIds
@@ -156,20 +265,15 @@ export default function ExplorePage() {
           <div className={styles.content}>
             <section id="paradigm-overview" className={styles.section}>
               <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>The Probing Memes Paradigm Overview</h2>
-                <p className={styles.sectionLead}>
-                  Starting from the Perception Matrix, the paradigm computes diverse
-                  item-level properties to construct probes, which are then used to
-                  detect models’ memes, providing an interpretable view of fine-grained
-                  behavioral structure and underlying capabilities.
-                </p>
+                <h2 className={styles.sectionTitle}>{t.sectionParadigmOverviewTitle}</h2>
+                <p className={styles.sectionLead}>{t.sectionParadigmOverviewLead}</p>
               </div>
 
               <div className={styles.heroCard}>
                 <div className={styles.heroImageWrap}>
                   <img
                     src="/explore/overview.png"
-                    alt="Overview of the Probing Memes Paradigm"
+                    alt={t.overviewImageAlt}
                     className={styles.heroImage}
                   />
                 </div>
@@ -178,17 +282,27 @@ export default function ExplorePage() {
 
             <section id="meme-probe-properties" className={styles.section}>
               <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>From Perception Matrix to Meme Probe Properties</h2>
+                <h2 className={styles.sectionTitle}>{t.sectionProbePropsTitle}</h2>
                 <p className={styles.sectionLead}>
-                  The paradigm starts from a <span className={styles.inlineCode}>Perception Matrix</span>,
-                  where each entry records whether a model answers an item correctly.
-                  Each item is treated as a probe, and its population-level success/failure
-                  pattern becomes the basis for computing probe properties.
+                  {lang === "zh" ? (
+                    <>
+                      该范式从一个 <span className={styles.inlineCode}>Perception Matrix</span> 开始，
+                      其中每个元素记录一个模型是否正确回答某个题目。每个题目都被视为一个 probe，
+                      而它在模型群体上的成功/失败模式则构成了计算 probe properties 的基础。
+                    </>
+                  ) : (
+                    <>
+                      The paradigm starts from a <span className={styles.inlineCode}>Perception Matrix</span>,
+                      where each entry records whether a model answers an item correctly.
+                      Each item is treated as a probe, and its population-level success/failure
+                      pattern becomes the basis for computing probe properties.
+                    </>
+                  )}
                 </p>
               </div>
 
               <div className={styles.card}>
-                <div className={styles.cardTitle}>Formalization</div>
+                <div className={styles.cardTitle}>{t.formalization}</div>
                 <div className={styles.richText}>
                   <p>
                     Let the dataset be
@@ -270,13 +384,10 @@ export default function ExplorePage() {
                 </div>
               </div>
 
-              <div className={styles.subsectionTitle}>Six Meme Probe Properties</div>
+              <div className={styles.subsectionTitle}>{t.sixProbeProps}</div>
 
               <div className={styles.formulaGrid}>
-                <FormulaCard
-                  title="Difficulty"
-                  desc="Difficulty measures how many models fail on a probe. A higher value means the item is harder relative to the model population."
-                >
+                <FormulaCard title="Difficulty" desc={t.difficultyDesc}>
                   <math display="block">
                     <mrow>
                       <msub><mi>d</mi><mi>i</mi></msub>
@@ -298,10 +409,7 @@ export default function ExplorePage() {
                   </math>
                 </FormulaCard>
 
-                <FormulaCard
-                  title="Risk"
-                  desc="Risk captures whether failing this probe tends to co-occur with broader failure on many other probes."
-                >
+                <FormulaCard title="Risk" desc={t.riskDesc}>
                   <math display="block">
                     <mrow>
                       <msub><mi>r</mi><mi>i</mi></msub>
@@ -322,10 +430,7 @@ export default function ExplorePage() {
                   </math>
                 </FormulaCard>
 
-                <FormulaCard
-                  title="Surprise"
-                  desc="Surprise captures anomalous behavior, such as stronger models failing on easy probes or weaker models succeeding on hard probes."
-                >
+                <FormulaCard title="Surprise" desc={t.surpriseDesc}>
                   <div className={styles.multiFormula}>
                     <math display="block">
                       <mrow>
@@ -366,10 +471,7 @@ export default function ExplorePage() {
                   </div>
                 </FormulaCard>
 
-                <FormulaCard
-                  title="Uniqueness"
-                  desc="Uniqueness measures how dissimilar a probe’s perception span is from other probes’ spans."
-                >
+                <FormulaCard title="Uniqueness" desc={t.uniquenessDesc}>
                   <math display="block">
                     <mrow>
                       <msub><mi>u</mi><mi>i</mi></msub>
@@ -396,10 +498,7 @@ export default function ExplorePage() {
                   </math>
                 </FormulaCard>
 
-                <FormulaCard
-                  title="Typicality"
-                  desc="Typicality measures whether a probe acts like a prototype of its behavioral cluster, or how central it is within that cluster."
-                >
+                <FormulaCard title="Typicality" desc={t.typicalityDesc}>
                   <math display="block">
                     <mrow>
                       <msub><mi>t</mi><mi>i</mi></msub>
@@ -454,10 +553,7 @@ export default function ExplorePage() {
                   </math>
                 </FormulaCard>
 
-                <FormulaCard
-                  title="Bridge"
-                  desc="Bridge measures whether a probe connects multiple behavioral clusters rather than remaining concentrated in a single one."
-                >
+                <FormulaCard title="Bridge" desc={t.bridgeDesc}>
                   <math display="block">
                     <mrow>
                       <msub><mi>b</mi><mi>i</mi></msub>
@@ -501,16 +597,12 @@ export default function ExplorePage() {
 
             <section id="meme-scores" className={styles.section}>
               <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>Meme Scores of LLMs</h2>
-                <p className={styles.sectionLead}>
-                  Once probe properties are defined, subsets of those properties can be
-                  mapped into latent behavioral traits, and each model receives a corresponding
-                  Meme Score through weighted aggregation over probes.
-                </p>
+                <h2 className={styles.sectionTitle}>{t.sectionMemeScoresTitle}</h2>
+                <p className={styles.sectionLead}>{t.sectionMemeScoresLead}</p>
               </div>
 
               <div className={styles.card}>
-                <div className={styles.cardTitle}>Generic Definition</div>
+                <div className={styles.cardTitle}>{t.genericDefinition}</div>
                 <div className={styles.richText}>
                   <p>
                     Let the property space be
@@ -597,24 +689,20 @@ export default function ExplorePage() {
                     </math>
                   </div>
 
-                  <p>
-                    The paper introduces both property-derived scores and predefined
-                    multi-property scores, allowing each model to be characterized by
-                    a richer and more interpretable behavioral profile.
-                  </p>
+                  <p>{t.genericDefinitionTail}</p>
                 </div>
               </div>
 
               <div className={styles.card}>
-                <div className={styles.cardTitle}>Meme Scores</div>
+                <div className={styles.cardTitle}>{t.memeScoresCardTitle}</div>
                 <div className={styles.scoreTableWrap}>
                   <table className={styles.scoreTable}>
                     <thead>
                       <tr>
-                        <th>Score</th>
-                        <th>Type</th>
-                        <th>From MPP(s)</th>
-                        <th>Interpretation</th>
+                        <th>{t.tableScore}</th>
+                        <th>{t.tableType}</th>
+                        <th>{t.tableFrom}</th>
+                        <th>{t.tableInterpretation}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -636,76 +724,65 @@ export default function ExplorePage() {
 
             <section id="experimental-settings" className={styles.section}>
               <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>Experimental Settings</h2>
+                <h2 className={styles.sectionTitle}>{t.sectionExperimentalSettingsTitle}</h2>
                 <p className={styles.sectionLead}>
-                  The following settings correspond to the <span className={styles.inlineCode}>Curated Population</span>
-                  used in the paper, including reasoning modes, hyperparameters, prompt conventions,
-                  and the large-scale application based on public leaderboard results.
+                  {lang === "zh" ? (
+                    <>
+                      下面的设置对应论文中使用的{" "}
+                      <span className={styles.inlineCode}>Curated Population</span>
+                      ，包括推理模式、超参数、prompt 约定，以及基于公开 leaderboard 结果的大规模应用。
+                    </>
+                  ) : (
+                    <>
+                      The following settings correspond to the{" "}
+                      <span className={styles.inlineCode}>Curated Population</span>
+                      {" "}used in the paper, including reasoning modes, hyperparameters, prompt conventions,
+                      and the large-scale application based on public leaderboard results.
+                    </>
+                  )}
                 </p>
               </div>
 
               <div className={styles.card}>
-                <div className={styles.cardTitle}>Curated Population Setup</div>
+                <div className={styles.cardTitle}>{t.curatedSetupTitle}</div>
                 <div className={styles.richText}>
-                  <p>
-                    The curated population analyzes three reasoning modes:
-                    <span className={styles.inlineCode}>Base</span>,
-                    <span className={styles.inlineCode}>CoT</span>, and
-                    <span className={styles.inlineCode}>IR</span>.
-                    Base and CoT differ only in prompting template: CoT explicitly asks the model to reason step by step, while Base uses a default instruction without a reasoning cue. IR refers to models that perform multi-step reasoning intrinsically. Base and IR use the default template, while CoT uses the chain-of-thought template.
-                  </p>
+                  <p>{t.curatedSetupParagraph}</p>
                 </div>
 
                 <div className={styles.settingsGrid}>
                   <div className={styles.settingCard}>
-                    <div className={styles.settingTitle}>Reasoning Modes</div>
+                    <div className={styles.settingTitle}>{t.reasoningModesTitle}</div>
                     <ul className={styles.settingList}>
-                      <li><span>Base</span><em>Default prompting without explicit reasoning cue.</em></li>
-                      <li><span>CoT</span><em>Prompt includes “Please reason step by step”.</em></li>
-                      <li><span>IR</span><em>Internal reasoning mode for models that support intrinsic reasoning.</em></li>
+                      <li><span>Base</span><em>{t.reasoningBaseDesc}</em></li>
+                      <li><span>CoT</span><em>{t.reasoningCoTDesc}</em></li>
+                      <li><span>IR</span><em>{t.reasoningIRDesc}</em></li>
                     </ul>
                   </div>
 
                   <div className={styles.settingCard}>
-                    <div className={styles.settingTitle}>Hyperparameters</div>
+                    <div className={styles.settingTitle}>{t.hyperparametersTitle}</div>
                     <ul className={styles.settingList}>
-                      <li><span>Non-IR models</span><em>temperature = 0, top-p = 1, max tokens = 8192</em></li>
-                      <li><span>IR models</span><em>max tokens = 28672, other parameters follow provider defaults (for Qwen-family IR models, max tokens = 8192 and thinking budget = 20480)</em></li>
+                      <li><span>Non-IR models</span><em>{t.hyperNonIRDesc}</em></li>
+                      <li><span>IR models</span><em>{t.hyperIRDesc}</em></li>
                     </ul>
                   </div>
                 </div>
               </div>
 
               <div className={styles.card}>
-                <div className={styles.cardTitle}>Prompt Conventions</div>
+                <div className={styles.cardTitle}>{t.promptConventionsTitle}</div>
                 <div className={styles.richText}>
-                  <p>
-                    Prompt templates follow a consistent structure across datasets. All prompts explicitly constrain the final output format and require the final answer to appear after
-                    <span className={styles.inlineCode}>Answer:</span>
-                    with no extra explanation in the answer field. Under the CoT setting, the phrase
-                    <span className={styles.inlineCode}>Please reason step by step</span>
-                    is added, and the model is instructed to separate its reasoning process from the final answer.
-                  </p>
-                  <p>
-                    Dataset-specific answer formatting is kept minimal but strict: mathematical answers are enclosed in boxed form when needed, multiple-choice tasks require a single option letter, and free-form QA tasks only require the final answer after the
-                    <span className={styles.inlineCode}>Answer:</span>
-                    tag.
-                  </p>
+                  <p>{t.promptConventionsP1}</p>
+                  <p>{t.promptConventionsP2}</p>
                 </div>
               </div>
 
               <div className={styles.card}>
-                <div className={styles.cardTitle}>Application on Large-Scale Population (From Open LLM Leaderboard)</div>
+                <div className={styles.cardTitle}>{t.largeScaleTitle}</div>
                 <div className={styles.richText}>
-                  <p>
-                    Beyond the curated population, the paradigm is also instantiated at larger scale using results collected from the Open LLM Leaderboard.
-                  </p>
-                  <p>
-                    Results for 4,479 models across six datasets are used to construct a large-scale Perception Matrix. These leaderboard-reported results make it possible to apply the Probing Memes paradigm to a much broader and more heterogeneous model population.
-                  </p>
-                  <p>
-                    To ensure consistency, the construction process removes models with missing records and also removes items with incomplete information, so that the retained matrix remains aligned across models and probes.
-                  </p>
+                  <p>{t.largeScaleP1}</p>
+                  <p>{t.largeScaleP2}</p>
+                  <p>{t.largeScaleP3}</p>
                 </div>
               </div>
             </section>
@@ -714,7 +791,7 @@ export default function ExplorePage() {
 
         <aside className={styles.sidebar}>
           <div className={styles.sidebarCard}>
-            <div className={styles.sidebarTitle}>On this page</div>
+            <div className={styles.sidebarTitle}>{t.sidebarTitle}</div>
             <nav className={styles.sidebarNav}>
               {navItems.map((item) => (
                 <a

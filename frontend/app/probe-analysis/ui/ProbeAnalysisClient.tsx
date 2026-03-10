@@ -5,6 +5,8 @@ import styles from "../ProbeAnalysis.module.css";
 import PopulationSelector, { type Population } from "../../leaderboard/ui/PopulationSelector";
 import Overview3DPanel from "./Overview3DPanel";
 import QuestionDrawer, { type DrawerContentStub } from "./QuestionDrawer";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { probeAnalysisZh } from "./probeAnalysisZh";
 
 type QuestionListItem = {
   question_hash: string;
@@ -38,6 +40,63 @@ type SortDir = "asc" | "desc";
 const DEFAULT_SORT_PROP = "risk";
 const ALL_PROPS = ["difficulty", "uniqueness", "risk", "surprise", "typicality", "bridge"];
 const TABLE_FRAME_HEIGHT = 680;
+
+const BASE_TEXT = {
+  subtitle:
+    "Probe Analysis treats each sample in a dataset as a probe and computes multiple properties for each probe. A 3D overview is displayed above; you can select a dataset using the dropdown or by clicking a dataset in the 3D view. After selecting, browse questions below in a fixed-height table frame, with support for sorting by properties and viewing detailed information.",
+
+  probeAnalysisTitle: "Probe Analysis",
+  populationSuffix: "Population",
+
+  overview3dTitle: "Overview (3D)",
+  overview3dDesc:
+    "Each dataset is represented by the mean of its items across the six probe properties (difficulty, uniqueness, risk, surprise, typicality, bridge). The 3D overview above visualizes these dataset-level averages for intuitive comparison.",
+
+  selectDataset: "Select dataset...",
+  questionBrowser: "Question Browser",
+
+  search: "Search",
+  searchQuestion: "Search question",
+  searchPlaceholder: "Type question text…",
+  clearSearch: "Clear search",
+
+  comingSoon: "Coming soon",
+  comingSoonForHF: "Coming soon for HF Population.",
+  noDatasetSelected: "No dataset selected",
+  selectDatasetHint: "Select a dataset from the dropdown above to start browsing questions.",
+
+  showing: "Showing",
+  loading: "Loading...",
+  sortedBy: "Sorted by",
+  rank: "Rank",
+  question: "Question",
+
+  clickViewDetail: "Click to view detail",
+  clickViewQuestionDetail: "Click to view question details and model behavior.",
+  sortByTipPrefix: "Sort by ",
+  sortByTipSuffix: " using ▲ / ▼ in the table header.",
+
+  noData: "No data",
+
+  topSummaryHF: "HF Population: Coming soon.",
+  topSummaryNeedDataset: "Please select a dataset from the dropdown above or the 3D view.",
+  topSummaryDataset: "Dataset",
+  topSummaryQuestions: "Questions",
+
+  total: "total",
+
+  questionDetailTitleSuffix: "Question Detail",
+  errorTitle: "Error",
+
+  drawerQuestion: "Question",
+  drawerGroundTruth: "Ground Truth",
+  drawerProbeProperties: "Probe Properties",
+  drawerCorrectModels: "Correct Models",
+  drawerWrongModels: "Wrong Models",
+  drawerNone: "None",
+};
+
+type ProbeText = Record<keyof typeof BASE_TEXT, string>;
 
 function fmtScore(x: any) {
   if (x == null || !Number.isFinite(Number(x))) return "—";
@@ -107,6 +166,12 @@ function safeQuestionKey(it: QuestionListItem, idx: number) {
 }
 
 export default function ProbeAnalysisClient() {
+  const { lang } = useLanguage();
+  const t: ProbeText = useMemo(
+    () => (lang === "zh" ? { ...BASE_TEXT, ...probeAnalysisZh } : BASE_TEXT),
+    [lang]
+  );
+
   const [population, setPopulation] = useState<Population>("Curated");
 
   const [selectedDataset, setSelectedDataset] = useState<string | null>(null);
@@ -126,13 +191,7 @@ export default function ProbeAnalysisClient() {
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const [questionQuery, setQuestionQuery] = useState("");
 
-  const subtitle = useMemo(() => {
-    return (
-      "Probe Analysis treats each sample in a dataset as a probe and computes multiple properties for each probe." +
-      " A 3D overview is displayed above; you can select a dataset using the dropdown or by clicking a dataset in the 3D view." +
-      " After selecting, browse questions below in a fixed-height table frame, with support for sorting by properties and viewing detailed information."
-    );
-  }, []);
+  const subtitle = useMemo(() => t.subtitle, [t]);
 
   const showTip = (e: MouseEvent, text: string) => {
     setTip({ x: e.clientX + 12, y: e.clientY + 12, text });
@@ -206,8 +265,8 @@ export default function ProbeAnalysisClient() {
     fetch(url)
       .then(async (r) => {
         if (!r.ok) {
-          const t = await r.text().catch(() => "");
-          throw new Error(`HTTP ${r.status} ${r.statusText} ${t}`.trim());
+          const tx = await r.text().catch(() => "");
+          throw new Error(`HTTP ${r.status} ${r.statusText} ${tx}`.trim());
         }
         return (await r.json()) as QuestionsResponse;
       })
@@ -252,33 +311,33 @@ export default function ProbeAnalysisClient() {
 
         const r = await fetch(url);
         if (!r.ok) {
-          const t = await r.text().catch(() => "");
-          throw new Error(`HTTP ${r.status} ${r.statusText} ${t}`.trim());
+          const tx = await r.text().catch(() => "");
+          throw new Error(`HTTP ${r.status} ${r.statusText} ${tx}`.trim());
         }
         const json = (await r.json()) as QuestionDetailResponse;
 
         const content =
-          `【Question】\n${json.question}\n\n` +
-          `【Ground Truth】\n${json.ground_truth ?? ""}\n\n` +
-          `【Probe Properties】\n` +
+          `【${t.drawerQuestion}】\n${json.question}\n\n` +
+          `【${t.drawerGroundTruth}】\n${json.ground_truth ?? ""}\n\n` +
+          `【${t.drawerProbeProperties}】\n` +
           cols.map((c) => `• ${c}: ${fmtScore(json.probe_properties?.[c])}`).join("\n") +
-          `\n\n【Correct Models】\n` +
-          ((json.correct_models ?? []).length > 0 ? (json.correct_models ?? []).join("\n") : "None") +
-          `\n\n【Wrong Models】\n` +
-          ((json.wrong_models ?? []).length > 0 ? (json.wrong_models ?? []).join("\n") : "None");
+          `\n\n【${t.drawerCorrectModels}】\n` +
+          ((json.correct_models ?? []).length > 0 ? (json.correct_models ?? []).join("\n") : t.drawerNone) +
+          `\n\n【${t.drawerWrongModels}】\n` +
+          ((json.wrong_models ?? []).length > 0 ? (json.wrong_models ?? []).join("\n") : t.drawerNone);
 
         setDrawer({
-          title: `${selectedDataset} · Question Detail`,
+          title: `${selectedDataset} · ${t.questionDetailTitleSuffix}`,
           content,
         });
       } catch (e: any) {
         setDrawer({
-          title: `${selectedDataset} · Question Detail`,
-          content: `【Error】\n${e?.message ?? String(e)}`,
+          title: `${selectedDataset} · ${t.questionDetailTitleSuffix}`,
+          content: `【${t.errorTitle}】\n${e?.message ?? String(e)}`,
         });
       }
     },
-    [population, selectedDataset, cols]
+    [population, selectedDataset, cols, t]
   );
 
   const shownRows = useMemo(() => {
@@ -293,10 +352,10 @@ export default function ProbeAnalysisClient() {
   }, []);
 
   const topSummary = useMemo(() => {
-    if (population === "HF") return "HF Population：Coming soon.";
-    if (!selectedDataset) return "请先通过上方下拉菜单或 3D 图选择一个数据集。";
-    return `Dataset = ${selectedDataset} · Questions = ${total}`;
-  }, [population, selectedDataset, total]);
+    if (population === "HF") return t.topSummaryHF;
+    if (!selectedDataset) return t.topSummaryNeedDataset;
+    return `${t.topSummaryDataset} = ${selectedDataset} · ${t.topSummaryQuestions} = ${total}`;
+  }, [population, selectedDataset, total, t]);
 
   return (
     <div className={styles.page} onMouseLeave={hideTip}>
@@ -326,13 +385,13 @@ export default function ProbeAnalysisClient() {
 
       <div className={styles.headerRow}>
         <div className={styles.titleBlock}>
-          <div className={styles.title}>Probe Analysis</div>
+          <div className={styles.title}>{t.probeAnalysisTitle}</div>
           <div className={styles.subtitle}>{subtitle}</div>
         </div>
 
         <div className={styles.controls}>
           <PopulationSelector value={population} onChange={setPopulation} />
-          <span className={styles.badge}>{population} Population</span>
+          <span className={styles.badge}>{population} {t.populationSuffix}</span>
         </div>
       </div>
 
@@ -340,12 +399,8 @@ export default function ProbeAnalysisClient() {
         <div className={styles.card}>
           <div className={styles.cardHeader}>
             <div>
-              <div className={styles.cardTitle}>Overview (3D)</div>
-              <div className={styles.muted}>
-                Each dataset is represented by the mean of its items across the six probe properties
-                (difficulty, uniqueness, risk, surprise, typicality, bridge). The 3D overview above
-                visualizes these dataset-level averages for intuitive comparison.
-              </div>
+              <div className={styles.cardTitle}>{t.overview3dTitle}</div>
+              <div className={styles.muted}>{t.overview3dDesc}</div>
             </div>
 
             <div className={styles.controls}>
@@ -366,7 +421,7 @@ export default function ProbeAnalysisClient() {
                   background: "#fff",
                 }}
               >
-                <option value="">Select dataset...</option>
+                <option value="">{t.selectDataset}</option>
                 {datasetOptions.map((ds) => (
                   <option key={ds} value={ds}>
                     {ds}
@@ -389,13 +444,13 @@ export default function ProbeAnalysisClient() {
         <div className={styles.card}>
           <div className={styles.cardHeader}>
             <div>
-              <div className={styles.cardTitle}>Question Browser</div>
+              <div className={styles.cardTitle}>{t.questionBrowser}</div>
               <div className={styles.muted}>{topSummary}</div>
             </div>
 
             {population === "Curated" && selectedDataset ? (
               <div className={styles.controls}>
-                <span className={styles.badge}>total = {total}</span>
+                <span className={styles.badge}>{t.total} = {total}</span>
 
                 <div
                   style={{
@@ -410,13 +465,13 @@ export default function ProbeAnalysisClient() {
                   }}
                 >
                   <span className={styles.muted} style={{ fontSize: 12 }}>
-                    Search
+                    {t.search}
                   </span>
                   <input
                     value={questionQuery}
                     onChange={(e) => setQuestionQuery(e.target.value)}
-                    placeholder="Type question text…"
-                    aria-label="Search question"
+                    placeholder={t.searchPlaceholder}
+                    aria-label={t.searchQuestion}
                     style={{
                       border: "none",
                       outline: "none",
@@ -438,7 +493,7 @@ export default function ProbeAnalysisClient() {
                         color: "rgba(0,0,0,0.45)",
                         padding: 0,
                       }}
-                      title="Clear search"
+                      title={t.clearSearch}
                     >
                       ×
                     </button>
@@ -446,18 +501,20 @@ export default function ProbeAnalysisClient() {
                 </div>
               </div>
             ) : (
-              <div className={styles.badge}>{population === "HF" ? "Coming soon" : "No dataset selected"}</div>
+              <div className={styles.badge}>
+                {population === "HF" ? t.comingSoon : t.noDatasetSelected}
+              </div>
             )}
           </div>
 
           <div className={styles.cardBody}>
             {population === "HF" ? (
               <div className={styles.panelPlaceholder}>
-                <div className={styles.muted}>Coming soon for HF Population.</div>
+                <div className={styles.muted}>{t.comingSoonForHF}</div>
               </div>
             ) : !selectedDataset ? (
               <div className={styles.panelPlaceholder}>
-                <div className={styles.muted}>Select a dataset from the dropdown above to start browsing questions.</div>
+                <div className={styles.muted}>{t.selectDatasetHint}</div>
               </div>
             ) : (
               <div
@@ -484,10 +541,10 @@ export default function ProbeAnalysisClient() {
                   }}
                 >
                   <div className={styles.muted}>
-                    Showing: <b>{shownRows.length}</b>
+                    {t.showing}: <b>{shownRows.length}</b>
                   </div>
                   <div className={styles.muted}>
-                    {loadingList ? "Loading..." : `Sorted by ${sortBy} (${sortDir})`}
+                    {loadingList ? t.loading : `${t.sortedBy} ${sortBy} (${sortDir})`}
                   </div>
                 </div>
 
@@ -514,8 +571,8 @@ export default function ProbeAnalysisClient() {
                       }}
                     >
                       <tr>
-                        <th style={{ width: "70px" }}>Rank</th>
-                        <th style={{ width: "42%" }}>Question</th>
+                        <th style={{ width: "70px" }}>{t.rank}</th>
+                        <th style={{ width: "42%" }}>{t.question}</th>
                         {cols.map((c) => (
                           <th key={c}>
                             <div style={{ display: "inline-flex", alignItems: "center" }}>
@@ -539,13 +596,13 @@ export default function ProbeAnalysisClient() {
                               <button
                                 className={styles.rowButton}
                                 onClick={() => openQuestionDetail(it)}
-                                title="Click to view detail"
+                                title={t.clickViewDetail}
                                 style={{
                                   display: "block",
                                   textAlign: "left",
                                   width: "100%",
                                 }}
-                                onMouseEnter={(e) => showTip(e, "Click to view question details and model behavior.")}
+                                onMouseEnter={(e) => showTip(e, t.clickViewQuestionDetail)}
                                 onMouseMove={(e) => moveTip(e)}
                                 onMouseLeave={hideTip}
                               >
@@ -571,7 +628,7 @@ export default function ProbeAnalysisClient() {
                               <td
                                 key={c}
                                 style={{ fontVariantNumeric: "tabular-nums" }}
-                                onMouseEnter={(e) => showTip(e, `Sort by ${c} using ▲ / ▼ in the table header.`)}
+                                onMouseEnter={(e) => showTip(e, `${t.sortByTipPrefix}${c}${t.sortByTipSuffix}`)}
                                 onMouseMove={(e) => moveTip(e)}
                                 onMouseLeave={hideTip}
                               >
@@ -585,7 +642,7 @@ export default function ProbeAnalysisClient() {
                       {!loadingList && shownRows.length === 0 && (
                         <tr>
                           <td colSpan={2 + cols.length} style={{ textAlign: "center", padding: 16 }}>
-                            No data
+                            {t.noData}
                           </td>
                         </tr>
                       )}
