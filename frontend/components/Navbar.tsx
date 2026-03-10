@@ -115,7 +115,6 @@ function Dropdown({
                   )}
                   <span>{it.label}</span>
                 </span>
-
                 {it.external && <ExternalLinkIcon />}
               </>
             );
@@ -158,6 +157,39 @@ function Dropdown({
   );
 }
 
+function ExternalNavLink({
+  label,
+  href,
+  iconSrc,
+}: {
+  label: string;
+  href: string;
+  iconSrc?: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className={`${styles.navItem} ${styles.navExternal}`}
+    >
+      <span className={styles.navExternalMain}>
+        {iconSrc && (
+          <Image
+            src={iconSrc}
+            alt=""
+            width={16}
+            height={16}
+            className={styles.navExternalLogo}
+          />
+        )}
+        <span>{label}</span>
+      </span>
+      <ExternalLinkIcon />
+    </a>
+  );
+}
+
 export default function Navbar() {
   const pathname = usePathname();
 
@@ -180,16 +212,15 @@ export default function Navbar() {
           },
         ],
       },
-      links: {
-        label: "Links",
-        items: [
-          {
-            label: "Yangs AI",
-            href: "https://benchmarks.yangs.ai",
-            external: true,
-            iconSrc: "/logos/YangsAI-32x32.png",
-          },
-        ],
+      yangs: {
+        label: "Yangs AI",
+        href: "https://benchmarks.yangs.ai",
+        iconSrc: "/logos/YangsAI-32x32.png",
+      },
+      benchcouncil: {
+        label: "BenchCouncil",
+        href: "https://www.benchcouncil.org",
+        iconSrc: "/logos/BenchCouncil.jpg",
       },
     }),
     []
@@ -241,10 +272,16 @@ export default function Navbar() {
             active={pathname.startsWith("/about")}
           />
 
-          <Dropdown
-            label={nav.links.label}
-            items={nav.links.items}
-            active={false}
+          <ExternalNavLink
+            label={nav.yangs.label}
+            href={nav.yangs.href}
+            iconSrc={nav.yangs.iconSrc}
+          />
+
+          <ExternalNavLink
+            label={nav.benchcouncil.label}
+            href={nav.benchcouncil.href}
+            iconSrc={nav.benchcouncil.iconSrc}
           />
         </nav>
       </div>

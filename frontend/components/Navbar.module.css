@@ -144,7 +144,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
 
   padding: 10px 12px;
   text-decoration: none;
@@ -174,13 +174,14 @@
   height: 16px;
   border-radius: 4px;
   flex: 0 0 16px;
+  object-fit: cover;
 }
 
 .menuItemDisabled{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
 
   padding: 10px 14px;
   color: #94a3b8;
@@ -188,12 +189,30 @@
   user-select: none;
 }
 
+.navExternal{
+  gap: 4px;
+}
+
+.navExternalMain{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navExternalLogo{
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex: 0 0 16px;
+}
+
 .externalIcon{
   width: 14px;
   height: 14px;
   flex: 0 0 14px;
   opacity: 0.85;
-  margin-left: 2px;
+  margin-left: 0;
 }
 
 @media (max-width: 720px){
