@@ -5,6 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Navbar.module.css";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { navbarZh } from "@/components/navbarZh";
 
 type DropItem = {
   label: string;
@@ -13,6 +16,21 @@ type DropItem = {
   disabled?: boolean;
   iconSrc?: string;
 };
+
+const BASE_TEXT = {
+  homeAria: "Home",
+  homeTitle: "Home",
+
+  leaderboard: "Model Leaderboard",
+  probe: "Dataset Analysis",
+  explore: "Explore",
+
+  about: "About",
+  paper: "Paper",
+  codeComingSoon: "Code (Coming soon)",
+};
+
+type NavText = Record<keyof typeof BASE_TEXT, string>;
 
 function ExternalLinkIcon() {
   return (
@@ -192,22 +210,28 @@ function ExternalNavLink({
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { lang } = useLanguage();
+
+  const t: NavText = useMemo(
+    () => (lang === "zh" ? { ...BASE_TEXT, ...navbarZh } : BASE_TEXT),
+    [lang]
+  );
 
   const nav = useMemo(
     () => ({
-      leaderboard: { label: "Model Leaderboard", href: "/leaderboard" },
-      probe: { label: "Dataset Analysis", href: "/probe-analysis" },
-      explore: { label: "Explore", href: "/explore" },
+      leaderboard: { label: t.leaderboard, href: "/leaderboard" },
+      probe: { label: t.probe, href: "/probe-analysis" },
+      explore: { label: t.explore, href: "/explore" },
       about: {
-        label: "About",
+        label: t.about,
         items: [
           {
-            label: "Paper",
+            label: t.paper,
             href: "https://arxiv.org/abs/2603.04408",
             external: true,
           },
           {
-            label: "Code (Coming soon)",
+            label: t.codeComingSoon,
             disabled: true,
           },
         ],
@@ -223,7 +247,7 @@ export default function Navbar() {
         iconSrc: "/logos/BenchCouncil.jpg",
       },
     }),
-    []
+    [t]
   );
 
   const isActive = (href: string) => {
@@ -236,8 +260,8 @@ export default function Navbar() {
       <div className={styles.container}>
         <Link
           href="/"
-          aria-label="Home"
-          title="Home"
+          aria-label={t.homeAria}
+          title={t.homeTitle}
           className={`${styles.logo} ${isActive("/") ? styles.logoActive : ""}`}
         >
           <span className={styles.logoA}>Probing</span>
@@ -283,6 +307,8 @@ export default function Navbar() {
             href={nav.benchcouncil.href}
             iconSrc={nav.benchcouncil.iconSrc}
           />
+
+          <LanguageSwitcher />
         </nav>
       </div>
     </header>

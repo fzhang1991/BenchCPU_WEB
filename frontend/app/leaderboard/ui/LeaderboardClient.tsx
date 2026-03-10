@@ -4,11 +4,11 @@ import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import styles from "../Leaderboard.module.css";
 import PopulationSelector, { type Population } from "./PopulationSelector";
 import { leaderboardZh } from "../ui/leaderboardZh";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type ApiMetrics = { metrics: string[]; n_models: number; population?: string; dataset?: string };
 type Row = Record<string, any>;
 type SortDir = "asc" | "desc";
-type Lang = "en" | "zh";
 
 type ApiLeaderboard = {
   selected_metrics: string[];
@@ -426,7 +426,8 @@ function CompareBars({
 }
 
 export default function LeaderboardClient() {
-  const [lang] = useState<Lang>("en");
+  const { lang } = useLanguage();
+
   const t: UIText = useMemo(
     () => (lang === "zh" ? { ...BASE_TEXT, ...leaderboardZh } : BASE_TEXT),
     [lang]

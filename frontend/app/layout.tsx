@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 export default function RootLayout({
   children,
@@ -9,9 +10,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main className="page">{children}</main>
+        <LanguageProvider>
+          <Navbar />
+          <main className="page">{children}</main>
+        </LanguageProvider>
       </body>
     </html>
   );
 }
+
