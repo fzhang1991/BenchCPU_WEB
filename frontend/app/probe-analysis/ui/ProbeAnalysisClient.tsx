@@ -129,9 +129,9 @@ export default function ProbeAnalysisClient() {
 
   const subtitle = useMemo(() => {
     return (
-      "Probe Analysis 将数据集中的每个样本视为一个 probe，并为 probe 计算多个属性（properties）。" +
-      " 上方展示 3D 总览；你可以通过下拉菜单或点击 3D 数据集来选择数据集。" +
-      " 选中后，下方在固定高度的表格框中浏览题目，并支持按各属性排序和查看详细信息。"
+      "Probe Analysis treats each sample in a dataset as a probe and computes multiple properties for each probe." +
+      " A 3D overview is displayed above; you can select a dataset using the dropdown or by clicking a dataset in the 3D view." +
+      " After selecting, browse questions below in a fixed-height table frame, with support for sorting by properties and viewing detailed information."
     );
   }, []);
 
@@ -342,7 +342,11 @@ export default function ProbeAnalysisClient() {
           <div className={styles.cardHeader}>
             <div>
               <div className={styles.cardTitle}>Overview (3D)</div>
-              <div className={styles.muted}>你可以点击 3D 数据集，也可以用下拉菜单选择数据集。</div>
+              <div className={styles.muted}>
+                Each dataset is represented by the mean of its items across the six probe properties
+                (difficulty, uniqueness, risk, surprise, typicality, bridge). The 3D overview above
+                visualizes these dataset-level averages for intuitive comparison.
+              </div>
             </div>
 
             <div className={styles.controls}>

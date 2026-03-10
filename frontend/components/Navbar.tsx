@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -10,7 +11,41 @@ type DropItem = {
   href?: string;
   external?: boolean;
   disabled?: boolean;
+  iconSrc?: string;
 };
+
+function ExternalLinkIcon() {
+  return (
+    <svg
+      className={styles.externalIcon}
+      viewBox="0 0 16 16"
+      aria-hidden="true"
+      fill="none"
+    >
+      <path
+        d="M6 3.5H4.75A1.75 1.75 0 0 0 3 5.25v6A1.75 1.75 0 0 0 4.75 13h6a1.75 1.75 0 0 0 1.75-1.75V10"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 3h5v5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13 3L7 9"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 function Dropdown({
   label,
@@ -59,10 +94,31 @@ function Dropdown({
                   role="menuitem"
                   aria-disabled="true"
                 >
-                  {it.label}
+                  <span className={styles.menuItemMain}>
+                    <span>{it.label}</span>
+                  </span>
                 </span>
               );
             }
+
+            const content = (
+              <>
+                <span className={styles.menuItemMain}>
+                  {it.iconSrc && (
+                    <Image
+                      src={it.iconSrc}
+                      alt=""
+                      width={16}
+                      height={16}
+                      className={styles.menuItemIcon}
+                    />
+                  )}
+                  <span>{it.label}</span>
+                </span>
+
+                {it.external && <ExternalLinkIcon />}
+              </>
+            );
 
             if (it.external && it.href) {
               return (
@@ -75,7 +131,7 @@ function Dropdown({
                   rel="noreferrer"
                   onClick={() => setOpen(false)}
                 >
-                  {it.label}
+                  {content}
                 </a>
               );
             }
@@ -89,7 +145,7 @@ function Dropdown({
                   role="menuitem"
                   onClick={() => setOpen(false)}
                 >
-                  {it.label}
+                  {content}
                 </Link>
               );
             }
@@ -121,6 +177,17 @@ export default function Navbar() {
           {
             label: "Code (Coming soon)",
             disabled: true,
+          },
+        ],
+      },
+      links: {
+        label: "Links",
+        items: [
+          {
+            label: "Yangs AI",
+            href: "https://benchmarks.yangs.ai",
+            external: true,
+            iconSrc: "/logos/YangsAI-32x32.png",
           },
         ],
       },
@@ -172,6 +239,12 @@ export default function Navbar() {
             label={nav.about.label}
             items={nav.about.items}
             active={pathname.startsWith("/about")}
+          />
+
+          <Dropdown
+            label={nav.links.label}
+            items={nav.links.items}
+            active={false}
           />
         </nav>
       </div>

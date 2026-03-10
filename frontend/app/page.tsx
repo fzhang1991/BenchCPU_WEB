@@ -355,7 +355,7 @@ export default function HomePage() {
       <div className={styles.heroCard}>
         <div className={styles.heroTitle}>Probing Memes</div>
         <div className={styles.heroDesc}>
-          这是项目主页：下方提供三个板块的快速预览（模型对比 / 数据集分析 / 实验流程）。点击对应卡片即可进入完整页面。
+          Below are quick previews of three sections (Model Comparison / Dataset Analysis / Experimental Workflow). Click a card to open the full page.
         </div>
       </div>
 
