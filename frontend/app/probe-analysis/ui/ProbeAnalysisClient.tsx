@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent, type UIEvent } from "react";
 import styles from "../ProbeAnalysis.module.css";
 import PopulationSelector, { type Population } from "../../leaderboard/ui/PopulationSelector";
 import Overview3DPanel from "./Overview3DPanel";
@@ -41,12 +41,18 @@ const DEFAULT_SORT_PROP = "risk";
 const ALL_PROPS = ["difficulty", "uniqueness", "risk", "surprise", "typicality", "bridge"];
 const TABLE_FRAME_HEIGHT = 680;
 
+/**
+ * 这里的 ROW_HEIGHT 不是精确真实高度，而是虚拟渲染的“估计行高”。
+ * 你的 question_preview 被限制最多 3 行，所以给一个稍微宽松的高度即可。
+ */
+const ROW_HEIGHT = 86;
+const OVERSCAN = 10;
+
 const BASE_TEXT = {
   subtitle:
     "Probe Analysis treats each sample in a dataset as a probe and computes multiple properties for each probe. A 3D overview is displayed above; you can select a dataset using the dropdown or by clicking a dataset in the 3D view. After selecting, browse questions below in a fixed-height table frame, with support for sorting by properties and viewing detailed information.",
 
   probeAnalysisTitle: "Probe Analysis",
-  populationSuffix: "Population",
 
   overview3dTitle: "Overview (3D)",
   overview3dDesc:
@@ -222,6 +228,9 @@ export default function ProbeAnalysisClient() {
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const [questionQuery, setQuestionQuery] = useState("");
 
+  const [scrollTop, setScrollTop] = useState(0);
+  const listScrollRef = useRef<HTMLDivElement | null>(null);
+
   const subtitle = useMemo(() => t.subtitle, [t]);
 
   const showTip = (e: MouseEvent, text: string) => {
@@ -258,6 +267,7 @@ export default function ProbeAnalysisClient() {
     setSortDir("desc");
     setQuestionQuery("");
     setCols(ALL_PROPS);
+    setScrollTop(0);
   }, [population]);
 
   useEffect(() => {
@@ -377,6 +387,13 @@ export default function ProbeAnalysisClient() {
     return items.filter((it) => String(it.question_preview ?? "").toLowerCase().includes(q));
   }, [items, questionQuery]);
 
+  useEffect(() => {
+    setScrollTop(0);
+    if (listScrollRef.current) {
+      listScrollRef.current.scrollTop = 0;
+    }
+  }, [population, selectedDataset, sortBy, sortDir, questionQuery]);
+
   const onSort = useCallback((col: string, dir: SortDir) => {
     setSortBy(col);
     setSortDir(dir);
@@ -387,6 +404,19 @@ export default function ProbeAnalysisClient() {
     if (!selectedDataset) return t.topSummaryNeedDataset;
     return `${t.topSummaryDataset} = ${selectedDataset} · ${t.topSummaryQuestions} = ${total}`;
   }, [population, selectedDataset, total, t]);
+
+  const totalHeight = shownRows.length * ROW_HEIGHT;
+  const visibleCount = Math.ceil(TABLE_FRAME_HEIGHT / ROW_HEIGHT);
+  const startIndex = Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN);
+  const endIndex = Math.min(shownRows.length, startIndex + visibleCount + OVERSCAN * 2);
+
+  const topSpacerHeight = startIndex * ROW_HEIGHT;
+  const bottomSpacerHeight = Math.max(0, totalHeight - endIndex * ROW_HEIGHT);
+  const virtualRows = shownRows.slice(startIndex, endIndex);
+
+  const handleListScroll = (e: UIEvent<HTMLDivElement>) => {
+    setScrollTop(e.currentTarget.scrollTop);
+  };
 
   return (
     <div className={styles.page} onMouseLeave={hideTip}>
@@ -422,7 +452,6 @@ export default function ProbeAnalysisClient() {
 
         <div className={styles.controls}>
           <PopulationSelector value={population} onChange={setPopulation} />
-          <span className={styles.badge}>{population} {t.populationSuffix}</span>
         </div>
       </div>
 
@@ -435,7 +464,6 @@ export default function ProbeAnalysisClient() {
             </div>
 
             <div className={styles.controls}>
-              <span className={styles.badge}>pop = {population}</span>
 
               <select
                 value={selectedDataset ?? ""}
@@ -481,7 +509,9 @@ export default function ProbeAnalysisClient() {
 
             {population === "Curated" && selectedDataset ? (
               <div className={styles.controls}>
-                <span className={styles.badge}>{t.total} = {total}</span>
+                <span className={styles.badge}>
+                  {t.total} = {total}
+                </span>
 
                 <div
                   style={{
@@ -586,13 +616,15 @@ export default function ProbeAnalysisClient() {
                 )}
 
                 <div
+                  ref={listScrollRef}
+                  onScroll={handleListScroll}
                   style={{
                     flex: 1,
                     minHeight: 0,
                     overflowY: "auto",
                   }}
                 >
-                  <table className={styles.table} style={{ tableLayout: "fixed" }}>
+                  <table className={styles.table} style={{ tableLayout: "fixed", width: "100%" }}>
                     <thead
                       style={{
                         position: "sticky",
@@ -616,11 +648,26 @@ export default function ProbeAnalysisClient() {
                     </thead>
 
                     <tbody>
-                      {shownRows.map((it, idx) => {
-                        const rank = idx + 1;
+                      {topSpacerHeight > 0 && (
+                        <tr aria-hidden="true">
+                          <td
+                            colSpan={2 + cols.length}
+                            style={{
+                              padding: 0,
+                              borderBottom: "none",
+                              height: topSpacerHeight,
+                              background: "transparent",
+                            }}
+                          />
+                        </tr>
+                      )}
+
+                      {virtualRows.map((it, idx) => {
+                        const realIndex = startIndex + idx;
+                        const rank = realIndex + 1;
 
                         return (
-                          <tr key={safeQuestionKey(it, idx)}>
+                          <tr key={safeQuestionKey(it, realIndex)}>
                             <td style={{ fontVariantNumeric: "tabular-nums" }}>{rank}</td>
 
                             <td>
@@ -669,6 +716,20 @@ export default function ProbeAnalysisClient() {
                           </tr>
                         );
                       })}
+
+                      {bottomSpacerHeight > 0 && (
+                        <tr aria-hidden="true">
+                          <td
+                            colSpan={2 + cols.length}
+                            style={{
+                              padding: 0,
+                              borderBottom: "none",
+                              height: bottomSpacerHeight,
+                              background: "transparent",
+                            }}
+                          />
+                        </tr>
+                      )}
 
                       {!loadingList && shownRows.length === 0 && (
                         <tr>

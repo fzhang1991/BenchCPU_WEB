@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type MouseEvent, type UIEvent } from "react";
 import styles from "../Leaderboard.module.css";
 import PopulationSelector, { type Population } from "./PopulationSelector";
 import { leaderboardZh } from "../ui/leaderboardZh";
@@ -166,6 +166,14 @@ const MEME_DEFS_ZH: Record<string, string> = {
   Robustness: "在跨簇交界的高风险 probes 上依然保持正确。",
   Caution: "避免在看似简单、具有原型性但高风险的 probes 上出错。",
 };
+
+const RANK_COL_W = 64;
+const MODEL_COL_W = 300;
+const METRIC_COL_W = 116;
+const HEADER_H = 56;
+const ROW_H = 48;
+const OVERSCAN = 12;
+const MAX_VIEW_H = 680;
 
 function metricLabel(m: string, t: UIText) {
   return m === ACC_METRIC ? t.accuracyLabel : m;
@@ -485,6 +493,41 @@ function CompareBars({
   );
 }
 
+function buildGridTemplate(cols: string[]) {
+  return `${RANK_COL_W}px ${MODEL_COL_W}px ${cols.map(() => `${METRIC_COL_W}px`).join(" ")}`;
+}
+
+function headerCellBase(extra?: React.CSSProperties): React.CSSProperties {
+  return {
+    height: HEADER_H,
+    display: "flex",
+    alignItems: "center",
+    boxSizing: "border-box",
+    padding: "0 12px",
+    fontWeight: 900,
+    fontSize: 13,
+    color: "var(--text)",
+    background: "linear-gradient(180deg, #eff6ff 0%, #e8f1ff 100%)",
+    borderBottom: "1px solid rgba(15,23,42,0.10)",
+    ...extra,
+  };
+}
+
+function bodyCellBase(extra?: React.CSSProperties): React.CSSProperties {
+  return {
+    height: ROW_H,
+    display: "flex",
+    alignItems: "center",
+    boxSizing: "border-box",
+    padding: "0 12px",
+    fontSize: 13,
+    borderTop: "1px solid rgba(15,23,42,0.06)",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    ...extra,
+  };
+}
+
 export default function LeaderboardClient() {
   const { lang } = useLanguage();
 
@@ -535,10 +578,6 @@ export default function LeaderboardClient() {
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const HF_VISIBLE_ROWS = 50;
-  const HF_ROW_PX = 44;
-  const HF_TABLE_MAX_HEIGHT_PX = HF_VISIBLE_ROWS * HF_ROW_PX + 120;
-
   const [compareA, setCompareA] = useState<string | null>(null);
   const [compareB, setCompareB] = useState<string | null>(null);
   const [modelQuery, setModelQuery] = useState("");
@@ -547,10 +586,12 @@ export default function LeaderboardClient() {
   const compareWrapRef = useRef<HTMLDivElement | null>(null);
 
   const topScrollRef = useRef<HTMLDivElement | null>(null);
-  const tableScrollerRef = useRef<HTMLDivElement | null>(null);
-  const tableRef = useRef<HTMLTableElement | null>(null);
-  const syncSourceRef = useRef<"top" | "bottom" | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const syncSourceRef = useRef<"top" | "main" | null>(null);
+
   const [tableScrollWidth, setTableScrollWidth] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [viewportH, setViewportH] = useState(MAX_VIEW_H);
 
   useEffect(() => {
     setDataset("Avg");
@@ -620,32 +661,6 @@ export default function LeaderboardClient() {
       setSortDir("desc");
     })();
   }, [dataset, population]);
-
-  useEffect(() => {
-    const updateWidths = () => {
-      const tableW = tableRef.current?.scrollWidth ?? 0;
-      setTableScrollWidth(tableW);
-
-      if (topScrollRef.current && tableScrollerRef.current) {
-        topScrollRef.current.scrollLeft = tableScrollerRef.current.scrollLeft;
-      }
-    };
-
-    updateWidths();
-
-    let ro: ResizeObserver | null = null;
-    if (typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(updateWidths);
-      if (tableRef.current) ro.observe(tableRef.current);
-      if (tableScrollerRef.current) ro.observe(tableScrollerRef.current);
-    }
-
-    window.addEventListener("resize", updateWidths);
-    return () => {
-      window.removeEventListener("resize", updateWidths);
-      ro?.disconnect();
-    };
-  }, [allRowsKey(data?.rows ?? []), allMetrics.join("|"), modelQuery, population, dataset, lang, showRankDelta]);
 
   const memeDefList = useMemo(() => {
     const available = new Set(allMetrics);
@@ -838,32 +853,71 @@ export default function LeaderboardClient() {
     return out;
   }, [rowB, cols]);
 
-  const handleTopScroll = () => {
-    if (!topScrollRef.current || !tableScrollerRef.current) return;
-    if (syncSourceRef.current === "bottom") {
-      syncSourceRef.current = null;
-      return;
-    }
-    syncSourceRef.current = "top";
-    tableScrollerRef.current.scrollLeft = topScrollRef.current.scrollLeft;
-  };
-
-  const handleBottomScroll = () => {
-    if (!topScrollRef.current || !tableScrollerRef.current) return;
-    if (syncSourceRef.current === "top") {
-      syncSourceRef.current = null;
-      return;
-    }
-    syncSourceRef.current = "bottom";
-    topScrollRef.current.scrollLeft = tableScrollerRef.current.scrollLeft;
-  };
-
   const getRankDelta = (model: string, metric: string) => {
     if (metric === sortBy) return null;
     const rSort = rankMap[sortBy]?.[model];
     const rMetric = rankMap[metric]?.[model];
     if (!Number.isFinite(rSort) || !Number.isFinite(rMetric)) return null;
     return (rMetric as number) - (rSort as number);
+  };
+
+  const gridTemplate = useMemo(() => buildGridTemplate(cols), [cols]);
+  const contentWidth = RANK_COL_W + MODEL_COL_W + cols.length * METRIC_COL_W;
+  const totalHeight = shownRows.length * ROW_H;
+
+  useEffect(() => {
+    setTableScrollWidth(Math.max(contentWidth, scrollRef.current?.clientWidth ?? 0));
+  }, [contentWidth, shownRows.length, cols.length]);
+
+  useEffect(() => {
+    if (!scrollRef.current) return;
+    const el = scrollRef.current;
+    const update = () => {
+      setViewportH(el.clientHeight);
+      setTableScrollWidth(Math.max(contentWidth, el.clientWidth));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [contentWidth]);
+
+  useEffect(() => {
+    if (!scrollRef.current || !topScrollRef.current) return;
+    scrollRef.current.scrollTop = 0;
+    scrollRef.current.scrollLeft = 0;
+    topScrollRef.current.scrollLeft = 0;
+    setScrollTop(0);
+  }, [population, dataset, sortBy, sortDir, modelQuery, selected.join("|")]);
+
+  const startIndex = Math.max(0, Math.floor(scrollTop / ROW_H) - OVERSCAN);
+  const endIndex = Math.min(
+    shownRows.length,
+    Math.ceil((scrollTop + viewportH) / ROW_H) + OVERSCAN
+  );
+  const virtualRows = shownRows.slice(startIndex, endIndex);
+
+  const handleTopScroll = () => {
+    if (!topScrollRef.current || !scrollRef.current) return;
+    if (syncSourceRef.current === "main") {
+      syncSourceRef.current = null;
+      return;
+    }
+    syncSourceRef.current = "top";
+    scrollRef.current.scrollLeft = topScrollRef.current.scrollLeft;
+  };
+
+  const handleMainScroll = (e: UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    setScrollTop(el.scrollTop);
+
+    if (!topScrollRef.current) return;
+    if (syncSourceRef.current === "top") {
+      syncSourceRef.current = null;
+    } else {
+      syncSourceRef.current = "main";
+      topScrollRef.current.scrollLeft = el.scrollLeft;
+    }
   };
 
   return (
@@ -1153,123 +1207,140 @@ export default function LeaderboardClient() {
         </div>
 
         <div
-          ref={tableScrollerRef}
+          ref={scrollRef}
           className={styles.tableScroller}
-          onScroll={handleBottomScroll}
-          style={
-            isHF
-              ? {
-                  overflowY: "auto",
-                  maxHeight: HF_TABLE_MAX_HEIGHT_PX,
-                }
-              : undefined
-          }
+          onScroll={handleMainScroll}
+          style={{
+            overflow: "auto",
+            maxHeight: isHF ? MAX_VIEW_H : Math.min(MAX_VIEW_H, Math.max(320, shownRows.length * ROW_H + HEADER_H)),
+          }}
         >
-          <table ref={tableRef} className={styles.table}>
-            <thead>
-              <tr>
-                <th className={`${styles.th} ${styles.rankTh}`}>{t.rank}</th>
-                <th className={`${styles.th} ${styles.modelTh}`}>{t.model}</th>
-                {cols.map((c) => (
-                  <th key={c} className={`${styles.th} ${styles.metricTh}`}>
-                    <div className={styles.thInner}>
-                      <span className={styles.thLabel}>{metricLabel(c, t)}</span>
-                      <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
+          <div style={{ width: Math.max(tableScrollWidth, contentWidth), minWidth: "100%" }}>
+            <div
+              style={{
+                position: "sticky",
+                top: 0,
+                zIndex: 3,
+                display: "grid",
+                gridTemplateColumns: gridTemplate,
+                width: contentWidth,
+                minWidth: "100%",
+              }}
+            >
+              <div style={{ ...headerCellBase({ justifyContent: "center" }) }}>{t.rank}</div>
+              <div style={headerCellBase()}>{t.model}</div>
+              {cols.map((c) => (
+                <div key={c} style={{ ...headerCellBase({ justifyContent: "center" }) }}>
+                  <div className={styles.thInner}>
+                    <span className={styles.thLabel}>{metricLabel(c, t)}</span>
+                    <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
+                  </div>
+                </div>
+              ))}
+            </div>
 
-            <tbody>
-              {shownRows.map((r) => {
-                const model = String(r.model);
-                const picked = model === compareA || model === compareB;
+            {shownRows.length === 0 && !loading ? (
+              <div style={{ padding: 20, textAlign: "center", fontSize: 13 }}>{t.noData}</div>
+            ) : (
+              <div style={{ position: "relative", height: totalHeight }}>
+                {virtualRows.map((r, i) => {
+                  const rowIndex = startIndex + i;
+                  const top = rowIndex * ROW_H;
+                  const model = String(r.model);
+                  const picked = model === compareA || model === compareB;
+                  const bg =
+                    picked
+                      ? "rgba(37,99,235,0.10)"
+                      : rowIndex % 2 === 1
+                        ? "#fbfdff"
+                        : "#fff";
 
-                return (
-                  <tr key={`${r.model}-${r.rank}`} className={picked ? styles.rowPicked : ""}>
-                    <td className={`${styles.td} ${styles.rankTd}`}>{r.rank}</td>
-
-                    <td className={`${styles.td} ${styles.modelCell}`}>
-                      <div className={styles.modelCellInner}>
-                        <span className={styles.modelName}>{model}</span>
-
-                        <button
-                          type="button"
-                          className={styles.vsBtn}
-                          onClick={() => onPickCompare(model)}
-                          onMouseEnter={(e) => showTip(e, t.compareVsTooltip)}
-                          onMouseMove={(e) => moveTip(e)}
-                          onMouseLeave={hideTip}
-                          aria-label={`${t.compareAriaPrefix} ${model}`}
-                          title="Compare (vs.)"
-                        >
-                          vs.
-                        </button>
+                  return (
+                    <div
+                      key={`${r.model}-${r.rank}-${rowIndex}`}
+                      style={{
+                        position: "absolute",
+                        top,
+                        left: 0,
+                        width: contentWidth,
+                        display: "grid",
+                        gridTemplateColumns: gridTemplate,
+                        background: bg,
+                      }}
+                    >
+                      <div style={{ ...bodyCellBase({ justifyContent: "center", fontVariantNumeric: "tabular-nums" }) }}>
+                        {r.rank}
                       </div>
-                    </td>
 
-                    {cols.map((c) => {
-                      const val = fmt(r[c]);
-                      const delta = getRankDelta(model, c);
+                      <div style={{ ...bodyCellBase({ fontWeight: 850 }) }}>
+                        <div className={styles.modelCellInner} style={{ width: "100%" }}>
+                          <span className={styles.modelName}>{model}</span>
 
-                      let tipText = "";
-                      if (delta !== null) {
-                        tipText = `${t.comparedWith} ${metricLabel(sortBy, t)}: ${t.rankDeltaPrefix}${signed(delta)}`;
-                      }
+                          <button
+                            type="button"
+                            className={styles.vsBtn}
+                            onClick={() => onPickCompare(model)}
+                            onMouseEnter={(e) => showTip(e, t.compareVsTooltip)}
+                            onMouseMove={(e) => moveTip(e)}
+                            onMouseLeave={hideTip}
+                            aria-label={`${t.compareAriaPrefix} ${model}`}
+                            title="Compare (vs.)"
+                          >
+                            vs.
+                          </button>
+                        </div>
+                      </div>
 
-                      const deltaClass =
-                        delta === null
-                          ? ""
-                          : delta < 0
-                            ? styles.rankDeltaBetter
-                            : delta > 0
-                              ? styles.rankDeltaWorse
-                              : styles.rankDeltaEqual;
+                      {cols.map((c) => {
+                        const val = fmt(r[c]);
+                        const delta = getRankDelta(model, c);
 
-                      return (
-                        <td
-                          key={c}
-                          className={`${styles.td} ${styles.metricTd}`}
-                          onMouseEnter={(e) => {
-                            if (tipText) showTip(e, tipText);
-                          }}
-                          onMouseMove={(e) => {
-                            if (tipText) moveTip(e);
-                          }}
-                          onMouseLeave={hideTip}
-                        >
-                          <div className={styles.metricCellContent}>
-                            <span className={styles.metricValue}>{val}</span>
-                            {showRankDelta && delta !== null && (
-                              <span className={`${styles.rankDelta} ${deltaClass}`}>
-                                {t.rankDeltaPrefix}
-                                {signed(delta)}
-                              </span>
-                            )}
+                        let tipText = "";
+                        if (delta !== null) {
+                          tipText = `${t.comparedWith} ${metricLabel(sortBy, t)}: ${t.rankDeltaPrefix}${signed(delta)}`;
+                        }
+
+                        const deltaClass =
+                          delta === null
+                            ? ""
+                            : delta < 0
+                              ? styles.rankDeltaBetter
+                              : delta > 0
+                                ? styles.rankDeltaWorse
+                                : styles.rankDeltaEqual;
+
+                        return (
+                          <div
+                            key={c}
+                            style={{ ...bodyCellBase({ justifyContent: "center", fontVariantNumeric: "tabular-nums" }) }}
+                            onMouseEnter={(e) => {
+                              if (tipText) showTip(e, tipText);
+                            }}
+                            onMouseMove={(e) => {
+                              if (tipText) moveTip(e);
+                            }}
+                            onMouseLeave={hideTip}
+                          >
+                            <div className={styles.metricCellContent}>
+                              <span className={styles.metricValue}>{val}</span>
+                              {showRankDelta && delta !== null && (
+                                <span className={`${styles.rankDelta} ${deltaClass}`}>
+                                  {t.rankDeltaPrefix}
+                                  {signed(delta)}
+                                </span>
+                              )}
+                            </div>
                           </div>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
-
-              {!loading && shownRows.length === 0 && (
-                <tr>
-                  <td className={styles.td} colSpan={2 + cols.length}>
-                    {t.noData}
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
-}
-
-function allRowsKey(rows: Row[]) {
-  return rows.length ? `${rows.length}-${String(rows[0]?.model ?? "")}-${String(rows[rows.length - 1]?.model ?? "")}` : "0";
 }

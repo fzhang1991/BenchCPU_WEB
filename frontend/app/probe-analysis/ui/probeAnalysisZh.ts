@@ -3,7 +3,6 @@ export const probeAnalysisZh = {
     "Probe Analysis 将数据集中的每个样本视为一个 probe，并为每个 probe 计算多个属性。上方展示 3D 概览；你可以通过下拉菜单或点击 3D 视图中的数据集来选择。选中后，可在下方固定高度表格中浏览问题，并支持按属性排序与查看详细信息。",
 
   probeAnalysisTitle: "Probe Analysis",
-  populationSuffix: "Population",
 
   overview3dTitle: "概览（3D）",
   overview3dDesc:
