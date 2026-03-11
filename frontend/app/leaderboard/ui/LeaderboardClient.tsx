@@ -858,7 +858,7 @@ export default function LeaderboardClient() {
     const rSort = rankMap[sortBy]?.[model];
     const rMetric = rankMap[metric]?.[model];
     if (!Number.isFinite(rSort) || !Number.isFinite(rMetric)) return null;
-    return (rMetric as number) - (rSort as number);
+    return (rSort as number) - (rMetric as number);
   };
 
   const gridTemplate = useMemo(() => buildGridTemplate(cols), [cols]);
