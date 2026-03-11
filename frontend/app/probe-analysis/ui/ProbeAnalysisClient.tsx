@@ -1,6 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent, type UIEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEvent,
+  type UIEvent,
+} from "react";
 import styles from "../ProbeAnalysis.module.css";
 import PopulationSelector, { type Population } from "../../leaderboard/ui/PopulationSelector";
 import Overview3DPanel from "./Overview3DPanel";
@@ -42,8 +50,7 @@ const ALL_PROPS = ["difficulty", "uniqueness", "risk", "surprise", "typicality",
 const TABLE_FRAME_HEIGHT = 680;
 
 /**
- * 这里的 ROW_HEIGHT 不是精确真实高度，而是虚拟渲染的“估计行高”。
- * 你的 question_preview 被限制最多 3 行，所以给一个稍微宽松的高度即可。
+ * 桌面端表格虚拟渲染估计行高
  */
 const ROW_HEIGHT = 86;
 const OVERSCAN = 10;
@@ -104,6 +111,9 @@ const BASE_TEXT = {
   sortLabel: "Sort",
   sortAscending: "Sort ascending",
   sortDescending: "Sort descending",
+
+  mobileSortBy: "Sort by",
+  mobileTapToOpen: "Tap to open detail",
 };
 
 type ProbeText = Record<keyof typeof BASE_TEXT, string>;
@@ -198,8 +208,22 @@ function SortArrows({
 }
 
 function safeQuestionKey(it: QuestionListItem, idx: number) {
-  const preview = String(it.question_preview ?? "");
-  return `${preview.slice(0, 80)}__${idx}`;
+  return it.question_hash || `${String(it.question_preview ?? "").slice(0, 80)}__${idx}`;
+}
+
+function MobileMetricChip({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className={styles.mobileMetricChip}>
+      <span className={styles.mobileMetricLabel}>{label}</span>
+      <span className={styles.mobileMetricValue}>{value}</span>
+    </div>
+  );
 }
 
 export default function ProbeAnalysisClient() {
@@ -236,9 +260,11 @@ export default function ProbeAnalysisClient() {
   const showTip = (e: MouseEvent, text: string) => {
     setTip({ x: e.clientX + 12, y: e.clientY + 12, text });
   };
+
   const moveTip = (e: MouseEvent) => {
     setTip((prev) => (prev ? { ...prev, x: e.clientX + 12, y: e.clientY + 12 } : prev));
   };
+
   const hideTip = () => setTip(null);
 
   const handleSelectDataset = useCallback((ds: string | null) => {
@@ -248,7 +274,6 @@ export default function ProbeAnalysisClient() {
   const handleDatasetsLoaded = useCallback(
     (names: string[]) => {
       setDatasetOptions(names);
-
       if ((population === "Curated" || population === "HF") && names.length > 0) {
         setSelectedDataset((prev) => prev ?? names[0]);
       }
@@ -314,7 +339,11 @@ export default function ProbeAnalysisClient() {
       .then((json) => {
         if (!alive) return;
 
-        const nextCols = (json.probe_property_columns ?? []).length > 0 ? json.probe_property_columns : ALL_PROPS;
+        const nextCols =
+          (json.probe_property_columns ?? []).length > 0
+            ? json.probe_property_columns
+            : ALL_PROPS;
+
         setCols(nextCols);
         setItems(json.items ?? []);
         setTotal(json.total ?? 0);
@@ -418,6 +447,8 @@ export default function ProbeAnalysisClient() {
     setScrollTop(e.currentTarget.scrollTop);
   };
 
+  const mobileSortCols = cols.length > 0 ? cols : ALL_PROPS;
+
   return (
     <div className={styles.page} onMouseLeave={hideTip}>
       {tip && (
@@ -458,27 +489,19 @@ export default function ProbeAnalysisClient() {
       <div className={styles.grid}>
         <div className={styles.card}>
           <div className={styles.cardHeader}>
-            <div>
+            <div className={styles.cardHeaderText}>
               <div className={styles.cardTitle}>{t.overview3dTitle}</div>
               <div className={styles.muted}>{t.overview3dDesc}</div>
             </div>
 
             <div className={styles.controls}>
-
               <select
                 value={selectedDataset ?? ""}
                 onChange={(e) => {
                   const v = e.target.value.trim();
                   setSelectedDataset(v ? v : null);
                 }}
-                style={{
-                  height: 32,
-                  minWidth: 220,
-                  borderRadius: 10,
-                  padding: "0 10px",
-                  border: "1px solid rgba(0,0,0,0.14)",
-                  background: "#fff",
-                }}
+                className={styles.datasetSelect}
               >
                 <option value="">{t.selectDataset}</option>
                 {datasetOptions.map((ds) => (
@@ -502,58 +525,31 @@ export default function ProbeAnalysisClient() {
 
         <div className={styles.card}>
           <div className={styles.cardHeader}>
-            <div>
+            <div className={styles.cardHeaderText}>
               <div className={styles.cardTitle}>{t.questionBrowser}</div>
               <div className={styles.muted}>{topSummary}</div>
             </div>
 
             {population === "Curated" && selectedDataset ? (
-              <div className={styles.controls}>
+              <div className={`${styles.controls} ${styles.questionControls}`}>
                 <span className={styles.badge}>
                   {t.total} = {total}
                 </span>
 
-                <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    border: "1px solid rgba(0,0,0,0.14)",
-                    borderRadius: 10,
-                    padding: "0 10px",
-                    height: 32,
-                    background: "#fff",
-                  }}
-                >
-                  <span className={styles.muted} style={{ fontSize: 12 }}>
-                    {t.search}
-                  </span>
+                <div className={styles.searchBox}>
+                  <span className={styles.searchLabel}>{t.search}</span>
                   <input
                     value={questionQuery}
                     onChange={(e) => setQuestionQuery(e.target.value)}
                     placeholder={t.searchPlaceholder}
                     aria-label={t.searchQuestion}
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      background: "transparent",
-                      width: 180,
-                      fontSize: 13,
-                    }}
+                    className={styles.searchInput}
                   />
                   {questionQuery ? (
                     <button
                       type="button"
                       onClick={() => setQuestionQuery("")}
-                      style={{
-                        border: "none",
-                        background: "transparent",
-                        cursor: "pointer",
-                        fontSize: 16,
-                        lineHeight: 1,
-                        color: "rgba(0,0,0,0.45)",
-                        padding: 0,
-                      }}
+                      className={styles.searchClearBtn}
                       title={t.clearSearch}
                     >
                       ×
@@ -578,29 +574,8 @@ export default function ProbeAnalysisClient() {
                 <div className={styles.muted}>{t.selectDatasetHint}</div>
               </div>
             ) : (
-              <div
-                style={{
-                  border: "1px solid rgba(0,0,0,0.08)",
-                  borderRadius: 12,
-                  background: "rgba(0,0,0,0.01)",
-                  height: TABLE_FRAME_HEIGHT,
-                  display: "flex",
-                  flexDirection: "column",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    padding: "10px 12px",
-                    borderBottom: "1px solid rgba(0,0,0,0.06)",
-                    flex: "0 0 auto",
-                    background: "rgba(255,255,255,0.78)",
-                  }}
-                >
+              <div className={styles.browserFrame}>
+                <div className={styles.browserTopBar}>
                   <div className={styles.muted}>
                     {t.showing}: <b>{shownRows.length}</b>
                   </div>
@@ -615,131 +590,166 @@ export default function ProbeAnalysisClient() {
                   </div>
                 )}
 
-                <div
-                  ref={listScrollRef}
-                  onScroll={handleListScroll}
-                  style={{
-                    flex: 1,
-                    minHeight: 0,
-                    overflowY: "auto",
-                  }}
-                >
-                  <table className={styles.table} style={{ tableLayout: "fixed", width: "100%" }}>
-                    <thead
-                      style={{
-                        position: "sticky",
-                        top: 0,
-                        zIndex: 2,
-                        background: "rgba(255,255,255,0.98)",
-                      }}
-                    >
-                      <tr>
-                        <th style={{ width: "70px" }}>{t.rank}</th>
-                        <th style={{ width: "42%" }}>{t.question}</th>
-                        {cols.map((c) => (
-                          <th key={c}>
-                            <div className={styles.tableHeadInner}>
-                              <span>{c}</span>
-                              <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
-                            </div>
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      {topSpacerHeight > 0 && (
-                        <tr aria-hidden="true">
-                          <td
-                            colSpan={2 + cols.length}
-                            style={{
-                              padding: 0,
-                              borderBottom: "none",
-                              height: topSpacerHeight,
-                              background: "transparent",
-                            }}
-                          />
-                        </tr>
-                      )}
-
-                      {virtualRows.map((it, idx) => {
-                        const realIndex = startIndex + idx;
-                        const rank = realIndex + 1;
-
-                        return (
-                          <tr key={safeQuestionKey(it, realIndex)}>
-                            <td style={{ fontVariantNumeric: "tabular-nums" }}>{rank}</td>
-
-                            <td>
-                              <button
-                                className={styles.rowButton}
-                                onClick={() => openQuestionDetail(it)}
-                                title={t.clickViewDetail}
-                                style={{
-                                  display: "block",
-                                  textAlign: "left",
-                                  width: "100%",
-                                }}
-                                onMouseEnter={(e) => showTip(e, t.clickViewQuestionDetail)}
-                                onMouseMove={(e) => moveTip(e)}
-                                onMouseLeave={hideTip}
-                              >
-                                <div
-                                  className={styles.muted}
-                                  style={{
-                                    display: "-webkit-box",
-                                    WebkitLineClamp: 3,
-                                    WebkitBoxOrient: "vertical",
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "normal",
-                                    lineHeight: 1.4,
-                                    color: "rgba(15,23,42,0.88)",
-                                  }}
-                                >
-                                  {it.question_preview}
-                                </div>
-                              </button>
-                            </td>
-
-                            {cols.map((c) => (
-                              <td
-                                key={c}
-                                style={{ fontVariantNumeric: "tabular-nums" }}
-                                onMouseEnter={(e) => showTip(e, `${t.sortByTipPrefix}${c}${t.sortByTipSuffix}`)}
-                                onMouseMove={(e) => moveTip(e)}
-                                onMouseLeave={hideTip}
-                              >
-                                {fmtScore(numOrNaN(it.probe_properties?.[c]))}
-                              </td>
-                            ))}
-                          </tr>
-                        );
-                      })}
-
-                      {bottomSpacerHeight > 0 && (
-                        <tr aria-hidden="true">
-                          <td
-                            colSpan={2 + cols.length}
-                            style={{
-                              padding: 0,
-                              borderBottom: "none",
-                              height: bottomSpacerHeight,
-                              background: "transparent",
-                            }}
-                          />
-                        </tr>
-                      )}
-
-                      {!loadingList && shownRows.length === 0 && (
+                <div className={styles.desktopTableWrap}>
+                  <div
+                    ref={listScrollRef}
+                    onScroll={handleListScroll}
+                    className={styles.tableScrollArea}
+                  >
+                    <table className={styles.table} style={{ tableLayout: "fixed", width: "100%" }}>
+                      <thead className={styles.tableStickyHead}>
                         <tr>
-                          <td colSpan={2 + cols.length} style={{ textAlign: "center", padding: 16 }}>
-                            {t.noData}
-                          </td>
+                          <th style={{ width: "70px" }}>{t.rank}</th>
+                          <th style={{ width: "42%" }}>{t.question}</th>
+                          {cols.map((c) => (
+                            <th key={c}>
+                              <div className={styles.tableHeadInner}>
+                                <span>{c}</span>
+                                <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
+                              </div>
+                            </th>
+                          ))}
                         </tr>
-                      )}
-                    </tbody>
-                  </table>
+                      </thead>
+
+                      <tbody>
+                        {topSpacerHeight > 0 && (
+                          <tr aria-hidden="true">
+                            <td
+                              colSpan={2 + cols.length}
+                              style={{
+                                padding: 0,
+                                borderBottom: "none",
+                                height: topSpacerHeight,
+                                background: "transparent",
+                              }}
+                            />
+                          </tr>
+                        )}
+
+                        {virtualRows.map((it, idx) => {
+                          const realIndex = startIndex + idx;
+                          const rank = realIndex + 1;
+
+                          return (
+                            <tr key={safeQuestionKey(it, realIndex)}>
+                              <td style={{ fontVariantNumeric: "tabular-nums" }}>{rank}</td>
+
+                              <td>
+                                <button
+                                  className={styles.rowButton}
+                                  onClick={() => openQuestionDetail(it)}
+                                  title={t.clickViewDetail}
+                                  style={{
+                                    display: "block",
+                                    textAlign: "left",
+                                    width: "100%",
+                                  }}
+                                  onMouseEnter={(e) => showTip(e, t.clickViewQuestionDetail)}
+                                  onMouseMove={(e) => moveTip(e)}
+                                  onMouseLeave={hideTip}
+                                >
+                                  <div className={styles.questionPreview}>
+                                    {it.question_preview}
+                                  </div>
+                                </button>
+                              </td>
+
+                              {cols.map((c) => (
+                                <td
+                                  key={c}
+                                  style={{ fontVariantNumeric: "tabular-nums" }}
+                                  onMouseEnter={(e) =>
+                                    showTip(e, `${t.sortByTipPrefix}${c}${t.sortByTipSuffix}`)
+                                  }
+                                  onMouseMove={(e) => moveTip(e)}
+                                  onMouseLeave={hideTip}
+                                >
+                                  {fmtScore(numOrNaN(it.probe_properties?.[c]))}
+                                </td>
+                              ))}
+                            </tr>
+                          );
+                        })}
+
+                        {bottomSpacerHeight > 0 && (
+                          <tr aria-hidden="true">
+                            <td
+                              colSpan={2 + cols.length}
+                              style={{
+                                padding: 0,
+                                borderBottom: "none",
+                                height: bottomSpacerHeight,
+                                background: "transparent",
+                              }}
+                            />
+                          </tr>
+                        )}
+
+                        {!loadingList && shownRows.length === 0 && (
+                          <tr>
+                            <td colSpan={2 + cols.length} style={{ textAlign: "center", padding: 16 }}>
+                              {t.noData}
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className={styles.mobileListWrap}>
+                  <div className={styles.mobileSortBar}>
+                    <span className={styles.mobileSortText}>
+                      {t.mobileSortBy}: {sortBy} ({sortDir})
+                    </span>
+
+                    <div className={styles.mobileSortGrid}>
+                      {mobileSortCols.map((c) => (
+                        <div key={c} className={styles.mobileSortItem}>
+                          <span className={styles.mobileSortName}>{c}</span>
+                          <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className={styles.mobileCards}>
+                    {!loadingList && shownRows.length === 0 ? (
+                      <div className={styles.mobileEmpty}>{t.noData}</div>
+                    ) : (
+                      shownRows.map((it, idx) => {
+                        const rank = idx + 1;
+                        return (
+                          <button
+                            key={safeQuestionKey(it, idx)}
+                            type="button"
+                            className={styles.mobileQuestionCard}
+                            onClick={() => openQuestionDetail(it)}
+                          >
+                            <div className={styles.mobileCardTop}>
+                              <div className={styles.mobileRank}>#{rank}</div>
+                              <div className={styles.mobileTapHint}>{t.mobileTapToOpen}</div>
+                            </div>
+
+                            <div className={styles.mobileQuestionPreview}>
+                              {it.question_preview}
+                            </div>
+
+                            <div className={styles.mobileMetricsGrid}>
+                              {cols.map((c) => (
+                                <MobileMetricChip
+                                  key={c}
+                                  label={c}
+                                  value={fmtScore(numOrNaN(it.probe_properties?.[c]))}
+                                />
+                              ))}
+                            </div>
+                          </button>
+                        );
+                      })
+                    )}
+                  </div>
                 </div>
               </div>
             )}

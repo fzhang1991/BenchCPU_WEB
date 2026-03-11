@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 .title {
@@ -34,6 +35,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .grid {
@@ -57,6 +59,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.cardHeaderText {
+  min-width: 0;
 }
 
 .cardTitle {
@@ -132,7 +138,7 @@
   width: 10px;
   height: 18px;
   cursor: pointer;
-  color: rgba(15,23,42,0.54);
+  color: rgba(15, 23, 42, 0.54);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -141,12 +147,12 @@
 }
 
 .sortArrowBtn:hover {
-  color: rgba(37,99,235,0.78);
+  color: rgba(37, 99, 235, 0.78);
   opacity: 1;
 }
 
 .sortArrowActive {
-  color: rgba(37,99,235,0.95);
+  color: rgba(37, 99, 235, 0.95);
   opacity: 1;
 }
 
@@ -166,6 +172,18 @@
   color: inherit;
 }
 
+.questionPreview {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.4;
+  color: rgba(15, 23, 42, 0.88);
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -175,8 +193,104 @@
   font-size: 12px;
 }
 
+.datasetSelect {
+  height: 32px;
+  min-width: 220px;
+  border-radius: 10px;
+  padding: 0 10px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #fff;
+  max-width: 100%;
+}
+
+.questionControls {
+  justify-content: flex-end;
+}
+
+.searchBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 10px;
+  padding: 0 10px;
+  height: 32px;
+  background: #fff;
+  min-width: 0;
+}
+
+.searchLabel {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 180px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.searchClearBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.45);
+  padding: 0;
+}
+
+.browserFrame {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.01);
+  height: 680px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.browserTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.desktopTableWrap {
+  display: block;
+  flex: 1;
+  min-height: 0;
+}
+
+.tableScrollArea {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.tableStickyHead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.mobileListWrap {
+  display: none;
+}
+
 /* =========================
-   Overview layout (legend left + plot right)
+   Overview layout
    ========================= */
 .overviewWrap {
   height: 100%;
@@ -186,14 +300,12 @@
   align-items: stretch;
 }
 
-/* Legend: make it vertically centered with reasonable spacing */
 .legendCard {
   border: 1px solid rgba(0, 0, 0, 0.10);
   border-radius: 12px;
   background: rgba(0, 0, 0, 0.015);
   padding: 1px 12px;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -256,6 +368,7 @@
   background: rgba(0, 0, 0, 0.35);
   position: relative;
 }
+
 .arrow::after {
   content: "";
   position: absolute;
@@ -360,9 +473,6 @@
   cursor: pointer;
 }
 
-/* =========================
-   Dataset stats table (drawer)
-   ========================= */
 .statsTable {
   width: 100%;
   border-collapse: collapse;
@@ -382,9 +492,6 @@
   color: rgba(0, 0, 0, 0.70);
 }
 
-/* =========================
-   Overview 3-column layout: legend | plot | details
-   ========================= */
 .overviewWrap3 {
   height: 100%;
   min-height: 520px;
@@ -442,4 +549,361 @@
   color: rgba(0, 0, 0, 0.45);
   font-weight: 650;
   margin-left: 6px;
+}
+
+/* =========================
+   Mobile question cards
+   ========================= */
+.mobileSortBar {
+  padding: 12px 12px 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.mobileSortText {
+  display: block;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.58);
+  margin-bottom: 10px;
+}
+
+.mobileSortGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10px;
+}
+
+.mobileSortItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  min-width: 0;
+}
+
+.mobileSortName {
+  font-size: 12px;
+  font-weight: 650;
+  color: rgba(15, 23, 42, 0.78);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobileCards {
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileQuestionCard {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 14px;
+  background: #fff;
+  padding: 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.mobileQuestionCard:last-child {
+  margin-bottom: 0;
+}
+
+.mobileCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.mobileRank {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(37, 99, 235, 0.9);
+}
+
+.mobileTapHint {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.42);
+}
+
+.mobileQuestionPreview {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(15, 23, 42, 0.88);
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.mobileMetricsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mobileMetricChip {
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 8px 9px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mobileMetricLabel {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.56);
+  text-transform: lowercase;
+}
+
+.mobileMetricValue {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.82);
+  font-variant-numeric: tabular-nums;
+}
+
+.mobileEmpty {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 13px;
+  padding: 24px 12px;
+}
+
+/* =========================
+   Tablet / mobile
+   ========================= */
+@media (max-width: 980px) {
+  .page {
+    padding: 16px 12px 28px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    max-width: none;
+  }
+
+  .grid {
+    grid-template-rows: auto auto;
+  }
+
+  .cardBody {
+    height: auto;
+  }
+
+  .browserFrame {
+    height: auto;
+    min-height: 560px;
+  }
+
+  .overviewWrap3 {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .overviewWrap {
+    grid-template-columns: 1fr;
+  }
+
+  .plotWrap {
+    min-height: 420px;
+    padding: 10px 8px 18px 12px;
+  }
+
+  .legendCard,
+  .detailCard {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .titleBlock {
+    gap: 6px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.08;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    line-height: 1.45;
+    max-width: 100%;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cardHeaderText {
+    width: 100%;
+  }
+
+  .datasetSelect {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .questionControls {
+    width: 100%;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .searchBox {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .browserTopBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .desktopTableWrap {
+    display: none;
+  }
+
+  .mobileListWrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .browserFrame {
+    height: 120vh;
+    min-height: 620px;
+    max-height: 780px;
+}
+
+  .plotWrap {
+    min-height: 320px;
+    padding: 8px 6px 14px 8px;
+  }
+
+  .legendCard {
+    gap: 18px;
+    padding: 10px 12px;
+  }
+
+  .legendRow {
+    grid-template-columns: 72px 1fr;
+    gap: 8px;
+  }
+
+  .iconBox {
+    width: 62px;
+    height: 40px;
+  }
+
+  .iconCaption {
+    font-size: 10px;
+    bottom: -14px;
+  }
+
+  .detailHeader,
+  .detailBody {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .statsTable {
+    font-size: 12px;
+  }
+
+  .statsTable th,
+  .statsTable td {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding: 14px 10px 24px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+  }
+
+  .cardHeader {
+    padding: 10px 12px;
+  }
+
+  .cardBody {
+    padding: 10px;
+  }
+
+  .browserFrame {
+    min-height: 480px;
+  }
+
+  .mobileSortGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 8px;
+  }
+
+  .mobileMetricsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .mobileMetricChip {
+    padding: 7px 8px;
+  }
+
+  .mobileQuestionCard {
+    padding: 11px;
+    border-radius: 12px;
+  }
+
+  .plotWrap {
+    min-height: 280px;
+  }
 }

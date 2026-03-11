@@ -28,9 +28,15 @@ const BASE_TEXT = {
   about: "About",
   paper: "Paper",
   codeComingSoon: "Code (Coming soon)",
+
+  menu: "Menu",
+  menuOpen: "Open navigation",
+  menuClose: "Close navigation",
+  navigation: "Navigation",
+  links: "Links",
 };
 
-type NavText = Record<keyof typeof BASE_TEXT, string>;
+type NavText = typeof BASE_TEXT;
 
 function ExternalLinkIcon() {
   return (
@@ -61,6 +67,55 @@ function ExternalLinkIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={styles.menuIcon}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      fill="none"
+    >
+      {open ? (
+        <>
+          <path
+            d="M6 6L18 18"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M18 6L6 18"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </>
+      ) : (
+        <>
+          <path
+            d="M4 7H20"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 12H20"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 17H20"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </>
+      )}
     </svg>
   );
 }
@@ -212,8 +267,15 @@ export default function Navbar() {
   const pathname = usePathname();
   const { lang } = useLanguage();
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const shellRef = useRef<HTMLDivElement | null>(null);
+
   const t: NavText = useMemo(
-    () => (lang === "zh" ? { ...BASE_TEXT, ...navbarZh } : BASE_TEXT),
+    () => ({
+      ...BASE_TEXT,
+      ...(lang === "zh" ? (navbarZh as Partial<NavText>) : {}),
+    }),
     [lang]
   );
 
@@ -255,61 +317,260 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setMobileAboutOpen(false);
+  };
+
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname, lang]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const onDown = (e: MouseEvent) => {
+      if (!shellRef.current) return;
+      if (!shellRef.current.contains(e.target as Node)) {
+        closeMobileMenu();
+      }
+    };
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeMobileMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [mobileOpen]);
+
   return (
     <header className={styles.navbar}>
-      <div className={styles.container}>
-        <Link
-          href="/"
-          aria-label={t.homeAria}
-          title={t.homeTitle}
-          className={`${styles.logo} ${isActive("/") ? styles.logoActive : ""}`}
+      <div
+        ref={shellRef}
+        className={`${styles.container} ${mobileOpen ? styles.containerOpen : ""}`}
+      >
+        <div className={styles.topRow}>
+          <Link
+            href="/"
+            aria-label={t.homeAria}
+            title={t.homeTitle}
+            className={`${styles.logo} ${isActive("/") ? styles.logoActive : ""}`}
+            onClick={closeMobileMenu}
+          >
+            <span className={styles.logoA}>Probing</span>
+            <span className={styles.logoB}>Memes</span>
+          </Link>
+
+          <div className={styles.desktopNav}>
+            <Link
+              href={nav.leaderboard.href}
+              className={`${styles.navItem} ${isActive(nav.leaderboard.href) ? styles.navActive : ""}`}
+            >
+              {nav.leaderboard.label}
+            </Link>
+
+            <Link
+              href={nav.probe.href}
+              className={`${styles.navItem} ${isActive(nav.probe.href) ? styles.navActive : ""}`}
+            >
+              {nav.probe.label}
+            </Link>
+
+            <Link
+              href={nav.explore.href}
+              className={`${styles.navItem} ${isActive(nav.explore.href) ? styles.navActive : ""}`}
+            >
+              {nav.explore.label}
+            </Link>
+
+            <Dropdown
+              label={nav.about.label}
+              items={nav.about.items}
+              active={pathname.startsWith("/about")}
+            />
+
+            <ExternalNavLink
+              label={nav.yangs.label}
+              href={nav.yangs.href}
+              iconSrc={nav.yangs.iconSrc}
+            />
+
+            <ExternalNavLink
+              label={nav.benchcouncil.label}
+              href={nav.benchcouncil.href}
+              iconSrc={nav.benchcouncil.iconSrc}
+            />
+
+            <LanguageSwitcher />
+          </div>
+
+          <div className={styles.mobileActions}>
+            <button
+              type="button"
+              className={styles.mobileToggle}
+              aria-label={mobileOpen ? t.menuClose : t.menuOpen}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-panel"
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              <MenuIcon open={mobileOpen} />
+              <span className={styles.mobileToggleLabel}>{t.menu}</span>
+            </button>
+
+            <div className={styles.mobileLang}>
+              <LanguageSwitcher />
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="mobile-nav-panel"
+          className={`${styles.mobilePanel} ${mobileOpen ? styles.mobilePanelOpen : ""}`}
         >
-          <span className={styles.logoA}>Probing</span>
-          <span className={styles.logoB}>Memes</span>
-        </Link>
+          <div className={styles.mobileSection}>
+            <div className={styles.mobileSectionTitle}>{t.navigation}</div>
 
-        <nav className={styles.nav}>
-          <Link
-            href={nav.leaderboard.href}
-            className={`${styles.navItem} ${isActive(nav.leaderboard.href) ? styles.navActive : ""}`}
-          >
-            {nav.leaderboard.label}
-          </Link>
+            <Link
+              href={nav.leaderboard.href}
+              className={`${styles.mobileItem} ${isActive(nav.leaderboard.href) ? styles.mobileItemActive : ""}`}
+              onClick={closeMobileMenu}
+            >
+              <span>{nav.leaderboard.label}</span>
+            </Link>
 
-          <Link
-            href={nav.probe.href}
-            className={`${styles.navItem} ${isActive(nav.probe.href) ? styles.navActive : ""}`}
-          >
-            {nav.probe.label}
-          </Link>
+            <Link
+              href={nav.probe.href}
+              className={`${styles.mobileItem} ${isActive(nav.probe.href) ? styles.mobileItemActive : ""}`}
+              onClick={closeMobileMenu}
+            >
+              <span>{nav.probe.label}</span>
+            </Link>
 
-          <Link
-            href={nav.explore.href}
-            className={`${styles.navItem} ${isActive(nav.explore.href) ? styles.navActive : ""}`}
-          >
-            {nav.explore.label}
-          </Link>
+            <Link
+              href={nav.explore.href}
+              className={`${styles.mobileItem} ${isActive(nav.explore.href) ? styles.mobileItemActive : ""}`}
+              onClick={closeMobileMenu}
+            >
+              <span>{nav.explore.label}</span>
+            </Link>
 
-          <Dropdown
-            label={nav.about.label}
-            items={nav.about.items}
-            active={pathname.startsWith("/about")}
-          />
+            <button
+              type="button"
+              className={styles.mobileItemButton}
+              onClick={() => setMobileAboutOpen((v) => !v)}
+              aria-expanded={mobileAboutOpen}
+            >
+              <span>{nav.about.label}</span>
+              <span
+                className={`${styles.mobileChev} ${mobileAboutOpen ? styles.mobileChevOpen : ""}`}
+                aria-hidden
+              >
+                ▾
+              </span>
+            </button>
 
-          <ExternalNavLink
-            label={nav.yangs.label}
-            href={nav.yangs.href}
-            iconSrc={nav.yangs.iconSrc}
-          />
+            {mobileAboutOpen && (
+              <div className={styles.mobileSubmenu}>
+                {nav.about.items.map((it, idx) => {
+                  if (it.disabled) {
+                    return (
+                      <span
+                        key={`${it.label}-${idx}`}
+                        className={`${styles.mobileSubItem} ${styles.mobileSubItemDisabled}`}
+                        aria-disabled="true"
+                      >
+                        {it.label}
+                      </span>
+                    );
+                  }
 
-          <ExternalNavLink
-            label={nav.benchcouncil.label}
-            href={nav.benchcouncil.href}
-            iconSrc={nav.benchcouncil.iconSrc}
-          />
+                  if (it.external && it.href) {
+                    return (
+                      <a
+                        key={it.href}
+                        href={it.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.mobileSubItem}
+                        onClick={closeMobileMenu}
+                      >
+                        <span>{it.label}</span>
+                        <ExternalLinkIcon />
+                      </a>
+                    );
+                  }
 
-          <LanguageSwitcher />
-        </nav>
+                  if (it.href) {
+                    return (
+                      <Link
+                        key={it.href}
+                        href={it.href}
+                        className={styles.mobileSubItem}
+                        onClick={closeMobileMenu}
+                      >
+                        <span>{it.label}</span>
+                      </Link>
+                    );
+                  }
+
+                  return null;
+                })}
+              </div>
+            )}
+          </div>
+
+          <div className={styles.mobileSection}>
+            <div className={styles.mobileSectionTitle}>{t.links}</div>
+
+            <a
+              href={nav.yangs.href}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.mobileItem}
+              onClick={closeMobileMenu}
+            >
+              <span className={styles.mobileItemMain}>
+                <Image
+                  src={nav.yangs.iconSrc}
+                  alt=""
+                  width={18}
+                  height={18}
+                  className={styles.mobileItemIcon}
+                />
+                <span>{nav.yangs.label}</span>
+              </span>
+              <ExternalLinkIcon />
+            </a>
+
+            <a
+              href={nav.benchcouncil.href}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.mobileItem}
+              onClick={closeMobileMenu}
+            >
+              <span className={styles.mobileItemMain}>
+                <Image
+                  src={nav.benchcouncil.iconSrc}
+                  alt=""
+                  width={18}
+                  height={18}
+                  className={styles.mobileItemIcon}
+                />
+                <span>{nav.benchcouncil.label}</span>
+              </span>
+              <ExternalLinkIcon />
+            </a>
+          </div>
+        </div>
       </div>
     </header>
   );
