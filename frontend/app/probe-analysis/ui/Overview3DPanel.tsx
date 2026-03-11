@@ -485,7 +485,6 @@ export default function Overview3DPanel(props: {
       <div className={styles.panelPlaceholder}>
         <div>
           <div style={{ fontWeight: 700, marginBottom: 6 }}>Loading 3D overview…</div>
-          <div className={styles.muted}>Fetching /backend/api/probe-analysis/overview</div>
         </div>
       </div>
     );

@@ -466,7 +466,71 @@
 
 .tableTopTools{
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.searchWrap{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(255,255,255,0.88);
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.searchLabel{
+  font-size: 12px;
+  font-weight: 850;
+  color: rgba(15,23,42,0.60);
+  white-space: nowrap;
+}
+
+.searchInput{
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 750;
+  color: rgba(15,23,42,0.88);
+  width: 220px;
+  min-width: 0;
+}
+
+.searchClear{
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(15,23,42,0.55);
+  padding: 0 4px;
+}
+
+.searchClear:hover{
+  color: rgba(15,23,42,0.90);
+}
+
+.deltaToggle{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(15,23,42,0.72);
+  padding: 6px 2px;
+  user-select: none;
+}
+
+.deltaToggle input[type="checkbox"]{
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
 }
 
 .tableTopScroll{
@@ -525,17 +589,34 @@
   background: linear-gradient(180deg, #eff6ff 0%, #e8f1ff 100%);
   border-bottom: 1px solid rgba(15,23,42,0.10);
   padding: 12px 12px;
-  text-align: left;
   font-weight: 900;
   font-size: 13px;
   color: var(--text);
   white-space: nowrap;
+  vertical-align: middle;
+}
+
+.rankTh{
+  min-width: 64px;
+  text-align: center;
+}
+
+.modelTh{
+  min-width: 290px;
+  text-align: left;
+}
+
+.metricTh{
+  min-width: 112px;
+  text-align: center;
 }
 
 .thInner{
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
+  width: 100%;
 }
 
 .thLabel{
@@ -586,10 +667,56 @@
   padding: 12px 12px;
   white-space: nowrap;
   font-size: 13px;
+  vertical-align: middle;
+}
+
+.rankTd{
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.metricTd{
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.metricCellContent{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 100%;
+}
+
+.metricValue{
+  font-weight: 700;
+  color: rgba(15,23,42,0.92);
+}
+
+.rankDelta{
+  display: inline-block;
+  min-width: 34px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: left;
+}
+
+.rankDeltaBetter{
+  color: rgb(22, 163, 74);
+}
+
+.rankDeltaWorse{
+  color: rgb(220, 38, 38);
+}
+
+.rankDeltaEqual{
+  color: rgba(15,23,42,0.42);
 }
 
 .modelCell{
   font-weight: 850;
+  text-align: left;
 }
 
 .table tbody tr:nth-child(even) .td{
@@ -643,49 +770,6 @@
 
 .vsBtn:active{
   transform: translateY(1px);
-}
-
-.searchWrap{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 8px;
-  border-radius: 14px;
-  border: 1px solid rgba(15,23,42,0.12);
-  background: rgba(255,255,255,0.88);
-  flex: 0 0 auto;
-  max-width: 100%;
-}
-
-.searchLabel{
-  font-size: 12px;
-  font-weight: 850;
-  color: rgba(15,23,42,0.60);
-}
-
-.searchInput{
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 13px;
-  font-weight: 750;
-  color: rgba(15,23,42,0.88);
-  width: 220px;
-  min-width: 0;
-}
-
-.searchClear{
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  color: rgba(15,23,42,0.55);
-  padding: 0 4px;
-}
-
-.searchClear:hover{
-  color: rgba(15,23,42,0.90);
 }
 
 .compareWrap{
@@ -1004,5 +1088,9 @@
 
   .tableMetaInfo{
     font-size: 12px;
+  }
+
+  .metricTh{
+    min-width: 104px;
   }
 }

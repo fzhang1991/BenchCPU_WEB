@@ -64,7 +64,7 @@ type Dataset = CuratedDataset | HFDataset;
 const MODES = ["Base", "CoT", "IR"] as const;
 type Mode = (typeof MODES)[number];
 
-const VENDORS = [
+const ORGANIZATIONS = [
   "OpenAI",
   "Alibaba",
   "Anthropic",
@@ -77,7 +77,7 @@ const VENDORS = [
   "Spark",
   "Ark",
 ] as const;
-type Vendor = (typeof VENDORS)[number];
+type Organization = (typeof ORGANIZATIONS)[number];
 
 const BASE_TEXT = {
   sectionTitle: "Probing Memes Leaderboard",
@@ -91,10 +91,10 @@ const BASE_TEXT = {
   reasoningModesHintLine1: "Base: answer directly without explicitly requesting reasoning;",
   reasoningModesHintLine2: "Chain-of-Thought (CoT): prompt the model to generate explicit intermediate reasoning;",
   reasoningModesHintLine3: "Intrinsic Reasoning (IR): enable the model’s internal reasoning capability.",
-  vendors: "Vendors",
+  organizations: "Organizations",
   selectAll: "Select all",
   clear: "Clear",
-  show: "Show",
+  show: "Show options",
   hide: "Hide",
   modelComparison: "Model Comparison",
   pick1st: "Pick 1st",
@@ -109,7 +109,7 @@ const BASE_TEXT = {
   population: "Population",
   dataset: "Dataset",
   models: "Models",
-  search: "Search",
+  search: "Search:",
   searchPlaceholder: "Type model name…",
   searchAria: "Search model",
   searchClearTitle: "Clear search",
@@ -130,7 +130,9 @@ const BASE_TEXT = {
   comparedWith: "Compared with",
   accuracyLabel: "Accuracy",
   modeSummary: "Modes",
-  vendorSummary: "Vendors",
+  organizationSummary: "Organizations",
+  showRankDelta: "Show rank change",
+  rankDeltaPrefix: "",
 } as const;
 
 type UIText = Record<keyof typeof BASE_TEXT, string>;
@@ -521,7 +523,7 @@ export default function LeaderboardClient() {
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
   const [selectedModes, setSelectedModes] = useState<Mode[]>([...MODES]);
-  const [selectedVendors, setSelectedVendors] = useState<Vendor[]>([...VENDORS]);
+  const [selectedOrganizations, setSelectedOrganizations] = useState<Organization[]>([...ORGANIZATIONS]);
 
   const [data, setData] = useState<ApiLeaderboard | null>(null);
   const [loading, setLoading] = useState(false);
@@ -536,6 +538,7 @@ export default function LeaderboardClient() {
   const [compareA, setCompareA] = useState<string | null>(null);
   const [compareB, setCompareB] = useState<string | null>(null);
   const [modelQuery, setModelQuery] = useState("");
+  const [showRankDelta, setShowRankDelta] = useState(true);
 
   const compareWrapRef = useRef<HTMLDivElement | null>(null);
 
@@ -551,11 +554,12 @@ export default function LeaderboardClient() {
     setSortBy(ACC_METRIC);
     setSortDir("desc");
     setSelectedModes([...MODES]);
-    setSelectedVendors([...VENDORS]);
+    setSelectedOrganizations([...ORGANIZATIONS]);
     setFiltersOpen(false);
     setCompareA(null);
     setCompareB(null);
     setModelQuery("");
+    setShowRankDelta(true);
   }, [population]);
 
   useEffect(() => {
@@ -637,7 +641,7 @@ export default function LeaderboardClient() {
       window.removeEventListener("resize", updateWidths);
       ro?.disconnect();
     };
-  }, [allRowsKey(data?.rows ?? []), allMetrics.join("|"), modelQuery, population, dataset, lang]);
+  }, [allRowsKey(data?.rows ?? []), allMetrics.join("|"), modelQuery, population, dataset, lang, showRankDelta]);
 
   const memeDefList = useMemo(() => {
     const available = new Set(allMetrics);
@@ -680,7 +684,7 @@ export default function LeaderboardClient() {
 
         if (!isHF) {
           params.set("modes", selectedModes.join(","));
-          params.set("vendors", selectedVendors.join(","));
+          params.set("vendors", selectedOrganizations.join(","));
         }
 
         const res = await fetch(`/backend/api/leaderboard?${params.toString()}`);
@@ -691,7 +695,7 @@ export default function LeaderboardClient() {
         setLoading(false);
       }
     })();
-  }, [selected, sortBy, sortDir, dataset, population, isHF, selectedModes, selectedVendors]);
+  }, [selected, sortBy, sortDir, dataset, population, isHF, selectedModes, selectedOrganizations]);
 
   const toggleMetric = (m: string) => {
     if (m === ACC_METRIC) return;
@@ -708,12 +712,13 @@ export default function LeaderboardClient() {
   };
 
   const toggleMode = (m: Mode) => setSelectedModes((prev) => (prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m]));
-  const toggleVendor = (v: Vendor) => setSelectedVendors((prev) => (prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v]));
+  const toggleOrganization = (v: Organization) =>
+    setSelectedOrganizations((prev) => (prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v]));
 
   const selectAllModes = () => setSelectedModes([...MODES]);
   const clearAllModes = () => setSelectedModes([]);
-  const selectAllVendors = () => setSelectedVendors([...VENDORS]);
-  const clearAllVendors = () => setSelectedVendors([]);
+  const selectAllOrganizations = () => setSelectedOrganizations([...ORGANIZATIONS]);
+  const clearAllOrganizations = () => setSelectedOrganizations([]);
 
   const cols = data?.selected_metrics ?? selected;
   const total = data?.total ?? nModels;
@@ -812,7 +817,7 @@ export default function LeaderboardClient() {
 
   const filterSummary = isHF
     ? `${t.dataset}: ${renderDatasetName(dataset)}`
-    : `${t.dataset}: ${renderDatasetName(dataset)} · ${t.modeSummary}: ${selectedModes.length}/${MODES.length} · ${t.vendorSummary}: ${selectedVendors.length}/${VENDORS.length}`;
+    : `${t.dataset}: ${renderDatasetName(dataset)} · ${t.modeSummary}: ${selectedModes.length}/${MODES.length} · ${t.organizationSummary}: ${selectedOrganizations.length}/${ORGANIZATIONS.length}`;
 
   const rowA = compareA ? rowByModel.get(compareA) : null;
   const rowB = compareB ? rowByModel.get(compareB) : null;
@@ -847,6 +852,14 @@ export default function LeaderboardClient() {
     }
     syncSourceRef.current = "bottom";
     topScrollRef.current.scrollLeft = tableScrollerRef.current.scrollLeft;
+  };
+
+  const getRankDelta = (model: string, metric: string) => {
+    if (metric === sortBy) return null;
+    const rSort = rankMap[sortBy]?.[model];
+    const rMetric = rankMap[metric]?.[model];
+    if (!Number.isFinite(rSort) || !Number.isFinite(rMetric)) return null;
+    return (rMetric as number) - (rSort as number);
   };
 
   return (
@@ -992,21 +1005,25 @@ export default function LeaderboardClient() {
 
               <div className={styles.filtersRightCol}>
                 <div className={styles.sectionBlock} style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                  <div className={styles.sectionBlockTitle}>{t.vendors}</div>
+                  <div className={styles.sectionBlockTitle}>{t.organizations}</div>
 
                   <div className={styles.controlsRow} style={{ marginTop: 8 }}>
-                    <button className={styles.btn} onClick={selectAllVendors} type="button">
+                    <button className={styles.btn} onClick={selectAllOrganizations} type="button">
                       {t.selectAll}
                     </button>
-                    <button className={styles.btn} onClick={clearAllVendors} type="button">
+                    <button className={styles.btn} onClick={clearAllOrganizations} type="button">
                       {t.clear}
                     </button>
                   </div>
 
                   <div className={`${styles.metricList} ${styles.vendorList}`} style={{ marginTop: 6, flex: 1, maxHeight: "none" }}>
-                    {VENDORS.map((v) => (
+                    {ORGANIZATIONS.map((v) => (
                       <label key={v} className={styles.metricItem}>
-                        <input type="checkbox" checked={selectedVendors.includes(v)} onChange={() => toggleVendor(v)} />
+                        <input
+                          type="checkbox"
+                          checked={selectedOrganizations.includes(v)}
+                          onChange={() => toggleOrganization(v)}
+                        />
                         <span>{v}</span>
                       </label>
                     ))}
@@ -1103,6 +1120,15 @@ export default function LeaderboardClient() {
                 </button>
               )}
             </div>
+
+            <label className={styles.deltaToggle}>
+              <input
+                type="checkbox"
+                checked={showRankDelta}
+                onChange={(e) => setShowRankDelta(e.target.checked)}
+              />
+              <span>{t.showRankDelta}</span>
+            </label>
           </div>
         </div>
 
@@ -1131,10 +1157,10 @@ export default function LeaderboardClient() {
           <table ref={tableRef} className={styles.table}>
             <thead>
               <tr>
-                <th className={styles.th}>{t.rank}</th>
-                <th className={styles.th}>{t.model}</th>
+                <th className={`${styles.th} ${styles.rankTh}`}>{t.rank}</th>
+                <th className={`${styles.th} ${styles.modelTh}`}>{t.model}</th>
                 {cols.map((c) => (
-                  <th key={c} className={styles.th}>
+                  <th key={c} className={`${styles.th} ${styles.metricTh}`}>
                     <div className={styles.thInner}>
                       <span className={styles.thLabel}>{metricLabel(c, t)}</span>
                       <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
@@ -1151,7 +1177,7 @@ export default function LeaderboardClient() {
 
                 return (
                   <tr key={`${r.model}-${r.rank}`} className={picked ? styles.rowPicked : ""}>
-                    <td className={styles.td}>{r.rank}</td>
+                    <td className={`${styles.td} ${styles.rankTd}`}>{r.rank}</td>
 
                     <td className={`${styles.td} ${styles.modelCell}`}>
                       <div className={styles.modelCellInner}>
@@ -1174,21 +1200,26 @@ export default function LeaderboardClient() {
 
                     {cols.map((c) => {
                       const val = fmt(r[c]);
+                      const delta = getRankDelta(model, c);
 
                       let tipText = "";
-                      if (c !== sortBy) {
-                        const rSort = rankMap[sortBy]?.[model];
-                        const rAlt = rankMap[c]?.[model];
-                        if (Number.isFinite(rSort) && Number.isFinite(rAlt)) {
-                          const delta = (rAlt as number) - (rSort as number);
-                          tipText = `${t.comparedWith} ${metricLabel(sortBy, t)}: ${signed(delta)}`;
-                        }
+                      if (delta !== null) {
+                        tipText = `${t.comparedWith} ${metricLabel(sortBy, t)}: ${t.rankDeltaPrefix}${signed(delta)}`;
                       }
+
+                      const deltaClass =
+                        delta === null
+                          ? ""
+                          : delta < 0
+                            ? styles.rankDeltaBetter
+                            : delta > 0
+                              ? styles.rankDeltaWorse
+                              : styles.rankDeltaEqual;
 
                       return (
                         <td
                           key={c}
-                          className={styles.td}
+                          className={`${styles.td} ${styles.metricTd}`}
                           onMouseEnter={(e) => {
                             if (tipText) showTip(e, tipText);
                           }}
@@ -1197,7 +1228,15 @@ export default function LeaderboardClient() {
                           }}
                           onMouseLeave={hideTip}
                         >
-                          {val}
+                          <div className={styles.metricCellContent}>
+                            <span className={styles.metricValue}>{val}</span>
+                            {showRankDelta && delta !== null && (
+                              <span className={`${styles.rankDelta} ${deltaClass}`}>
+                                {t.rankDeltaPrefix}
+                                {signed(delta)}
+                              </span>
+                            )}
+                          </div>
                         </td>
                       );
                     })}
