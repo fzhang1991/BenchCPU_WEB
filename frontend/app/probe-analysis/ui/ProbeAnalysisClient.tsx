@@ -94,6 +94,10 @@ const BASE_TEXT = {
   drawerCorrectModels: "Correct Models",
   drawerWrongModels: "Wrong Models",
   drawerNone: "None",
+
+  sortLabel: "Sort",
+  sortAscending: "Sort ascending",
+  sortDescending: "Sort descending",
 };
 
 type ProbeText = Record<keyof typeof BASE_TEXT, string>;
@@ -108,54 +112,81 @@ function numOrNaN(v: any) {
   return Number.isFinite(n) ? n : NaN;
 }
 
+function SortArrow({
+  direction,
+  active,
+  onClick,
+  title,
+  ariaLabel,
+}: {
+  direction: "asc" | "desc";
+  active: boolean;
+  onClick: () => void;
+  title: string;
+  ariaLabel: string;
+}) {
+  return (
+    <button
+      type="button"
+      className={`${styles.sortArrowBtn} ${active ? styles.sortArrowActive : ""}`}
+      onClick={onClick}
+      title={title}
+      aria-label={ariaLabel}
+    >
+      <svg className={styles.sortArrowSvg} viewBox="0 0 10 18" fill="none" aria-hidden="true">
+        {direction === "asc" ? (
+          <path
+            d="M5 16V3M5 3L2.7 5.3M5 3L7.3 5.3"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        ) : (
+          <path
+            d="M5 2V15M5 15L2.7 12.7M5 15L7.3 12.7"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        )}
+      </svg>
+    </button>
+  );
+}
+
 function SortArrows({
   col,
   sortBy,
   sortDir,
   onSort,
+  t,
 }: {
   col: string;
   sortBy: string;
   sortDir: SortDir;
   onSort: (col: string, dir: SortDir) => void;
+  t: ProbeText;
 }) {
   const isActive = col === sortBy;
 
-  const btnBase: React.CSSProperties = {
-    border: "none",
-    background: "transparent",
-    cursor: "pointer",
-    padding: "0 2px",
-    fontSize: 10,
-    lineHeight: 1,
-    color: "rgba(15,23,42,0.45)",
-    fontWeight: 800,
-  };
-
-  const btnActive: React.CSSProperties = {
-    color: "rgba(15,23,42,0.92)",
-  };
-
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 1, marginLeft: 6 }}>
-      <button
-        type="button"
+    <span className={styles.sortInline} aria-label={`${t.sortLabel} ${col}`}>
+      <SortArrow
+        direction="asc"
+        active={isActive && sortDir === "asc"}
         onClick={() => onSort(col, "asc")}
-        aria-label={`Sort ${col} ascending`}
-        title="Sort ascending"
-        style={isActive && sortDir === "asc" ? { ...btnBase, ...btnActive } : btnBase}
-      >
-        ▲
-      </button>
-      <button
-        type="button"
+        title={t.sortAscending}
+        ariaLabel={`${t.sortAscending}: ${col}`}
+      />
+      <SortArrow
+        direction="desc"
+        active={isActive && sortDir === "desc"}
         onClick={() => onSort(col, "desc")}
-        aria-label={`Sort ${col} descending`}
-        title="Sort descending"
-        style={isActive && sortDir === "desc" ? { ...btnBase, ...btnActive } : btnBase}
-      >
-        ▼
-      </button>
+        title={t.sortDescending}
+        ariaLabel={`${t.sortDescending}: ${col}`}
+      />
     </span>
   );
 }
@@ -209,8 +240,6 @@ export default function ProbeAnalysisClient() {
     (names: string[]) => {
       setDatasetOptions(names);
 
-      // Default-select the first dataset for Curated (existing behavior)
-      // and also for HF so HF will show the first dataset by default.
       if ((population === "Curated" || population === "HF") && names.length > 0) {
         setSelectedDataset((prev) => prev ?? names[0]);
       }
@@ -577,9 +606,9 @@ export default function ProbeAnalysisClient() {
                         <th style={{ width: "42%" }}>{t.question}</th>
                         {cols.map((c) => (
                           <th key={c}>
-                            <div style={{ display: "inline-flex", alignItems: "center" }}>
+                            <div className={styles.tableHeadInner}>
                               <span>{c}</span>
-                              <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
+                              <SortArrows col={c} sortBy={sortBy} sortDir={sortDir} onSort={onSort} t={t} />
                             </div>
                           </th>
                         ))}

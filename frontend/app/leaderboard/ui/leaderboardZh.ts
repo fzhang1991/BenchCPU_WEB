@@ -2,8 +2,11 @@ export const leaderboardZh = {
   sectionTitle: "Probing Memes 排行榜",
   bannerTitle: "选择指标、筛选条件，并点击表头箭头进行排序。",
   memeScoreSelect: "选择 Meme Scores",
+  memeScoreIntro:
+    "Meme Scores 来源于模型在不同题目上的作答情况，并结合题目层面的 Probe Properties，对模型能力进行细粒度打分。它可以理解为模型在不同类型题目上的表现，例如困难、高风险、原型性或稀有模式题目上的表现。",
+  memeScoreDetailsLink: "查看 Explore 中的详细说明。",
   memePatternHint:
-    "行为模式：指模型群体在题目上的对/错模式。例如，一组题目上所有非推理模型都答错，而推理模型答对；或者所有 Qwen family 模型都答错而其他模型答对。",
+    "这里行为模式是指模型群体在一组题目上的对错分布模式。例如，一组题目上所有非推理模型都答错，而推理模型答对；或者所有 Qwen family 模型都答错而其他模型答对。",
   filters: "筛选条件",
   datasetSingle: "数据集（单选）",
   reasoningModes: "推理模式",

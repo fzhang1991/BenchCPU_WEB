@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import styles from "../Leaderboard.module.css";
 import PopulationSelector, { type Population } from "./PopulationSelector";
@@ -83,8 +84,11 @@ const BASE_TEXT = {
   sectionTitle: "Probing Memes Leaderboard",
   bannerTitle: "Choose metrics, filters, and sort by clicking header arrows.",
   memeScoreSelect: "Choose Meme Scores",
+  memeScoreIntro:
+    "Meme Scores are derived from how models answer different probes. Based on probe properties at the question level, they provide fine-grained scores for model capabilities. They can be interpreted as how well a model performs on different types of probes, such as difficult, risky, prototypical, or rare ones.",
+  memeScoreDetailsLink: "See details in Explore.",
   memePatternHint:
-    "Behavioral pattern: a population-level correct/incorrect pattern on a set of probes. For example, all non-reasoning models fail while reasoning models succeed, or all Qwen-family models fail while others succeed.",
+    "Here, Behavioral pattern refers to a population-level correct/incorrect pattern on a set of probes. For example, all non-reasoning models fail while reasoning models succeed, or all Qwen-family models fail while others succeed.",
   filters: "Filters",
   datasetSingle: "Dataset (single choice)",
   reasoningModes: "Reasoning Modes",
@@ -897,7 +901,14 @@ export default function LeaderboardClient() {
 
       <div className={styles.card} style={{ marginTop: 14 }}>
         <div className={styles.memeDefTitle}>{t.memeScoreSelect}</div>
-        <div className={styles.memeDefHint}>{t.memePatternHint}</div>
+
+        <div className={styles.memeDefHint}>
+          <span>{t.memeScoreIntro} </span>
+          <Link href="/explore#meme-scores" className={styles.memeDefHintLink}>
+            {t.memeScoreDetailsLink}
+          </Link>
+          <span> {t.memePatternHint}</span>
+        </div>
 
         <div className={styles.memeDefGrid}>
           {memeDefList.map((it) => {
