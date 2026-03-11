@@ -115,10 +115,14 @@ const BASE_TEXT = {
     "Dataset-specific answer formatting is kept minimal but strict: mathematical answers are enclosed in boxed form when needed, multiple-choice tasks require a single option letter, and free-form QA tasks only require the final answer after the Answer: tag.",
 
   largeScaleTitle: "Application on Large-Scale Population (From Open LLM Leaderboard)",
-  largeScaleP1:
-    "Beyond the curated population, the paradigm is also instantiated at larger scale using results collected from the Open LLM Leaderboard.",
+  largeScaleP1Prefix:
+    "Beyond the curated population, the paradigm is also instantiated at larger scale using results collected from the ",
+  largeScaleLinkText: "Open LLM Leaderboard",
+  largeScaleP1Suffix: ".",
   largeScaleP2:
     "Results for 4,479 models across six datasets are used to construct a large-scale Perception Matrix. These leaderboard-reported results make it possible to apply the Probing Memes paradigm to a much broader and more heterogeneous model population.",
+  largeScaleP2Extra:
+    "Note that the evaluation criterion here is different from that of the Open LLM Leaderboard itself: the Probing Memes paradigm only collects correct/incorrect outcomes to construct the Perception Matrix.",
   largeScaleP3:
     "To ensure consistency, the construction process removes models with missing records and also removes items with incomplete information, so that the retained matrix remains aligned across models and probes.",
 
@@ -858,8 +862,21 @@ export default function ExplorePage() {
               <div className={styles.card}>
                 <div className={styles.cardTitle}>{t.largeScaleTitle}</div>
                 <div className={styles.richText}>
-                  <p>{t.largeScaleP1}</p>
-                  <p>{t.largeScaleP2}</p>
+                  <p>
+                    {t.largeScaleP1Prefix}
+                    <a
+                      href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard#/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.inlineLink}
+                    >
+                      {t.largeScaleLinkText}
+                    </a>
+                    {t.largeScaleP1Suffix}
+                  </p>
+                  <p>
+                    {t.largeScaleP2} {t.largeScaleP2Extra}
+                  </p>
                   <p>{t.largeScaleP3}</p>
                 </div>
               </div>

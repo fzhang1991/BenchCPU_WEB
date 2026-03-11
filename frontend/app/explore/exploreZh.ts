@@ -83,10 +83,15 @@ export const exploreZh = {
     "不同数据集的答案格式约束尽量保持简洁但严格：数学题在需要时使用 boxed 形式；选择题要求只输出单个选项字母；自由问答任务则只要求在 Answer: 标签后给出最终答案。",
 
   largeScaleTitle: "大规模群体上的应用（来自 Open LLM Leaderboard）",
-  largeScaleP1:
-    "除 curated population 外，该范式也基于 Open LLM Leaderboard 收集的结果，在更大规模上进行了实例化。",
+  largeScaleP1Prefix:
+    "除 curated population 外，该范式也基于 ",
+  largeScaleLinkText: "Open LLM Leaderboard",
+  largeScaleP1Suffix:
+    " 收集的结果，在更大规模上进行了实例化。",
   largeScaleP2:
     "使用了 4,479 个模型在六个数据集上的结果来构建大规模 Perception Matrix。这些 leaderboard 报告结果使得 Probing Memes 范式能够应用到更广泛、异质性更强的模型群体。",
+  largeScaleP2Extra:
+    "需要说明的是，这里的 evaluation 标准与 Open LLM Leaderboard 本身并不相同：Probing Memes 范式只收集题目的正确和错误结果，并据此构造 Perception Matrix。",
   largeScaleP3:
     "为保证一致性，构建过程中会移除记录缺失的模型，也会移除信息不完整的题目，从而使保留的矩阵在模型与 probes 之间保持对齐。",
 
