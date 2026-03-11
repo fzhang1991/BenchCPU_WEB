@@ -904,10 +904,10 @@ export default function LeaderboardClient() {
 
         <div className={styles.memeDefHint}>
           <span>{t.memeScoreIntro} </span>
+          <span>{t.memePatternHint} </span>
           <Link href="/explore#meme-scores" className={styles.memeDefHintLink}>
             {t.memeScoreDetailsLink}
           </Link>
-          <span> {t.memePatternHint}</span>
         </div>
 
         <div className={styles.memeDefGrid}>
