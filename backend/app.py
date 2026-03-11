@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 from typing import Optional, List, Dict, Any, Tuple
 
 import pandas as pd
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+LEADERBOARD_ROOT = Path(os.environ["LEADERBOARD_DIR"]).expanduser().resolve()
 
 CURATED_DATASET_TO_CSV = {
     "Avg": "data/model_avg_benchmark_scores.csv",
@@ -76,6 +79,10 @@ _df_cache: Dict[Tuple[str, str], pd.DataFrame] = {}
 _metrics_cache: Dict[Tuple[str, str], List[str]] = {}
 
 
+def _resolve_csv_path(rel_path: str) -> Path:
+    return (LEADERBOARD_ROOT / rel_path).resolve()
+
+
 def _parse_mode_and_base_model(model: str) -> Tuple[str, str]:
     s = str(model).strip()
     if s.endswith("(IR)"):
@@ -143,8 +150,8 @@ def _load_dataset(population: str, dataset: str):
     if key in _df_cache:
         return
 
-    csv_path = ds_map[dataset]
-    if not os.path.exists(csv_path):
+    csv_path = _resolve_csv_path(ds_map[dataset])
+    if not csv_path.exists():
         raise HTTPException(status_code=500, detail=f"CSV not found: {csv_path}")
 
     df = pd.read_csv(csv_path)
@@ -238,7 +245,7 @@ def api_leaderboard(
     if sort_by not in valid_metrics:
         raise HTTPException(status_code=400, detail=f"Unknown sort_by: {sort_by}")
 
-    ascending = (sort_dir == "asc")
+    ascending = sort_dir == "asc"
 
     acc_rank_col = "ACC_rank"
     sort_rank_col = f"{sort_by}_rank"
@@ -288,44 +295,16 @@ def api_leaderboard(
         "rows": out_page.to_dict(orient="records"),
     }
 
+
 from probe_analysis_routes import router as probe_analysis_router
 from probe_analysis_routes import preload_probe_overview, preload_dataset_stats
 from probe_analysis_routes import preload_question_tables
 
-try:
-    app.include_router(probe_analysis_router)
-except Exception as e:
-    import logging
-
-    logging.getLogger(__name__).error("Failed to include probe_analysis_router: %s", e)
+app.include_router(probe_analysis_router)
 
 
 @app.on_event("startup")
 def _preload_probe_analysis_caches():
-    import logging
-
-    log = logging.getLogger(__name__)
-
-    try:
-        info1 = preload_probe_overview(populations=["Curated", "HF"], pclip=5.0)
-        if info1.get("errors"):
-            log.warning("Probe overview preload completed with errors: %s", info1["errors"])
-        else:
-            log.info("Probe overview preload OK: %s", info1.get("loaded"))
-    except Exception as e:
-        log.warning("Probe overview preload failed (server will still run; first request will compute): %s", e)
-
-    try:
-        info2 = preload_dataset_stats(populations=["Curated", "HF"])
-        if info2.get("errors"):
-            log.warning("Probe dataset-stats preload completed with errors: %s", info2["errors"])
-        else:
-            log.info("Probe dataset-stats preload OK: %s", info2.get("loaded"))
-    except Exception as e:
-        log.warning("Probe dataset-stats preload failed (server will still run; first click will compute): %s", e)
-
-    try:
-        info3 = preload_question_tables(populations=["Curated"])
-        log.info("Probe question tables preload: %s", info3)
-    except Exception as e:
-        log.warning("Probe question tables preload failed (server will still run; first request may 404): %s", e)
+    preload_probe_overview(populations=["Curated", "HF"], pclip=5.0)
+    preload_dataset_stats(populations=["Curated", "HF"])
+    preload_question_tables(populations=["Curated"])
