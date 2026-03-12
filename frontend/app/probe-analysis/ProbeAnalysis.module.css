@@ -1,7 +1,7 @@
 .page {
-  max-width: 1460px;
+  max-width: 1420px;
   margin: 0 auto;
-  padding: 20px 18px 40px;
+  padding: 20px 18px 30px;
 }
 
 .headerRow {
@@ -38,6 +38,7 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  margin-right: 100px;
 }
 
 .grid {
