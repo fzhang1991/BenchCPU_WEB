@@ -62,7 +62,6 @@ jobs:
             --exclude=.env.production
             --exclude=.env.development
           SCRIPT_AFTER: |
-            whoami
             set -e
             cd "${{ secrets.TARGET_FRONTEND }}"
             nvm use 20
