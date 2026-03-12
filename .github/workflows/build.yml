@@ -63,8 +63,8 @@ jobs:
             --exclude=.env.development
           SCRIPT_AFTER: |
             set -e
-            cd "${{ secrets.TARGET_FRONTEND }}"
             nvm use 20
+            cd "${{ secrets.TARGET_FRONTEND }}"
             npm ci
             npm run build
             ${{ secrets.FRONTEND_RESTART_CMD }}
