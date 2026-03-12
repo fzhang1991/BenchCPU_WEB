@@ -87,7 +87,7 @@ const BASE_TEXT = {
   clickViewDetail: "Click to view detail",
   clickViewQuestionDetail: "Click to view question details and model behavior.",
   sortByTipPrefix: "Sort by ",
-  sortByTipSuffix: " using ▲ / ▼ in the table header.",
+  sortByTipSuffix: " using ↑ / ↓  in the table header.",
 
   noData: "No data",
 
@@ -114,7 +114,18 @@ const BASE_TEXT = {
 
   mobileSortBy: "Sort by",
   mobileTapToOpen: "Tap to open detail",
-};
+
+  population: "Population",
+  populationTooltipTitle: "Population",
+  populationTooltipDesc:
+    "The set of models analyzed together. The results shown on this page are computed based on these models.",
+  curatedPopulationTitle: "Curated Population",
+  curatedPopulationDesc:
+    "A set of representative models, designed to produce clearer and more interpretable behavioral contrasts.",
+  hfPopulationTitle: "HF Population",
+  hfPopulationDesc:
+    "A broader population from the Open LLM Leaderboard, with Probing Memes metrics computed based on publicly available information from Hugging Face.",
+} as const;
 
 type ProbeText = Record<keyof typeof BASE_TEXT, string>;
 
@@ -482,7 +493,19 @@ export default function ProbeAnalysisClient() {
         </div>
 
         <div className={styles.controls}>
-          <PopulationSelector value={population} onChange={setPopulation} />
+          <PopulationSelector
+            value={population}
+            onChange={setPopulation}
+            text={{
+              population: t.population,
+              populationTooltipTitle: t.populationTooltipTitle,
+              populationTooltipDesc: t.populationTooltipDesc,
+              curatedPopulationTitle: t.curatedPopulationTitle,
+              curatedPopulationDesc: t.curatedPopulationDesc,
+              hfPopulationTitle: t.hfPopulationTitle,
+              hfPopulationDesc: t.hfPopulationDesc,
+            }}
+          />
         </div>
       </div>
 

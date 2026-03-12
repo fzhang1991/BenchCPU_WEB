@@ -539,7 +539,7 @@ export default function Overview3DPanel(props: {
       aspectmode: "manual",
       aspectratio: computed.aspectratio,
       dragmode: "orbit",
-      camera: { eye: { x: 0.8, y: 0.95, z: 0.4 } },
+      camera: { eye: { x: 1.0, y: 1.0, z: 0.45 } },
     },
     showlegend: false,
   };

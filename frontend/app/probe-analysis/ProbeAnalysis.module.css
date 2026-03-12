@@ -1,4 +1,6 @@
 .page {
+  max-width: 1460px;
+  margin: 0 auto;
   padding: 20px 18px 40px;
 }
 

@@ -50,4 +50,13 @@ export const probeAnalysisZh = {
   drawerCorrectModels: "回答正确的模型",
   drawerWrongModels: "回答错误的模型",
   drawerNone: "无",
+
+  population: "Population",
+  populationTooltipTitle: "Population",
+  populationTooltipDesc: "一起被分析的一组模型。本页展示的结果都是基于这一组模型计算得到的。",
+  curatedPopulationTitle: "Curated Population",
+  curatedPopulationDesc: "一组具有代表性的模型，用于产生更清晰、更易解释的行为对比。",
+  hfPopulationTitle: "HF Population",
+  hfPopulationDesc:
+    "一个来自 Open LLM Leaderboard 的更大模型群体，其 Probing Memes 指标基于 Hugging Face 上公开可获得的信息进行计算。",
 } as const;

@@ -26,7 +26,7 @@ export const leaderboardZh = {
     "请选择两个模型：点击任意模型右侧的 vs. 按钮，第一个会高亮；再点击第二个即可生成对比面板。",
   leaderboardBarPrefix: "Leaderboard",
   leaderboardBarSortHint: "排序：点击表头右侧 ▲/▼",
-  population: "模型群体",
+  population: "Population",
   dataset: "数据集",
   models: "模型数",
   search: "Search:",
@@ -53,4 +53,11 @@ export const leaderboardZh = {
   organizationSummary: "Organizations",
   showRankDelta: "显示排名变动",
   rankDeltaPrefix: "",
+  populationTooltipTitle: "Population",
+  populationTooltipDesc: "一起被分析的一组模型。本页展示的结果都是基于这一组模型计算得到的。",
+  curatedPopulationTitle: "Curated Population",
+  curatedPopulationDesc: "一组具有代表性的模型，用于产生更清晰、更易解释的行为对比。",
+  hfPopulationTitle: "HF Population",
+  hfPopulationDesc:
+    "一个来自 Open LLM Leaderboard 的更大模型群体，其 Probing Memes 指标基于 Hugging Face 上公开可获得的信息进行计算。",
 } as const;
