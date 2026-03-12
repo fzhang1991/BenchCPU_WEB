@@ -64,6 +64,7 @@ jobs:
           SCRIPT_AFTER: |
             set -e
             cd "${{ secrets.TARGET_FRONTEND }}"
+            nvm use 20
             npm ci
             npm run build
             ${{ secrets.FRONTEND_RESTART_CMD }}
