@@ -3,6 +3,7 @@ export const exploreZh = {
   navMemeProbeProperties: "Meme Probe Properties",
   navMemeScores: "Meme Scores",
   navExperimentalSettings: "实验设置",
+  navImplications: "Probing Memes范式能做什么？",
 
   sectionParadigmOverviewTitle: "Probing Memes 范式总览",
   sectionParadigmOverviewLead:
@@ -94,6 +95,23 @@ export const exploreZh = {
     "需要说明的是，这里的 evaluation 标准与 Open LLM Leaderboard 本身并不相同：Probing Memes 范式只收集题目的正确和错误结果，并据此构造 Perception Matrix。",
   largeScaleP3:
     "为保证一致性，构建过程中会移除记录缺失的模型，也会移除信息不完整的题目，从而使保留的矩阵在模型与 probes 之间保持对齐。",
+
+  sectionImplicationsTitle: "Implications：Probing Memes 范式能够支持什么",
+  sectionImplicationsLead:
+    "Probing Memes 范式并不止于描述性评估。通过 Meme Probe Properties（MPPs）和 Meme Scores（MSs）为 probes 与模型构建结构化表示，它揭示出细粒度的行为结构，并可被直接用于一系列更实际的应用场景。",
+  implicationsRoutingTitle: "通过 Meme-Guided Model Routing 提供决策支持",
+  implicationsRoutingP1:
+    "Meme Scores 能够刻画模型在行为特征与能力上的差异，因此可以根据任务需求选择更合适的模型。",
+  implicationsRoutingP2:
+    "论文通过 routing 实验验证了这一点：如果根据模型在 meme 相关维度上的优势来为题目分配模型，整体性能可以得到提升。这说明 Meme Scores 不仅适用于分析，也适用于多模型系统和 agent-like pipeline 等实际场景，在这些场景中，为每个题目选择合适的模型能够改善端到端效果。",
+  implicationsDiagnosisTitle: "通过 Probe-Level Surprise Analysis 进行行为诊断",
+  implicationsDiagnosisP1:
+    "Probing Memes 范式还支持在 probe 层面进行细粒度分析。",
+  implicationsDiagnosisP2:
+    "在论文中，实验重点分析了 high-surprise probes。这类 probes 能捕捉一些稀有但信息量很强的现象，例如强模型在简单题上失败、而弱模型在更难题上成功。通过对这些 probes 的针对性分析，研究识别出了这类异常的典型模式，并进一步探查其潜在成因，从而为理解模型为何会在具体题目上成功或失败提供了可操作的洞见。",
+  implicationsMoreDetailsPrefix: "更多细节与其他应用请参考",
+  implicationsMoreDetailsLinkText: "paper",
+  implicationsMoreDetailsSuffix: "。",
 
   sidebarTitle: "本页导航",
 

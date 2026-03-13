@@ -35,6 +35,7 @@ const BASE_TEXT = {
   navMemeProbeProperties: "Meme Probe Properties",
   navMemeScores: "Meme Scores",
   navExperimentalSettings: "Experimental Settings",
+  navImplications: "What the Probing Memes Paradigm Enables",
 
   sectionParadigmOverviewTitle: "The Probing Memes Paradigm Overview",
   sectionParadigmOverviewLead:
@@ -125,6 +126,23 @@ const BASE_TEXT = {
     "Note that the evaluation criterion here is different from that of the Open LLM Leaderboard itself: the Probing Memes paradigm only collects correct/incorrect outcomes to construct the Perception Matrix.",
   largeScaleP3:
     "To ensure consistency, the construction process removes models with missing records and also removes items with incomplete information, so that the retained matrix remains aligned across models and probes.",
+
+  sectionImplicationsTitle: "Implications: What the Probing Memes Paradigm Enables",
+  sectionImplicationsLead:
+    "The Probing Memes Paradigm goes beyond descriptive evaluation. By constructing structured representations of probes and models through Meme Probe Properties (MPPs) and Meme Scores (MSs), it reveals fine-grained behavioral structure that can be directly used for a range of practical applications.",
+  implicationsRoutingTitle: "Decision Support via Meme-Guided Model Routing",
+  implicationsRoutingP1:
+    "Meme Scores capture differences in models’ behavioral traits and capabilities, making it possible to select models according to task requirements.",
+  implicationsRoutingP2:
+    "The paper validates this idea with a routing experiment, showing that assigning items to models based on their meme-related strengths can improve overall performance. This suggests that Meme Scores are useful not only for analysis, but also for practical multi-model systems and agent-like pipelines, where selecting the right model for each item can lead to better end-to-end results.",
+  implicationsDiagnosisTitle: "Behavioral Diagnosis via Probe-Level Surprise Analysis",
+  implicationsDiagnosisP1:
+    "The Probing Memes Paradigm also supports fine-grained analysis at the probe level.",
+  implicationsDiagnosisP2:
+    "In the paper, experiments focus on high-surprise probes, which capture rare but informative phenomena such as stronger models failing on easy items while weaker models succeed on harder ones. Through targeted analysis of these probes, the study identifies characteristic patterns of these anomalies and investigates their underlying causes, providing actionable insight into how and why models succeed or fail on specific items.",
+  implicationsMoreDetailsPrefix: "For more details and other applications, see the ",
+  implicationsMoreDetailsLinkText: "paper",
+  implicationsMoreDetailsSuffix: ".",
 
   sidebarTitle: "On this page",
 
@@ -221,6 +239,7 @@ export default function ExplorePage() {
       { id: "meme-probe-properties", label: t.navMemeProbeProperties },
       { id: "meme-scores", label: t.navMemeScores },
       { id: "experimental-settings", label: t.navExperimentalSettings },
+      { id: "implications", label: t.navImplications },
     ],
     [t]
   );
@@ -880,6 +899,42 @@ export default function ExplorePage() {
                   <p>{t.largeScaleP3}</p>
                 </div>
               </div>
+            </section>
+
+            <section id="implications" className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <h2 className={styles.sectionTitle}>{t.sectionImplicationsTitle}</h2>
+                <p className={styles.sectionLead}>{t.sectionImplicationsLead}</p>
+              </div>
+
+              <div className={styles.card}>
+                <div className={styles.cardTitle}>{t.implicationsRoutingTitle}</div>
+                <div className={styles.richText}>
+                  <p>{t.implicationsRoutingP1}</p>
+                  <p>{t.implicationsRoutingP2}</p>
+                </div>
+              </div>
+
+              <div className={styles.card}>
+                <div className={styles.cardTitle}>{t.implicationsDiagnosisTitle}</div>
+                <div className={styles.richText}>
+                  <p>{t.implicationsDiagnosisP1}</p>
+                  <p>{t.implicationsDiagnosisP2}</p>
+                </div>
+              </div>
+
+              <p className={styles.implicationsFootnote}>
+                {t.implicationsMoreDetailsPrefix}
+                <a
+                  href="https://arxiv.org/abs/2603.04408"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.inlineLink}
+                >
+                  {t.implicationsMoreDetailsLinkText}
+                </a>
+                {t.implicationsMoreDetailsSuffix}
+              </p>
             </section>
           </div>
         </main>
