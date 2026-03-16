@@ -54,7 +54,7 @@ const RADAR_THEME_B = {
 
 const BASE_TEXT = {
   heroDesc:
-    "Below are quick previews of three sections (Model Comparison / Dataset Analysis / Experimental Workflow). Click a card to open the full page.",
+    "Inspired by the concept of memes (cultural genes), we introduce the Probing Memes Paradigm, a population-based evaluation framework that assesses both datasets and models, enabling fine-grained characterization and analysis of every model and every item within a dataset. Below are previews (Model Comparison / Dataset Analysis / Experimental Workflow). Click a card to open the full page.",
 
   modelLeaderboard: "Model Leaderboard",
   datasetAnalysis: "Dataset Analysis",
