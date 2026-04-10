@@ -17,13 +17,128 @@
   text-align: center;
 }
 
+.heroTopRow{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  column-gap: 12px;
+  margin-bottom: 8px;
+}
+
+.heroTopSpacer{
+  min-width: 0;
+}
+
 .heroTitle{
   font-size: 30px;
   font-weight: 950;
   letter-spacing: -0.03em;
   color: rgba(15,23,42,0.92);
-  margin-bottom: 8px;
+  margin: 0;
   text-align: center;
+}
+
+.memesAnchor{
+  justify-self: start;
+  position: relative;
+}
+
+.aboutMemesButton{
+  appearance: none;
+  border: 1px solid rgba(59,130,246,0.30);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.94) 100%);
+  color: rgba(71,85,105,0.96);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.08);
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.aboutMemesButton:hover{
+  transform: translateY(-1px);
+  border-color: rgba(37,99,235,0.42);
+  box-shadow: 0 10px 24px rgba(37,99,235,0.12);
+}
+
+.memesPopover{
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 20;
+  width: 460px;
+  max-width: min(92vw, 460px);
+  background: rgba(255,255,255,0.98);
+  border: 1px solid rgba(226,232,240,0.95);
+  border-radius: 22px;
+  padding: 14px;
+  box-shadow: 0 22px 60px rgba(15,23,42,0.16);
+  backdrop-filter: blur(10px);
+  text-align: left;
+}
+
+.memesPopover::before{
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 28px;
+  width: 14px;
+  height: 14px;
+  background: rgba(255,255,255,0.98);
+  border-left: 1px solid rgba(226,232,240,0.95);
+  border-top: 1px solid rgba(226,232,240,0.95);
+  transform: rotate(45deg);
+}
+
+.memesSection{
+  border-radius: 16px;
+  padding: 14px 15px;
+  border: 1px solid transparent;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+}
+
+.memesSection + .memesSection{
+  margin-top: 12px;
+}
+
+.memesSectionWhat{
+  background: linear-gradient(180deg, rgba(239,246,255,0.96) 0%, rgba(248,250,252,0.98) 100%);
+  border-color: rgba(191,219,254,0.92);
+}
+
+.memesSectionWhy{
+  background: linear-gradient(180deg, rgba(240,253,250,0.96) 0%, rgba(248,250,252,0.98) 100%);
+  border-color: rgba(167,243,208,0.92);
+}
+
+.memesSectionTitle{
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: rgba(15,23,42,0.96);
+  margin-bottom: 8px;
+}
+
+.memesSectionBody{
+  font-size: 13.5px;
+  line-height: 1.68;
+  color: rgba(51,65,85,0.96);
+  text-align: left;
+}
+
+.memesSectionBody p{
+  margin: 0;
+}
+
+.memesSectionBody p + p{
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(148,163,184,0.16);
 }
 
 .heroDesc{
@@ -299,6 +414,44 @@
     padding: 18px 12px 56px;
   }
 
+  .heroTopRow{
+    column-gap: 8px;
+  }
+
+  .heroTitle{
+    font-size: 26px;
+  }
+
+  .aboutMemesButton{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .memesPopover{
+    width: min(92vw, 360px);
+    right: 0;
+    left: auto;
+    padding: 12px;
+  }
+
+  .memesPopover::before{
+    left: auto;
+    right: 26px;
+  }
+
+  .memesSection{
+    padding: 12px 13px;
+  }
+
+  .memesSectionTitle{
+    font-size: 14px;
+  }
+
+  .memesSectionBody{
+    font-size: 13px;
+    line-height: 1.62;
+  }
+
   .cardTitle{
     font-size: 16px;
   }
@@ -319,5 +472,38 @@
 
   .previewImg{
     transform: scale(0.96);
+  }
+}
+
+@media (max-width: 560px){
+  .heroTopRow{
+    grid-template-columns: 1fr auto;
+    row-gap: 8px;
+  }
+
+  .heroTopSpacer{
+    display: none;
+  }
+
+  .heroTitle{
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .memesAnchor{
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .memesPopover{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .memesPopover::before{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) rotate(45deg);
   }
 }

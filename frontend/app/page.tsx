@@ -56,7 +56,7 @@ const BASE_TEXT = {
   heroDesc:
     "Inspired by the concept of memes, we introduce the Probing Memes Paradigm, a population-based framework that evaluates both datasets and models, enabling fine-grained characterization and analysis of every model and every item within datasets. Below are previews (Model Comparison / Dataset Analysis / Experimental Workflow). Click a card to open the full page.",
 
-  aboutMemes: 'About Memes',
+  aboutMemes: "About Memes",
   whatAreMemes: "What are Memes?",
   whyMemes: "Why Memes?",
   memesWhatPara1:
@@ -635,8 +635,7 @@ export default function HomePage() {
         mx = Math.max(mx, v);
       }
 
-      ranges[m] =
-        !Number.isFinite(mn) || !Number.isFinite(mx) ? { min: 0, max: 1 } : { min: mn, max: mx };
+      ranges[m] = !Number.isFinite(mn) || !Number.isFinite(mx) ? { min: 0, max: 1 } : { min: mn, max: mx };
     }
 
     return ranges;
@@ -645,111 +644,37 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
       <div className={styles.heroCard}>
-        <div
-          style={{
-            width: "100%",
-            display: "grid",
-            gridTemplateColumns: "1fr auto 1fr",
-            alignItems: "center",
-            columnGap: 12,
-          }}
-        >
-          <div />
-
+        <div className={styles.heroTopRow}>
+          <div className={styles.heroTopSpacer} />
           <div className={styles.heroTitle}>Probing Memes</div>
 
-          <div
-            ref={memesPopoverRef}
-            style={{
-              justifySelf: "start",
-              position: "relative",
-            }}
-          >
+          <div ref={memesPopoverRef} className={styles.memesAnchor}>
             <button
               type="button"
               onClick={() => setIsMemesOpen((v) => !v)}
               aria-expanded={isMemesOpen}
               aria-haspopup="dialog"
-              style={{
-                border: "1px solid rgba(148,163,184,0.45)",
-                background: "rgba(255,255,255,0.88)",
-                color: "rgba(71,85,105,0.96)",
-                borderRadius: 999,
-                padding: isMobile ? "5px 10px" : "6px 12px",
-                fontSize: isMobile ? 12 : 13,
-                fontWeight: 600,
-                lineHeight: 1.2,
-                cursor: "pointer",
-                boxShadow: "0 6px 18px rgba(15,23,42,0.06)",
-                whiteSpace: "nowrap",
-              }}
+              className={styles.aboutMemesButton}
             >
               {t.aboutMemes}
             </button>
 
             {isMemesOpen && (
-              <div
-                role="dialog"
-                aria-label={t.aboutMemes}
-                style={{
-                  position: "absolute",
-                  top: "calc(100% + 10px)",
-                  left: isMobile ? "auto" : 0,
-                  right: isMobile ? 0 : "auto",
-                  zIndex: 20,
-                  width: isMobile ? "min(92vw, 360px)" : 420,
-                  maxWidth: "92vw",
-                  background: "rgba(255,255,255,0.98)",
-                  border: "1px solid rgba(226,232,240,0.95)",
-                  borderRadius: 16,
-                  padding: isMobile ? 14 : 16,
-                  boxShadow: "0 18px 50px rgba(15,23,42,0.14)",
-                  backdropFilter: "blur(8px)",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 800,
-                    color: "rgba(15,23,42,0.98)",
-                    marginBottom: 8,
-                  }}
-                >
-                  {t.whatAreMemes}
+              <div role="dialog" aria-label={t.aboutMemes} className={styles.memesPopover}>
+                <div className={`${styles.memesSection} ${styles.memesSectionWhat}`}>
+                  <div className={styles.memesSectionTitle}>{t.whatAreMemes}</div>
+                  <div className={styles.memesSectionBody}>
+                    <p>{t.memesWhatPara1}</p>
+                    <p>{t.memesWhatPara2}</p>
+                  </div>
                 </div>
 
-                <div
-                  style={{
-                    fontSize: 13.5,
-                    lineHeight: 1.6,
-                    color: "rgba(51,65,85,0.96)",
-                  }}
-                >
-                  <p style={{ margin: 0 }}>{t.memesWhatPara1}</p>
-                  <p style={{ margin: "10px 0 0 0" }}>{t.memesWhatPara2}</p>
-                </div>
-
-                <div
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 800,
-                    color: "rgba(15,23,42,0.98)",
-                    marginTop: 14,
-                    marginBottom: 8,
-                  }}
-                >
-                  {t.whyMemes}
-                </div>
-
-                <div
-                  style={{
-                    fontSize: 13.5,
-                    lineHeight: 1.6,
-                    color: "rgba(51,65,85,0.96)",
-                  }}
-                >
-                  <p style={{ margin: 0 }}>{t.memesWhyPara1}</p>
-                  <p style={{ margin: "10px 0 0 0" }}>{t.memesWhyPara2}</p>
+                <div className={`${styles.memesSection} ${styles.memesSectionWhy}`}>
+                  <div className={styles.memesSectionTitle}>{t.whyMemes}</div>
+                  <div className={styles.memesSectionBody}>
+                    <p>{t.memesWhyPara1}</p>
+                    <p>{t.memesWhyPara2}</p>
+                  </div>
                 </div>
               </div>
             )}

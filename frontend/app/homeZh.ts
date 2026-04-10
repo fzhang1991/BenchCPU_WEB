@@ -4,9 +4,9 @@ export const homeZh = {
 
   aboutMemes: "关于 Memes",
   whatAreMemes: "什么是 Memes？",
-  whyMemes: "为什么是 Memes？",
+  whyMemes: "为什么借用 Memes？",
   memesWhatPara1:
-    "在《z自私的基因（Dawkins, 1976）中，memes 被描述为“曲调、思想、流行语、服饰风尚，以及制陶或建造拱门的方式”等，并被用来类比文化传播中的基因。",
+    "在《自私的基因》（Dawkins, 1976）中，memes 被描述为“曲调、思想、流行语、服饰风尚，以及制陶或建造拱门的方式”等，并被用来类比文化传播中的基因。",
   memesWhatPara2:
     "在 Probing Memes Paradigm 中，meme 被视为一种在模型群体中共享的潜在行为因子，并且可以通过具有不同、经过有目的设计属性的题目加以探测。",
   memesWhyPara1:
