@@ -1,0 +1,3391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta name="generator" content="SPEC CPU2017 Tools v6247 (HTML v6255)" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8;FF=2" />
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+    <meta name="author" content="cpu bench" />
+    <meta name="description"
+        content="CFP2017 result for Huawei TaiShan 200 (Model 2280); SPECspeed2017_fp_base: 33.5; SPECspeed2017_fp_peak: Not Run" />
+    <meta name="keywords" content="CFP2017 SPEC www.spec.org hw Huawei TaiShan 200 (Model 2280) cpu bench Base=33.5" />
+    <style type="text/css" id="internalScreen" media="screen">
+        <!--
+        body {
+            margin: 1em;
+            border: 0;
+            padding: 0;
+            background: white;
+            color: black;
+            font-family: "Times Roman", times, serif;
+        }
+
+        .tt {
+            font-family: monospace;
+        }
+
+        div.flagClass>h2 {
+            border-bottom: 1px dotted black;
+            width: 80%;
+            font-family: sans-serif;
+        }
+
+        div.flagDesc {
+            clear: both;
+            background-color: rgb(255, 245, 220);
+            border: 1px solid blue;
+            /* XXX This is for debugging */
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        li.flagName {
+            font-weight: bold;
+            width: 100%;
+            border-bottom: 1px solid black;
+            display: block;
+            margin: 0.5em 0 0.5em 0;
+            font-size: 125%;
+            white-space: nowrap;
+        }
+
+        /* (presumably short) informationals all get grouped together near the top
+ * of the flag description block.
+ */
+        .flagOrigin,
+        .flagDescClass,
+        .flagDescCompiler,
+        .flagDescRE,
+        .flagDescParallel,
+        .flagVar {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            float: left;
+            padding: 0.25em;
+            margin: 0 0 0.25em 0;
+        }
+
+        .flagDescClass::before {
+            content: "Flag Class: ";
+        }
+
+        .flagDescCompiler::before {
+            content: "Compilers that recognize this flag: ";
+        }
+
+        .flagDescRE::before {
+            content: "Regular Expression: ";
+        }
+
+        .flagDescParallel::before {
+            content: "Indicates automatic parallelization: ";
+        }
+
+        .flagVar::before {
+            content: "Found In: ";
+        }
+
+        span.flagDescInc {
+            border-bottom: 1px solid black;
+        }
+
+        /* The description text stands alone. */
+        .descText {
+            clear: both;
+            padding: 0.5em 1em 0.5em 1em;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            margin: 0.5em 0 0.5em 0;
+        }
+
+        /* This is a separate class so that in the print style sheet it can
+ * be ignored.
+ * Also, 'style="clear:both;"' is longer than 'class="clear"'
+ */
+        .clear {
+            clear: both;
+        }
+
+        /* This is really for the link _to_ the flag report */
+        li.unknown>a:link,
+        a:visited {
+            text-decoration: none;
+        }
+
+        .monospace {
+            font-family: Courier, "Courier New", monospace;
+        }
+
+        ul.flagDescList {
+            clear: both;
+            list-style-type: none;
+        }
+
+        /* Arrange for each flag description to have some headroom. */
+        ul.flagDescList>li {
+            margin: 2em 0 0 0;
+        }
+
+        ul.flagDesc {
+            list-style-type: none;
+        }
+
+        div.flagTOC {
+            border: 1px solid white;
+            padding: 0.5em 1em;
+            margin: 0 auto;
+            width: 95%;
+        }
+
+        ul.flagTOC {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.flagTOC>li {
+            border: thin dotted lightgray;
+            margin: 0 1em 0 0;
+            padding: 0.25em 0 0.25em 0;
+            float: left;
+            display: inline-block;
+            /* Fix IE bug; compliant browsers will ignore this */
+            width: 22.3%;
+            min-height: 1.5em;
+            overflow: hidden;
+            /* If the table gets squeezed too much, don't let the
+                     * text overlap
+                     */
+        }
+
+        ul.flagTOC>li>a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        ul.SubMenu li {
+            border: 1px solid white;
+            /* rgb(211, 211, 211); */
+        }
+
+        ul.SubMenu {
+            display: none;
+            position: absolute;
+            list-style-type: none;
+            border: 1px solid black;
+            background-color: white;
+            margin: 0 0 0 2em;
+            padding: 0.25em 5em 0.25em 0.5em;
+            white-space: nowrap;
+        }
+
+        li:hover>ul.SubMenu,
+        ul.SubMenu:hover {
+            display: block;
+        }
+
+        ul.SubMenu>li:hover,
+        ul.flagTOC>li:hover {
+            background-color: rgb(176, 196, 238);
+            /* lightsteelgray... almost */
+            border: 1px solid rgb(128, 128, 128);
+        }
+
+
+        .resultpage a:link,
+        .resultpage a:visited {
+            text-decoration: none;
+            border-bottom: 1px dashed black;
+            color: inherit;
+        }
+
+        .resultpage {
+            margin: auto;
+            padding: 0;
+            width: 1000px;
+        }
+
+        .resultpage_landscape {
+            width: 1200px;
+        }
+
+        div.logo {
+            float: left;
+            width: 38px;
+            height: 57px;
+        }
+
+        .titlebarcontainer,
+        .resultstable,
+        .ncsection {
+            border: solid 1px;
+            width: 100%;
+            float: left;
+        }
+
+        .ncsection {
+            background-color: white;
+            color: black;
+        }
+
+        .titlebar {
+            float: left;
+            padding: 0em 1em 0em 1em;
+            text-align: center;
+            width: 91%;
+        }
+
+        div.titlebar>h1,
+        div.titlebar>p {
+            margin: 0 1em 0 1em;
+        }
+
+        div.ncsection {
+            font-size: 150%;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .systembar {
+            width: 65%;
+            font-size: 150%;
+            margin: 0;
+        }
+
+        td.systembar {
+            padding: 0.2em;
+        }
+
+        .metricbar {
+            margin: 0;
+            font-size: 120%;
+        }
+
+        /* CSS for the old-style div-based systembar */
+
+        div.systembar {
+            float: left;
+            padding: 0.1em;
+            border-right: solid 1px black;
+        }
+
+        div.metricbar {
+            padding: 0.1em;
+            float: right;
+            width: 33%;
+            height: 50%;
+        }
+
+        .base,
+        .metricbar#base {
+            background-color: #c8c8c8;
+            color: black;
+        }
+
+        .peak,
+        .metricbar#peak {
+            background-color: transparent;
+            color: #2626b3;
+            /* peak blue */
+        }
+
+        .metricbar p {
+            margin: 0;
+            padding: 0.2em;
+        }
+
+        .datebar p,
+        .systembar p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Datebar stuff for older results */
+        .datebar p {
+            float: left;
+            border-left: solid 1px black;
+        }
+
+        span.item {
+            float: left;
+            margin: 0;
+            padding: 0.1em 0 0.1em 0.5em;
+        }
+
+        span.value {
+            float: right;
+            padding: 0.1em 0.5em 0.1em 0;
+        }
+
+        div.datebar {
+            width: 100%;
+            float: left;
+            min-height: 100%;
+            border: solid 1px black;
+        }
+
+        p#test_sponsor {
+            width: 48%;
+        }
+
+        p#tester {
+            width: 48%;
+        }
+
+        p#license_num {
+            width: 24%;
+        }
+
+        p#test_date {
+            width: 23%;
+        }
+
+        p#hw_avail,
+        p#sw_avail {
+            width: 25%;
+        }
+
+        /* Table-based datebar and systembar on newer results */
+        table.datebar,
+        table.titlebarcontainer {
+            float: left;
+            width: 100%;
+            min-height: 100%;
+            border-collapse: collapse;
+            border: solid 1px black;
+            table-layout: fixed;
+        }
+
+        table.datebar th {
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            padding-left: 0.5em;
+            padding: 0 0.5em 0 0.25em;
+        }
+
+        table.datebar td {
+            text-align: left;
+            padding: 0 0.5em 0 0;
+        }
+
+        table.titlebarcontainer tr {
+            vertical-align: top;
+        }
+
+        table.titlebarcontainer td {
+            border-right: 1px solid black;
+        }
+
+        th#license_num {
+            width: 17%;
+        }
+
+        th#test_sponsor {
+            width: 17%;
+        }
+
+        th#tester {
+            width: 17%;
+        }
+
+        th#test_date {
+            width: 22%;
+        }
+
+        th#hw_avail {
+            width: 22%;
+        }
+
+        th#sw_avail {
+            width: 22%;
+        }
+
+        td#license_num_val {
+            width: 52%;
+        }
+
+        td#test_sponsor_val {
+            width: 52%;
+        }
+
+        td#tester_val {
+            width: 52%;
+        }
+
+        td#test_date_val {
+            width: 13%;
+            white-space: nowrap;
+        }
+
+        td#hw_avail_val {
+            width: 13%;
+            white-space: nowrap;
+        }
+
+        td#sw_avail_val {
+            width: 13%;
+            white-space: nowrap;
+        }
+
+
+        div.graph {
+            width: 100% margin: auto;
+        }
+
+        div.sysdesc>h2 {
+            text-align: center;
+            background-color: #c8c8c8;
+            color: black;
+            padding: 0.5em 0 0.5em 0;
+            margin: 0;
+        }
+
+        div.sysdesc {
+            margin: 0.5em 0 0.5em 0;
+        }
+
+        div.infobox,
+        div.sysdesc {
+            float: left;
+            width: 100%;
+            padding: 0;
+            border: solid 1px black;
+        }
+
+        div.infobox table {
+            width: 49%;
+            float: left;
+        }
+
+        div.infobox table tr {
+            vertical-align: top;
+        }
+
+        div.infobox table#Hardware,
+        div.infobox table#BenchmarkSoftware {
+            width: 50%;
+            border-right: 1px solid black;
+        }
+
+        div.infobox table#Systems {
+            width: 100%;
+        }
+
+        div.infobox table#Power {
+            width: 100%;
+            border-top: 1px solid black;
+        }
+
+        div.infobox table#Systems tbody th {
+            width: 20%;
+        }
+
+        div.infobox thead th {
+            font-size: 200%;
+        }
+
+        div.infobox tbody th {
+            text-align: left;
+        }
+
+        .resultstable h2,
+        div.notes h2 {
+            text-align: center;
+            margin: 0.1em;
+        }
+
+        div.notes h3 {
+            margin: 0.1em;
+        }
+
+        div.notes table {
+            width: 100%;
+        }
+
+        div.notes table tr td {
+            text-align: right;
+            vertical-align: top;
+        }
+
+        /* Alas, IE6... if only you didn't suck so much...
+div.notes table tr td + td {
+*/
+        div.notes table td.al {
+            text-align: left;
+            width: 85%;
+        }
+
+        div.notes table tr td {
+            padding-bottom: 1em;
+        }
+
+        div.notes table.portability tr td {
+            padding: 0em;
+        }
+
+        div.notes table.portability {
+            padding: 1em;
+        }
+
+        .resultstable table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .resultstable th.basecol,
+        .resultstable th.peakcol {
+            padding: 0.1em;
+            font-size: 90%;
+        }
+
+        .resultstable th {
+            border: solid 2px black;
+        }
+
+        .resultstable td {
+            border: solid 1px #b8b8b8;
+        }
+
+        td.bm,
+        th.bm {
+            border-right: solid 2px black;
+            border-left: solid 2px black;
+        }
+
+        td.l_edge {
+            border-left: solid 2px black;
+        }
+
+        td.r_edge {
+            border-right: solid 2px black;
+        }
+
+        .resultstable tfoot td {
+            text-align: center;
+            border: solid 2px black;
+        }
+
+        tr.table_metrics>td {
+            text-align: right;
+        }
+
+        th.basecol {
+            background-color: #c8c8c8;
+            color: black;
+        }
+
+        td.basecol {
+            text-align: right;
+            background-color: transparent;
+            color: black;
+        }
+
+        th.peakcol {
+            text-align: center;
+        }
+
+        .peakcol {
+            background-color: transparent;
+            color: #2626b3;
+            /* peak blue */
+            text-align: right;
+        }
+
+        td.bm {
+            /* Basically, the benchmark name and copies columns */
+            background-color: #c8c8c8;
+            color: black;
+        }
+
+        span.selected {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .selected a:link,
+        .selected a:visited {
+            border-bottom: 0;
+        }
+
+        div.notes {
+            width: 100%;
+            float: left;
+            border: solid 1px black;
+        }
+
+        div.flagfooter {
+            text-align: center;
+        }
+
+        div.errors {
+            border: solid 2px red;
+        }
+
+        div.errors h2 {
+            background-color: transparent;
+            color: red;
+        }
+
+        div.footer {
+            border: none;
+        }
+
+        /* People find the "double underline" confusing.  And Safari 1.3 doesn't deal
+ * well with attempting to disable the border for userflag links.  So just
+ * give up and don't decorate user flags specially.
+********************
+span.userflag {
+  text-decoration: underline;
+}
+
+.userflag a:link {
+  border-bottom: 0;
+}
+********************
+*/
+
+        /* Keep flags from being wrapped */
+        span.userflag,
+        span.flagtext {
+            white-space: nowrap;
+        }
+
+        /* Most of the screen-specific CSS is also the common CSS */
+
+        /* Style for the non-image W3C marking at the bottom of the page, courtesy of
+ * Marek Prokop (http://www.sovavsiti.cz/css/w3c_buttons.html)
+ */
+        .w3cbutton3 {
+            margin: 1em 1em 0 0;
+            width: 9em;
+            border: 1px solid #ccc;
+            font-family: helvetica, arial, sans-serif;
+            font-size: 70%;
+            font-weight: bold;
+            float: left;
+        }
+
+        .w3cbutton3 a {
+            display: block;
+            width: 100%;
+        }
+
+        .w3cbutton3 a:link,
+        .w3cbutton3 a:visited,
+        .w3cbutton3 a:hover {
+            background-color: #fc6;
+            color: #000;
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        .w3cbutton3 span.w3c {
+            padding: 0 0.4em;
+            background-color: #fff;
+            color: #0c479d;
+        }
+        -->
+    </style>
+    <style type="text/css" id="internalPrint" media="print">
+        <!--
+        body {
+            margin: 1em;
+            border: 0;
+            padding: 0;
+            background: white;
+            color: black;
+            font-family: "Times Roman", times, serif;
+        }
+
+        .tt {
+            font-family: monospace;
+        }
+
+        div.flagClass>h2 {
+            border-bottom: 1px dotted black;
+            width: 80%;
+            font-family: sans-serif;
+        }
+
+        div.flagDesc {
+            clear: both;
+            background-color: rgb(255, 245, 220);
+            border: 1px solid blue;
+            /* XXX This is for debugging */
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        li.flagName {
+            font-weight: bold;
+            width: 100%;
+            border-bottom: 1px solid black;
+            display: block;
+            margin: 0.5em 0 0.5em 0;
+            font-size: 125%;
+            white-space: nowrap;
+        }
+
+        /* (presumably short) informationals all get grouped together near the top
+ * of the flag description block.
+ */
+        .flagOrigin,
+        .flagDescClass,
+        .flagDescCompiler,
+        .flagDescRE,
+        .flagDescParallel,
+        .flagVar {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            float: left;
+            padding: 0.25em;
+            margin: 0 0 0.25em 0;
+        }
+
+        .flagDescClass::before {
+            content: "Flag Class: ";
+        }
+
+        .flagDescCompiler::before {
+            content: "Compilers that recognize this flag: ";
+        }
+
+        .flagDescRE::before {
+            content: "Regular Expression: ";
+        }
+
+        .flagDescParallel::before {
+            content: "Indicates automatic parallelization: ";
+        }
+
+        .flagVar::before {
+            content: "Found In: ";
+        }
+
+        span.flagDescInc {
+            border-bottom: 1px solid black;
+        }
+
+        /* The description text stands alone. */
+        .descText {
+            clear: both;
+            padding: 0.5em 1em 0.5em 1em;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            margin: 0.5em 0 0.5em 0;
+        }
+
+        /* This is a separate class so that in the print style sheet it can
+ * be ignored.
+ * Also, 'style="clear:both;"' is longer than 'class="clear"'
+ */
+        .clear {
+            clear: both;
+        }
+
+        /* This is really for the link _to_ the flag report */
+        li.unknown>a:link,
+        a:visited {
+            text-decoration: none;
+        }
+
+        .monospace {
+            font-family: Courier, "Courier New", monospace;
+        }
+
+        ul.flagDescList {
+            clear: both;
+            list-style-type: none;
+        }
+
+        /* Arrange for each flag description to have some headroom. */
+        ul.flagDescList>li {
+            margin: 2em 0 0 0;
+        }
+
+        ul.flagDesc {
+            list-style-type: none;
+        }
+
+        div.flagTOC {
+            border: 1px solid white;
+            padding: 0.5em 1em;
+            margin: 0 auto;
+            width: 95%;
+        }
+
+        ul.flagTOC {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.flagTOC>li {
+            border: thin dotted lightgray;
+            margin: 0 1em 0 0;
+            padding: 0.25em 0 0.25em 0;
+            float: left;
+            display: inline-block;
+            /* Fix IE bug; compliant browsers will ignore this */
+            width: 22.3%;
+            min-height: 1.5em;
+            overflow: hidden;
+            /* If the table gets squeezed too much, don't let the
+                     * text overlap
+                     */
+        }
+
+        ul.flagTOC>li>a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        ul.SubMenu li {
+            border: 1px solid white;
+            /* rgb(211, 211, 211); */
+        }
+
+        ul.SubMenu {
+            display: none;
+            position: absolute;
+            list-style-type: none;
+            border: 1px solid black;
+            background-color: white;
+            margin: 0 0 0 2em;
+            padding: 0.25em 5em 0.25em 0.5em;
+            white-space: nowrap;
+        }
+
+        li:hover>ul.SubMenu,
+        ul.SubMenu:hover {
+            display: block;
+        }
+
+        ul.SubMenu>li:hover,
+        ul.flagTOC>li:hover {
+            background-color: rgb(176, 196, 238);
+            /* lightsteelgray... almost */
+            border: 1px solid rgb(128, 128, 128);
+        }
+
+
+        .resultpage a:link,
+        .resultpage a:visited {
+            text-decoration: none;
+            border-bottom: 1px dashed black;
+            color: inherit;
+        }
+
+        .resultpage {
+            margin: auto;
+            padding: 0;
+            width: 1000px;
+        }
+
+        .resultpage_landscape {
+            width: 1200px;
+        }
+
+        div.logo {
+            float: left;
+            width: 38px;
+            height: 57px;
+        }
+
+        .titlebarcontainer,
+        .resultstable,
+        .ncsection {
+            border: solid 1px;
+            width: 100%;
+            float: left;
+        }
+
+        .ncsection {
+            background-color: white;
+            color: black;
+        }
+
+        .titlebar {
+            float: left;
+            padding: 0em 1em 0em 1em;
+            text-align: center;
+            width: 91%;
+        }
+
+        div.titlebar>h1,
+        div.titlebar>p {
+            margin: 0 1em 0 1em;
+        }
+
+        div.ncsection {
+            font-size: 150%;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .systembar {
+            width: 65%;
+            font-size: 150%;
+            margin: 0;
+        }
+
+        td.systembar {
+            padding: 0.2em;
+        }
+
+        .metricbar {
+            margin: 0;
+            font-size: 120%;
+        }
+
+        /* CSS for the old-style div-based systembar */
+
+        div.systembar {
+            float: left;
+            padding: 0.1em;
+            border-right: solid 1px black;
+        }
+
+        div.metricbar {
+            padding: 0.1em;
+            float: right;
+            width: 33%;
+            height: 50%;
+        }
+
+        .base,
+        .metricbar#base {
+            background-color: #c8c8c8;
+            color: black;
+        }
+
+        .peak,
+        .metricbar#peak {
+            background-color: transparent;
+            color: #2626b3;
+            /* peak blue */
+        }
+
+        .metricbar p {
+            margin: 0;
+            padding: 0.2em;
+        }
+
+        .datebar p,
+        .systembar p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Datebar stuff for older results */
+        .datebar p {
+            float: left;
+            border-left: solid 1px black;
+        }
+
+        span.item {
+            float: left;
+            margin: 0;
+            padding: 0.1em 0 0.1em 0.5em;
+        }
+
+        span.value {
+            float: right;
+            padding: 0.1em 0.5em 0.1em 0;
+        }
+
+        div.datebar {
+            width: 100%;
+            float: left;
+            min-height: 100%;
+            border: solid 1px black;
+        }
+
+        p#test_sponsor {
+            width: 48%;
+        }
+
+        p#tester {
+            width: 48%;
+        }
+
+        p#license_num {
+            width: 24%;
+        }
+
+        p#test_date {
+            width: 23%;
+        }
+
+        p#hw_avail,
+        p#sw_avail {
+            width: 25%;
+        }
+
+        /* Table-based datebar and systembar on newer results */
+        table.datebar,
+        table.titlebarcontainer {
+            float: left;
+            width: 100%;
+            min-height: 100%;
+            border-collapse: collapse;
+            border: solid 1px black;
+            table-layout: fixed;
+        }
+
+        table.datebar th {
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            padding-left: 0.5em;
+            padding: 0 0.5em 0 0.25em;
+        }
+
+        table.datebar td {
+            text-align: left;
+            padding: 0 0.5em 0 0;
+        }
+
+        table.titlebarcontainer tr {
+            vertical-align: top;
+        }
+
+        table.titlebarcontainer td {
+            border-right: 1px solid black;
+        }
+
+        th#license_num {
+            width: 17%;
+        }
+
+        th#test_sponsor {
+            width: 17%;
+        }
+
+        th#tester {
+            width: 17%;
+        }
+
+        th#test_date {
+            width: 22%;
+        }
+
+        th#hw_avail {
+            width: 22%;
+        }
+
+        th#sw_avail {
+            width: 22%;
+        }
+
+        td#license_num_val {
+            width: 52%;
+        }
+
+        td#test_sponsor_val {
+            width: 52%;
+        }
+
+        td#tester_val {
+            width: 52%;
+        }
+
+        td#test_date_val {
+            width: 13%;
+            white-space: nowrap;
+        }
+
+        td#hw_avail_val {
+            width: 13%;
+            white-space: nowrap;
+        }
+
+        td#sw_avail_val {
+            width: 13%;
+            white-space: nowrap;
+        }
+
+
+        div.graph {
+            width: 100% margin: auto;
+        }
+
+        div.sysdesc>h2 {
+            text-align: center;
+            background-color: #c8c8c8;
+            color: black;
+            padding: 0.5em 0 0.5em 0;
+            margin: 0;
+        }
+
+        div.sysdesc {
+            margin: 0.5em 0 0.5em 0;
+        }
+
+        div.infobox,
+        div.sysdesc {
+            float: left;
+            width: 100%;
+            padding: 0;
+            border: solid 1px black;
+        }
+
+        div.infobox table {
+            width: 49%;
+            float: left;
+        }
+
+        div.infobox table tr {
+            vertical-align: top;
+        }
+
+        div.infobox table#Hardware,
+        div.infobox table#BenchmarkSoftware {
+            width: 50%;
+            border-right: 1px solid black;
+        }
+
+        div.infobox table#Systems {
+            width: 100%;
+        }
+
+        div.infobox table#Power {
+            width: 100%;
+            border-top: 1px solid black;
+        }
+
+        div.infobox table#Systems tbody th {
+            width: 20%;
+        }
+
+        div.infobox thead th {
+            font-size: 200%;
+        }
+
+        div.infobox tbody th {
+            text-align: left;
+        }
+
+        .resultstable h2,
+        div.notes h2 {
+            text-align: center;
+            margin: 0.1em;
+        }
+
+        div.notes h3 {
+            margin: 0.1em;
+        }
+
+        div.notes table {
+            width: 100%;
+        }
+
+        div.notes table tr td {
+            text-align: right;
+            vertical-align: top;
+        }
+
+        /* Alas, IE6... if only you didn't suck so much...
+div.notes table tr td + td {
+*/
+        div.notes table td.al {
+            text-align: left;
+            width: 85%;
+        }
+
+        div.notes table tr td {
+            padding-bottom: 1em;
+        }
+
+        div.notes table.portability tr td {
+            padding: 0em;
+        }
+
+        div.notes table.portability {
+            padding: 1em;
+        }
+
+        .resultstable table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .resultstable th.basecol,
+        .resultstable th.peakcol {
+            padding: 0.1em;
+            font-size: 90%;
+        }
+
+        .resultstable th {
+            border: solid 2px black;
+        }
+
+        .resultstable td {
+            border: solid 1px #b8b8b8;
+        }
+
+        td.bm,
+        th.bm {
+            border-right: solid 2px black;
+            border-left: solid 2px black;
+        }
+
+        td.l_edge {
+            border-left: solid 2px black;
+        }
+
+        td.r_edge {
+            border-right: solid 2px black;
+        }
+
+        .resultstable tfoot td {
+            text-align: center;
+            border: solid 2px black;
+        }
+
+        tr.table_metrics>td {
+            text-align: right;
+        }
+
+        th.basecol {
+            background-color: #c8c8c8;
+            color: black;
+        }
+
+        td.basecol {
+            text-align: right;
+            background-color: transparent;
+            color: black;
+        }
+
+        th.peakcol {
+            text-align: center;
+        }
+
+        .peakcol {
+            background-color: transparent;
+            color: #2626b3;
+            /* peak blue */
+            text-align: right;
+        }
+
+        td.bm {
+            /* Basically, the benchmark name and copies columns */
+            background-color: #c8c8c8;
+            color: black;
+        }
+
+        span.selected {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .selected a:link,
+        .selected a:visited {
+            border-bottom: 0;
+        }
+
+        div.notes {
+            width: 100%;
+            float: left;
+            border: solid 1px black;
+        }
+
+        div.flagfooter {
+            text-align: center;
+        }
+
+        div.errors {
+            border: solid 2px red;
+        }
+
+        div.errors h2 {
+            background-color: transparent;
+            color: red;
+        }
+
+        div.footer {
+            border: none;
+        }
+
+        /* People find the "double underline" confusing.  And Safari 1.3 doesn't deal
+ * well with attempting to disable the border for userflag links.  So just
+ * give up and don't decorate user flags specially.
+********************
+span.userflag {
+  text-decoration: underline;
+}
+
+.userflag a:link {
+  border-bottom: 0;
+}
+********************
+*/
+
+        /* Keep flags from being wrapped */
+        span.userflag,
+        span.flagtext {
+            white-space: nowrap;
+        }
+
+        /* Classes that contain links - useless on paper */
+        .flagTOC,
+        .SubMenu,
+        .NoPrint {
+            display: none;
+        }
+
+        /* Don't decorate links - they're not clickable */
+        a {
+            text-decoration: none;
+            background: inherit;
+            color: inherit;
+        }
+
+        .resultpage {
+            width: 100%;
+        }
+
+        .w3cbutton3 {
+            display: none;
+        }
+        -->
+    </style>
+
+    <title>CPU2017 Floating Point Speed Result: hw Huawei TaiShan 200 (Model 2280) (test sponsored by cpu bench)</title>
+</head>
+
+<body>
+    <div class="resultpage">
+        <div class="titlebarcontainer">
+            <div class="logo">
+            </div>
+            <div class="titlebar">
+                <h1>SPEC CPU&reg;2017 Floating Point Speed Result</h1>
+                <p style="font-size: smaller">Copyright 2017-2026 Standard Performance Evaluation Corporation</p>
+            </div>
+        </div>
+        <table class="titlebarcontainer">
+            <tr>
+                <td class="systembar" rowspan="2">
+                    <p>hw
+                        <span style="font-size: 75%">(Test Sponsor: cpu bench)</span>
+                    </p>
+                    <p>Huawei TaiShan 200 (Model 2280) </p>
+                </td>
+                <td class="metricbar base">
+                    <p><span class="item"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#SPECspeed2017fpbase">SPECspeed&reg;2017_fp_base</a>
+                            = </span>
+                        <span class="value">33.5<span style="visibility:hidden">0</span></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="metricbar peak">
+                    <p><span class="item"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#SPECspeed2017fppeak">SPECspeed&reg;2017_fp_peak</a>
+                            = </span>
+                        <span class="value">Not Run</span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table class="datebar">
+            <tbody>
+                <tr>
+                    <th id="license_num"><a
+                            href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#CPU2017License">CPU2017
+                            License:</a></th>
+                    <td id="license_num_val">999</td>
+                    <th id="test_date"><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#TestDate">Test
+                            Date:</a></th>
+                    <td id="test_date_val">May-2026</td>
+                </tr>
+                <tr>
+                    <th id="test_sponsor"><a
+                            href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#TestSponsor">Test
+                            Sponsor:</a></th>
+                    <td id="test_sponsor_val">cpu bench</td>
+                    <th id="hw_avail"><a
+                            href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#HardwareAvailability">Hardware
+                            Availability:</a></th>
+                    <td id="hw_avail_val">hw</td>
+                </tr>
+                <tr>
+                    <th id="tester"><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Testedby">Tested
+                            by:</a></th>
+                    <td id="tester_val">cpu bench</td>
+                    <th id="sw_avail"><a
+                            href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#SoftwareAvailability">Software
+                            Availability:</a></th>
+                    <td id="sw_avail_val">sw</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="graph">
+            <p style="text-align: center">Benchmark result graphs are available in the <a
+                    href="CPU2017.005.fpspeed.pdf">PDF report</a>.</a>
+        </div>
+        <div class="infobox">
+            <table id="Hardware" summary="Details of hardware configuration for the system under test">
+                <thead>
+                    <tr>
+                        <th colspan="2"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Hardware">Hardware</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#CPUName">CPU Name</a>:
+                        </th>
+                        <td>HiSilicon Kunpeng-920</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;&nbsp;<a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#MaxMHz">Max
+                                MHz</a>:</th>
+                        <td>2600</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;&nbsp;<a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Nominal">Nominal</a>:
+                        </th>
+                        <td>2600</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Enabled">Enabled</a>:</th>
+                        <td>64 cores, 2 chips</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Orderable">Orderable</a>:
+                        </th>
+                        <td>1,2 chips</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#CacheL1">Cache L1</a>:
+                        </th>
+                        <td>64 KB I + 64 KB D on chip per core</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;&nbsp;<a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#L2">L2</a>:
+                        </th>
+                        <td>512 KB I+D on chip per core</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;&nbsp;<a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#L3">L3</a>:
+                        </th>
+                        <td>32 MB I+D on chip per chip</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;&nbsp;<a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Other">Other</a>:</th>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Memory">Memory</a>:</th>
+                        <td>320 GB (10 x 32 GB 2Rx4 PC4-3200,<br />
+                            running at 3200 MT/s)<br /></td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Storage">Storage</a>:</th>
+                        <td>1.9 TB xfs volume on /dev/sdb</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Other">Other</a>:</th>
+                        <td>None</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="Software" summary="Details of software configuration for the system under test">
+                <thead>
+                    <tr>
+                        <th colspan="2"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Software">Software</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#OS">OS</a>:</th>
+                        <td>Ubuntu 22.04.4 LTS<br />
+                            Linux 6.5.0-15-generic<br /></td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Compiler">Compiler</a>:
+                        </th>
+                        <td>C/C++/Fortran: Version 11.4.0 of GCC, the<br />
+                            GNU Compiler Collection<br /></td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Parallel">Parallel</a>:
+                        </th>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Firmware">Firmware</a>:
+                        </th>
+                        <td>Huawei Corp. 1.83 11/06/2021</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#FileSystem">File
+                                System</a>:</th>
+                        <td>xfs</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#SystemState">System
+                                State</a>:</th>
+                        <td>Run level 5</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BasePointers">Base
+                                Pointers</a>:</th>
+                        <td>64-bit</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#PeakPointers">Peak
+                                Pointers</a>:</th>
+                        <td>Not Applicable</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Other">Other</a>:</th>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <th><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#PowerManagement">Power
+                                Management</a>:</th>
+                        <td>--</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="resultstable">
+            <h2><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#ResultsTable">Results Table</a></h2>
+            <table summary="Detailed per-benchmark result data">
+                <colgroup>
+                    <col id="benchmark" />
+                    <col id="basethreads" />
+                    <col id="baseres" span="7" />
+                    <col id="peakthreads" />
+                    <col id="peakres" span="7" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th rowspan="2"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Benchmark">Benchmark</a>
+                        </th>
+                        <th class="basecol" colspan="7">Base</th>
+                        <th class="peakcol" colspan="7">Peak</th>
+                    </tr>
+                    <tr>
+                        <th class="basecol threads"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Threads">Threads</a></th>
+                        <th class="basecol time l_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Seconds">Seconds</a></th>
+                        <th class="basecol ratio r_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Ratio">Ratio</a></th>
+                        <th class="basecol time l_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Seconds">Seconds</a></th>
+                        <th class="basecol ratio r_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Ratio">Ratio</a></th>
+                        <th class="basecol time l_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Seconds">Seconds</a></th>
+                        <th class="basecol ratio r_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Ratio">Ratio</a></th>
+                        <th class="peakcol threads"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Threads">Threads</a></th>
+                        <th class="peakcol time l_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Seconds">Seconds</a></th>
+                        <th class="peakcol ratio r_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Ratio">Ratio</a></th>
+                        <th class="peakcol time l_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Seconds">Seconds</a></th>
+                        <th class="peakcol ratio r_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Ratio">Ratio</a></th>
+                        <th class="peakcol time l_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Seconds">Seconds</a></th>
+                        <th class="peakcol ratio r_edge"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Ratio">Ratio</a></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr class="table_metrics">
+                        <td colspan="3"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#SPECspeed2017fpbase">SPECspeed&reg;2017_fp_base</a>
+                        </td>
+                        <td>33.5<span style="visibility:hidden">0</span></td>
+                        <td colspan="11"></td>
+                    </tr>
+                    <tr class="table_metrics">
+                        <td colspan="3"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#SPECspeed2017fppeak">SPECspeed&reg;2017_fp_peak</a>
+                        </td>
+                        <td>Not Run</td>
+                        <td colspan="11"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="15">Results appear in the <a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#RunOrder">order in which
+                                they were run</a>. Bold underlined text <a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median">indicates a
+                                median measurement</a>.</td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/603.bwaves_s.html">603.bwaves_s</a>
+                        </td>
+                        <td class="basecol threads">64</td>
+                        <td class="basecol time l_edge">430</td>
+                        <td class="basecol ratio r_edge">137<span style="visibility:hidden">00</span></td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">437</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">135</span><span style="visibility:hidden">00</span></a></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/607.cactuBSSN_s.html">607.cactuBSSN_s</a>
+                        </td>
+                        <td class="basecol threads">64</td>
+                        <td class="basecol time l_edge">217</td>
+                        <td class="basecol ratio r_edge">77.0<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">229</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">72.7</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/619.lbm_s.html">619.lbm_s</a>
+                        </td>
+                        <td class="basecol threads selected">64</td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">386</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">13.6</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge">358</td>
+                        <td class="basecol ratio r_edge">14.6<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/621.wrf_s.html">621.wrf_s</a>
+                        </td>
+                        <td class="basecol threads selected">64</td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">262</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">50.5</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge">260</td>
+                        <td class="basecol ratio r_edge">51.0<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/627.cam4_s.html">627.cam4_s</a>
+                        </td>
+                        <td class="basecol threads">64</td>
+                        <td class="basecol time l_edge">4025</td>
+                        <td class="basecol ratio r_edge">2.20</td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">4125</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">2.15</span></a></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/628.pop2_s.html">628.pop2_s</a>
+                        </td>
+                        <td class="basecol threads">64</td>
+                        <td class="basecol time l_edge">482</td>
+                        <td class="basecol ratio r_edge">24.6<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">484</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">24.5</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/638.imagick_s.html">638.imagick_s</a>
+                        </td>
+                        <td class="basecol threads">64</td>
+                        <td class="basecol time l_edge">261</td>
+                        <td class="basecol ratio r_edge">55.3<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">261</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">55.3</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/644.nab_s.html">644.nab_s</a>
+                        </td>
+                        <td class="basecol threads">64</td>
+                        <td class="basecol time l_edge">179</td>
+                        <td class="basecol ratio r_edge">97.7<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">179</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">97.6</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/649.fotonik3d_s.html">649.fotonik3d_s</a>
+                        </td>
+                        <td class="basecol threads selected">64</td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">432</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">21.1</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge">430</td>
+                        <td class="basecol ratio r_edge">21.2<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                    <tr>
+                        <td class="bm"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/benchmarks/654.roms_s.html">654.roms_s</a>
+                        </td>
+                        <td class="basecol threads selected">64</td>
+                        <td class="basecol time l_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">352</span></a></td>
+                        <td class="basecol ratio r_edge selected"><a
+                                href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Median"><span
+                                    class="selected">44.7</span><span style="visibility:hidden">0</span></a></td>
+                        <td class="basecol time l_edge">347</td>
+                        <td class="basecol ratio r_edge">45.3<span style="visibility:hidden">0</span></td>
+                        <td class="basecol time l_edge"></td>
+                        <td class="basecol ratio r_edge"></td>
+                        <td class="peakcol threads"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                        <td class="peakcol time l_edge"></td>
+                        <td class="peakcol ratio r_edge"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="notes">
+            <h2><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#EnvironmentVariablesNotes">Environment
+                    Variables Notes</a></h2>
+            <pre>
+Environment variables set by runcpu before the start of the run:
+LD_LIBRARY_PATH = "/usr/lib64/:/usr/lib/:/lib64"
+OMP_STACKSIZE = "120M"
+
+</pre>
+        </div>
+        <div class="notes">
+            <h2><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#PlatformNotes">Platform Notes</a></h2>
+            <pre>
+
+ Sysinfo program /sd2/cpu2017_clean/bin/sysinfo
+ Rev: r6365 of 2019-08-21 295195f888a3d7edb1e6e46a485a0011
+ running on hw65 Wed May  6 20:22:26 2026
+
+ SUT (System Under Test) info as seen by some common utilities.
+ For more information on this section, see
+    <a href="https://www.spec.org/cpu2017/Docs/config.html#sysinfo">https://www.spec.org/cpu2017/Docs/config.html#sysinfo</a>
+
+ From /proc/cpuinfo
+ *
+ * Did not identify cpu model.  If you would
+ * like to write your own sysinfo program, see
+ * www.spec.org/cpu2017/config.html#sysinfo
+ *
+ *
+ * 0 "physical id" tags found.  Perhaps this is an older system,
+ * or a virtualized system.  Not attempting to guess how to
+ * count chips/cores for this system.
+ *
+       64 "processors"
+    cores, siblings (Caution: counting these is hw and system dependent. The following
+    excerpts from /proc/cpuinfo might not be reliable.  Use with caution.)
+
+ From lscpu:
+      Architecture:                       aarch64
+      CPU op-mode(s):                     64-bit
+      Byte Order:                         Little Endian
+      CPU(s):                             64
+      On-line CPU(s) list:                0-63
+      Vendor ID:                          HiSilicon
+      Model name:                         Kunpeng-920
+      Model:                              0
+      Thread(s) per core:                 1
+      Core(s) per socket:                 32
+      Socket(s):                          2
+      Stepping:                           0x1
+      Frequency boost:                    disabled
+      CPU max MHz:                        2600.0000
+      CPU min MHz:                        200.0000
+      BogoMIPS:                           200.00
+      Flags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32
+      atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm
+      L1d cache:                          4 MiB (64 instances)
+      L1i cache:                          4 MiB (64 instances)
+      L2 cache:                           32 MiB (64 instances)
+      L3 cache:                           64 MiB (2 instances)
+      NUMA node(s):                       2
+      NUMA node0 CPU(s):                  0-31
+      NUMA node1 CPU(s):                  32-63
+      Vulnerability Gather data sampling: Not affected
+      Vulnerability Itlb multihit:        Not affected
+      Vulnerability L1tf:                 Not affected
+      Vulnerability Mds:                  Not affected
+      Vulnerability Meltdown:             Not affected
+      Vulnerability Mmio stale data:      Not affected
+      Vulnerability Retbleed:             Not affected
+      Vulnerability Spec rstack overflow: Not affected
+      Vulnerability Spec store bypass:    Not affected
+      Vulnerability Spectre v1:           Mitigation; __user pointer sanitization
+      Vulnerability Spectre v2:           Not affected
+      Vulnerability Srbds:                Not affected
+      Vulnerability Tsx async abort:      Not affected
+
+ From numactl --hardware  WARNING: a numactl 'node' might or might not correspond to a
+ physical chip.
+   available: 2 nodes (0-1)
+   node 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27
+   28 29 30 31
+   node 0 size: 128623 MB
+   node 0 free: 94444 MB
+   node 1 cpus: 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56
+   57 58 59 60 61 62 63
+   node 1 size: 192888 MB
+   node 1 free: 165547 MB
+   node distances:
+   node   0   1
+     0:  10  32
+     1:  32  10
+
+ From /proc/meminfo
+    MemTotal:       329228320 kB
+    HugePages_Total:       0
+    Hugepagesize:       2048 kB
+
+ /usr/bin/lsb_release -d
+    Ubuntu 22.04.4 LTS
+
+ From /etc/*release* /etc/*version*
+    debian_version: bookworm/sid
+    lsb-release.dpkg-old:
+       DISTRIB_ID=Ubuntu
+       DISTRIB_RELEASE=22.04
+       DISTRIB_CODENAME=jammy
+       DISTRIB_DESCRIPTION="Ubuntu 22.04.3 LTS"
+    os-release:
+       PRETTY_NAME="Ubuntu 22.04.4 LTS"
+       NAME="Ubuntu"
+       VERSION_ID="22.04"
+       VERSION="22.04.4 LTS (Jammy Jellyfish)"
+       VERSION_CODENAME=jammy
+       ID=ubuntu
+       ID_LIKE=debian
+       HOME_URL="<a href="https://www.ubuntu.com/%22">https://www.ubuntu.com/"</a>
+
+ uname -a:
+    Linux hw65 6.5.0-15-generic #15~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Jan 12 19:20:45
+    UTC 2 aarch64 aarch64 aarch64 GNU/Linux
+
+ Kernel self-reported vulnerability status:
+
+ gather_data_sampling:                     Not affected
+ itlb_multihit:                            Not affected
+ CVE-2018-3620 (L1 Terminal Fault):        Not affected
+ Microarchitectural Data Sampling:         Not affected
+ CVE-2017-5754 (Meltdown):                 Not affected
+ mmio_stale_data:                          Not affected
+ retbleed:                                 Not affected
+ spec_rstack_overflow:                     Not affected
+ CVE-2018-3639 (Speculative Store Bypass): Not affected
+ CVE-2017-5753 (Spectre variant 1):        Mitigation: __user pointer sanitization
+ CVE-2017-5715 (Spectre variant 2):        Not affected
+ srbds:                                    Not affected
+ tsx_async_abort:                          Not affected
+
+ run-level 5 2026-04-26 15:19
+
+ SPEC is set to: /sd2/cpu2017_clean
+    Filesystem     Type  Size  Used Avail Use% Mounted on
+    /dev/sdb       xfs   1.9T  824G  1.1T  45% /sd2
+
+ From /sys/devices/virtual/dmi/id
+     BIOS:    Huawei Corp. 1.83 11/06/2021
+     Vendor:  Huawei
+     Product: TaiShan 200 (Model 2280)
+     Serial:  2102313AUWN0MC100900
+
+ Additional information from dmidecode follows.  WARNING: Use caution when you interpret
+ this section. The 'dmidecode' program reads system data which is "intended to allow
+ hardware to be accurately determined", but the intent may not be met, as there are
+ frequent changes to hardware, firmware, and the "DMTF SMBIOS" standard.
+   Memory:
+     10x Micron 36ASF4G72PZ-3G2J3 32 GB 2 rank 3200
+     6x NO DIMM NO DIMM
+
+ (End of data from sysinfo program)
+</pre>
+        </div>
+        <div class="notes">
+            <h2><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#CompilerVersionNotes">Compiler Version
+                    Notes</a></h2>
+            <pre>
+==============================================================================
+C               | 619.lbm_s(base) 638.imagick_s(base) 644.nab_s(base)
+------------------------------------------------------------------------------
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/11/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+  11.4.0-1ubuntu1~22.04.3'
+  --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs
+  --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr
+  --with-gcc-major-version-only --program-suffix=-11
+  --program-prefix=aarch64-linux-gnu- --enable-shared
+  --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext
+  --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap
+  --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes
+  --with-default-libstdcxx-abi=new --enable-gnu-unique-object
+  --disable-libquadmath --disable-libquadmath-support --enable-plugin
+  --enable-default-pie --with-system-zlib --enable-libphobos-checking=release
+  --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch
+  --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release
+  --build=aarch64-linux-gnu --host=aarch64-linux-gnu
+  --target=aarch64-linux-gnu --with-build-config=bootstrap-lto-lean
+  --enable-link-serialization=4
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
+------------------------------------------------------------------------------
+
+==============================================================================
+C++, C, Fortran | 607.cactuBSSN_s(base)
+------------------------------------------------------------------------------
+Using built-in specs.
+COLLECT_GCC=/usr/bin/g++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/11/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+  11.4.0-1ubuntu1~22.04.3'
+  --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs
+  --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr
+  --with-gcc-major-version-only --program-suffix=-11
+  --program-prefix=aarch64-linux-gnu- --enable-shared
+  --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext
+  --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap
+  --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes
+  --with-default-libstdcxx-abi=new --enable-gnu-unique-object
+  --disable-libquadmath --disable-libquadmath-support --enable-plugin
+  --enable-default-pie --with-system-zlib --enable-libphobos-checking=release
+  --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch
+  --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release
+  --build=aarch64-linux-gnu --host=aarch64-linux-gnu
+  --target=aarch64-linux-gnu --with-build-config=bootstrap-lto-lean
+  --enable-link-serialization=4
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/11/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+  11.4.0-1ubuntu1~22.04.3'
+  --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs
+  --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr
+  --with-gcc-major-version-only --program-suffix=-11
+  --program-prefix=aarch64-linux-gnu- --enable-shared
+  --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext
+  --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap
+  --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes
+  --with-default-libstdcxx-abi=new --enable-gnu-unique-object
+  --disable-libquadmath --disable-libquadmath-support --enable-plugin
+  --enable-default-pie --with-system-zlib --enable-libphobos-checking=release
+  --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch
+  --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release
+  --build=aarch64-linux-gnu --host=aarch64-linux-gnu
+  --target=aarch64-linux-gnu --with-build-config=bootstrap-lto-lean
+  --enable-link-serialization=4
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gfortran
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/9/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+  9.5.0-1ubuntu1~22.04.1'
+  --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs
+  --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,gm2 --prefix=/usr
+  --with-gcc-major-version-only --program-suffix=-9
+  --program-prefix=aarch64-linux-gnu- --enable-shared
+  --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext
+  --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap
+  --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes
+  --with-default-libstdcxx-abi=new --enable-gnu-unique-object
+  --disable-libquadmath --disable-libquadmath-support --enable-plugin
+  --enable-default-pie --with-system-zlib --with-target-system-zlib=auto
+  --enable-objc-gc=auto --enable-multiarch --enable-fix-cortex-a53-843419
+  --disable-werror --enable-checking=release --build=aarch64-linux-gnu
+  --host=aarch64-linux-gnu --target=aarch64-linux-gnu
+  --with-build-config=bootstrap-lto-lean --enable-link-mutex
+Thread model: posix
+gcc version 9.5.0 (Ubuntu 9.5.0-1ubuntu1~22.04.1) 
+------------------------------------------------------------------------------
+
+==============================================================================
+Fortran         | 603.bwaves_s(base) 649.fotonik3d_s(base) 654.roms_s(base)
+------------------------------------------------------------------------------
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gfortran
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/9/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+  9.5.0-1ubuntu1~22.04.1'
+  --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs
+  --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,gm2 --prefix=/usr
+  --with-gcc-major-version-only --program-suffix=-9
+  --program-prefix=aarch64-linux-gnu- --enable-shared
+  --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext
+  --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap
+  --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes
+  --with-default-libstdcxx-abi=new --enable-gnu-unique-object
+  --disable-libquadmath --disable-libquadmath-support --enable-plugin
+  --enable-default-pie --with-system-zlib --with-target-system-zlib=auto
+  --enable-objc-gc=auto --enable-multiarch --enable-fix-cortex-a53-843419
+  --disable-werror --enable-checking=release --build=aarch64-linux-gnu
+  --host=aarch64-linux-gnu --target=aarch64-linux-gnu
+  --with-build-config=bootstrap-lto-lean --enable-link-mutex
+Thread model: posix
+gcc version 9.5.0 (Ubuntu 9.5.0-1ubuntu1~22.04.1) 
+------------------------------------------------------------------------------
+
+==============================================================================
+Fortran, C      | 621.wrf_s(base) 627.cam4_s(base) 628.pop2_s(base)
+------------------------------------------------------------------------------
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gfortran
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/9/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+  9.5.0-1ubuntu1~22.04.1'
+  --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs
+  --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,gm2 --prefix=/usr
+  --with-gcc-major-version-only --program-suffix=-9
+  --program-prefix=aarch64-linux-gnu- --enable-shared
+  --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext
+  --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap
+  --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes
+  --with-default-libstdcxx-abi=new --enable-gnu-unique-object
+  --disable-libquadmath --disable-libquadmath-support --enable-plugin
+  --enable-default-pie --with-system-zlib --with-target-system-zlib=auto
+  --enable-objc-gc=auto --enable-multiarch --enable-fix-cortex-a53-843419
+  --disable-werror --enable-checking=release --build=aarch64-linux-gnu
+  --host=aarch64-linux-gnu --target=aarch64-linux-gnu
+  --with-build-config=bootstrap-lto-lean --enable-link-mutex
+Thread model: posix
+gcc version 9.5.0 (Ubuntu 9.5.0-1ubuntu1~22.04.1) 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/11/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu
+  11.4.0-1ubuntu1~22.04.3'
+  --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs
+  --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++,m2 --prefix=/usr
+  --with-gcc-major-version-only --program-suffix=-11
+  --program-prefix=aarch64-linux-gnu- --enable-shared
+  --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext
+  --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap
+  --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes
+  --with-default-libstdcxx-abi=new --enable-gnu-unique-object
+  --disable-libquadmath --disable-libquadmath-support --enable-plugin
+  --enable-default-pie --with-system-zlib --enable-libphobos-checking=release
+  --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch
+  --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release
+  --build=aarch64-linux-gnu --host=aarch64-linux-gnu
+  --target=aarch64-linux-gnu --with-build-config=bootstrap-lto-lean
+  --enable-link-serialization=4
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
+------------------------------------------------------------------------------
+</pre>
+        </div>
+        <div class="flags notes" id="base_compiler">
+            <h2><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BaseCompilerInvocation">Base Compiler
+                    Invocation</a></h2>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Cbenchmarks">C benchmarks</a>:</h3>
+            <table class="compiler">
+                <tr>
+                    <td></td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_gcc">gcc</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Fortranbenchmarks">Fortran
+                    benchmarks</a>:</h3>
+            <table class="compiler">
+                <tr>
+                    <td></td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_FCbase_gfortran">gfortran</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BenchmarksusingbothFortranandC">Benchmarks
+                    using both Fortran and C</a>:</h3>
+            <table class="compiler">
+                <tr>
+                    <td></td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_FCbase_gfortran">gfortran</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_FCbase_gcc">gcc</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BenchmarksusingFortranCandCXX">Benchmarks
+                    using Fortran, C, and C++</a>:</h3>
+            <table class="compiler">
+                <tr>
+                    <td></td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_gxx">g++</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_gcc">gcc</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_gfortran">gfortran</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="flags notes" id="base_portability">
+            <h2><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BasePortabilityFlags">Base Portability
+                    Flags</a></h2>
+            <table class="portability">
+                <tr>
+                    <td>603.bwaves_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY603_bwaves_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>607.cactuBSSN_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY607_cactuBSSN_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>619.lbm_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY619_lbm_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>621.wrf_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#b621.wrf_s_baseCPORTABILITY_DSPEC_CASE_FLAG">-DSPEC_CASE_FLAG</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseFPORTABILITY621_wrf_s_F-fconvert:big-endian">-fconvert=big-endian</a></span>&nbsp;
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY621_wrf_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>627.cam4_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#b627.cam4_s_basePORTABILITY_DSPEC_CASE_FLAG">-DSPEC_CASE_FLAG</a></span>&nbsp;
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY627_cam4_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>628.pop2_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#b628.pop2_s_baseCPORTABILITY_DSPEC_CASE_FLAG">-DSPEC_CASE_FLAG</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseFPORTABILITY628_pop2_s_F-fconvert:big-endian">-fconvert=big-endian</a></span>&nbsp;
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY628_pop2_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>638.imagick_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY638_imagick_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>644.nab_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY644_nab_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>649.fotonik3d_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY649_fotonik3d_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>654.roms_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_PORTABILITY654_roms_s_DSPEC_LP64">-DSPEC_LP64</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="flags notes" id="base_optimization">
+            <h2><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BaseOptimizationFlags">Base
+                    Optimization Flags</a></h2>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Cbenchmarks">C benchmarks</a>:</h3>
+            <table class="optimization">
+                <tr>
+                    <td></td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52">-std=c99</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a href="CPU2017.005.fpspeed.flags.html#user_CCbase_zmuldefs">-z
+                                muldefs</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_F-flto_4de537a45675efed0894e8ded05d44e9d2636c2302c5688151ae960fc17a35bddf3fb4a8b5b93bcba787cb5bb6ad12c1584b92ae69aeb20e3b53af1bfeb816d1">-flto=auto</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_F-fno-unsafe-math-optimizations">-fno-unsafe-math-optimizations</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_F-funroll-loops">-funroll-loops</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CCbase_F-fopenmp">-fopenmp</a></span>&nbsp;
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_CCbase_DSPEC_OPENMP">-DSPEC_OPENMP</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#Fortranbenchmarks">Fortran
+                    benchmarks</a>:</h3>
+            <table class="optimization">
+                <tr>
+                    <td></td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a href="CPU2017.005.fpspeed.flags.html#user_FCbase_zmuldefs">-z
+                                muldefs</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_FCbase_F-flto_4de537a45675efed0894e8ded05d44e9d2636c2302c5688151ae960fc17a35bddf3fb4a8b5b93bcba787cb5bb6ad12c1584b92ae69aeb20e3b53af1bfeb816d1">-flto=auto</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_FCbase_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_FCbase_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_FCbase_F-fno-unsafe-math-optimizations">-fno-unsafe-math-optimizations</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_FCbase_F-funroll-loops">-funroll-loops</a></span>&nbsp;
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_FCbase_DSPEC_OPENMP">-DSPEC_OPENMP</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_FCbase_F-fopenmp">-fopenmp</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BenchmarksusingbothFortranandC">Benchmarks
+                    using both Fortran and C</a>:</h3>
+            <table class="optimization">
+                <tr>
+                    <td>621.wrf_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseCC621_wrf_s_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52">-std=c99</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseEXTRA_LDFLAGS621_wrf_s_zmuldefs">-z
+                                muldefs</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseEXTRA_LDFLAGS621_wrf_s_F-flto_4de537a45675efed0894e8ded05d44e9d2636c2302c5688151ae960fc17a35bddf3fb4a8b5b93bcba787cb5bb6ad12c1584b92ae69aeb20e3b53af1bfeb816d1">-flto=auto</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE621_wrf_s_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE621_wrf_s_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE621_wrf_s_F-fno-unsafe-math-optimizations">-fno-unsafe-math-optimizations</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE621_wrf_s_F-funroll-loops">-funroll-loops</a></span>&nbsp;
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_baseEXTRA_OPTIMIZE621_wrf_s_DSPEC_OPENMP">-DSPEC_OPENMP</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseEXTRA_OPTIMIZE621_wrf_s_F-fopenmp">-fopenmp</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>627.cam4_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseCC627_cam4_s_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52">-std=c99</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE627_cam4_s_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE627_cam4_s_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE627_cam4_s_F-fno-unsafe-math-optimizations">-fno-unsafe-math-optimizations</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_baseOPTIMIZE627_cam4_s_F-funroll-loops">-funroll-loops</a></span>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>628.pop2_s:</td>
+                    <td class="al">
+                        &nbsp;<span class="flagtext">Same as 621.wrf_s</span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+            <h3><a href="http://www.spec.org/auto/cpu2017/Docs/result-fields.html#BenchmarksusingFortranCandCXX">Benchmarks
+                    using Fortran, C, and C++</a>:</h3>
+            <table class="optimization">
+                <tr>
+                    <td></td>
+                    <td class="al">
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_std-cxx03-gcc">-std=c++03</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52">-std=c99</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_zmuldefs">-z
+                                muldefs</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_F-flto_4de537a45675efed0894e8ded05d44e9d2636c2302c5688151ae960fc17a35bddf3fb4a8b5b93bcba787cb5bb6ad12c1584b92ae69aeb20e3b53af1bfeb816d1">-flto=auto</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_F-fno-unsafe-math-optimizations">-fno-unsafe-math-optimizations</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_F-funroll-loops">-funroll-loops</a></span>&nbsp;
+                        &nbsp;<span class="userflag"><a
+                                href="CPU2017.005.fpspeed.flags.html#user_CC_CXX_FCbase_F-fopenmp">-fopenmp</a></span>&nbsp;
+                        &nbsp;<span class="flagtext"><a
+                                href="CPU2017.005.fpspeed.flags.html#suite_CC_CXX_FCbase_DSPEC_OPENMP">-DSPEC_OPENMP</a></span>&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="notes footer">
+            <p>
+                SPEC CPU and SPECspeed are registered trademarks of the Standard
+                Performance Evaluation Corporation. All other brand and product names
+                appearing in this result are trademarks or registered trademarks of
+                their respective holders.
+            </p>
+        </div>
+        <div class="notes footer">
+            <p>For questions about this result, please contact the tester.
+                For other inquiries, please contact <a href="mailto:info@spec.org">info@spec.org</a><br />
+                Copyright 2017-2026 Standard Performance Evaluation Corporation<br />
+                Tested with SPEC CPU&reg;2017 v1.1.0 on 2026-05-06 20:22:25+0800.<br />
+                Report generated on 2026-05-07 00:50:13 by SPEC CPU&reg;2017 HTML formatter v6255.<br />
+            </p>
+        </div>
+        <div class="w3cbutton3">
+            <a href="http://validator.w3.org/check?uri=referer">
+                <span class="w3c">W3C</span>
+                <span class="spec">XHTML 1.0</span>
+            </a>
+        </div>
+        <div class="w3cbutton3">
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                <span class="w3c">W3C</span>
+                <span class="spec">CSS</span>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- The following is an encoded version of the raw file that was used to
+     produce this result. Use the extract_raw script to retrieve it. -->
+<!-- BEGIN GZIP CPU2017.005.fpspeed.rsf
+@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
+AZGm+34=
+END -->

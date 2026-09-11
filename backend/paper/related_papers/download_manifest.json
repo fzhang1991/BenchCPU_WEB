@@ -1,0 +1,135 @@
+[
+  {
+    "key": "Li2026_SPEC_CPU2026",
+    "title": "SPEC CPU2026: Characterization, Representativeness, and Cross-Suite Comparison",
+    "url": "https://arxiv.org/pdf/2605.03713",
+    "type": "open_pdf",
+    "status": "downloaded",
+    "file": "D:\\Website_for_ProbingMemes\\Website_for_ProbingMemes\\backend\\paper\\related_papers\\Li2026_SPEC_CPU2026.pdf",
+    "bytes": 1511498
+  },
+  {
+    "key": "Wang2024_Consistent_Comparable_CPU",
+    "title": "Achieving Consistent and Comparable CPU Evaluation Outcomes",
+    "url": "https://arxiv.org/pdf/2411.08494",
+    "type": "open_pdf",
+    "status": "downloaded",
+    "file": "D:\\Website_for_ProbingMemes\\Website_for_ProbingMemes\\backend\\paper\\related_papers\\Wang2024_Consistent_Comparable_CPU.pdf",
+    "bytes": 1865847
+  },
+  {
+    "key": "Wang2022_Database_Performance_Sensitivity",
+    "title": "A Study of Database Performance Sensitivity to Experiment Settings",
+    "url": "https://www.vldb.org/pvldb/vol15/p1099-wang.pdf",
+    "type": "open_pdf",
+    "status": "not_pdf_response",
+    "bytes": 36448
+  },
+  {
+    "key": "Benson2024_Surprise_Benchmarking",
+    "title": "Surprise Benchmarking: The Why, What, and How",
+    "url": "https://doi.org/10.1145/3662165.3662763",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Limaye2018_SPEC_CPU2017_Characterization",
+    "title": "A Workload Characterization of the SPEC CPU2017 Benchmark Suite",
+    "url": "https://doi.org/10.1109/ISPASS.2018.00028",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "SPEC2018_SPEC_CPU2017",
+    "title": "SPEC CPU2017",
+    "url": "https://doi.org/10.1145/3185768.3185771",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Bienia2008_PARSEC",
+    "title": "The PARSEC Benchmark Suite: Characterization and Architectural Implications",
+    "url": "https://doi.org/10.1145/1454115.1454128",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Woo1995_SPLASH2",
+    "title": "The SPLASH-2 Programs: Characterization and Methodological Considerations",
+    "url": "https://doi.org/10.1145/223982.223990",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Ferdman2012_CloudSuite",
+    "title": "Clearing the Clouds: A Study of Emerging Workloads on Modern Hardware",
+    "url": "https://doi.org/10.1145/2150976.2150982",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Hoste2007_Microarchitecture_Independent",
+    "title": "Microarchitecture-Independent Workload Characterization",
+    "url": "https://doi.org/10.1109/MM.2007.56",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Phansalkar2005_SPEC_Similarity",
+    "title": "Measuring Program Similarity: Experiments with SPEC CPU Benchmark Suites",
+    "url": "https://doi.org/10.1109/ISPASS.2005.1430555",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Shao2013_ISA_Independent",
+    "title": "ISA-independent workload characterization and its implications for specialized architectures",
+    "url": "https://doi.org/10.1109/ISPASS.2013.6557175",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Georges2007_Statistically_Rigorous_Java",
+    "title": "Statistically Rigorous Java Performance Evaluation",
+    "url": "https://doi.org/10.1145/1297027.1297033",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Mytkowicz2009_Wrong_Data",
+    "title": "Producing Wrong Data Without Doing Anything Obviously Wrong",
+    "url": "https://doi.org/10.1145/1508244.1508275",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Hoefler2015_Scientific_Benchmarking",
+    "title": "Scientific Benchmarking of Parallel Computing Systems: Twelve Ways to Tell the Masses When Reporting Performance Results",
+    "url": "https://doi.org/10.1145/2807591.2807644",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Koskela2023_Reproducible_Benchmarking",
+    "title": "Principles for Automated and Reproducible Benchmarking",
+    "url": "https://doi.org/10.1145/3624062.3624134",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "Zhan2024_Evaluatology",
+    "title": "Evaluatology: The Science and Engineering of Evaluation",
+    "url": "https://doi.org/10.1016/j.tbench.2024.100162",
+    "type": "doi_only",
+    "status": "doi_only"
+  },
+  {
+    "key": "BenchCPU2026_Prior",
+    "title": "BenchCPU: Performance Distribution-Aware CPU Benchmarking over Open Configuration Spaces",
+    "url": "D:\\Website_for_ProbingMemes\\Website_for_ProbingMemes\\backend\\paper\\pact2026_BenchCPU.pdf",
+    "type": "local_pdf",
+    "status": "copied_local",
+    "file": "D:\\Website_for_ProbingMemes\\Website_for_ProbingMemes\\backend\\paper\\related_papers\\BenchCPU2026_Prior.pdf",
+    "bytes": 2257947
+  }
+]

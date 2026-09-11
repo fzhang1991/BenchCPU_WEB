@@ -1,0 +1,328 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState, useMemo } from "react";
+
+type CpuDetailData = {
+    cpu: string;
+    systemInfo?: Record<string, unknown>;
+    workloadData: {
+        headers: string[];
+        rows: (string | number | null)[][];
+    };
+    plotUrl?: string;
+};
+
+type Props = {
+    cpu: string | null;
+    onClose: () => void;
+    standalone?: boolean;
+};
+
+function flattenConfig(obj: Record<string, unknown>, prefix = ""): [string, string][] {
+    const pairs: [string, string][] = [];
+    for (const [key, value] of Object.entries(obj)) {
+        const displayKey = prefix ? `${prefix} - ${key}` : key;
+        if (value === null || value === undefined) {
+            pairs.push([displayKey, "—"]);
+        } else if (Array.isArray(value)) {
+            pairs.push([displayKey, value.join(", ")]);
+        } else if (typeof value === "object") {
+            pairs.push(...flattenConfig(value as Record<string, unknown>, displayKey));
+        } else if (typeof value === "boolean") {
+            pairs.push([displayKey, value ? "Yes" : "No"]);
+        } else {
+            pairs.push([displayKey, String(value)]);
+        }
+    }
+    return pairs;
+}
+
+function categorizeConfig(config: Record<string, unknown>): Record<string, [string, string][]> {
+    const categories: Record<string, [string, string][]> = {
+        "CPU": [], "Memory": [], "Storage": [], "Software": [], "System": [],
+    };
+    for (const [key, value] of flattenConfig(config)) {
+        const keyLower = key.toLowerCase();
+        if (keyLower.includes("cpu") || keyLower.includes("processor") || keyLower.includes("core") ||
+            keyLower.includes("cache") || keyLower.includes("frequency") || keyLower.includes("mhz") || keyLower.includes("ghz")) {
+            categories["CPU"].push([key, value]);
+        } else if (keyLower.includes("memory") || keyLower.includes("ram") || keyLower.includes("mem") ||
+            keyLower.includes("kb") || keyLower.includes("mb") || keyLower.includes("gb")) {
+            categories["Memory"].push([key, value]);
+        } else if (keyLower.includes("disk") || keyLower.includes("storage") || keyLower.includes("ssd") || keyLower.includes("nvme")) {
+            categories["Storage"].push([key, value]);
+        } else if (keyLower.includes("os") || keyLower.includes("system") || keyLower.includes("linux") ||
+            keyLower.includes("windows") || keyLower.includes("kernel") || keyLower.includes("compiler") ||
+            keyLower.includes("file system")) {
+            categories["Software"].push([key, value]);
+        } else {
+            categories["System"].push([key, value]);
+        }
+    }
+    return categories;
+}
+
+function ConfigTable({ pairs }: { pairs: [string, string][] }) {
+    if (pairs.length === 0) return null;
+    return (
+        <div style={{ overflowX: "auto", borderRadius: 6, border: "1px solid #e2e8f0" }}>
+            <table style={{ borderCollapse: "collapse", width: "100%", fontSize: 13 }}>
+                <tbody>
+                    {pairs.map(([key, value], i) => (
+                        <tr key={i} style={{ background: i % 2 === 0 ? "#fff" : "#f8fafc" }}>
+                            <td style={{ padding: "9px 12px", borderBottom: "1px solid #e2e8f0", fontWeight: 600, color: "#0f172a", width: "40%", wordBreak: "break-word" }}>{key}</td>
+                            <td style={{ padding: "9px 12px", borderBottom: "1px solid #e2e8f0", color: "#475569", wordBreak: "break-all" }}>{value}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+}
+
+function SystemConfigTable({ config }: { config: Record<string, unknown> }) {
+    const categories = useMemo(() => categorizeConfig(config), [config]);
+    return (
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            {Object.entries(categories).map(([category, pairs]) =>
+                pairs.length > 0 ? (
+                    <div key={category}>
+                        <h4 style={{ margin: "0 0 10px 0", fontSize: 13, fontWeight: 700, color: "#0f172a", textTransform: "uppercase", letterSpacing: "0.5px" }}>{category}</h4>
+                        <ConfigTable pairs={pairs} />
+                    </div>
+                ) : null
+            )}
+        </div>
+    );
+}
+
+function formatOverviewLabel(rawKey: string): string {
+    const key = rawKey.replace(/^hardware\s*-\s*/i, "").replace(/^software\s*-\s*/i, "")
+        .replace(/^cpu\s*-\s*/i, "").replace(/^system\s*-\s*/i, "").trim();
+    if (!key) return rawKey;
+    return key.charAt(0).toUpperCase() + key.slice(1);
+}
+
+function buildOverviewColumns(config: Record<string, unknown> | undefined) {
+    if (!config) return { hardware: [] as [string, string][], software: [] as [string, string][] };
+    const pairs = flattenConfig(config);
+    const hardware: [string, string][] = [];
+    const software: [string, string][] = [];
+    const seen = new Set<string>();
+
+    const manufacturer = pairs.find(([k]) => k.toLowerCase().includes("dmi_system - manufacturer"))?.[1]?.toString().trim() ?? "";
+    const productNameRaw = pairs.find(([k]) => k.toLowerCase().includes("dmi_system - product name"))?.[1]?.toString().trim() ?? "";
+    const productName = productNameRaw.replace(/\s*\([^)]*\)\s*$/g, "").trim();
+    const systemSummary = [manufacturer, productName].filter(Boolean).join(" ").trim();
+
+    const hardwareHints = ["system - summary", "cpu -", "memory", "ram", "cache", "socket", "core", "thread", "storage", "disk", "ssd", "nvme", "manufacturer", "vendor", "product"];
+    const softwareHints = ["software -", "os", "kernel", "compiler", "firmware", "bios", "file system", "system state", "pointers", "power management", "jemalloc", "library"];
+
+    const hardwareRank = (kl: string): number => {
+        if (kl.includes("system - summary")) return 0;
+        if (kl.includes("cpu - cpu(s)")) return 1;
+        if (kl.includes("thread(s) per core")) return 2;
+        if (kl.includes("core(s) per socket")) return 3;
+        if (kl.includes("socket(s)")) return 4;
+        if (kl.includes("l1d cache")) return 5;
+        if (kl.includes("l1i cache")) return 6;
+        if (kl.includes("l2 cache")) return 7;
+        if (kl.includes("l3 cache")) return 8;
+        if (kl.includes("memory")) return 9;
+        return 100;
+    };
+
+    const softwareRank = (kl: string): number => {
+        if (kl.includes("os")) return 0;
+        if (kl.includes("compiler")) return 1;
+        if (kl.includes("firmware") || kl.includes("bios")) return 2;
+        if (kl.includes("file system")) return 3;
+        if (kl.includes("system state")) return 4;
+        return 100;
+    };
+
+    const hwRaw: [string, string][] = [];
+    const swRaw: [string, string][] = [];
+    for (const [key, value] of pairs) {
+        const kl = key.toLowerCase();
+        if (kl.includes("dmi_system - manufacturer") || kl.includes("dmi_system - product name")) continue;
+        const dk = `${kl}::${value}`;
+        if (seen.has(dk)) continue;
+        seen.add(dk);
+        if (softwareHints.some((h) => kl.includes(h))) swRaw.push([key, value]);
+        else if (hardwareHints.some((h) => kl.includes(h))) hwRaw.push([key, value]);
+    }
+
+    if (systemSummary) hardware.push(["System", systemSummary]);
+    hwRaw.sort((a, b) => hardwareRank(a[0].toLowerCase()) - hardwareRank(b[0].toLowerCase()))
+        .slice(0, 10).forEach(([k, v]) => hardware.push([formatOverviewLabel(k), v]));
+    swRaw.filter(([k]) => /_version(?:\s*-\s*0)?$/i.test(k.toLowerCase()))
+        .sort((a, b) => softwareRank(a[0].toLowerCase()) - softwareRank(b[0].toLowerCase()))
+        .forEach(([k, v]) => software.push([formatOverviewLabel(k), v]));
+    return { hardware, software };
+}
+
+function OverviewColumnTable({ rows }: { rows: [string, string][] }) {
+    if (rows.length === 0) return <div style={{ color: "#64748b", fontSize: 11, padding: "6px 0" }}>No data</div>;
+    return (
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11 }}>
+            <tbody>
+                {rows.map(([label, value], idx) => (
+                    <tr key={`${label}-${idx}`}>
+                        <td style={{ width: "42%", verticalAlign: "top", padding: "4px 8px 4px 0", color: "#475569", fontWeight: 600, borderBottom: "1px solid #e2e8f0" }}>{label}</td>
+                        <td style={{ verticalAlign: "top", padding: "4px 0", color: "#0f172a", borderBottom: "1px solid #e2e8f0", wordBreak: "break-word" }}>{value}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+}
+
+export default function CpuFullDetailPanel({ cpu, onClose, standalone = false }: Props) {
+    const [data, setData] = useState<CpuDetailData | null>(null);
+    const [loading, setLoading] = useState(false);
+    const [plotFailed, setPlotFailed] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!cpu) return;
+        let cancelled = false;
+
+        queueMicrotask(() => {
+            if (cancelled) return;
+            setLoading(true);
+            setError(null);
+            setPlotFailed(false);
+        });
+
+        Promise.all([
+            fetch(`/backend/api/cpu-detail?cpu=${encodeURIComponent(cpu)}`).then((r) => r.json()),
+            fetch(`/backend/api/cpu-system-info?cpu=${encodeURIComponent(cpu)}`).then((r) => r.json()),
+        ])
+            .then(([detail, sysInfo]) => {
+                if (cancelled) return;
+                setData({
+                    cpu,
+                    systemInfo: sysInfo.data,
+                    workloadData: { headers: detail.headers || [], rows: detail.rows || [] },
+                    plotUrl: `/backend/api/cpu-normal-plot?cpu=${encodeURIComponent(cpu)}&v=${Date.now()}`,
+                });
+            })
+            .catch((err) => {
+                if (!cancelled) setError(err?.message || "Failed to load CPU details");
+            })
+            .finally(() => {
+                if (!cancelled) setLoading(false);
+            });
+
+        return () => {
+            cancelled = true;
+        };
+    }, [cpu]);
+
+    const overviewColumns = useMemo(() => buildOverviewColumns(data?.systemInfo), [data?.systemInfo]);
+
+    if (!cpu) {
+        return standalone ? <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 18px" }}><div style={{ color: "#64748b", fontSize: 13 }}>No CPU selected.</div></div> : null;
+    }
+
+    const panelBody = (
+        <div style={{ background: "#fff", borderRadius: 12, padding: 28, maxWidth: standalone ? 1280 : "95vw", maxHeight: standalone ? "none" : "88vh", overflow: "auto", minWidth: standalone ? "auto" : 720, boxShadow: standalone ? "0 8px 30px rgba(0,0,0,0.08)" : "0 20px 60px rgba(0,0,0,0.22)", border: standalone ? "1px solid #e2e8f0" : "none", margin: standalone ? "0 auto" : undefined }}
+            onClick={(e) => e.stopPropagation()}
+        >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 24, borderBottom: "2px solid #e2e8f0", paddingBottom: 16 }}>
+                <div>
+                    <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#0f172a", marginBottom: 4 }}>{cpu}</h2>
+                    <p style={{ margin: 0, fontSize: 12, color: "#64748b" }}>CPU Performance Results</p>
+                </div>
+                <button type="button" onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 24, padding: "0 8px", color: "#94a3b8" }} aria-label="Close">✕</button>
+            </div>
+
+            {loading ? (
+                <div style={{ padding: 40, textAlign: "center", color: "#64748b" }}>Loading...</div>
+            ) : error ? (
+                <div style={{ padding: 20, background: "#fee2e2", color: "#991b1b", borderRadius: 8, fontSize: 13 }}>Error: {error}</div>
+            ) : data ? (
+                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                    {/* Performance Distribution */}
+                    <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 10, padding: 16 }}>
+                        <h3 style={{ margin: "0 0 12px 0", fontSize: 13, fontWeight: 700, color: "#0f172a", textTransform: "uppercase", letterSpacing: "0.5px" }}>Overview</h3>
+                        <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                            <div style={{ flex: "1 1 500px", minWidth: 320, border: "1px solid #e2e8f0", borderRadius: 8, background: "#fff", padding: 10 }}>
+                                <div style={{ marginBottom: 8, fontSize: 12, fontWeight: 700, color: "#0f172a", textTransform: "uppercase" }}>Performance Distribution</div>
+                                {data.plotUrl ? (
+                                    !plotFailed ? (
+                                        <Image src={data.plotUrl} alt={`${cpu} performance distribution`} width={900} height={540} unoptimized style={{ width: "100%", height: "auto", border: "1px solid #e2e8f0", borderRadius: 8, background: "#fff" }} onError={() => setPlotFailed(true)} />
+                                    ) : (
+                                        <div style={{ color: "#64748b", padding: 12, background: "#f8fafc", borderRadius: 8, fontSize: 13 }}>— Performance distribution plot is not available</div>
+                                    )
+                                ) : (
+                                    <div style={{ color: "#64748b", padding: 12, background: "#f8fafc", borderRadius: 8, fontSize: 13 }}>— No performance distribution plot</div>
+                                )}
+                            </div>
+                            <div style={{ flex: "0 1 340px", minWidth: 280, border: "1px solid #e2e8f0", borderRadius: 8, background: "#fff", padding: 10 }}>
+                                <div style={{ marginBottom: 6, fontSize: 11, fontWeight: 700, color: "#0f172a", textTransform: "uppercase" }}>Hardware</div>
+                                <OverviewColumnTable rows={overviewColumns.hardware} />
+                                <div style={{ height: 1, background: "#e2e8f0", margin: "10px 0" }} />
+                                <div style={{ marginBottom: 6, fontSize: 11, fontWeight: 700, color: "#0f172a", textTransform: "uppercase" }}>Software</div>
+                                <OverviewColumnTable rows={overviewColumns.software} />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Workload Execution Results */}
+                    <div>
+                        <h3 style={{ margin: 0, marginBottom: 12, fontSize: 14, fontWeight: 700, color: "#0f172a" }}>Workload Execution Results</h3>
+                        <p style={{ margin: "0 0 12px 0", fontSize: 12, color: "#64748b" }}>Detailed benchmark runtime and execution metrics for each workload</p>
+                        <div style={{ overflowX: "auto", borderRadius: 6, border: "1px solid #e2e8f0" }}>
+                            <table style={{ borderCollapse: "collapse", fontSize: 12, whiteSpace: "nowrap", width: "100%" }}>
+                                <thead>
+                                    <tr style={{ background: "#f1f5f9" }}>
+                                        {data.workloadData.headers.map((h) => (
+                                            <th key={h} style={{ padding: "8px 12px", borderBottom: "2px solid #e2e8f0", textAlign: ["benchmark_name", "workload_name"].includes(h) ? "left" : "right", fontWeight: 600, color: "#0f172a" }}>
+                                                {h.replace(/_time$/, "").replace(/round_|_/g, " ").trim()}
+                                            </th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data.workloadData.rows.map((row, i) => (
+                                        <tr key={i} style={{ background: i % 2 === 0 ? "#fff" : "#f8fafc" }}>
+                                            {row.map((cell, j) => (
+                                                <td key={j} style={{ padding: "6px 12px", borderBottom: "1px solid #e2e8f0", textAlign: j < 2 ? "left" : "right", color: "#1f2937", fontSize: 11 }}>
+                                                    {cell === null || cell === "" ? "—" : typeof cell === "number" ? cell.toFixed(2) : String(cell)}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {/* System Configuration Details */}
+                    {data.systemInfo && (
+                        <div>
+                            <h3 style={{ margin: "0 0 4px 0", fontSize: 14, fontWeight: 700, color: "#0f172a" }}>System Configuration Details</h3>
+                            <p style={{ margin: "0 0 12px 0", fontSize: 12, color: "#64748b" }}>Comprehensive hardware and software configuration information</p>
+                            <SystemConfigTable config={data.systemInfo} />
+                        </div>
+                    )}
+                </div>
+            ) : (
+                <div style={{ padding: 20, color: "#64748b", textAlign: "center" }}>No data available for this CPU.</div>
+            )}
+        </div>
+    );
+
+    if (standalone) {
+        return <div style={{ maxWidth: 1320, margin: "0 auto", padding: "24px 18px" }}>{panelBody}</div>;
+    }
+
+    return (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 9998, display: "flex", alignItems: "center", justifyContent: "center" }} onClick={onClose}>
+            {panelBody}
+        </div>
+    );
+}

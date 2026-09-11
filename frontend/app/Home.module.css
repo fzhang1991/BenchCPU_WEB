@@ -31,10 +31,10 @@
 }
 
 .heroTitle{
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 950;
   letter-spacing: -0.03em;
-  color: rgba(15,23,42,0.92);
+  color: #0f172a;
   margin: 0;
   text-align: center;
 }
@@ -142,10 +142,10 @@
 }
 
 .heroDesc{
-  font-size: 13px;
-  font-weight: 650;
-  color: rgba(15,23,42,0.62);
-  line-height: 1.55;
+  font-size: 17px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.65;
   max-width: 860px;
   margin: 0 auto;
   text-align: center;
@@ -194,9 +194,9 @@
 }
 
 .cardTitle{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 950;
-  color: rgba(15,23,42,0.92);
+  color: #0f172a;
   text-align: center;
 }
 
@@ -221,9 +221,9 @@
 }
 
 .muted{
-  font-size: 12px;
-  color: rgba(15,23,42,0.62);
-  line-height: 1.45;
+  font-size: 15px;
+  color: #0f172a;
+  line-height: 1.6;
 }
 
 .comparePreviewLegend{

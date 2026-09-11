@@ -1,0 +1,1852 @@
+pages=46 chars=81681
+
+=== EO/AO/COs ===
+NOT_FOUND
+
+=== \bEO\b ===
+first_at=2630
+
+▶ Evaluation, measurement, testing, and
+reasoning are often conflated.
+▶ No shared problem definition or general
+methodology has emerged.
+Evaluation is ubiquitous as a practice, but underdeveloped as a science.
+Introduction of Evaluatology Evaluatology 5
+4. Evaluatology Studies Causes and Effects
+Evaluatology
+The science of uncovering causes and
+effects.
+Today’s focus isevaluation in complex
+systems.
+Evaluationobject→effects and
+derived effects
+De-evaluationphenomenon→
+causes
+Evaluatology-based designdesired
+effects→object
+Evaluatology is more than reasoning.
+Introduction of Evaluatology Evaluatology 6
+5. Evaluation Starts with an Object, an Affected Object, and an Effect
+Evaluated Object (EO)
+CPU
+Affected Object (AO)
+running computer
+Effect
+change in performance
+EO: What is evaluated?
+The object whose effects we
+seek to uncover.
+AO: What is changed?
+The object changed by the
+EO.
+Effect: What changed?
+A change caused by the EO
+in the AO.
+EFFECT IS BROADER THAN A SCORE
+It may change an AO’s property, structure, or mechanism, or cause an object to disappear or emerge.
+Introduction of Evaluatology Evaluatology 7
+6. In a Complex System, the EO Never Acts Alone
+EO
+CPU
+COs
+Confounding objects
+AO
+running system
+Overall effect
+observed change
+Confounding Objects (COs)are other objects whose
+effects also contribute to the AO’s change.
+RUNNING EXAMPLE: CPU EVALUATION
+EO:CPU
+COs:workload, compiler, dataset,
+copy/threads
+AO:running computer system
+Overall effect:observed system
+performance
+The observed overall effect is jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 8
+7. Evaluatology Methodology
+Real-World System (RWS)
+The real objects and mechanisms
+of interest.
+Observe
+Self-Contained System
+(SCS)
+A runnable physical model of the
+relevant part of the RWS.
+Experiment
+Object Causal Model
+(OCM)
+A mathematical model of objects
+and effect mechanisms.
+Exp
+
+=== \bAO\b ===
+first_at=2655
+t, testing, and
+reasoning are often conflated.
+▶ No shared problem definition or general
+methodology has emerged.
+Evaluation is ubiquitous as a practice, but underdeveloped as a science.
+Introduction of Evaluatology Evaluatology 5
+4. Evaluatology Studies Causes and Effects
+Evaluatology
+The science of uncovering causes and
+effects.
+Today’s focus isevaluation in complex
+systems.
+Evaluationobject→effects and
+derived effects
+De-evaluationphenomenon→
+causes
+Evaluatology-based designdesired
+effects→object
+Evaluatology is more than reasoning.
+Introduction of Evaluatology Evaluatology 6
+5. Evaluation Starts with an Object, an Affected Object, and an Effect
+Evaluated Object (EO)
+CPU
+Affected Object (AO)
+running computer
+Effect
+change in performance
+EO: What is evaluated?
+The object whose effects we
+seek to uncover.
+AO: What is changed?
+The object changed by the
+EO.
+Effect: What changed?
+A change caused by the EO
+in the AO.
+EFFECT IS BROADER THAN A SCORE
+It may change an AO’s property, structure, or mechanism, or cause an object to disappear or emerge.
+Introduction of Evaluatology Evaluatology 7
+6. In a Complex System, the EO Never Acts Alone
+EO
+CPU
+COs
+Confounding objects
+AO
+running system
+Overall effect
+observed change
+Confounding Objects (COs)are other objects whose
+effects also contribute to the AO’s change.
+RUNNING EXAMPLE: CPU EVALUATION
+EO:CPU
+COs:workload, compiler, dataset,
+copy/threads
+AO:running computer system
+Overall effect:observed system
+performance
+The observed overall effect is jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 8
+7. Evaluatology Methodology
+Real-World System (RWS)
+The real objects and mechanisms
+of interest.
+Observe
+Self-Contained System
+(SCS)
+A runnable physical model of the
+relevant part of the RWS.
+Experiment
+Object Causal Model
+(OCM)
+A mathematical model of objects
+and effect mechanisms.
+Explain and predict
+Observe 
+
+=== \bCOs?\b ===
+first_at=3113
+valuatology-based designdesired
+effects→object
+Evaluatology is more than reasoning.
+Introduction of Evaluatology Evaluatology 6
+5. Evaluation Starts with an Object, an Affected Object, and an Effect
+Evaluated Object (EO)
+CPU
+Affected Object (AO)
+running computer
+Effect
+change in performance
+EO: What is evaluated?
+The object whose effects we
+seek to uncover.
+AO: What is changed?
+The object changed by the
+EO.
+Effect: What changed?
+A change caused by the EO
+in the AO.
+EFFECT IS BROADER THAN A SCORE
+It may change an AO’s property, structure, or mechanism, or cause an object to disappear or emerge.
+Introduction of Evaluatology Evaluatology 7
+6. In a Complex System, the EO Never Acts Alone
+EO
+CPU
+COs
+Confounding objects
+AO
+running system
+Overall effect
+observed change
+Confounding Objects (COs)are other objects whose
+effects also contribute to the AO’s change.
+RUNNING EXAMPLE: CPU EVALUATION
+EO:CPU
+COs:workload, compiler, dataset,
+copy/threads
+AO:running computer system
+Overall effect:observed system
+performance
+The observed overall effect is jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 8
+7. Evaluatology Methodology
+Real-World System (RWS)
+The real objects and mechanisms
+of interest.
+Observe
+Self-Contained System
+(SCS)
+A runnable physical model of the
+relevant part of the RWS.
+Experiment
+Object Causal Model
+(OCM)
+A mathematical model of objects
+and effect mechanisms.
+Explain and predict
+Observe RWS Experiment on SCS Build OCM Test and refine
+The three are linked, but they are not interchangeable.
+Introduction of Evaluatology Evaluatology 9
+8. The Self-Contained System Makes Evaluation Runnable
+EO
+COs
+AO
+Self-Contained System (SCS)
+A complete physical or instantiated system containing
+the EO, AO, and COs needed to reproduce the target
+effect.
+A USEFUL SCS SHOULD
+▶ preserve the relevant effect
+mechanisms;
+▶ run under multiple experimental
+conditio
+
+=== \bCSC\b ===
+NOT_FOUND
+
+=== \bEC\b ===
+first_at=4672
+n of Evaluatology Evaluatology 9
+8. The Self-Contained System Makes Evaluation Runnable
+EO
+COs
+AO
+Self-Contained System (SCS)
+A complete physical or instantiated system containing
+the EO, AO, and COs needed to reproduce the target
+effect.
+A USEFUL SCS SHOULD
+▶ preserve the relevant effect
+mechanisms;
+▶ run under multiple experimental
+conditions;
+▶ produces observable and testable
+evidence;
+▶ be no more complex than the purpose
+requires.
+RUNNING EXAMPLE: CPU EVALUATION
+A CPU’s SCS is a runnable computer
+system, not an isolated chip and not the
+entire world.
+Introduction of Evaluatology Evaluatology 10
+9. Removing the EO Reveals the Evaluation Condition
+EO
+COs
+AO
+SCS
+−EO Evaluation Condition (EC)
+AO + COs
+EC=SCS−EO,SCS=EO+EC
+RUNNING EXAMPLE: CPU EVALUATION
+For a CPU, an EC specifies the
+workload, compiler, OS, memory,
+storage, and the system context in
+which the CPU participates.
+The EC is aderived system, not merely
+a list of nuisance variables.
+Comparing EOs requires shared or equivalent ECs.
+Introduction of Evaluatology Evaluatology 11
+10. Complex Evaluation Separates Three Effects
+Overall effect
+The observable change jointly
+produced by the EO and COs.
+True effect
+The actual effect produced by the
+EO within the specified system.
+Inferred effect
+Our evidence-based estimate of
+the true effect.
+Overall effect Inferred effect True effect of EO
+evidence + method must be tested
+Complex evaluation reveals the EO’s true effect from an overall effect jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 12
+11. A Case Study on CPU Evaluation
+Aﬀected Objects (AO)
+Overall Eﬀect
+e.g., the execution time of a typical workload
+OS
+Evaluation Conditions (EC)
+OS Setting Memory
+Memory Setting Disk Disk Setting
+Evaluated Object 
+(EO)
+Workload Dataset
+Compiler Level/
+Flag
+Compiler
+Copies/Threads
+Self-contained System (SCS)
+Confounding 
+Objects (COs)
+▶ EO:CPU
+▶ AO:M
+
+=== Counter\s+Objects ===
+NOT_FOUND
+
+=== Comprehensive\s+Subjective\s+Conditions ===
+NOT_FOUND
+
+=== Evaluation\s+Criteria ===
+NOT_FOUND
+
+--- hit:BenchCPU at 67899 ---
+Application I: CPU Evaluatology Evaluatology 25
+Outline
+Introduction of Evaluatology
+Application I: CPU Evaluatology
+Instances of CPU Evaluatology
+Application II: LLM Evaluatology
+Cross-Domain Check
+Conclusion
+Instances of CPU Evaluatology Evaluatology 26
+22. BenchCPU: Evaluatology-guided new CPU benchmark Suite
+BenchCPU: Performance Distribution-Aware CPU Benchmarking over Open Configuration Spaces
+Coming soon
+Instances of CPU Evaluatology Evaluatology 27
+23. Configuration Space & Metric of BenchCPU
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+49
+
+--- hit:BenchCPU at 67953 ---
+e
+Introduction of Evaluatology
+Application I: CPU Evaluatology
+Instances of CPU Evaluatology
+Application II: LLM Evaluatology
+Cross-Domain Check
+Conclusion
+Instances of CPU Evaluatology Evaluatology 26
+22. BenchCPU: Evaluatology-guided new CPU benchmark Suite
+BenchCPU: Performance Distribution-Aware CPU Benchmarking over Open Configuration Spaces
+Coming soon
+Instances of CPU Evaluatology Evaluatology 27
+23. Configuration Space & Metric of BenchCPU
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+
+
+--- hit:BenchCPU at 68136 ---
+gy Evaluatology 26
+22. BenchCPU: Evaluatology-guided new CPU benchmark Suite
+BenchCPU: Performance Distribution-Aware CPU Benchmarking over Open Configuration Spaces
+Coming soon
+Instances of CPU Evaluatology Evaluatology 27
+23. Configuration Space & Metric of BenchCPU
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+BenchCPU: Performance Distribution-Aware CPU Benchmarking over Open Configuration Spaces PACT ’26, October 2026, Chicago, Illin
+
+--- hit:BenchCPU at 68377 ---
+ Space & Metric of BenchCPU
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+BenchCPU: Performance Distribution-Aware CPU Benchmarking over Open Configuration Spaces PACT ’26, October 2026, Chicago, Illinois, USA
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+
+
+--- hit:BenchCPU at 70031 ---
+ a
+paradigm shift toward systematic, mathematically rigorous con"g-
+uration space evaluation.
+4 Methodology: The Open Con!guration Spaces
+Paradigm
+To fundamentally resolve the three crises of legacy static work-
+load con"gurations based benchmark (Section 3), BenchCPU pi-
+oneers an Open Con!guration Spaces Paradigm . Rather than rely-
+ing on deterministic, static workload con"gurations to proxy CPU
+performance, BenchCPU rede"nes benchmarking as a rigorous,
+distribution-aware stochastic inference process over a con"gura-
+tion space. As illustrated in Fig. 3, our methodology is orchestrated
+through three systemic pillars: 
+
+--- hit:leaderboard at 77738 ---
+ 37
+32. Equivalent Conditions Can Reverse Model Comparisons
+Accuracy intervals across sampled ECs
+ Pairwise differences under equivalent ECs
+9sign reversals7missed differences3illusory gaps
+Application II: LLM Evaluatology Evaluatology 38
+33. LLM Evaluatology Leaderboard
+For more information, please visit the officialLLM Evaluatologywebsite, and we welcome you to join us.
+https://llmeval.benchcouncil.org/
+Application II: LLM Evaluatology Evaluatology 39
+Outline
+Introduction of Evaluatology
+Application I: CPU Evaluatology
+Instances of CPU Evaluatology
+Application II: LLM Evaluatology
+Cross-Domain Check
+Conclusion
+Cross-Domai
+
+--- hit:ranking at 75941 ---
+f CPU Evaluatology Evaluatology 29
+25. Instances: Evaluatology-Based Cross Architecture Evaluation
+Tracking Across X86/ARM/RISC-V
+Instances of CPU Evaluatology Evaluatology 30
+26. Instances: Evaluatology-Based Cross Architecture Evaluation
+SPEC CPU 2006 Score Ranking
+Instances of CPU Evaluatology Evaluatology 31
+27. Instances: Evaluatology-Based Cross Architecture Evaluation
+Tracking Across the RISC-V Ecosystem
+Instances of CPU Evaluatology Evaluatology 32
+Outline
+Introduction of Evaluatology
+Application I: CPU Evaluatology
+Instances of CPU Evaluatology
+Application II: LLM Evaluatology
+Cross-Domain Check
+Conclusion
+Appl
+
+--- hit:COs at 3113 ---
+e caused by the EO
+in the AO.
+EFFECT IS BROADER THAN A SCORE
+It may change an AO’s property, structure, or mechanism, or cause an object to disappear or emerge.
+Introduction of Evaluatology Evaluatology 7
+6. In a Complex System, the EO Never Acts Alone
+EO
+CPU
+COs
+Confounding objects
+AO
+running system
+Overall effect
+observed change
+Confounding Objects (COs)are other objects whose
+effects also contribute to the AO’s change.
+RUNNING EXAMPLE: CPU EVALUATION
+EO:CPU
+COs:workload, compiler, dataset,
+copy/threads
+AO:running computer system
+Overall effect:observed system
+performance
+The observed overall effect is jointly pro
+
+--- hit:COs at 3207 ---
+tructure, or mechanism, or cause an object to disappear or emerge.
+Introduction of Evaluatology Evaluatology 7
+6. In a Complex System, the EO Never Acts Alone
+EO
+CPU
+COs
+Confounding objects
+AO
+running system
+Overall effect
+observed change
+Confounding Objects (COs)are other objects whose
+effects also contribute to the AO’s change.
+RUNNING EXAMPLE: CPU EVALUATION
+EO:CPU
+COs:workload, compiler, dataset,
+copy/threads
+AO:running computer system
+Overall effect:observed system
+performance
+The observed overall effect is jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 8
+7. Evaluatology Methodolo
+
+--- hit:COs at 3318 ---
+6. In a Complex System, the EO Never Acts Alone
+EO
+CPU
+COs
+Confounding objects
+AO
+running system
+Overall effect
+observed change
+Confounding Objects (COs)are other objects whose
+effects also contribute to the AO’s change.
+RUNNING EXAMPLE: CPU EVALUATION
+EO:CPU
+COs:workload, compiler, dataset,
+copy/threads
+AO:running computer system
+Overall effect:observed system
+performance
+The observed overall effect is jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 8
+7. Evaluatology Methodology
+Real-World System (RWS)
+The real objects and mechanisms
+of interest.
+Observe
+Self-Contained System
+(SCS)
+A r
+
+--- hit:COs at 3496 ---
+ffects also contribute to the AO’s change.
+RUNNING EXAMPLE: CPU EVALUATION
+EO:CPU
+COs:workload, compiler, dataset,
+copy/threads
+AO:running computer system
+Overall effect:observed system
+performance
+The observed overall effect is jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 8
+7. Evaluatology Methodology
+Real-World System (RWS)
+The real objects and mechanisms
+of interest.
+Observe
+Self-Contained System
+(SCS)
+A runnable physical model of the
+relevant part of the RWS.
+Experiment
+Object Causal Model
+(OCM)
+A mathematical model of objects
+and effect mechanisms.
+Explain and predict
+Observe RW
+
+--- hit:COs at 4063 ---
+ts
+and effect mechanisms.
+Explain and predict
+Observe RWS Experiment on SCS Build OCM Test and refine
+The three are linked, but they are not interchangeable.
+Introduction of Evaluatology Evaluatology 9
+8. The Self-Contained System Makes Evaluation Runnable
+EO
+COs
+AO
+Self-Contained System (SCS)
+A complete physical or instantiated system containing
+the EO, AO, and COs needed to reproduce the target
+effect.
+A USEFUL SCS SHOULD
+▶ preserve the relevant effect
+mechanisms;
+▶ run under multiple experimental
+conditions;
+▶ produces observable and testable
+evidence;
+▶ be no more complex than the purpose
+requires.
+RUNNING EXAMP
+
+--- hit:COs at 4168 ---
+ three are linked, but they are not interchangeable.
+Introduction of Evaluatology Evaluatology 9
+8. The Self-Contained System Makes Evaluation Runnable
+EO
+COs
+AO
+Self-Contained System (SCS)
+A complete physical or instantiated system containing
+the EO, AO, and COs needed to reproduce the target
+effect.
+A USEFUL SCS SHOULD
+▶ preserve the relevant effect
+mechanisms;
+▶ run under multiple experimental
+conditions;
+▶ produces observable and testable
+evidence;
+▶ be no more complex than the purpose
+requires.
+RUNNING EXAMPLE: CPU EVALUATION
+A CPU’s SCS is a runnable computer
+system, not an isolated chip and not the
+entire wor
+
+--- hit:COs at 4635 ---
+re complex than the purpose
+requires.
+RUNNING EXAMPLE: CPU EVALUATION
+A CPU’s SCS is a runnable computer
+system, not an isolated chip and not the
+entire world.
+Introduction of Evaluatology Evaluatology 10
+9. Removing the EO Reveals the Evaluation Condition
+EO
+COs
+AO
+SCS
+−EO Evaluation Condition (EC)
+AO + COs
+EC=SCS−EO,SCS=EO+EC
+RUNNING EXAMPLE: CPU EVALUATION
+For a CPU, an EC specifies the
+workload, compiler, OS, memory,
+storage, and the system context in
+which the CPU participates.
+The EC is aderived system, not merely
+a list of nuisance variables.
+Comparing EOs requires shared or equivalent ECs.
+Introduction of Ev
+
+--- hit:COs at 4681 ---
+EXAMPLE: CPU EVALUATION
+A CPU’s SCS is a runnable computer
+system, not an isolated chip and not the
+entire world.
+Introduction of Evaluatology Evaluatology 10
+9. Removing the EO Reveals the Evaluation Condition
+EO
+COs
+AO
+SCS
+−EO Evaluation Condition (EC)
+AO + COs
+EC=SCS−EO,SCS=EO+EC
+RUNNING EXAMPLE: CPU EVALUATION
+For a CPU, an EC specifies the
+workload, compiler, OS, memory,
+storage, and the system context in
+which the CPU participates.
+The EC is aderived system, not merely
+a list of nuisance variables.
+Comparing EOs requires shared or equivalent ECs.
+Introduction of Evaluatology Evaluatology 11
+10. Complex Evaluat
+
+--- hit:COs at 5140 ---
+d system, not merely
+a list of nuisance variables.
+Comparing EOs requires shared or equivalent ECs.
+Introduction of Evaluatology Evaluatology 11
+10. Complex Evaluation Separates Three Effects
+Overall effect
+The observable change jointly
+produced by the EO and COs.
+True effect
+The actual effect produced by the
+EO within the specified system.
+Inferred effect
+Our evidence-based estimate of
+the true effect.
+Overall effect Inferred effect True effect of EO
+evidence + method must be tested
+Complex evaluation reveals the EO’s true effect from an overall effect jointly produced by the EO and COs.
+Introduction of Evaluatolog
+
+--- hit:COs at 5471 ---
+ied system.
+Inferred effect
+Our evidence-based estimate of
+the true effect.
+Overall effect Inferred effect True effect of EO
+evidence + method must be tested
+Complex evaluation reveals the EO’s true effect from an overall effect jointly produced by the EO and COs.
+Introduction of Evaluatology Evaluatology 12
+11. A Case Study on CPU Evaluation
+Aﬀected Objects (AO)
+Overall Eﬀect
+e.g., the execution time of a typical workload
+OS
+Evaluation Conditions (EC)
+OS Setting Memory
+Memory Setting Disk Disk Setting
+Evaluated Object 
+(EO)
+Workload Dataset
+Compiler Level/
+Flag
+Compiler
+Copies/Threads
+Self-contained System (SCS)
+Co
+
+--- hit:COs at 5854 ---
+., the execution time of a typical workload
+OS
+Evaluation Conditions (EC)
+OS Setting Memory
+Memory Setting Disk Disk Setting
+Evaluated Object 
+(EO)
+Workload Dataset
+Compiler Level/
+Flag
+Compiler
+Copies/Threads
+Self-contained System (SCS)
+Confounding 
+Objects (COs)
+▶ EO:CPU
+▶ AO:Minimal independent running
+computer system
+▶ COs:Application such as benchmark
+(workload, dataset, copies/threads),
+compiler, compiler flag
+▶ SCS:EO + AO + COs
+▶ EC:SCS after removing CPU
+The essence of CPU evaluation: inferring the CPU effect on overall system performance.
+Introduction of Evaluatology Evaluatology 13
+12. OCM is the mathemat
+
+--- hit:COs at 5919 ---
+ons (EC)
+OS Setting Memory
+Memory Setting Disk Disk Setting
+Evaluated Object 
+(EO)
+Workload Dataset
+Compiler Level/
+Flag
+Compiler
+Copies/Threads
+Self-contained System (SCS)
+Confounding 
+Objects (COs)
+▶ EO:CPU
+▶ AO:Minimal independent running
+computer system
+▶ COs:Application such as benchmark
+(workload, dataset, copies/threads),
+compiler, compiler flag
+▶ SCS:EO + AO + COs
+▶ EC:SCS after removing CPU
+The essence of CPU evaluation: inferring the CPU effect on overall system performance.
+Introduction of Evaluatology Evaluatology 13
+12. OCM is the mathematical model built on the SCS.
+Self-Contained
+System (SCS)
+identifi
+
+--- hit:COs at 6030 ---
+vel/
+Flag
+Compiler
+Copies/Threads
+Self-contained System (SCS)
+Confounding 
+Objects (COs)
+▶ EO:CPU
+▶ AO:Minimal independent running
+computer system
+▶ COs:Application such as benchmark
+(workload, dataset, copies/threads),
+compiler, compiler flag
+▶ SCS:EO + AO + COs
+▶ EC:SCS after removing CPU
+The essence of CPU evaluation: inferring the CPU effect on overall system performance.
+Introduction of Evaluatology Evaluatology 13
+12. OCM is the mathematical model built on the SCS.
+Self-Contained
+System (SCS)
+identifies EO, AO, and COs
+⇓
+Object Causal Model (OCM)
+models how these ob-
+jects affect one another
+The SCS sayswhich 
+
+--- hit:COs at 6297 ---
+C:SCS after removing CPU
+The essence of CPU evaluation: inferring the CPU effect on overall system performance.
+Introduction of Evaluatology Evaluatology 13
+12. OCM is the mathematical model built on the SCS.
+Self-Contained
+System (SCS)
+identifies EO, AO, and COs
+⇓
+Object Causal Model (OCM)
+models how these ob-
+jects affect one another
+The SCS sayswhich objects belong;
+the OCM sayshow they produce effects.
+CORE POSITION
+▶ A mathematical model of the RWS and
+SCS.
+▶ Built fromobjects, rather than variables
+or observed events.
+▶ Represents domain-specific mechanisms
+of effect.
+▶ Explores configurations and predicts
+cha
+
+--- hit:COs at 6868 ---
+f effect.
+▶ Explores configurations and predicts
+changes in affected objects.
+▶ Tested by observations, measurements,
+and tests on RWSs or SCSs.
+Introduction of Evaluatology Evaluatology 14
+13. Evaluatology Uses an Iterative Workflow
+1. Define
+EO, AO, effect, COs
+2. Construct
+SCS and ECs
+3. Interrogate
+observe and experiment
+4. Infer
+true effect and OCM
+5. Test
+new evidence
+PHYSICAL WORK
+▶ Select representative ECs.
+▶ Observe or intervene on runnable systems.
+▶ Produce traceable overall-effect evidence.
+EPISTEMIC WORK
+▶ Infer the EO’s true effect.
+▶ Explain mechanisms with an OCM.
+▶ Reject or revise claims through t
+
+--- hit:COs at 8604 ---
+en the phys-
+ical and logical cores. Once the thread count surpasses the
+logical core capacity, enabling the HT yields no pronounced
+performance di"erence (!uctuations < 2.5%). Finally, CPU
+Evaluatology achieves this while shrinking the prohibitive
+estimation costs of DoE and RCTs by at least two orders of
+magnitude.
+Our contributions are summarized as follows.
+1. Problem Formalization: We recast the issue of in-
+ferring component e"ect on system performance as
+a causal inference problem and show that existing
+benchmark-driven methodologies fundamentally fail
+to isolate other components’ e"ect, which are con-
+founde
+
+--- hit:COs at 15057 ---
+r flags(O1, O2, O3)
+▶ 64threads([1, 64])
+Population mean as the ground truth
+▶ Accuracy: The frequency (probability) with which the calculated 99% CI (Confidence Interval)
+successfully encapsulates the population mean. (10,000 iterations in our experiment )
+▶ Cost: The number of SCS configurations required per iteration.
+Application I: CPU Evaluatology Evaluatology 20
+17. The pitfall of SPEC CPU2017
+Component under Investigation (CUI)
+Other Essential Components
+System PerformanceHow to Infer CUI Eﬀect?
+Confounding
+Figure 1. The challenge of system design and evaluation lies
+in how to infer the CUI e!ect on the syste
+
+--- hit:COs at 18205 ---
+dology(Confounding bias)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Confounding
+Workload
+System PerformanceCPU Eﬀect
+CPU
+System Performance
+(c) Randomized Controlled Trial(Colossal Sample Size) (d) Design of Experiments(Exponentially prohibitive cost)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Randomization
+Completeness Testing, Causal Modeling, Sampling
+Workload
+Exhaustive Traversal
+Figure 2. Methodology Comparisons of CPU Evaluatology,
+SPEC CPU, Randomized Controlled Trial, and Design of
+Experiments from a Perspective of Causal E!ect.
+We propose a rigorous general-purpose methodology to
+
+--- hit:COs at 19573 ---
+ti"ed via F-test-based completeness testing. A
+structural causal model (SCM) methodology is used to model
+how the CPU a!ects the system performance and to infer the
+true CPU e!ect under the backdoor criterion. Finally, random
+sampling is used to enable highly cost-e!ective inference.
+We formalize two fundamental Test Oracles—essentially
+architectural invariants—to validate the correctness of the
+inferred CPU e!ect using CPU Evaluatology: (1) The true
+performance delta of an identical CPU should be negligi-
+ble; and (2) The cross-CPU performance di!erence (i.e., the
+true architectural advantage) under a uniform compi
+
+--- hit:COs at 28417 ---
+dology(Confounding bias)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Confounding
+Workload
+System PerformanceCPU Eﬀect
+CPU
+System Performance
+(c) Randomized Controlled Trial(Colossal Sample Size) (d) Design of Experiments(Exponentially prohibitive cost)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Randomization
+Completeness Testing, Causal Modeling, Sampling
+Workload
+Exhaustive Traversal
+Figure 2. Methodology Comparisons of CPU Evaluatology,
+SPEC CPU, Randomized Controlled Trial, and Design of
+Experiments from a Perspective of Causal E!ect.
+We propose a rigorous general-purpose methodology to
+
+--- hit:COs at 29785 ---
+ti"ed via F-test-based completeness testing. A
+structural causal model (SCM) methodology is used to model
+how the CPU a!ects the system performance and to infer the
+true CPU e!ect under the backdoor criterion. Finally, random
+sampling is used to enable highly cost-e!ective inference.
+We formalize two fundamental Test Oracles—essentially
+architectural invariants—to validate the correctness of the
+inferred CPU e!ect using CPU Evaluatology: (1) The true
+performance delta of an identical CPU should be negligi-
+ble; and (2) The cross-CPU performance di!erence (i.e., the
+true architectural advantage) under a uniform compi
+
+--- hit:COs at 31458 ---
+read count scales. As the thread count exceeds the
+physical core capacity, the HT-disabled con !guration must
+multiplex more runnable threads over fewer hardware exe-
+cution contexts, increasing scheduling overhead and poten-
+tially amplifying synchronization costs. HT mitigates part
+of this pressure by exposing additional hardware thread con-
+texts to the OS.
+The Saturation Interval (threads >56): Beyond the logi-
+cal core threshold, context-switching dominates, diminishing
+HT’s true e"ect to marginal #uctuations (<2.5%). Ultimately,
+once the thread count surpasses the logical core capacity,
+the system enters a sta
+
+--- hit:COs at 32508 ---
+ a confounder. It con #ates the hard-
+ware HT e "ect with OS scheduling and thread contention
+artifacts. CPU Evaluatology systematically disentangles this
+confounding bias, restoring the true architectural evaluation.
+7.3 Methodological Showdown: Accuracy vs. Cost in
+Causal Inference
+While Section 7.2 established the mathematical ground truth
+(+1.81% HT e "ect) by exhaustively traversing 36,000 con-
+!gurations, such exhaustive evaluation is fundamentally in-
+tractable in real-world scenarios. Practical computer evalua-
+tion necessitates sampling. The critical question, therefore
+becomes, which methodology can accura
+
+--- hit:COs at 32937 ---
+e evaluation is fundamentally in-
+tractable in real-world scenarios. Practical computer evalua-
+tion necessitates sampling. The critical question, therefore
+becomes, which methodology can accurately infer the true
+architectural e"ect with the minimum sampling cost?
+Evaluation Methodology. To statistically evaluate the four
+methodologies (SPEC CPU, DoE, RCTs, and CPU Evaluatol-
+ogy), we adopted a rigorous Monte Carlo simulation frame-
+work. For each methodology, we extracted con !guration
+samples, calculated the 99% con !dence interval (CI) for the
+HT e"ect, and repeated this process for 10,000 iterations. To
+ensure 
+
+--- hit:COs at 33431 ---
+amples, calculated the 99% con !dence interval (CI) for the
+HT e"ect, and repeated this process for 10,000 iterations. To
+ensure comparability with SPEC, all methodologies use the
+geometric mean of performance ratios, which is equivalent
+Table 9. Accuracy and cost comparison of CPU evaluation
+methodologies. Accuracy computed over 10,000 iterations.
+Methodology Cost (Con !gs) Accuracy
+SPEC CPU2017 20 0%
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+
+--- hit:COs at 33534 ---
+000 iterations. To
+ensure comparability with SPEC, all methodologies use the
+geometric mean of performance ratios, which is equivalent
+Table 9. Accuracy and cost comparison of CPU evaluation
+methodologies. Accuracy computed over 10,000 iterations.
+Methodology Cost (Con !gs) Accuracy
+SPEC CPU2017 20 0%
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (C
+
+--- hit:COs at 33890 ---
+ign 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (Con !gs) Accuracy
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+Methodology Cost (Con !gs) Accuracy
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 3,200 0.49%
+RCTs 9,600 1.10%
+RCTs 13,200 25.93%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+to averaging log-transformed deltas, providing a rigorous
+foundation for CI
+
+--- hit:COs at 34034 ---
+valuatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (Con !gs) Accuracy
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+Methodology Cost (Con !gs) Accuracy
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 3,200 0.49%
+RCTs 9,600 1.10%
+RCTs 13,200 25.93%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+to averaging log-transformed deltas, providing a rigorous
+foundation for CI derivation. We evaluate the methodologies
+along two dimensions. We benchmark the methodologies
+across two dimensions (detailed in Table 9):
+1. 
+
+--- hit:COs at 34530 ---
+valuate the methodologies
+along two dimensions. We benchmark the methodologies
+across two dimensions (detailed in Table 9):
+1. Accuracy: The frequency (probability) with which
+the calculated 99% CI successfully encapsulates the
+ground truth ratio (1.0181).
+2. Cost: The number of system con !gurations required
+per iteration.
+Experimental Setup for Baselines. Instead of static selec-
+tions (SPEC), the rigorous baselines employ varied sampling
+paradigms. For the DoE (Factorial Design), we constructed
+2𝐿𝐿 fractional designs with 𝑁 = 5 factors and 𝑁 = 4 factors,
+binarizing factors into high/low levels with 𝐿 = 3 replicat
+
+--- hit:COs at 35496 ---
+ design). This yields a
+total of 10 ↑ 24 = 160 sampled con!gurations. For RCTs,w e
+employed completely randomized, without-replacement as-
+signment between the treatment (CPU A with HT-enabled)
+11
+RCTs’ inferred CPU effect accuracy with different sample size (cost)
+Randomized Controlled Trials (RCTs) can infer the CPU effect using the randomization mechanism.
+The sample size of RCTs is Colossal.
+Application I: CPU Evaluatology Evaluatology 22
+19. The pitfall of DoE
+Component under Investigation (CUI)
+Other Essential Components
+System PerformanceHow to Infer CUI Eﬀect?
+Confounding
+Figure 1. The challenge of system de
+
+--- hit:COs at 38711 ---
+dology(Confounding bias)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Confounding
+Workload
+System PerformanceCPU Eﬀect
+CPU
+System Performance
+(c) Randomized Controlled Trial(Colossal Sample Size) (d) Design of Experiments(Exponentially prohibitive cost)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Randomization
+Completeness Testing, Causal Modeling, Sampling
+Workload
+Exhaustive Traversal
+Figure 2. Methodology Comparisons of CPU Evaluatology,
+SPEC CPU, Randomized Controlled Trial, and Design of
+Experiments from a Perspective of Causal E!ect.
+We propose a rigorous general-purpose methodology to
+
+--- hit:COs at 40079 ---
+ti"ed via F-test-based completeness testing. A
+structural causal model (SCM) methodology is used to model
+how the CPU a!ects the system performance and to infer the
+true CPU e!ect under the backdoor criterion. Finally, random
+sampling is used to enable highly cost-e!ective inference.
+We formalize two fundamental Test Oracles—essentially
+architectural invariants—to validate the correctness of the
+inferred CPU e!ect using CPU Evaluatology: (1) The true
+performance delta of an identical CPU should be negligi-
+ble; and (2) The cross-CPU performance di!erence (i.e., the
+true architectural advantage) under a uniform compi
+
+--- hit:COs at 40742 ---
+by these oracles, we instan-
+tiate our methodology into an open-source validation tool,
+the CPUOracle suite.
+To demonstrate the potential of our methodology, we infer
+the e!ect of a module within the CPU, Hyper-Threading (HT).
+2
+DoE (Exponentially Prohibitive Cost)
+by the physical core capacity, concurrency demands are sat-
+is!ed by dedicated physical cores. Therefore, in this scenario,
+the main e "ect of HT is not to increase core-level parallel
+capacity, but rather to introduce intra-core contention. This
+occurs when co-scheduled sibling threads compete for shared
+execution resources and L1/L2 caches, thereby incu
+
+--- hit:COs at 41761 ---
+read count scales. As the thread count exceeds the
+physical core capacity, the HT-disabled con !guration must
+multiplex more runnable threads over fewer hardware exe-
+cution contexts, increasing scheduling overhead and poten-
+tially amplifying synchronization costs. HT mitigates part
+of this pressure by exposing additional hardware thread con-
+texts to the OS.
+The Saturation Interval (threads >56): Beyond the logi-
+cal core threshold, context-switching dominates, diminishing
+HT’s true e"ect to marginal #uctuations (<2.5%). Ultimately,
+once the thread count surpasses the logical core capacity,
+the system enters a sta
+
+--- hit:COs at 42811 ---
+ a confounder. It con #ates the hard-
+ware HT e "ect with OS scheduling and thread contention
+artifacts. CPU Evaluatology systematically disentangles this
+confounding bias, restoring the true architectural evaluation.
+7.3 Methodological Showdown: Accuracy vs. Cost in
+Causal Inference
+While Section 7.2 established the mathematical ground truth
+(+1.81% HT e "ect) by exhaustively traversing 36,000 con-
+!gurations, such exhaustive evaluation is fundamentally in-
+tractable in real-world scenarios. Practical computer evalua-
+tion necessitates sampling. The critical question, therefore
+becomes, which methodology can accura
+
+--- hit:COs at 43240 ---
+e evaluation is fundamentally in-
+tractable in real-world scenarios. Practical computer evalua-
+tion necessitates sampling. The critical question, therefore
+becomes, which methodology can accurately infer the true
+architectural e"ect with the minimum sampling cost?
+Evaluation Methodology. To statistically evaluate the four
+methodologies (SPEC CPU, DoE, RCTs, and CPU Evaluatol-
+ogy), we adopted a rigorous Monte Carlo simulation frame-
+work. For each methodology, we extracted con !guration
+samples, calculated the 99% con !dence interval (CI) for the
+HT e"ect, and repeated this process for 10,000 iterations. To
+ensure 
+
+--- hit:COs at 43734 ---
+amples, calculated the 99% con !dence interval (CI) for the
+HT e"ect, and repeated this process for 10,000 iterations. To
+ensure comparability with SPEC, all methodologies use the
+geometric mean of performance ratios, which is equivalent
+Table 9. Accuracy and cost comparison of CPU evaluation
+methodologies. Accuracy computed over 10,000 iterations.
+Methodology Cost (Con !gs) Accuracy
+SPEC CPU2017 20 0%
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+
+--- hit:COs at 43837 ---
+000 iterations. To
+ensure comparability with SPEC, all methodologies use the
+geometric mean of performance ratios, which is equivalent
+Table 9. Accuracy and cost comparison of CPU evaluation
+methodologies. Accuracy computed over 10,000 iterations.
+Methodology Cost (Con !gs) Accuracy
+SPEC CPU2017 20 0%
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (C
+
+--- hit:COs at 44193 ---
+ign 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (Con !gs) Accuracy
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+Methodology Cost (Con !gs) Accuracy
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 3,200 0.49%
+RCTs 9,600 1.10%
+RCTs 13,200 25.93%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+to averaging log-transformed deltas, providing a rigorous
+foundation for CI
+
+--- hit:COs at 44337 ---
+valuatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (Con !gs) Accuracy
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+Methodology Cost (Con !gs) Accuracy
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 3,200 0.49%
+RCTs 9,600 1.10%
+RCTs 13,200 25.93%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+to averaging log-transformed deltas, providing a rigorous
+foundation for CI derivation. We evaluate the methodologies
+along two dimensions. We benchmark the methodologies
+across two dimensions (detailed in Table 9):
+1. 
+
+--- hit:COs at 44833 ---
+valuate the methodologies
+along two dimensions. We benchmark the methodologies
+across two dimensions (detailed in Table 9):
+1. Accuracy: The frequency (probability) with which
+the calculated 99% CI successfully encapsulates the
+ground truth ratio (1.0181).
+2. Cost: The number of system con !gurations required
+per iteration.
+Experimental Setup for Baselines. Instead of static selec-
+tions (SPEC), the rigorous baselines employ varied sampling
+paradigms. For the DoE (Factorial Design), we constructed
+2𝐿𝐿 fractional designs with 𝑁 = 5 factors and 𝑁 = 4 factors,
+binarizing factors into high/low levels with 𝐿 = 3 replicat
+
+--- hit:COs at 45773 ---
+ermed as 𝑀2𝐿=4𝐿 fractional design). This yields a
+total of 10 ↑ 24 = 160 sampled con!gurations. For RCTs,w e
+employed completely randomized, without-replacement as-
+signment between the treatment (CPU A with HT-enabled)
+11
+The inferred CPU effect accuracy and cost under different designs
+Design of Experiment (DoE) model the computer system component (including CPU) effect.
+No cause effect modeling, brute-force method.
+The cost grows exponentially with the number of modeling components.
+Application I: CPU Evaluatology Evaluatology 23
+20. CPU Evaluatology
+Component under Investigation (CUI)
+Other Essential Components
+
+
+--- hit:COs at 45939 ---
+ignment between the treatment (CPU A with HT-enabled)
+11
+The inferred CPU effect accuracy and cost under different designs
+Design of Experiment (DoE) model the computer system component (including CPU) effect.
+No cause effect modeling, brute-force method.
+The cost grows exponentially with the number of modeling components.
+Application I: CPU Evaluatology Evaluatology 23
+20. CPU Evaluatology
+Component under Investigation (CUI)
+Other Essential Components
+System PerformanceHow to Infer CUI Eﬀect?
+Confounding
+Figure 1. The challenge of system design and evaluation lies
+in how to infer the CUI e !ect on the system perfor
+
+--- hit:COs at 49094 ---
+dology(Confounding bias)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Confounding
+Workload
+System PerformanceCPU Eﬀect
+CPU
+System Performance
+(c) Randomized Controlled Trial(Colossal Sample Size) (d) Design of Experiments(Exponentially prohibitive cost)
+datasetthreads/copies
+……
+……
+ datasetthreads/copies
+……
+……
+Randomization
+Completeness Testing, Causal Modeling, Sampling
+Workload
+Exhaustive Traversal
+Figure 2. Methodology Comparisons of CPU Evaluatology,
+SPEC CPU, Randomized Controlled Trial, and Design of
+Experiments from a Perspective of Causal E !ect.
+We propose a rigorous general-purpose methodology t
+
+--- hit:COs at 50466 ---
+i "ed via F-test-based completeness testing. A
+structural causal model (SCM) methodology is used to model
+how the CPU a!ects the system performance and to infer the
+true CPU e!ect under the backdoor criterion. Finally, random
+sampling is used to enable highly cost-e !ective inference.
+We formalize two fundamental Test Oracles—essentially
+architectural invariants—to validate the correctness of the
+inferred CPU e !ect using CPU Evaluatology: (1) The true
+performance delta of an identical CPU should be negligi-
+ble; and (2) The cross-CPU performance di !erence (i.e., the
+true architectural advantage) under a uniform co
+
+--- hit:COs at 52165 ---
+hread count scales. As the thread count exceeds the
+physical core capacity, the HT-disabled con!guration must
+multiplex more runnable threads over fewer hardware exe-
+cution contexts, increasing scheduling overhead and poten-
+tially amplifying synchronization costs. HT mitigates part
+of this pressure by exposing additional hardware thread con-
+texts to the OS.
+The Saturation Interval (threads >56): Beyond the logi-
+cal core threshold, context-switching dominates, diminishing
+HT’s true e"ect to marginal #uctuations (<2.5%). Ultimately,
+once the thread count surpasses the logical core capacity,
+the system enters a sta
+
+--- hit:COs at 53212 ---
+as a confounder. It con#ates the hard-
+ware HT e"ect with OS scheduling and thread contention
+artifacts. CPU Evaluatology systematically disentangles this
+confounding bias, restoring the true architectural evaluation.
+7.3 Methodological Showdown: Accuracy vs. Cost in
+Causal Inference
+While Section 7.2 established the mathematical ground truth
+(+1.81% HT e"ect) by exhaustively traversing 36,000 con-
+!gurations, such exhaustive evaluation is fundamentally in-
+tractable in real-world scenarios. Practical computer evalua-
+tion necessitates sampling. The critical question, therefore
+becomes, which methodology can accurat
+
+--- hit:COs at 53640 ---
+e evaluation is fundamentally in-
+tractable in real-world scenarios. Practical computer evalua-
+tion necessitates sampling. The critical question, therefore
+becomes, which methodology can accurately infer the true
+architectural e"ect with the minimum sampling cost?
+Evaluation Methodology. To statistically evaluate the four
+methodologies (SPEC CPU, DoE, RCTs, and CPU Evaluatol-
+ogy), we adopted a rigorous Monte Carlo simulation frame-
+work. For each methodology, we extracted con!guration
+samples, calculated the 99% con!dence interval (CI) for the
+HT e"ect, and repeated this process for 10,000 iterations. To
+ensure co
+
+--- hit:COs at 54132 ---
+samples, calculated the 99% con!dence interval (CI) for the
+HT e"ect, and repeated this process for 10,000 iterations. To
+ensure comparability with SPEC, all methodologies use the
+geometric mean of performance ratios, which is equivalent
+Table 9. Accuracy and cost comparison of CPU evaluation
+methodologies. Accuracy computed over 10,000 iterations.
+Methodology Cost (Con!gs) Accuracy
+SPEC CPU2017 20 0%
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+
+
+--- hit:COs at 54235 ---
+000 iterations. To
+ensure comparability with SPEC, all methodologies use the
+geometric mean of performance ratios, which is equivalent
+Table 9. Accuracy and cost comparison of CPU evaluation
+methodologies. Accuracy computed over 10,000 iterations.
+Methodology Cost (Con!gs) Accuracy
+SPEC CPU2017 20 0%
+2𝐿=5𝐿 Factorial Design 32 11.02%
+𝑀2𝐿=4𝐿 Factorial Design 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (Co
+
+--- hit:COs at 54590 ---
+ign 160 73.58%
+General Factorial Design 36,000 100.00%
+RCTs 20 0.03%
+RCTs 160 0.06%
+RCTs 9,600 1.10%
+RCTs 14,000 98.86%
+RCTs 18,000 99.01%
+CPU evaluatology 10 1.42%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+Methodology Cost (Con!gs) Accuracy
+CPU evaluatology 10 1.42%
+CPU evaluatology 30 1.56%
+CPU evaluatology 60 11.73%
+CPU evaluatology 100 94.68%
+CPU evaluatology 110 99.08%
+to averaging log-transformed deltas, providing a rigorous
+foundation for CI derivation. We evaluate the methodologies
+along two dimensions. We benchmark the methodologies
+across two dimensions (detailed in
+
+--- hit:COs at 55100 ---
+valuate the methodologies
+along two dimensions. We benchmark the methodologies
+across two dimensions (detailed in Table 9):
+1. Accuracy: The frequency (probability) with which
+the calculated 99% CI successfully encapsulates the
+ground truth ratio (1.0181).
+2. Cost: The number of system con!gurations required
+per iteration.
+Experimental Setup for Baselines. Instead of static selec-
+tions (SPEC), the rigorous baselines employ varied sampling
+paradigms. For the DoE (Factorial Design), we constructed
+2𝐿𝐿 fractional designs with 𝑁 = 5 factors and 𝑁 = 4 factors,
+binarizing factors into high/low levels with 𝐿 = 3 replicate
+
+--- hit:COs at 56414 ---
+uivalent con-
+!gurations across CPUs.
+Critical Insights & Results. Table 9 reveals the striking
+disparity in sampling e$ciency among the methodologies.
+We summarize the !ndings into four pivotal insights.
+11
+CPU Evaluatology’s inferred CPU effect accuracy and cost
+Identifying Key System Components through Completeness Testing.
+Modeling OCM of the CPU within SCS.
+Inferring the True CPU Effect.
+Application I: CPU Evaluatology Evaluatology 24
+21. Validation of CPU Evaluatology using Test Oracle
+Test Oracle: The cross-CPU performance difference under the same compiler flag should remain invariant.
+Table 5. Construction 
+
+--- hit:COs at 61834 ---
+apabilities. CPU
+Evaluatology successfully eliminates these confounders, re-
+vealing the underlying architectural truth.
+7 Evaluation
+This section systematically evaluates CPU Evaluatology by
+using Hyper-Threading (HT) as a case study, verifying its
+accuracy, cost-e"ciency, and essential role in inferring the
+true CPU e $ect, while demonstrating its ability to correct
+misleading conclusions from SPEC CPU and avoid the pro-
+hibitive costs of DoE and RCTs.
+7.1 Experimental Setup & The Con !guration Space
+Table 1 summarizes the three processors evaluated. CPU A
+and CPU B are identical x86-based Intel Xeon Gold 5120T
+9
+
+
+--- hit:COs at 62010 ---
+Evaluatology by
+using Hyper-Threading (HT) as a case study, verifying its
+accuracy, cost-e"ciency, and essential role in inferring the
+true CPU e $ect, while demonstrating its ability to correct
+misleading conclusions from SPEC CPU and avoid the pro-
+hibitive costs of DoE and RCTs.
+7.1 Experimental Setup & The Con !guration Space
+Table 1 summarizes the three processors evaluated. CPU A
+and CPU B are identical x86-based Intel Xeon Gold 5120T
+9
+Table 5. Construction of CPUOracle suite.
+Benchmark Workload Dataset Copies/Threads Compiler Flag
+SPEC CPU2017 43 con !gurable con!gurable 3
+Micro-Bench 10 con !gurable con!gur
+
+--- hit:COs at 67276 ---
+apabilities. CPU
+Evaluatology successfully eliminates these confounders, re-
+vealing the underlying architectural truth.
+7 Evaluation
+This section systematically evaluates CPU Evaluatology by
+using Hyper-Threading (HT) as a case study, verifying its
+accuracy, cost-e"ciency, and essential role in inferring the
+true CPU e $ect, while demonstrating its ability to correct
+misleading conclusions from SPEC CPU and avoid the pro-
+hibitive costs of DoE and RCTs.
+7.1 Experimental Setup & The Con !guration Space
+Table 1 summarizes the three processors evaluated. CPU A
+and CPU B are identical x86-based Intel Xeon Gold 5120T
+9
+
+
+--- hit:COs at 67452 ---
+Evaluatology by
+using Hyper-Threading (HT) as a case study, verifying its
+accuracy, cost-e"ciency, and essential role in inferring the
+true CPU e $ect, while demonstrating its ability to correct
+misleading conclusions from SPEC CPU and avoid the pro-
+hibitive costs of DoE and RCTs.
+7.1 Experimental Setup & The Con !guration Space
+Table 1 summarizes the three processors evaluated. CPU A
+and CPU B are identical x86-based Intel Xeon Gold 5120T
+9
+Application I: CPU Evaluatology Evaluatology 25
+Outline
+Introduction of Evaluatology
+Application I: CPU Evaluatology
+Instances of CPU Evaluatology
+Application II: LLM Evaluatol
+
+--- hit:COs at 74537 ---
+tinuous space is
+computationally impracticable. Conversely, defaulting to a static,
+hand-picked con"guration would instantly regress into the "Con-
+"guration Game, " "Biased Evaluation Results, " and "Architectural
+Blind Spots" (Three Crises in Section 3). To cost-e$ectively navigate
+this combinatorial explosion, BenchCPU treats CPU benchmarking
+as a rigorous stochastic inference process.
+Rather than exhaustive execution, BenchCPU automatically pub-
+lishes periodic (e.g., monthly) benchmark versions by constructing
+5
+Configuration Spaces of BenchCPU
+Metric:
+▶ Quantity:Time (basic quantity for
+performance measurement

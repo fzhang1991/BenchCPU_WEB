@@ -16,10 +16,19 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState<Lang>("en");
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("site-lang");
-    if (saved === "en" || saved === "zh") {
-      setLang(saved);
-    }
+    let cancelled = false;
+
+    queueMicrotask(() => {
+      if (cancelled) return;
+      const saved = window.localStorage.getItem("site-lang");
+      if (saved === "en" || saved === "zh") {
+        setLang(saved);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
