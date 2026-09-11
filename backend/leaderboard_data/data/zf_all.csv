@@ -1,0 +1,4 @@
+﻿cpu_name,CPUbench time,SPECspeed Int,SPECspeed FP,SPECrate Int,SPECrate FP,cpu_file_key,cpu info
+"Intel Xeon Gold 5120T",1369.98,3.48,41.5,96.2,105.0,64,Skylake-SP	2017
+"Kunpeng 920",1903.56,3.70,33.5,126,95.2,65,TaiShan V110 (ARMv8.2)	2019
+"AMD EPYC 7543 32-Core Processor",510.77,8.79,91.6,345,357,amd,Milan (Zen 3)	2021

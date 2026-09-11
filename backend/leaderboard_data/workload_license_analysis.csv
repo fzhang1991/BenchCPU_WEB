@@ -1,0 +1,75 @@
+﻿NO,benchmark,workload,source_project,source_link,suggested_source_link,estimated_license,使用方式示例,notes
+1,numpy_benchmark,matmul,NumPy,https://github.com/numpy/numpy,,BSD-3-Clause,"import numpy as np
+
+result = A @ (B + (i * 1e-12))
+U, s, Vh = np.linalg.svd(M + (i * 1e-12))
+ result = np.fft.fft(signal + (i * 1e-12))","版权信息：Copyright (c) 2005-2025 NumPy Developers。
+
+许可证：BSD 3-Clause License。允许以源代码或二进制形式再分发和修改，但必须保留版权声明、条件列表和免责声明；未经事先书面许可，不得使用 NumPy 贡献者的名称为衍生产品背书或推广。
+
+免责声明：软件按“原样”提供，版权持有人和贡献者不对适销性、特定用途适用性或其他明示、默示担保负责；对于因使用软件引起的直接、间接、偶发、特殊、惩戒性或后果性损失不承担责任。"
+2,numpy_benchmark,svd,NumPy,https://github.com/numpy/numpy,,BSD-3-Clause,,
+3,numpy_benchmark,fft,NumPy,https://github.com/numpy/numpy,,BSD-3-Clause,,
+4,tuf_benchmark,tuf-metadata,TUF,https://github.com/theupdateframework/python-tuf,,"Apache-2.0, MIT","from tuf.api.metadata import Metadata
+
+Metadata.from_bytes(meta[""data""])","Apache-2.0：允许商业使用、修改、分发、专利使用和私人使用；再分发时须保留版权及许可证声明，并包含专利授权条款。商标使用、责任和担保不在授权范围内。
+
+MIT License：Copyright (c) 2010 New York University。允许免费使用、复制、修改、合并、发布、分发、再许可及销售软件副本；所有副本或重要部分须保留版权和许可证声明。软件按“原样”提供，不附带任何明示或默示担保，作者不对使用软件产生的索赔或损失负责。"
+5,requests_benchmark,requests-json,Requests,https://github.com/psf/requests,,Apache-2.0,"调用 requests
+在 client.py 里：
+
+self.session = requests.Session()
+self.session.mount(""file://"", LocalFileAdapter())
+然后每次执行：
+resp = self.session.get(self.file_url)
+_ = resp.json()
+requests 会把 ... 这种 URL 当作“正常请求对象”处理，再由自定义的 LocalFileAdapter 去读本地文件。",
+6,raytrace,raytrace,Custom benchmark / open-source algorithm,https://github.com/python/pyperformance/blob/main/pyperformance/data-files/benchmarks/bm_raytrace/run_benchmark.py,,MIT,class Vector(object),
+7,chaos_fractal,chaos-fractal,Custom benchmark / open-source algorithm,https://github.com/python/pyperformance/blob/main/pyperformance/data-files/benchmarks/bm_chaos/run_benchmark.py,,MIT,,
+8,deltablue,deltablue,Custom benchmark / open-source algorithm,https://github.com/python/pyperformance/blob/main/pyperformance/data-files/benchmarks/bm_deltablue/run_benchmark.py,,"MIT, GPL(v8原始代码）",,
+9,pyflate,pyflate,Python zlib / pyflate ecosystem,https://github.com/python/pyperformance/blob/main/pyperformance/data-files/benchmarks/bm_pyflate/run_benchmark.py,,MIT / BSD-like,,
+10,go_board_game,go-board-game,Go board game benchmark,https://github.com/python/pyperformance/blob/main/pyperformance/data-files/benchmarks/bm_go/run_benchmark.py,,MIT ,,
+11,resnet50_cpu,resnet50_inference,ResNet / PyTorch ecosystem,https://github.com/pytorch/vision,,BSD-3-Clause,,
+12,resnet50_cpu,resnet50_training,ResNet / PyTorch ecosystem,https://github.com/pytorch/vision,,BSD-3-Clause,,
+13,bert_cpu,bert_eval,BERT / Hugging Face ecosystem,https://github.com/huggingface/transformers,,Apache-2.0,,
+14,transformer_inference,transformer_inference,Transformer / ML ecosystem,https://github.com/pytorch/pytorch,,BSD-3-Clause,,
+15,transformer_train,transformer_train,Transformer / ML ecosystem,https://github.com/pytorch/pytorch,,BSD-3-Clause,,
+16,ffmpeg_benchmark,ffmpeg,FFmpeg,https://github.com/FFmpeg/FFmpeg,,LGPL-2.1 / GPL,,
+17,redis_benchmark,redis-benchmark,Redis,https://github.com/redis/redis,,RSALv2 / SSPLv1 / AGPLv3 三选一,,
+18,openssl_benchmark,openssl,OpenSSL,https://github.com/openssl/openssl,,Apache-2.0,,
+19,zstd_benchmark,zstd,zstd,https://github.com/facebook/zstd,,BSD-3-Clause / GPL dual,,
+20,c_compiler_benchmark,gcc_compile,GCC,https://gcc.gnu.org,,GPLv3 / LGPL,,
+21,c_compiler_benchmark,clang_compile,LLVM/Clang,https://clang.llvm.org,,Apache-2.0 / LLVM BSD-style,,
+22,lapack_benchmark,lapack_solve,LAPACK,https://github.com/OpenMathLib/OpenBLAS,,BSD-3-Clause,,
+23,lapack_benchmark,lapack_eigen,LAPACK / Eigen related,https://github.com/OpenMathLib/OpenBLAS,,BSD-3-Clause / MPL / LGPL,,
+24,lapack_benchmark,lapack_svd,LAPACK,https://github.com/OpenMathLib/OpenBLAS,,BSD-3-Clause,,
+25,rocksdb_benchmark,rocksdb_cpu,RocksDB,https://github.com/facebook/rocksdb,,Apache-2.0,,
+26,opencv_benchmark,fft_batch,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+27,opencv_benchmark,conv_heavy,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+28,opencv_benchmark,mandelbrot,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+29,opencv_benchmark,jacobi,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+30,opencv_benchmark,canny,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+31,opencv_benchmark,optical_flow,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+32,opencv_benchmark,motion_blur,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+33,opencv_benchmark,background_sub,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+34,opencv_benchmark,color_tracking,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+35,opencv_benchmark,feature_match,OpenCV,https://github.com/opencv/opencv,,Apache-2.0,,
+36,guava_benchmark,guava_event,Guava,https://github.com/google/guava,,Apache-2.0,,
+37,guava_benchmark,guava_cache,Guava,https://github.com/google/guava,,Apache-2.0,,
+38,guava_benchmark,guava_graph,Guava,https://github.com/google/guava,,Apache-2.0,,
+39,guava_benchmark,guava_bloom,Guava,https://github.com/google/guava,,Apache-2.0,,
+40,guava_benchmark,guava_immutable,Guava,https://github.com/google/guava,,Apache-2.0,,
+41,cassandra_benchmark,cassandra_stress_read,Cassandra,https://github.com/apache/cassandra,,Apache-2.0,,
+42,kafka_benchmark,kafka_producer_perf,Kafka,https://github.com/apache/kafka,,Apache-2.0,,
+43,biogo-benchmark,biogo-igor,Biogo,https://github.com/golang/benchmarks,https://github.com/biogo/biogo,BSD-3-Clause,,
+44,bleve_benchmark,bleve-index,Bleve,https://github.com/blevesearch/bleve,,Apache-2.0,,
+45,cockroachdb_benchmark,kv,CockroachDB,https://github.com/cockroachdb/cockroach,,Apache-2.0,,
+46,cockroachdb_benchmark,tpcc,CockroachDB / TPC-C simulation,https://github.com/cockroachdb/cockroach,,Apache-2.0,,
+47,esbuild_benchmark,ThreeJS,Three.js,https://github.com/evanw/esbuild,,MIT,,
+48,esbuild_benchmark,RomeTS,Rome / TypeScript ecosystem,https://github.com/evanw/esbuild,,MIT,,
+49,gc_garbage,gc_garbage,Go runtime / GC benchmark,https://github.com/golang/benchmarks,N/A - no verified upstream source; project-local implementation,BSD-3-Clause / Go license,,
+50,go_compiler,go_compiler,Go compiler,https://go.dev,N/A - locally generated Go source compiled with the Go toolchain,BSD-3-Clause,,
+51,gopher_lua,gopher_lua,gopher-lua,https://github.com/golang/benchmarks,https://github.com/yuin/gopher-lua,MIT,,
+52,go_json,json,Go standard library / JSON handling,https://github.com/golang/benchmarks,https://pkg.go.dev/encoding/json,BSD-3-Clause,,
+53,go_markdown,markdown_render,Go markdown renderer,https://github.com/golang/benchmarks,https://gitlab.com/golang-commonmark/markdown,MIT,,
+54,tile38_sim,kdtree,Tile38 / geospatial index,https://github.com/tidwall/tile38,https://github.com/kyroy/kdtree,MIT,,
