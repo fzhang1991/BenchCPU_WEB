@@ -45,7 +45,7 @@ export default function DownloadPage() {
             fullRunTitle: "使用发布配置运行完整 suite",
             fullRunText: "BenchCPU 委员会会在每个发布周期公开发布一轮配置样本。配置样本文件位于 BenchCPU GitHub 仓库的 configs 文件夹。",
             step2Title: "2. 提交结果",
-            step2Text: "评测完成后，请将 BenchCPU 自动采集的结果文件夹 res 和 log 提交至 BenchCPU 委员会。",
+            step2Text: "评测完成后，请将 BenchCPU 自动采集的结果文件夹 res 和 log 提交至 BenchCPU 委员会参与排名（benchcpu_feedback@benchcouncil.cn），如有任何问题欢迎邮件咨询。",
         }
         : {
             title: "BenchCPU Quick Start",
@@ -58,7 +58,7 @@ export default function DownloadPage() {
             fullRunTitle: "Run the full suite with a published config",
             fullRunText: "The BenchCPU Committee publicly releases one round of configuration samples each release cycle. Configuration files are stored in the configs folder of the BenchCPU GitHub repository.",
             step2Title: "2. Submit results",
-            step2Text: "After evaluation, submit the res and log folders automatically collected by BenchCPU to the BenchCPU Committee.",
+            step2Text: "After evaluation, submit the res and log folders automatically collected by BenchCPU to the BenchCPU Committee to participate in the ranking (benchcpu_feedback@benchcouncil.cn). If you have any questions, please contact us by email.",
         };
 
     const codeStyle = {
