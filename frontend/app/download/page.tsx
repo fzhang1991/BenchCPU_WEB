@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const GITHUB_URL = "https://github.com/fzhang1991/BenchCPU.git";
+const GITHUB_URL = "https://github.com/BenchCouncil/BenchCPU";
 
 const ENV_SETUP_COMMAND = `# Environment setup
 sudo apt-get update
@@ -18,7 +18,7 @@ wget https://go.dev/dl/go1.24.5.linux-amd64.tar.gz -O /tmp/go.tar.gz \
 sudo apt-get install -y linux-perf || sudo apt-get install -y perf`;
 
 const CLONE_COMMAND = `# Clone BenchCPU
-git clone https://github.com/fzhang1991/BenchCPU.git
+git clone https://github.com/BenchCouncil/BenchCPU.git
 cd BenchCPU`;
 
 const QUICK_RUN_COMMAND = `# Setup and run a pair of workloads with override param
