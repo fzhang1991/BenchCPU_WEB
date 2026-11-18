@@ -1,0 +1,751 @@
+{
+  "resolution": "Existing plot CSV: 1000 telemetry rows, approximately 1M sampled ticks/block.",
+  "alignment": "Per-checkpoint elapsed CPU time, not instruction position. Common plot segment widths=max(Base cycles,gated cycles).",
+  "oracle": "Noncausal, free-switching arithmetic max of piecewise retirement rates at equal checkpoint-local CPU time. Stop once 100M instructions are credited. Not an executable switched trace or an achievable hardware upper bound.",
+  "denominator": "Both plot panels and oracle use actual CPU cycles, including idle.",
+  "workloads": {
+    "505": {
+      "threshold": 400,
+      "base_ipc": 0.6216700847127064,
+      "gated_ipc": 0.5207556166973082,
+      "gated_change_percent": -16.232801046238855,
+      "oracle_ipc": 0.6224089264466595,
+      "oracle_change_percent": 0.11884788284359793,
+      "weighted_gated_faster_cycle_fraction": 0.05585107671751745,
+      "points": [
+        {
+          "interval": 4719,
+          "weight": 0.11553096996194778,
+          "base_cycles": 181574641,
+          "gated_cycles": 223580545,
+          "oracle_cycles": 181511165.96288332,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.038774313203791495,
+          "extra_retired_at_base_horizon": 39131.53439222276
+        },
+        {
+          "interval": 6191,
+          "weight": 0.08584847767939578,
+          "base_cycles": 139704923,
+          "gated_cycles": 145378749,
+          "oracle_cycles": 139395040.06676227,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.12172988349165047,
+          "extra_retired_at_base_horizon": 239748.9852012992
+        },
+        {
+          "interval": 64,
+          "weight": 0.07475508056367905,
+          "base_cycles": 135749126,
+          "gated_cycles": 143648852,
+          "oracle_cycles": 135364885.106063,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.1252437529505715,
+          "extra_retired_at_base_horizon": 308382.13705435395
+        },
+        {
+          "interval": 4149,
+          "weight": 0.07155708139515882,
+          "base_cycles": 147621986,
+          "gated_cycles": 159147623,
+          "oracle_cycles": 147617821.81143028,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.004340464570094593,
+          "extra_retired_at_base_horizon": 2751.3324815034866
+        },
+        {
+          "interval": 8227,
+          "weight": 0.0695582819148467,
+          "base_cycles": 142283264,
+          "gated_cycles": 150212078,
+          "oracle_cycles": 142169450.23968473,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.11964958155584624,
+          "extra_retired_at_base_horizon": 89248.48025174439
+        },
+        {
+          "interval": 5800,
+          "weight": 0.06865878214871664,
+          "base_cycles": 167772608,
+          "gated_cycles": 224840252,
+          "oracle_cycles": 166499499.2858307,
+          "oracle_retired": 100000000.00000001,
+          "gated_faster_cycle_fraction": 0.14756132896259203,
+          "extra_retired_at_base_horizon": 993127.996817559
+        },
+        {
+          "interval": 8178,
+          "weight": 0.06785928235658657,
+          "base_cycles": 138866676,
+          "gated_cycles": 144421277,
+          "oracle_cycles": 138765945.2055477,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.042269269842679896,
+          "extra_retired_at_base_horizon": 71749.58175569773
+        },
+        {
+          "interval": 3848,
+          "weight": 0.06596038285030045,
+          "base_cycles": 149939885,
+          "gated_cycles": 160822938,
+          "oracle_cycles": 149939494.32262734,
+          "oracle_retired": 99999999.99999999,
+          "gated_faster_cycle_fraction": 8.671475238226307e-05,
+          "extra_retired_at_base_horizon": 258.9567946791649
+        },
+        {
+          "interval": 6690,
+          "weight": 0.046472087917257134,
+          "base_cycles": 227222886,
+          "gated_cycles": 351361372,
+          "oracle_cycles": 227221564.24518934,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 6.783207568272854e-05,
+          "extra_retired_at_base_horizon": 835.7940887212753
+        },
+        {
+          "interval": 1919,
+          "weight": 0.04227458900860685,
+          "base_cycles": 159736065,
+          "gated_cycles": 177215722,
+          "oracle_cycles": 159721825.2204072,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.006398561276691021,
+          "extra_retired_at_base_horizon": 9335.94038131833
+        },
+        {
+          "interval": 7595,
+          "weight": 0.03158109178891613,
+          "base_cycles": 138740528,
+          "gated_cycles": 145691191,
+          "oracle_cycles": 138592088.70087644,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.11350644420208636,
+          "extra_retired_at_base_horizon": 104340.51863490045
+        },
+        {
+          "interval": 8995,
+          "weight": 0.031081391918838092,
+          "base_cycles": 182316505,
+          "gated_cycles": 228725974,
+          "oracle_cycles": 182313095.5107651,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.00034579973985350364,
+          "extra_retired_at_base_horizon": 1983.7958611398935
+        },
+        {
+          "interval": 5643,
+          "weight": 0.030981391944838087,
+          "base_cycles": 151342365,
+          "gated_cycles": 164852788,
+          "oracle_cycles": 151340508.1930172,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 6.892980693145636e-05,
+          "extra_retired_at_base_horizon": 1262.0559961944818
+        },
+        {
+          "interval": 9327,
+          "weight": 0.029782092256656005,
+          "base_cycles": 108902072,
+          "gated_cycles": 115292534,
+          "oracle_cycles": 108752166.70376863,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.10103889483388341,
+          "extra_retired_at_base_horizon": 144680.0746218413
+        },
+        {
+          "interval": 8518,
+          "weight": 0.027083692958239824,
+          "base_cycles": 144123678,
+          "gated_cycles": 152256076,
+          "oracle_cycles": 144118376.5691556,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.0008827695890469851,
+          "extra_retired_at_base_horizon": 3690.57839974761
+        },
+        {
+          "interval": 5462,
+          "weight": 0.022786294075563533,
+          "base_cycles": 248894997,
+          "gated_cycles": 414648639,
+          "oracle_cycles": 248894280.91581115,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 5.6409329915136864e-05,
+          "extra_retired_at_base_horizon": 249.60138177871704
+        },
+        {
+          "interval": 6893,
+          "weight": 0.02088749456925141,
+          "base_cycles": 166762534,
+          "gated_cycles": 179745923,
+          "oracle_cycles": 166762533.8586832,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 7.075929896819629e-07,
+          "extra_retired_at_base_horizon": 0.0851934552192688
+        },
+        {
+          "interval": 1982,
+          "weight": 0.02028779472517337,
+          "base_cycles": 177608172,
+          "gated_cycles": 200276361,
+          "oracle_cycles": 177607280.50278446,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 5.525646646484262e-05,
+          "extra_retired_at_base_horizon": 515.9557542651892
+        },
+        {
+          "interval": 8282,
+          "weight": 0.018988595062965283,
+          "base_cycles": 205744112,
+          "gated_cycles": 287264109,
+          "oracle_cycles": 205664190.4787529,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.00978575270236652,
+          "extra_retired_at_base_horizon": 68828.14494457841
+        },
+        {
+          "interval": 6687,
+          "weight": 0.017189695530679158,
+          "base_cycles": 207992426,
+          "gated_cycles": 296054989,
+          "oracle_cycles": 207987428.7619947,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.0002011515553936565,
+          "extra_retired_at_base_horizon": 2391.8337850421667
+        },
+        {
+          "interval": 8961,
+          "weight": 0.016290195764549098,
+          "base_cycles": 136093858,
+          "gated_cycles": 145553400,
+          "oracle_cycles": 136088116.24980226,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.007473364448232484,
+          "extra_retired_at_base_horizon": 4628.809677377343
+        },
+        {
+          "interval": 5114,
+          "weight": 0.010193897349586688,
+          "base_cycles": 177781841,
+          "gated_cycles": 252509731,
+          "oracle_cycles": 176816754.68926227,
+          "oracle_retired": 100000000.00000001,
+          "gated_faster_cycle_fraction": 0.10007024283205618,
+          "extra_retired_at_base_horizon": 578591.7398366779
+        },
+        {
+          "interval": 2440,
+          "weight": 0.006096338414952011,
+          "base_cycles": 322430183,
+          "gated_cycles": 540451950,
+          "oracle_cycles": 322430159.749962,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 1.038984616399886e-06,
+          "extra_retired_at_base_horizon": 17.563714995980263
+        },
+        {
+          "interval": 8381,
+          "weight": 0.0054966985708583705,
+          "base_cycles": 127840078,
+          "gated_cycles": 133267749,
+          "oracle_cycles": 127287772.40213005,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.20996994385438345,
+          "extra_retired_at_base_horizon": 438020.3334570378
+        },
+        {
+          "interval": 9071,
+          "weight": 0.0027983192724369884,
+          "base_cycles": 111311778,
+          "gated_cycles": 114237992,
+          "oracle_cycles": 110928109.26722513,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.1886476290047222,
+          "extra_retired_at_base_horizon": 378359.4560096115
+        }
+      ]
+    },
+    "519": {
+      "threshold": 400,
+      "base_ipc": 0.6425869842091698,
+      "gated_ipc": 0.5977812144934082,
+      "gated_change_percent": -6.972716661994638,
+      "oracle_ipc": 0.6427625473575092,
+      "oracle_change_percent": 0.0273213047655263,
+      "weighted_gated_faster_cycle_fraction": 0.007518948996775264,
+      "points": [
+        {
+          "interval": 155,
+          "weight": 0.23751940345745653,
+          "base_cycles": 148415250,
+          "gated_cycles": 152780602,
+          "oracle_cycles": 148412387.71069396,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.006745216546143338,
+          "extra_retired_at_base_horizon": 1970.192481070757
+        },
+        {
+          "interval": 482,
+          "weight": 0.12081181753167515,
+          "base_cycles": 166578324,
+          "gated_cycles": 187537587,
+          "oracle_cycles": 166290964.08070034,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.01201396407374107,
+          "extra_retired_at_base_horizon": 197590.3786610663
+        },
+        {
+          "interval": 2757,
+          "weight": 0.08798066483689743,
+          "base_cycles": 148318104,
+          "gated_cycles": 152652259,
+          "oracle_cycles": 148316907.2561131,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.0021524142460720777,
+          "extra_retired_at_base_horizon": 818.5034074783325
+        },
+        {
+          "interval": 17470,
+          "weight": 0.07499443201079282,
+          "base_cycles": 166375647,
+          "gated_cycles": 190011290,
+          "oracle_cycles": 166333402.60668862,
+          "oracle_retired": 99999999.99999997,
+          "gated_faster_cycle_fraction": 0.0022797206612816356,
+          "extra_retired_at_base_horizon": 21632.76239325106
+        },
+        {
+          "interval": 1950,
+          "weight": 0.05796047076732588,
+          "base_cycles": 148312426,
+          "gated_cycles": 152586304,
+          "oracle_cycles": 148311821.56806833,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.013493245670460546,
+          "extra_retired_at_base_horizon": 413.14824087917805
+        },
+        {
+          "interval": 15857,
+          "weight": 0.045873588692483515,
+          "base_cycles": 160335263,
+          "gated_cycles": 177378007,
+          "oracle_cycles": 160334887.95097247,
+          "oracle_retired": 100000000.00000003,
+          "gated_faster_cycle_fraction": 0.006260244822126247,
+          "extra_retired_at_base_horizon": 256.6197933256626
+        },
+        {
+          "interval": 739,
+          "weight": 0.0448617315923755,
+          "base_cycles": 148326510,
+          "gated_cycles": 152645950,
+          "oracle_cycles": 148325536.0286867,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.00675157124643464,
+          "extra_retired_at_base_horizon": 667.2617778033018
+        },
+        {
+          "interval": 12785,
+          "weight": 0.044355803042321486,
+          "base_cycles": 162800713,
+          "gated_cycles": 182562100,
+          "oracle_cycles": 162800416.8572413,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 2.2082212870898175e-05,
+          "extra_retired_at_base_horizon": 202.31137320399284
+        },
+        {
+          "interval": 12287,
+          "weight": 0.03963343655445821,
+          "base_cycles": 155177005,
+          "gated_cycles": 166931417,
+          "oracle_cycles": 155176123.3736207,
+          "oracle_retired": 99999999.99999999,
+          "gated_faster_cycle_fraction": 0.006460009973771565,
+          "extra_retired_at_base_horizon": 545.7013516277075
+        },
+        {
+          "interval": 7496,
+          "weight": 0.03715989697014593,
+          "base_cycles": 157567848,
+          "gated_cycles": 171885144,
+          "oracle_cycles": 157566571.3107823,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.012710632438160861,
+          "extra_retired_at_base_horizon": 695.4602681100368
+        },
+        {
+          "interval": 4070,
+          "weight": 0.034011719315332686,
+          "base_cycles": 164884863,
+          "gated_cycles": 186893409,
+          "oracle_cycles": 164884526.39265317,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 2.1008599194457285e-05,
+          "extra_retired_at_base_horizon": 230.37740160524845
+        },
+        {
+          "interval": 15079,
+          "weight": 0.031088354346924155,
+          "base_cycles": 164601657,
+          "gated_cycles": 184690582,
+          "oracle_cycles": 164600174.1368025,
+          "oracle_retired": 99999999.99999997,
+          "gated_faster_cycle_fraction": 0.006090254607825728,
+          "extra_retired_at_base_horizon": 1013.1289522349834
+        },
+        {
+          "interval": 2274,
+          "weight": 0.03063862896847133,
+          "base_cycles": 150816913,
+          "gated_cycles": 157635466,
+          "oracle_cycles": 150815693.82471845,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.00664187444282194,
+          "extra_retired_at_base_horizon": 826.6530546098948
+        },
+        {
+          "interval": 14524,
+          "weight": 0.03063862896847133,
+          "base_cycles": 153230926,
+          "gated_cycles": 162629503,
+          "oracle_cycles": 153228165.90740648,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.019590536181971516,
+          "extra_retired_at_base_horizon": 1883.273211285472
+        },
+        {
+          "interval": 2545,
+          "weight": 0.03013270041841732,
+          "base_cycles": 168981960,
+          "gated_cycles": 192565627,
+          "oracle_cycles": 168964619.18153566,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.011846737959483959,
+          "extra_retired_at_base_horizon": 11846.769099727273
+        },
+        {
+          "interval": 5448,
+          "weight": 0.016471829521811747,
+          "base_cycles": 148330087,
+          "gated_cycles": 152589301,
+          "oracle_cycles": 148328619.687394,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.006750093795872984,
+          "extra_retired_at_base_horizon": 1006.8356846421957
+        },
+        {
+          "interval": 4220,
+          "weight": 0.01534746607285796,
+          "base_cycles": 149160774,
+          "gated_cycles": 154243666,
+          "oracle_cycles": 149046879.51671216,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.021200258722175847,
+          "extra_retired_at_base_horizon": 67672.11566270888
+        },
+        {
+          "interval": 2441,
+          "weight": 0.014447915310308878,
+          "base_cycles": 148582321,
+          "gated_cycles": 153082710,
+          "oracle_cycles": 148580835.5444394,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.006743144091819645,
+          "extra_retired_at_base_horizon": 1012.6829474419355
+        },
+        {
+          "interval": 1519,
+          "weight": 0.0019676210348226163,
+          "base_cycles": 137185671,
+          "gated_cycles": 145007460,
+          "oracle_cycles": 137184331.07007334,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.007302176624554324,
+          "extra_retired_at_base_horizon": 1049.9935595691204
+        },
+        {
+          "interval": 2657,
+          "weight": 0.0019676210348226163,
+          "base_cycles": 144716147,
+          "gated_cycles": 153691150,
+          "oracle_cycles": 144453969.43229434,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.02768833390789488,
+          "extra_retired_at_base_horizon": 205177.6877477616
+        },
+        {
+          "interval": 17076,
+          "weight": 0.0014054393103457225,
+          "base_cycles": 150346772,
+          "gated_cycles": 160145481,
+          "oracle_cycles": 149898032.4455935,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.03557422569737646,
+          "extra_retired_at_base_horizon": 345751.6540657133
+        },
+        {
+          "interval": 9551,
+          "weight": 0.0007308302414813572,
+          "base_cycles": 148323475,
+          "gated_cycles": 152632354,
+          "oracle_cycles": 148323327.24643126,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 9.877060930510156e-06,
+          "extra_retired_at_base_horizon": 101.19183897972107
+        }
+      ]
+    },
+    "549": {
+      "threshold": 500,
+      "base_ipc": 0.8764908435150807,
+      "gated_ipc": 0.8158176831090445,
+      "gated_change_percent": -6.922281145883103,
+      "oracle_ipc": 0.8768225181602157,
+      "oracle_change_percent": 0.03784119909397976,
+      "weighted_gated_faster_cycle_fraction": 0.04554738759484219,
+      "points": [
+        {
+          "interval": 11928,
+          "weight": 0.27801594439681115,
+          "base_cycles": 142766681,
+          "gated_cycles": 154828776,
+          "oracle_cycles": 142760700.71170866,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.021194651152533273,
+          "extra_retired_at_base_horizon": 6199.527234643698
+        },
+        {
+          "interval": 12478,
+          "weight": 0.10010897997820402,
+          "base_cycles": 78824274,
+          "gated_cycles": 79405429,
+          "oracle_cycles": 78824272.48573773,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 6.089494715802901e-06,
+          "extra_retired_at_base_horizon": 1.915777638554573
+        },
+        {
+          "interval": 7551,
+          "weight": 0.06567128686574264,
+          "base_cycles": 162172097,
+          "gated_cycles": 192501096,
+          "oracle_cycles": 162133323.2722576,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.006252518273843373,
+          "extra_retired_at_base_horizon": 36760.8217959553
+        },
+        {
+          "interval": 7992,
+          "weight": 0.043075291384941726,
+          "base_cycles": 102058232,
+          "gated_cycles": 103162469,
+          "oracle_cycles": 101964772.33502005,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.07841026483782318,
+          "extra_retired_at_base_horizon": 96400.54492528737
+        },
+        {
+          "interval": 3475,
+          "weight": 0.040157891968421615,
+          "base_cycles": 164895057,
+          "gated_cycles": 194686322,
+          "oracle_cycles": 164862501.24572134,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.017457515418427612,
+          "extra_retired_at_base_horizon": 30628.030400559306
+        },
+        {
+          "interval": 505,
+          "weight": 0.03889939222012156,
+          "base_cycles": 97094969,
+          "gated_cycles": 97822892,
+          "oracle_cycles": 97033672.79489912,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.16479248270834712,
+          "extra_retired_at_base_horizon": 64220.742031022906
+        },
+        {
+          "interval": 336,
+          "weight": 0.037526492494701504,
+          "base_cycles": 88893141,
+          "gated_cycles": 88923720,
+          "oracle_cycles": 88882597.93513682,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.28123655794770486,
+          "extra_retired_at_base_horizon": 11867.999672174454
+        },
+        {
+          "interval": 10277,
+          "weight": 0.03071909385618123,
+          "base_cycles": 86739075,
+          "gated_cycles": 91263973,
+          "oracle_cycles": 86736634.41535413,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.023059930025769816,
+          "extra_retired_at_base_horizon": 3119.5009068995714
+        },
+        {
+          "interval": 4930,
+          "weight": 0.029746594050681193,
+          "base_cycles": 121791527,
+          "gated_cycles": 130695293,
+          "oracle_cycles": 121627616.41804096,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.07414590507597461,
+          "extra_retired_at_base_horizon": 169515.6283736974
+        },
+        {
+          "interval": 9559,
+          "weight": 0.027057894588421085,
+          "base_cycles": 78830805,
+          "gated_cycles": 79402270,
+          "oracle_cycles": 78828845.99345972,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.012685193307362522,
+          "extra_retired_at_base_horizon": 2479.0776699334383
+        },
+        {
+          "interval": 674,
+          "weight": 0.02642869471426106,
+          "base_cycles": 146364919,
+          "gated_cycles": 170795554,
+          "oracle_cycles": 146238281.18389273,
+          "oracle_retired": 99999999.99999999,
+          "gated_faster_cycle_fraction": 0.09054070531750849,
+          "extra_retired_at_base_horizon": 115346.70887307823
+        },
+        {
+          "interval": 14924,
+          "weight": 0.026371494725701057,
+          "base_cycles": 97053468,
+          "gated_cycles": 97976433,
+          "oracle_cycles": 96978272.10666624,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.11333976236686359,
+          "extra_retired_at_base_horizon": 78387.62861916423
+        },
+        {
+          "interval": 1280,
+          "weight": 0.02591379481724104,
+          "base_cycles": 123531801,
+          "gated_cycles": 135407341,
+          "oracle_cycles": 123397374.10590872,
+          "oracle_retired": 100000000.00000001,
+          "gated_faster_cycle_fraction": 0.08934413576630361,
+          "extra_retired_at_base_horizon": 171336.26788064837
+        },
+        {
+          "interval": 8181,
+          "weight": 0.02545619490876102,
+          "base_cycles": 97264024,
+          "gated_cycles": 98290672,
+          "oracle_cycles": 97190218.28167583,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.11309299726279061,
+          "extra_retired_at_base_horizon": 76572.34254868329
+        },
+        {
+          "interval": 10187,
+          "weight": 0.024312095137580973,
+          "base_cycles": 90670480,
+          "gated_cycles": 95298447,
+          "oracle_cycles": 90661549.05554134,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.01110351461688523,
+          "extra_retired_at_base_horizon": 11392.920257389545
+        },
+        {
+          "interval": 608,
+          "weight": 0.023568395286320945,
+          "base_cycles": 78861922,
+          "gated_cycles": 79395808,
+          "oracle_cycles": 78861247.42743067,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.012684080918037986,
+          "extra_retired_at_base_horizon": 845.5812338143587
+        },
+        {
+          "interval": 7188,
+          "weight": 0.02311079537784093,
+          "base_cycles": 103491477,
+          "gated_cycles": 109427703,
+          "oracle_cycles": 103369606.05110393,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.0678672505562946,
+          "extra_retired_at_base_horizon": 155490.32933028042
+        },
+        {
+          "interval": 2908,
+          "weight": 0.02299639540072092,
+          "base_cycles": 78796499,
+          "gated_cycles": 79363864,
+          "oracle_cycles": 78794249.57709038,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.025384186167966675,
+          "extra_retired_at_base_horizon": 2865.1866124272346
+        },
+        {
+          "interval": 3914,
+          "weight": 0.02293919541216092,
+          "base_cycles": 87484325,
+          "gated_cycles": 89981620,
+          "oracle_cycles": 86961794.80529459,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.045842840988942875,
+          "extra_retired_at_base_horizon": 292736.4587286413
+        },
+        {
+          "interval": 12964,
+          "weight": 0.022881995423600917,
+          "base_cycles": 78786017,
+          "gated_cycles": 79364734,
+          "oracle_cycles": 78786015.74707776,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 7.628257181728072e-06,
+          "extra_retired_at_base_horizon": 1.5969487428665161
+        },
+        {
+          "interval": 9245,
+          "weight": 0.020593795881240825,
+          "base_cycles": 78744323,
+          "gated_cycles": 79356440,
+          "oracle_cycles": 78744106.6205121,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.01270279509546358,
+          "extra_retired_at_base_horizon": 274.7559569776058
+        },
+        {
+          "interval": 1147,
+          "weight": 0.016188996762200647,
+          "base_cycles": 78842991,
+          "gated_cycles": 79444192,
+          "oracle_cycles": 78842989.73043329,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 4.236267495229855e-06,
+          "extra_retired_at_base_horizon": 1.6114708632230759
+        },
+        {
+          "interval": 2871,
+          "weight": 0.014415697116860578,
+          "base_cycles": 78847931,
+          "gated_cycles": 79456279,
+          "oracle_cycles": 78846819.53194904,
+          "oracle_retired": 100000000.0,
+          "gated_faster_cycle_fraction": 0.012687358911167878,
+          "extra_retired_at_base_horizon": 1401.355428442359
+        },
+        {
+          "interval": 4002,
+          "weight": 0.013843597231280555,
+          "base_cycles": 78856145,
+          "gated_cycles": 79444471,
+          "oracle_cycles": 78853929.01894978,
+          "oracle_retired": 99999999.99999999,
+          "gated_faster_cycle_fraction": 0.010860371122630963,
+          "extra_retired_at_base_horizon": 2819.4658175706863
+        }
+      ]
+    }
+  }
+}

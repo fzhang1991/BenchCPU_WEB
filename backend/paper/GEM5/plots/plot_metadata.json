@@ -1,0 +1,91 @@
+{
+  "campaign": "/dev/shm/zfgem5/gem5-step23/experiments/weekend_ipc_20261030_171527_nk8msxs9",
+  "time_series": [
+    {
+      "benchmark": "505",
+      "interval": 4719,
+      "normalized_weight": 0.11553096996194781,
+      "group": "505-reference",
+      "config": {
+        "benchmark": "505",
+        "controller": "retire-stall",
+        "hold": 256,
+        "limit": 1,
+        "size": 40,
+        "width": 4
+      },
+      "point_ipc_change_percent": -0.0051155407860159485,
+      "workload_ipc_change_percent": 0.004251258039333905,
+      "base_cycles": 181574641,
+      "gated_cycles": 181583930,
+      "rows_per_aggregate": 1000
+    },
+    {
+      "benchmark": "519",
+      "interval": 155,
+      "normalized_weight": 0.23751940345745653,
+      "group": "519-refine1",
+      "config": {
+        "benchmark": "519",
+        "controller": "retire-stall",
+        "hold": 64,
+        "limit": 1,
+        "size": 26,
+        "width": 0
+      },
+      "point_ipc_change_percent": 0.21442400186477695,
+      "workload_ipc_change_percent": 0.20864911028168898,
+      "base_cycles": 148415250,
+      "gated_cycles": 148097693,
+      "rows_per_aggregate": 1000
+    },
+    {
+      "benchmark": "549",
+      "interval": 11928,
+      "normalized_weight": 0.27801594439681115,
+      "group": "549-reference",
+      "config": {
+        "benchmark": "549",
+        "controller": "retire-stall",
+        "hold": 256,
+        "limit": 1,
+        "size": 80,
+        "width": 0
+      },
+      "point_ipc_change_percent": 0.004913152396190945,
+      "workload_ipc_change_percent": -0.0038043640397167344,
+      "base_cycles": 142766681,
+      "gated_cycles": 142759667,
+      "rows_per_aggregate": 1000
+    }
+  ],
+  "fetch_relationships": [
+    {
+      "benchmark": "505",
+      "source": "/dev/shm/zfgem5/gem5-step23/experiments/weekend_ipc_20261030_171527_nk8msxs9/groups/505-F3/505/4719/base/pacemaker.csv.work.csv.gz",
+      "interval": 4719,
+      "timeout_percent": 3.9802152964779953,
+      "completed_windows": 2215404,
+      "total_windows": 2307237,
+      "ordered_time_series": false
+    },
+    {
+      "benchmark": "519",
+      "source": "/dev/shm/zfgem5/gem5-step23/experiments/weekend_ipc_20261030_171527_nk8msxs9/groups/519-F3/519/155/base/pacemaker.csv.work.csv.gz",
+      "interval": 155,
+      "timeout_percent": 2.1596655897842347,
+      "completed_windows": 2431890,
+      "total_windows": 2485570,
+      "ordered_time_series": false
+    },
+    {
+      "benchmark": "549",
+      "source": "/dev/shm/zfgem5/gem5-step23/experiments/weekend_ipc_20261030_171527_nk8msxs9/groups/549-F3/549/11928/base/pacemaker.csv.work.csv.gz",
+      "interval": 11928,
+      "timeout_percent": 3.1170274038366266,
+      "completed_windows": 1515582,
+      "total_windows": 1564343,
+      "ordered_time_series": false
+    }
+  ]
+}

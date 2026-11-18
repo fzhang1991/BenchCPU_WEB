@@ -140,7 +140,7 @@
     },
     "ao_enumeration": {
         "os_with_setting": "Ubuntu 22.04; Linux 5.15.0-176-generic",
-        "memory_with_setting": "本机内存配置为约 503GiB 物理内存（当前可用约 425GiB、已用约 11GiB）并启用 8GiB Swap。",
+        "memory_with_setting": "本机内存配置为约 503GiB 物理内存，内存带宽409.6 GB/s（按实际配置速率计算；ECC 位不计入应用可用的数据带宽；当前可用约 425GiB、已用约 11GiB）并启用 8GiB Swap。",
         "disk_with_setting": "本机当前是 Linux 磁盘配置：一块 1.8T 系统盘（sdb，含 1G EFI + 2G /boot + LVM，根分区约 98G、已用约 86G）外加一块 12.7T 数据盘（sda，当前未见挂载/分区使用）。"
     }
 }

@@ -198,7 +198,7 @@ export default function CpuFullDetailPanel({ cpu, onClose, standalone = false }:
 
         Promise.all([
             fetch(`/backend/api/cpu-detail?cpu=${encodeURIComponent(cpu)}`).then((r) => r.json()),
-            fetch(`/backend/api/cpu-system-info?cpu=${encodeURIComponent(cpu)}`).then((r) => r.json()),
+            fetch(`/backend/api/cpu-system-info?cpu=${encodeURIComponent(cpu)}`, { cache: "no-store" }).then((r) => r.json()),
         ])
             .then(([detail, sysInfo]) => {
                 if (cancelled) return;

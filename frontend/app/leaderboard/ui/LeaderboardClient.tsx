@@ -174,7 +174,7 @@ function fmt(v: unknown) {
   const n = typeof v === "number" ? v : Number(v);
   if (!Number.isFinite(n)) return "-";
   if (Math.abs(n) <= 1) return (n * 100).toFixed(2);
-  return n.toFixed(3);
+  return n.toFixed(2);
 }
 
 function numOrNaN(v: unknown) {
@@ -252,6 +252,29 @@ function getRoundIndexMap(headers: string[]) {
     out.set(ord, i);
   });
   return out;
+}
+
+function computeMeanConfidenceInterval(detail: CpuDetailResponse) {
+  const roundIndices = getRoundIndexMap(detail.headers);
+  const roundMeans = [...roundIndices.values()]
+    .map((columnIndex) => {
+      const values = detail.rows
+        .map((row) => numOrNaN(row[columnIndex]))
+        .filter((value) => Number.isFinite(value) && value > 0);
+      return values.length > 0
+        ? values.reduce((sum, value) => sum + value, 0) / values.length
+        : null;
+    })
+    .filter((value): value is number => value !== null);
+
+  if (roundMeans.length < 2) {
+    throw new Error("INSUFFICIENT_VALID_ROUNDS");
+  }
+
+  const mean = roundMeans.reduce((sum, value) => sum + value, 0) / roundMeans.length;
+  const variance = roundMeans.reduce((sum, value) => sum + (value - mean) ** 2, 0) / (roundMeans.length - 1);
+  const margin = tCritical95(roundMeans.length - 1) * Math.sqrt(variance) / Math.sqrt(roundMeans.length);
+  return { lower: mean - margin, upper: mean + margin };
 }
 
 function computePairwise(
@@ -488,7 +511,7 @@ function SortArrows({
 }
 
 function buildGridTemplate(cols: string[]) {
-  return `56px minmax(280px, 1fr) ${cols.map(() => `minmax(100px, 1fr)`).join(" ")}`;
+  return `56px minmax(280px, 1fr) ${cols.map(() => "minmax(100px, 1fr)").join(" ")}`;
 }
 
 function headerCellBase(extra?: React.CSSProperties): React.CSSProperties {
@@ -536,6 +559,9 @@ export default function LeaderboardClient() {
       loading: lang === "zh" ? "加载中..." : "Loading...",
       sortedBy: lang === "zh" ? "排序依据" : "Sorted by",
       rankingMetrics: lang === "zh" ? "排行指标" : "Ranking metrics",
+      metricDirectionHint: lang === "zh"
+        ? "BenchCPU Time 越小越好；SPEC 分数越大越好。"
+        : "Lower BenchCPU Time is better; higher SPEC scores are better.",
       selectAllMetrics: lang === "zh" ? "全选" : "Select all",
       deselectAllMetrics: lang === "zh" ? "全取消" : "Clear all",
       noData: lang === "zh" ? "暂无数据" : "No data",
@@ -560,6 +586,8 @@ export default function LeaderboardClient() {
       pairwiseSummary: lang === "zh" ? "汇总" : "Summary",
       ratioLabel: lang === "zh" ? "Time A/Time B" : "Time A/Time B",
       ciLabel: lang === "zh" ? "95% CI" : "95% CI",
+      timeCiLoading: lang === "zh" ? "95% CI 计算中…" : "95% CI loading…",
+      timeCiUnavailable: lang === "zh" ? "95% CI 不可用" : "95% CI unavailable",
       fasterLabel: lang === "zh" ? "A 比 B 快" : "A faster than B",
       slowerLabel: lang === "zh" ? "A 比 B 慢" : "A slower than B",
       workloadResults: lang === "zh" ? "各 workload 结果" : "Per-workload Results",
@@ -590,6 +618,8 @@ export default function LeaderboardClient() {
 
   const [data, setData] = useState<ApiLeaderboard | null>(null);
   const [loading, setLoading] = useState(false);
+  const [timeCiByCpu, setTimeCiByCpu] = useState<Record<string, { lower: number; upper: number } | null>>({});
+  const [timeCiLoading, setTimeCiLoading] = useState(false);
 
   const [tip, setTip] = useState<{ x: number; y: number; text: string } | null>(null);
   const [modelQuery, setModelQuery] = useState("");
@@ -650,6 +680,39 @@ export default function LeaderboardClient() {
       }
     })();
   }, [selected, sortBy, sortDir]);
+
+  useEffect(() => {
+    const cpuNames = data?.rows.map((row) => String(row.model)) ?? [];
+    if (!selected.includes(DEFAULT_METRIC) || cpuNames.length === 0) {
+      setTimeCiByCpu({});
+      setTimeCiLoading(false);
+      return;
+    }
+
+    let cancelled = false;
+    setTimeCiByCpu({});
+    setTimeCiLoading(true);
+    Promise.all(
+      cpuNames.map(async (cpu) => {
+        try {
+          const response = await fetch(`/backend/api/cpu-detail?cpu=${encodeURIComponent(cpu)}`);
+          if (!response.ok) throw new Error(`CPU detail API failed: ${response.status}`);
+          const detail = (await response.json()) as CpuDetailResponse;
+          return [cpu, computeMeanConfidenceInterval(detail)] as const;
+        } catch {
+          return [cpu, null] as const;
+        }
+      })
+    ).then((entries) => {
+      if (cancelled) return;
+      setTimeCiByCpu(Object.fromEntries(entries));
+      setTimeCiLoading(false);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [data, selected]);
 
   useEffect(() => {
     if (!pairCpuA || !pairCpuB || pairCpuA === pairCpuB) {
@@ -897,7 +960,7 @@ export default function LeaderboardClient() {
           background: "#ffffff",
         }}
       >
-        <div style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", marginBottom: 10 }}>{t.pairwiseTitle}</div>
+        <div className={styles.leaderboardTitle} style={{ marginBottom: 10 }}>{t.pairwiseTitle}</div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(180px, 280px))", gap: 10 }}>
           <label style={{ display: "grid", gap: 6 }}>
@@ -1033,13 +1096,12 @@ export default function LeaderboardClient() {
       {/* Table */}
       <div className={styles.tableWrap} style={{ marginTop: 10 }}>
         <div className={styles.tableTop}>
-          <div className={styles.leaderboardTitle}>
-            {loading ? t.loading : `${t.total}: ${total}${t.cpus}`}
-          </div>
-
           <div className={styles.tableMetaRow}>
+            <div className={styles.leaderboardTitle}>
+              {loading ? t.loading : `${t.total}: ${total}${t.cpus}`}
+            </div>
             <div className={styles.tableMetaInfo}>
-              {data ? `${t.sortedBy} ${data.sort_by} (${data.sort_dir})` : ""}
+              {data ? `${t.sortedBy} ${data.sort_by} (${data.sort_dir}) | ${t.metricDirectionHint}` : ""}
             </div>
           </div>
 
@@ -1143,6 +1205,7 @@ export default function LeaderboardClient() {
                   const cpuInfo = r.cpu_info ? String(r.cpu_info) : "";
                   const top = rowIndex * ROW_H;
                   const model = String(r.model);
+                  const timeCi = timeCiByCpu[model];
                   const bg = rowIndex % 2 === 1 ? "#fbfdff" : "#fff";
 
                   return (
@@ -1180,7 +1243,9 @@ export default function LeaderboardClient() {
 
                       {cols.map((c) => {
                         const rawValue = numOrNaN(r[c]);
-                        const val = fmt(r[c]);
+                        const val = c === DEFAULT_METRIC && Number.isFinite(rawValue)
+                          ? rawValue.toFixed(2)
+                          : fmt(r[c]);
                         const barPct = getMetricBarPercent(c, rawValue);
                         const delta = getRankDelta(model, c);
                         let tipText = "";
@@ -1217,26 +1282,35 @@ export default function LeaderboardClient() {
                             key={c}
                             style={cellStyle}
                             onClick={handleClick}
+                            title={isTimeCol
+                              ? timeCi
+                                ? `${t.ciLabel} [${timeCi.lower.toFixed(2)}, ${timeCi.upper.toFixed(2)}]`
+                                : timeCiLoading
+                                  ? t.timeCiLoading
+                                  : t.timeCiUnavailable
+                              : undefined}
                           >
                             <div className={styles.metricCellContent}>
                               <div className={styles.metricBarTrack} aria-hidden="true">
                                 <div className={styles.metricBarFill} style={{ width: `${barPct}%` }} />
                               </div>
                               <div className={styles.metricCellText}>
-                                <span className={styles.metricValue} style={isClickable ? { color: "#2563eb", cursor: "pointer" } : undefined}>
-                                  {val}
-                                </span>
-                                {showRankDelta && delta !== null && (
-                                  <span
-                                    className={`${styles.rankDelta} ${deltaClass}`}
-                                    onMouseEnter={(e) => showTip(e, tipText)}
-                                    onMouseMove={(e) => moveTip(e)}
-                                    onMouseLeave={hideTip}
-                                    style={{ cursor: "default" }}
-                                  >
-                                    {t.rankDeltaPrefix}{signed(delta)}
+                                <div className={styles.metricCellValueRow}>
+                                  <span className={styles.metricValue} style={isClickable ? { color: "#2563eb", cursor: "pointer" } : undefined}>
+                                    {val}
                                   </span>
-                                )}
+                                  {showRankDelta && delta !== null && (
+                                    <span
+                                      className={`${styles.rankDelta} ${deltaClass}`}
+                                      onMouseEnter={(e) => showTip(e, tipText)}
+                                      onMouseMove={(e) => moveTip(e)}
+                                      onMouseLeave={hideTip}
+                                      style={{ cursor: "default" }}
+                                    >
+                                      {t.rankDeltaPrefix}{signed(delta)}
+                                    </span>
+                                  )}
+                                </div>
                               </div>
                             </div>
                           </div>

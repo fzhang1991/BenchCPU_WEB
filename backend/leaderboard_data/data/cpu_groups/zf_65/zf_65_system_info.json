@@ -131,7 +131,7 @@
     },
     "ao_enumeration": {
         "os_with_setting": "Ubuntu 22.04; Linux 6.5.0-15-generic",
-        "memory_with_setting": "本机内存为约384GB ECC DDR4，采用多条Micron 32GB内存条组成、标称3200MT/s但实际配置运行在2666MT/s，并配有2GiB交换分区。",
+        "memory_with_setting": "本机内存为约384GB ECC DDR4，内存带宽170.62 GB/s，采用多条Micron 32GB内存条组成、标称3200MT/s但实际配置运行在2666MT/s，并配有2GiB交换分区。",
         "disk_with_setting": "本机采用“1块1.8TB系统盘+7块1.8TB数据盘”配置：系统盘/dev/sda为EFI(vfat)+根分区(ext4)，数据盘/dev/sdb到/dev/sdh均为XFS并分别挂载在/sd2到/sd8。"
     }
 }

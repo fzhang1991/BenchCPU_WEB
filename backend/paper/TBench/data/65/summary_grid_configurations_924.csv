@@ -1,0 +1,925 @@
+benchmark_name,workload_name,elapsed_time(s),param_overrides,source_file
+redis_benchmark,redis-benchmark,1683.0703,workload: --requests 2222222 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+ffmpeg_benchmark,ffmpeg,765.3848,data: --duration 293; workload: --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+openssl_benchmark,openssl,644.8275,data: --size 27777; workload: --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+zstd_benchmark,zstd,1647.3952,data: --size 25000; workload: --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+c_compiler_benchmark,gcc_compile,377.4541,data: --func_size 100; workload: --threads 32 --opt O1; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+c_compiler_benchmark,clang_compile,239.6113,data: --func_size 100; workload: --threads 32 --opt O1; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+rocksdb_benchmark,rocksdb_cpu,662.5511,workload: --num 2000000 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,fft_batch,228.571,workload: --size 512 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,conv_heavy,1746.698,workload: --size 512 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,mandelbrot,1137.371,workload: --size 625 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,jacobi,4376.643,workload: --size 1024 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,canny,411.369,workload: --size 1024 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,optical_flow,639.308,workload: --size 568 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,motion_blur,336.647,workload: --size 1024 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,background_sub,653.999,workload: --size 540 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,color_tracking,1281.657,workload: --size 1200 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+opencv_benchmark,feature_match,736.704,workload: --size 512 --threads 32; ,results_grid_configurations_924_10_2026-09-18_16-35-04.csv
+lapack_benchmark,lapack_solve,212.6358,workload: --size 1024 --threads 32; ,results_grid_configurations_924_10_2026-09-30_16-22-26.csv
+lapack_benchmark,lapack_eigen,72.3564,workload: --size 1024 --threads 32; ,results_grid_configurations_924_10_2026-09-30_16-22-26.csv
+lapack_benchmark,lapack_svd,79.7575,workload: --size 1024 --threads 32; ,results_grid_configurations_924_10_2026-09-30_16-22-26.csv
+redis_benchmark,redis-benchmark,1739.551,workload: --requests 2222222 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+ffmpeg_benchmark,ffmpeg,793.4192,data: --duration 293; workload: --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+openssl_benchmark,openssl,665.7834,data: --size 27777; workload: --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+zstd_benchmark,zstd,1645.6091,data: --size 25000; workload: --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+c_compiler_benchmark,gcc_compile,654.124,data: --func_size 100; workload: --threads 32 --opt O2; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+c_compiler_benchmark,clang_compile,240.3694,data: --func_size 100; workload: --threads 32 --opt O2; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+rocksdb_benchmark,rocksdb_cpu,723.2515,workload: --num 2000000 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,fft_batch,239.124,workload: --size 512 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,conv_heavy,1733.184,workload: --size 512 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,mandelbrot,1137.127,workload: --size 625 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,jacobi,4737.052,workload: --size 1024 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,canny,420.387,workload: --size 1024 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,optical_flow,639.75,workload: --size 568 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,motion_blur,325.832,workload: --size 1024 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,background_sub,584.535,workload: --size 540 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,color_tracking,1259.939,workload: --size 1200 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+opencv_benchmark,feature_match,746.425,workload: --size 512 --threads 32; ,results_grid_configurations_924_11_2026-09-18_21-49-11.csv
+lapack_benchmark,lapack_solve,214.1329,workload: --size 1024 --threads 32; ,results_grid_configurations_924_11_2026-09-30_16-28-32.csv
+lapack_benchmark,lapack_eigen,75.4545,workload: --size 1024 --threads 32; ,results_grid_configurations_924_11_2026-09-30_16-28-32.csv
+lapack_benchmark,lapack_svd,79.5669,workload: --size 1024 --threads 32; ,results_grid_configurations_924_11_2026-09-30_16-28-32.csv
+redis_benchmark,redis-benchmark,1611.8349,workload: --requests 2222222 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+ffmpeg_benchmark,ffmpeg,766.5968,data: --duration 293; workload: --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+openssl_benchmark,openssl,691.8397,data: --size 27777; workload: --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+zstd_benchmark,zstd,1637.7331,data: --size 25000; workload: --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+c_compiler_benchmark,gcc_compile,653.0614,data: --func_size 100; workload: --threads 32 --opt O3; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+c_compiler_benchmark,clang_compile,242.5197,data: --func_size 100; workload: --threads 32 --opt O3; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+rocksdb_benchmark,rocksdb_cpu,707.1217,workload: --num 2000000 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,fft_batch,230.085,workload: --size 512 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,conv_heavy,1763.476,workload: --size 512 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,mandelbrot,1137.114,workload: --size 625 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,jacobi,4364.788,workload: --size 1024 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,canny,408.532,workload: --size 1024 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,optical_flow,640.663,workload: --size 568 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,motion_blur,327.958,workload: --size 1024 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,background_sub,562.438,workload: --size 540 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,color_tracking,1281.908,workload: --size 1200 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+opencv_benchmark,feature_match,746.384,workload: --size 512 --threads 32; ,results_grid_configurations_924_12_2026-09-19_03-14-36.csv
+lapack_benchmark,lapack_solve,225.0284,workload: --size 1024 --threads 32; ,results_grid_configurations_924_12_2026-09-30_16-34-42.csv
+lapack_benchmark,lapack_eigen,73.7035,workload: --size 1024 --threads 32; ,results_grid_configurations_924_12_2026-09-30_16-34-42.csv
+lapack_benchmark,lapack_svd,79.5283,workload: --size 1024 --threads 32; ,results_grid_configurations_924_12_2026-09-30_16-34-42.csv
+redis_benchmark,redis-benchmark,1726.0832,workload: --requests 2222222 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+ffmpeg_benchmark,ffmpeg,795.4402,data: --duration 293; workload: --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+openssl_benchmark,openssl,727.6209,data: --size 27777; workload: --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+zstd_benchmark,zstd,2057.0539,data: --size 25000; workload: --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+c_compiler_benchmark,gcc_compile,455.2691,data: --func_size 100; workload: --threads 64 --opt O1; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+c_compiler_benchmark,clang_compile,253.7015,data: --func_size 100; workload: --threads 64 --opt O1; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+rocksdb_benchmark,rocksdb_cpu,1731.6645,workload: --num 2000000 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,fft_batch,251.508,workload: --size 512 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,conv_heavy,2150.842,workload: --size 512 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,mandelbrot,1139.192,workload: --size 625 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,jacobi,8519.127,workload: --size 1024 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,canny,430.013,workload: --size 1024 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,optical_flow,709.573,workload: --size 568 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,motion_blur,337.824,workload: --size 1024 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,background_sub,546.813,workload: --size 540 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,color_tracking,1338.183,workload: --size 1200 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+opencv_benchmark,feature_match,766.85,workload: --size 512 --threads 64; ,results_grid_configurations_924_13_2026-09-19_08-31-34.csv
+lapack_benchmark,lapack_solve,338.2989,workload: --size 1024 --threads 64; ,results_grid_configurations_924_13_2026-09-30_16-41-02.csv
+lapack_benchmark,lapack_eigen,107.4918,workload: --size 1024 --threads 64; ,results_grid_configurations_924_13_2026-09-30_16-41-02.csv
+lapack_benchmark,lapack_svd,172.5014,workload: --size 1024 --threads 64; ,results_grid_configurations_924_13_2026-09-30_16-41-02.csv
+redis_benchmark,redis-benchmark,1747.7007,workload: --requests 2222222 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+ffmpeg_benchmark,ffmpeg,791.5112,data: --duration 293; workload: --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+openssl_benchmark,openssl,868.6123,data: --size 27777; workload: --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+zstd_benchmark,zstd,2047.7284,data: --size 25000; workload: --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+c_compiler_benchmark,gcc_compile,752.0168,data: --func_size 100; workload: --threads 64 --opt O2; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+c_compiler_benchmark,clang_compile,256.2215,data: --func_size 100; workload: --threads 64 --opt O2; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+rocksdb_benchmark,rocksdb_cpu,1661.8871,workload: --num 2000000 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,fft_batch,267.487,workload: --size 512 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,conv_heavy,2278.141,workload: --size 512 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,mandelbrot,1138.065,workload: --size 625 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,jacobi,8522.079,workload: --size 1024 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,canny,465.18,workload: --size 1024 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,optical_flow,709.663,workload: --size 568 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,motion_blur,340.245,workload: --size 1024 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,background_sub,571.235,workload: --size 540 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,color_tracking,1344.831,workload: --size 1200 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+opencv_benchmark,feature_match,771.985,workload: --size 512 --threads 64; ,results_grid_configurations_924_14_2026-09-19_15-53-08.csv
+lapack_benchmark,lapack_solve,338.5948,workload: --size 1024 --threads 64; ,results_grid_configurations_924_14_2026-09-30_16-51-22.csv
+lapack_benchmark,lapack_eigen,98.3441,workload: --size 1024 --threads 64; ,results_grid_configurations_924_14_2026-09-30_16-51-22.csv
+lapack_benchmark,lapack_svd,173.9042,workload: --size 1024 --threads 64; ,results_grid_configurations_924_14_2026-09-30_16-51-22.csv
+redis_benchmark,redis-benchmark,1796.6692,workload: --requests 2222222 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+ffmpeg_benchmark,ffmpeg,790.757,data: --duration 293; workload: --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+openssl_benchmark,openssl,743.8393,data: --size 27777; workload: --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+zstd_benchmark,zstd,2060.0014,data: --size 25000; workload: --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+c_compiler_benchmark,gcc_compile,756.9274,data: --func_size 100; workload: --threads 64 --opt O3; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+c_compiler_benchmark,clang_compile,256.8419,data: --func_size 100; workload: --threads 64 --opt O3; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+rocksdb_benchmark,rocksdb_cpu,1881.154,workload: --num 2000000 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,fft_batch,266.128,workload: --size 512 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,conv_heavy,2205.36,workload: --size 512 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,mandelbrot,1137.871,workload: --size 625 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,jacobi,8235.526,workload: --size 1024 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,canny,448.719,workload: --size 1024 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,optical_flow,697.589,workload: --size 568 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,motion_blur,337.65,workload: --size 1024 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,background_sub,551.391,workload: --size 540 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,color_tracking,1370.122,workload: --size 1200 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+opencv_benchmark,feature_match,766.789,workload: --size 512 --threads 64; ,results_grid_configurations_924_15_2026-09-19_23-22-53.csv
+lapack_benchmark,lapack_solve,335.9716,workload: --size 1024 --threads 64; ,results_grid_configurations_924_15_2026-09-30_17-01-35.csv
+lapack_benchmark,lapack_eigen,97.5984,workload: --size 1024 --threads 64; ,results_grid_configurations_924_15_2026-09-30_17-01-35.csv
+lapack_benchmark,lapack_svd,172.6184,workload: --size 1024 --threads 64; ,results_grid_configurations_924_15_2026-09-30_17-01-35.csv
+redis_benchmark,redis-benchmark,1717.7661,workload: --requests 2222222 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+ffmpeg_benchmark,ffmpeg,789.8056,data: --duration 293; workload: --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+openssl_benchmark,openssl,736.6399,data: --size 27777; workload: --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+zstd_benchmark,zstd,2059.0661,data: --size 25000; workload: --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+c_compiler_benchmark,gcc_compile,452.3589,data: --func_size 100; workload: --threads 64 --opt O1; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+c_compiler_benchmark,clang_compile,250.0659,data: --func_size 100; workload: --threads 64 --opt O1; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+rocksdb_benchmark,rocksdb_cpu,1853.0321,workload: --num 2000000 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,fft_batch,251.815,workload: --size 512 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,conv_heavy,2250.145,workload: --size 512 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,mandelbrot,1138.912,workload: --size 625 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,jacobi,8259.728,workload: --size 1024 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,canny,441.572,workload: --size 1024 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,optical_flow,703.444,workload: --size 568 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,motion_blur,336.549,workload: --size 1024 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,background_sub,546.229,workload: --size 540 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,color_tracking,1318.447,workload: --size 1200 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+opencv_benchmark,feature_match,750.202,workload: --size 512 --threads 64; ,results_grid_configurations_924_16_2026-09-20_06-49-59.csv
+lapack_benchmark,lapack_solve,356.8519,workload: --size 1024 --threads 64; ,results_grid_configurations_924_16_2026-09-30_17-11-44.csv
+lapack_benchmark,lapack_eigen,98.8899,workload: --size 1024 --threads 64; ,results_grid_configurations_924_16_2026-09-30_17-11-44.csv
+lapack_benchmark,lapack_svd,172.7223,workload: --size 1024 --threads 64; ,results_grid_configurations_924_16_2026-09-30_17-11-44.csv
+redis_benchmark,redis-benchmark,1750.1173,workload: --requests 2222222 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+ffmpeg_benchmark,ffmpeg,794.4689,data: --duration 293; workload: --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+openssl_benchmark,openssl,717.5216,data: --size 27777; workload: --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+zstd_benchmark,zstd,2062.0576,data: --size 25000; workload: --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+c_compiler_benchmark,gcc_compile,761.5542,data: --func_size 100; workload: --threads 64 --opt O2; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+c_compiler_benchmark,clang_compile,254.9179,data: --func_size 100; workload: --threads 64 --opt O2; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+rocksdb_benchmark,rocksdb_cpu,1751.5945,workload: --num 2000000 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,fft_batch,257.848,workload: --size 512 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,conv_heavy,2214.173,workload: --size 512 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,mandelbrot,1140.118,workload: --size 625 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,jacobi,8259.692,workload: --size 1024 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,canny,472.855,workload: --size 1024 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,optical_flow,710.622,workload: --size 568 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,motion_blur,341.878,workload: --size 1024 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,background_sub,572.646,workload: --size 540 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,color_tracking,1345.348,workload: --size 1200 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+opencv_benchmark,feature_match,771.993,workload: --size 512 --threads 64; ,results_grid_configurations_924_17_2026-09-20_14-07-55.csv
+lapack_benchmark,lapack_solve,335.5509,workload: --size 1024 --threads 64; ,results_grid_configurations_924_17_2026-09-30_17-22-14.csv
+lapack_benchmark,lapack_eigen,98.4574,workload: --size 1024 --threads 64; ,results_grid_configurations_924_17_2026-09-30_17-22-14.csv
+lapack_benchmark,lapack_svd,171.2316,workload: --size 1024 --threads 64; ,results_grid_configurations_924_17_2026-09-30_17-22-14.csv
+redis_benchmark,redis-benchmark,1747.0722,workload: --requests 2222222 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+ffmpeg_benchmark,ffmpeg,798.2819,data: --duration 293; workload: --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+openssl_benchmark,openssl,744.2323,data: --size 27777; workload: --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+zstd_benchmark,zstd,2060.5955,data: --size 25000; workload: --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+c_compiler_benchmark,gcc_compile,764.235,data: --func_size 100; workload: --threads 64 --opt O3; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+c_compiler_benchmark,clang_compile,258.0206,data: --func_size 100; workload: --threads 64 --opt O3; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+rocksdb_benchmark,rocksdb_cpu,1746.3319,workload: --num 2000000 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,fft_batch,255.889,workload: --size 512 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,conv_heavy,2226.8,workload: --size 512 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,mandelbrot,1138.322,workload: --size 625 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,jacobi,8234.705,workload: --size 1024 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,canny,450.3,workload: --size 1024 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,optical_flow,707.172,workload: --size 568 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,motion_blur,340.341,workload: --size 1024 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,background_sub,583.269,workload: --size 540 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,color_tracking,1352.223,workload: --size 1200 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+opencv_benchmark,feature_match,770.908,workload: --size 512 --threads 64; ,results_grid_configurations_924_18_2026-09-20_21-34-16.csv
+lapack_benchmark,lapack_solve,347.6234,workload: --size 1024 --threads 64; ,results_grid_configurations_924_18_2026-09-30_17-32-22.csv
+lapack_benchmark,lapack_eigen,97.6061,workload: --size 1024 --threads 64; ,results_grid_configurations_924_18_2026-09-30_17-32-22.csv
+lapack_benchmark,lapack_svd,171.0359,workload: --size 1024 --threads 64; ,results_grid_configurations_924_18_2026-09-30_17-32-22.csv
+redis_benchmark,redis-benchmark,2913.1527,workload: --requests 4000000 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+ffmpeg_benchmark,ffmpeg,827.417,data: --duration 480; workload: --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+openssl_benchmark,openssl,1102.7853,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+zstd_benchmark,zstd,2173.5556,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+c_compiler_benchmark,gcc_compile,690.619,data: --func_size 200; workload: --threads 1 --opt O1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+c_compiler_benchmark,clang_compile,453.4979,data: --func_size 200; workload: --threads 1 --opt O1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+rocksdb_benchmark,rocksdb_cpu,582.4559,workload: --num 4000000 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,fft_batch,1031.711,workload: --size 1024 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,conv_heavy,3530.572,workload: --size 1024 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,mandelbrot,1137.918,workload: --size 1024 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,jacobi,3506.307,workload: --size 2048 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,canny,1141.631,workload: --size 2048 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,optical_flow,1798.193,workload: --size 1024 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,motion_blur,1095.93,workload: --size 2048 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,background_sub,968.993,workload: --size 1080 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,color_tracking,3331.762,workload: --size 2160 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+opencv_benchmark,feature_match,2446.767,workload: --size 1024 --threads 1; ,results_grid_configurations_924_19_2026-09-21_04-58-09.csv
+lapack_benchmark,lapack_solve,1265.1802,workload: --size 2048 --threads 1; ,results_grid_configurations_924_19_2026-09-30_17-42-40.csv
+lapack_benchmark,lapack_eigen,350.7527,workload: --size 2048 --threads 1; ,results_grid_configurations_924_19_2026-09-30_17-42-40.csv
+lapack_benchmark,lapack_svd,384.1405,workload: --size 1820 --threads 1; ,results_grid_configurations_924_19_2026-09-30_17-42-40.csv
+numpy_benchmark,matmul,522.4993,workload: --size 2048 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+numpy_benchmark,svd,205.0815,workload: --size 1024 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+numpy_benchmark,fft,6490.7797,workload: --size 4660337 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+tuf_benchmark,tuf-metadata,1013.6212,data: --size 328087779; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+requests_benchmark,requests-json,428.1374,workload: --size 131072 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+raytrace,raytrace,671.518,workload: --width 2275 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+chaos_fractal,chaos-fractal,2110.6926,data: --width 2048; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+deltablue,deltablue,854.3512,workload: --n 111111 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+pyflate,pyflate,768.564,data: --size 5555555; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+go_board_game,go-board-game,160.7112,workload: --size 100 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+resnet50_cpu,resnet50_inference,1425.795,data: --img_size 256; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+resnet50_cpu,resnet50_training,1769.979,data: --img_size 256; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+bert_cpu,bert_eval,5296.3847,data: --seq_len 512; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+transformer_inference,transformer_inference,6726.741,data: --seq_len 142; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+transformer_train,transformer_train,1236.846,data: --seq_len 128; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+redis_benchmark,redis-benchmark,1294.0043,workload: --requests 2222222 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+ffmpeg_benchmark,ffmpeg,501.3384,data: --duration 293; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+openssl_benchmark,openssl,620.2379,data: --size 27777; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+zstd_benchmark,zstd,960.9463,data: --size 25000; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+c_compiler_benchmark,gcc_compile,315.8446,data: --func_size 100; workload: --threads 1 --opt O1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+c_compiler_benchmark,clang_compile,222.1784,data: --func_size 100; workload: --threads 1 --opt O1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+rocksdb_benchmark,rocksdb_cpu,202.1202,workload: --num 2000000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,fft_batch,190.53,workload: --size 512 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,conv_heavy,1105.406,workload: --size 512 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,mandelbrot,1137.93,workload: --size 625 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,jacobi,3485.366,workload: --size 1024 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,canny,252.206,workload: --size 1024 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,optical_flow,507.612,workload: --size 568 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,motion_blur,314.32,workload: --size 1024 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,background_sub,191.543,workload: --size 540 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,color_tracking,1021.189,workload: --size 1200 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+opencv_benchmark,feature_match,701.288,workload: --size 512 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+biogo-benchmark,biogo-igor,315.2073,workload: --seq 50000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+bleve_benchmark,bleve-index,251.0879,workload: --documents 2222 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+cockroachdb_benchmark,kv,773.879,workload: --max-ops 600000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+cockroachdb_benchmark,tpcc,1959.6637,workload: --max-ops 15000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+esbuild_benchmark,ThreeJS,1380.7935,data: --complexity 1111; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+esbuild_benchmark,RomeTS,1194.7625,data: --complexity 1000; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+gc_garbage,gc_garbage,464.5833,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+go_compiler,go_compiler,4648.4692,data: --complex 100; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+gopher_lua,gopher_lua,414.1114,data: --size 500000; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+go_json,json,503.0802,data: --size 25000; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+go_markdown,markdown_render,344.6572,data: --size 555; workload: --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+tile38_sim,kdtree,273.484569,workload: --points 50000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+cassandra_benchmark,cassandra_stress_read,1390.1266,workload: --read-n 1000000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+kafka_benchmark,kafka_producer_perf,2324.5401,workload: --num-records 777777777 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+guava_benchmark,guava_event,635.1528,workload: --dataSize 100000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+guava_benchmark,guava_graph,305.3173,workload: --dataSize 200000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+guava_benchmark,guava_bloom,204.4971,workload: --dataSize 200000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+guava_benchmark,guava_cache,396.4223,workload: --dataSize 50000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+guava_benchmark,guava_immutable,314.9497,workload: --dataSize 200000 --threads 1; ,results_grid_configurations_924_1_2026-09-11_14-52-27.csv
+lapack_benchmark,lapack_solve,157.1254,workload: --size 1024 --threads 1; ,results_grid_configurations_924_1_2026-09-30_15-39-55.csv
+lapack_benchmark,lapack_eigen,40.2521,workload: --size 1024 --threads 1; ,results_grid_configurations_924_1_2026-09-30_15-39-55.csv
+lapack_benchmark,lapack_svd,42.4306,workload: --size 1024 --threads 1; ,results_grid_configurations_924_1_2026-09-30_15-39-55.csv
+redis_benchmark,redis-benchmark,2344.4541,workload: --requests 4000000 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+ffmpeg_benchmark,ffmpeg,823.7803,data: --duration 480; workload: --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+openssl_benchmark,openssl,1109.0309,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+zstd_benchmark,zstd,2153.4715,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+c_compiler_benchmark,gcc_compile,1153.0789,data: --func_size 200; workload: --threads 1 --opt O2; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+c_compiler_benchmark,clang_compile,456.974,data: --func_size 200; workload: --threads 1 --opt O2; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+rocksdb_benchmark,rocksdb_cpu,497.2114,workload: --num 4000000 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,fft_batch,1003.674,workload: --size 1024 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,conv_heavy,3527.84,workload: --size 1024 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,mandelbrot,1138.086,workload: --size 1024 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,jacobi,3687.525,workload: --size 2048 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,canny,1145.409,workload: --size 2048 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,optical_flow,1791.4,workload: --size 1024 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,motion_blur,1083.264,workload: --size 2048 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,background_sub,976.491,workload: --size 1080 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,color_tracking,3323.157,workload: --size 2160 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+opencv_benchmark,feature_match,2446.161,workload: --size 1024 --threads 1; ,results_grid_configurations_924_20_2026-09-21_13-41-51.csv
+lapack_benchmark,lapack_solve,1263.6248,workload: --size 2048 --threads 1; ,results_grid_configurations_924_20_2026-09-30_18-16-02.csv
+lapack_benchmark,lapack_eigen,349.1795,workload: --size 2048 --threads 1; ,results_grid_configurations_924_20_2026-09-30_18-16-02.csv
+lapack_benchmark,lapack_svd,382.5742,workload: --size 1820 --threads 1; ,results_grid_configurations_924_20_2026-09-30_18-16-02.csv
+redis_benchmark,redis-benchmark,2382.4132,workload: --requests 4000000 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+ffmpeg_benchmark,ffmpeg,828.0481,data: --duration 480; workload: --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+openssl_benchmark,openssl,1095.9909,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+zstd_benchmark,zstd,2153.6999,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+c_compiler_benchmark,gcc_compile,1162.418,data: --func_size 200; workload: --threads 1 --opt O3; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+c_compiler_benchmark,clang_compile,461.6213,data: --func_size 200; workload: --threads 1 --opt O3; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+rocksdb_benchmark,rocksdb_cpu,521.6969,workload: --num 4000000 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,fft_batch,995.451,workload: --size 1024 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,conv_heavy,3557.064,workload: --size 1024 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,mandelbrot,1137.819,workload: --size 1024 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,jacobi,3485.948,workload: --size 2048 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,canny,1146.493,workload: --size 2048 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,optical_flow,1786.98,workload: --size 1024 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,motion_blur,1087.27,workload: --size 2048 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,background_sub,958.088,workload: --size 1080 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,color_tracking,3326.773,workload: --size 2160 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+opencv_benchmark,feature_match,2443.035,workload: --size 1024 --threads 1; ,results_grid_configurations_924_21_2026-09-21_22-24-28.csv
+lapack_benchmark,lapack_solve,1264.4204,workload: --size 2048 --threads 1; ,results_grid_configurations_924_21_2026-09-30_18-49-19.csv
+lapack_benchmark,lapack_eigen,351.9198,workload: --size 2048 --threads 1; ,results_grid_configurations_924_21_2026-09-30_18-49-19.csv
+lapack_benchmark,lapack_svd,382.3309,workload: --size 1820 --threads 1; ,results_grid_configurations_924_21_2026-09-30_18-49-19.csv
+redis_benchmark,redis-benchmark,2341.1517,workload: --requests 4000000 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+ffmpeg_benchmark,ffmpeg,823.949,data: --duration 480; workload: --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+openssl_benchmark,openssl,1091.806,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+zstd_benchmark,zstd,2157.179,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+c_compiler_benchmark,gcc_compile,690.0563,data: --func_size 200; workload: --threads 1 --opt O1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+c_compiler_benchmark,clang_compile,455.552,data: --func_size 200; workload: --threads 1 --opt O1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+rocksdb_benchmark,rocksdb_cpu,621.9218,workload: --num 4000000 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,fft_batch,1037.426,workload: --size 1024 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,conv_heavy,3536.349,workload: --size 1024 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,mandelbrot,1137.965,workload: --size 1024 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,jacobi,3491.082,workload: --size 2048 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,canny,1144.832,workload: --size 2048 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,optical_flow,1796.907,workload: --size 1024 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,motion_blur,1078.433,workload: --size 2048 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,background_sub,977.471,workload: --size 1080 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,color_tracking,3320.817,workload: --size 2160 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+opencv_benchmark,feature_match,2447.103,workload: --size 1024 --threads 1; ,results_grid_configurations_924_22_2026-09-22_07-04-48.csv
+lapack_benchmark,lapack_solve,1264.0185,workload: --size 2048 --threads 1; ,results_grid_configurations_924_22_2026-09-30_19-22-39.csv
+lapack_benchmark,lapack_eigen,352.9862,workload: --size 2048 --threads 1; ,results_grid_configurations_924_22_2026-09-30_19-22-39.csv
+lapack_benchmark,lapack_svd,382.1362,workload: --size 1820 --threads 1; ,results_grid_configurations_924_22_2026-09-30_19-22-39.csv
+redis_benchmark,redis-benchmark,2343.2267,workload: --requests 4000000 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+ffmpeg_benchmark,ffmpeg,833.3653,data: --duration 480; workload: --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+openssl_benchmark,openssl,1096.2864,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+zstd_benchmark,zstd,2152.539,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+c_compiler_benchmark,gcc_compile,1153.0077,data: --func_size 200; workload: --threads 1 --opt O2; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+c_compiler_benchmark,clang_compile,459.0103,data: --func_size 200; workload: --threads 1 --opt O2; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+rocksdb_benchmark,rocksdb_cpu,594.2671,workload: --num 4000000 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,fft_batch,905.0,workload: --size 1024 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,conv_heavy,3532.345,workload: --size 1024 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,mandelbrot,1137.723,workload: --size 1024 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,jacobi,3499.096,workload: --size 2048 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,canny,1142.211,workload: --size 2048 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,optical_flow,1794.842,workload: --size 1024 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,motion_blur,1080.004,workload: --size 2048 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,background_sub,974.295,workload: --size 1080 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,color_tracking,3312.089,workload: --size 2160 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+opencv_benchmark,feature_match,2445.626,workload: --size 1024 --threads 1; ,results_grid_configurations_924_23_2026-09-22_15-38-48.csv
+lapack_benchmark,lapack_solve,1265.2247,workload: --size 2048 --threads 1; ,results_grid_configurations_924_23_2026-09-30_19-56-00.csv
+lapack_benchmark,lapack_eigen,351.4005,workload: --size 2048 --threads 1; ,results_grid_configurations_924_23_2026-09-30_19-56-00.csv
+lapack_benchmark,lapack_svd,381.7031,workload: --size 1820 --threads 1; ,results_grid_configurations_924_23_2026-09-30_19-56-00.csv
+redis_benchmark,redis-benchmark,2352.8278,workload: --requests 4000000 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+ffmpeg_benchmark,ffmpeg,824.1596,data: --duration 480; workload: --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+openssl_benchmark,openssl,1109.1903,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+zstd_benchmark,zstd,2159.2617,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+c_compiler_benchmark,gcc_compile,1157.8188,data: --func_size 200; workload: --threads 1 --opt O3; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+c_compiler_benchmark,clang_compile,461.8896,data: --func_size 200; workload: --threads 1 --opt O3; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+rocksdb_benchmark,rocksdb_cpu,670.1865,workload: --num 4000000 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,fft_batch,966.157,workload: --size 1024 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,conv_heavy,3507.063,workload: --size 1024 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,mandelbrot,1137.934,workload: --size 1024 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,jacobi,3493.773,workload: --size 2048 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,canny,1144.008,workload: --size 2048 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,optical_flow,1794.45,workload: --size 1024 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,motion_blur,1089.462,workload: --size 2048 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,background_sub,973.803,workload: --size 1080 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,color_tracking,3330.402,workload: --size 2160 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+opencv_benchmark,feature_match,2446.632,workload: --size 1024 --threads 1; ,results_grid_configurations_924_24_2026-09-23_00-17-51.csv
+lapack_benchmark,lapack_solve,1265.0823,workload: --size 2048 --threads 1; ,results_grid_configurations_924_24_2026-09-30_20-29-20.csv
+lapack_benchmark,lapack_eigen,352.0767,workload: --size 2048 --threads 1; ,results_grid_configurations_924_24_2026-09-30_20-29-20.csv
+lapack_benchmark,lapack_svd,382.8318,workload: --size 1820 --threads 1; ,results_grid_configurations_924_24_2026-09-30_20-29-20.csv
+redis_benchmark,redis-benchmark,3177.0812,workload: --requests 4000000 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+ffmpeg_benchmark,ffmpeg,1299.9234,data: --duration 480; workload: --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+openssl_benchmark,openssl,1810.6611,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+zstd_benchmark,zstd,3380.7411,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+c_compiler_benchmark,gcc_compile,1116.5329,data: --func_size 200; workload: --threads 32 --opt O1; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+c_compiler_benchmark,clang_compile,496.6633,data: --func_size 200; workload: --threads 32 --opt O1; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+rocksdb_benchmark,rocksdb_cpu,1785.0339,workload: --num 4000000 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,fft_batch,1097.826,workload: --size 1024 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,conv_heavy,6023.636,workload: --size 1024 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,mandelbrot,1137.203,workload: --size 1024 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,jacobi,4760.78,workload: --size 2048 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,canny,1751.883,workload: --size 2048 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,optical_flow,2237.454,workload: --size 1024 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,motion_blur,1121.627,workload: --size 2048 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,background_sub,2354.932,workload: --size 1080 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,color_tracking,4264.768,workload: --size 2160 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+opencv_benchmark,feature_match,2719.384,workload: --size 1024 --threads 32; ,results_grid_configurations_924_25_2026-09-23_08-59-45.csv
+lapack_benchmark,lapack_solve,1580.6459,workload: --size 2048 --threads 32; ,results_grid_configurations_924_25_2026-09-30_21-02-42.csv
+lapack_benchmark,lapack_eigen,697.7883,workload: --size 2048 --threads 32; ,results_grid_configurations_924_25_2026-09-30_21-02-42.csv
+lapack_benchmark,lapack_svd,461.7215,workload: --size 1820 --threads 32; ,results_grid_configurations_924_25_2026-09-30_21-02-42.csv
+redis_benchmark,redis-benchmark,3117.9664,workload: --requests 4000000 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+ffmpeg_benchmark,ffmpeg,1303.2582,data: --duration 480; workload: --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+openssl_benchmark,openssl,1505.1729,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+zstd_benchmark,zstd,3404.0549,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+c_compiler_benchmark,gcc_compile,1898.5138,data: --func_size 200; workload: --threads 32 --opt O2; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+c_compiler_benchmark,clang_compile,500.7592,data: --func_size 200; workload: --threads 32 --opt O2; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+rocksdb_benchmark,rocksdb_cpu,1468.6952,workload: --num 4000000 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,fft_batch,1069.952,workload: --size 1024 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,conv_heavy,5744.483,workload: --size 1024 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,mandelbrot,1137.229,workload: --size 1024 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,jacobi,4411.646,workload: --size 2048 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,canny,1651.817,workload: --size 2048 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,optical_flow,2232.476,workload: --size 1024 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,motion_blur,1180.545,workload: --size 2048 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,background_sub,2341.614,workload: --size 1080 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,color_tracking,4228.644,workload: --size 2160 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+opencv_benchmark,feature_match,2724.632,workload: --size 1024 --threads 32; ,results_grid_configurations_924_26_2026-09-23_21-57-05.csv
+lapack_benchmark,lapack_solve,1617.1053,workload: --size 2048 --threads 32; ,results_grid_configurations_924_26_2026-09-30_21-48-26.csv
+lapack_benchmark,lapack_eigen,660.7925,workload: --size 2048 --threads 32; ,results_grid_configurations_924_26_2026-09-30_21-48-26.csv
+lapack_benchmark,lapack_svd,514.3652,workload: --size 1820 --threads 32; ,results_grid_configurations_924_26_2026-09-30_21-48-26.csv
+redis_benchmark,redis-benchmark,2948.38,workload: --requests 4000000 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+ffmpeg_benchmark,ffmpeg,1306.5774,data: --duration 480; workload: --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+openssl_benchmark,openssl,1639.1932,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+zstd_benchmark,zstd,3441.1642,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+c_compiler_benchmark,gcc_compile,1958.4477,data: --func_size 200; workload: --threads 32 --opt O3; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+c_compiler_benchmark,clang_compile,510.926,data: --func_size 200; workload: --threads 32 --opt O3; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+rocksdb_benchmark,rocksdb_cpu,1480.3089,workload: --num 4000000 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,fft_batch,1057.234,workload: --size 1024 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,conv_heavy,5831.668,workload: --size 1024 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,mandelbrot,1137.086,workload: --size 1024 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,jacobi,4337.348,workload: --size 2048 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,canny,1671.902,workload: --size 2048 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,optical_flow,2247.373,workload: --size 1024 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,motion_blur,1116.446,workload: --size 2048 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,background_sub,2285.97,workload: --size 1080 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,color_tracking,4271.925,workload: --size 2160 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+opencv_benchmark,feature_match,2712.975,workload: --size 1024 --threads 32; ,results_grid_configurations_924_27_2026-09-24_10-44-38.csv
+lapack_benchmark,lapack_solve,1603.0899,workload: --size 2048 --threads 32; ,results_grid_configurations_924_27_2026-09-30_22-35-03.csv
+lapack_benchmark,lapack_eigen,689.9782,workload: --size 2048 --threads 32; ,results_grid_configurations_924_27_2026-09-30_22-35-03.csv
+lapack_benchmark,lapack_svd,534.2783,workload: --size 1820 --threads 32; ,results_grid_configurations_924_27_2026-09-30_22-35-03.csv
+redis_benchmark,redis-benchmark,3079.4322,workload: --requests 4000000 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+ffmpeg_benchmark,ffmpeg,1303.8072,data: --duration 480; workload: --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+openssl_benchmark,openssl,1819.6181,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+zstd_benchmark,zstd,3379.7356,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+c_compiler_benchmark,gcc_compile,1081.0045,data: --func_size 200; workload: --threads 32 --opt O1; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+c_compiler_benchmark,clang_compile,496.5905,data: --func_size 200; workload: --threads 32 --opt O1; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+rocksdb_benchmark,rocksdb_cpu,1567.4941,workload: --num 4000000 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,fft_batch,1081.169,workload: --size 1024 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,conv_heavy,5702.84,workload: --size 1024 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,mandelbrot,1137.414,workload: --size 1024 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,jacobi,4728.873,workload: --size 2048 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,canny,1666.774,workload: --size 2048 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,optical_flow,2235.93,workload: --size 1024 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,motion_blur,1134.949,workload: --size 2048 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,background_sub,2214.984,workload: --size 1080 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,color_tracking,4257.694,workload: --size 2160 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+opencv_benchmark,feature_match,2706.969,workload: --size 1024 --threads 32; ,results_grid_configurations_924_28_2026-09-24_23-26-39.csv
+lapack_benchmark,lapack_solve,1608.4053,workload: --size 2048 --threads 32; ,results_grid_configurations_924_28_2026-09-30_23-22-15.csv
+lapack_benchmark,lapack_eigen,722.0549,workload: --size 2048 --threads 32; ,results_grid_configurations_924_28_2026-09-30_23-22-15.csv
+lapack_benchmark,lapack_svd,538.8341,workload: --size 1820 --threads 32; ,results_grid_configurations_924_28_2026-09-30_23-22-15.csv
+redis_benchmark,redis-benchmark,3082.8932,workload: --requests 4000000 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+ffmpeg_benchmark,ffmpeg,1305.2996,data: --duration 480; workload: --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+openssl_benchmark,openssl,1475.0638,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+zstd_benchmark,zstd,3424.5492,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+c_compiler_benchmark,gcc_compile,1931.7293,data: --func_size 200; workload: --threads 32 --opt O2; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+c_compiler_benchmark,clang_compile,500.3994,data: --func_size 200; workload: --threads 32 --opt O2; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+rocksdb_benchmark,rocksdb_cpu,1593.8733,workload: --num 4000000 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,fft_batch,1084.072,workload: --size 1024 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,conv_heavy,5757.027,workload: --size 1024 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,mandelbrot,1137.112,workload: --size 1024 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,jacobi,4338.842,workload: --size 2048 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,canny,1784.307,workload: --size 2048 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,optical_flow,2249.129,workload: --size 1024 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,motion_blur,1141.38,workload: --size 2048 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,background_sub,2252.876,workload: --size 1080 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,color_tracking,4310.948,workload: --size 2160 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+opencv_benchmark,feature_match,2700.49,workload: --size 1024 --threads 32; ,results_grid_configurations_924_29_2026-09-25_12-06-59.csv
+lapack_benchmark,lapack_solve,1598.3878,workload: --size 2048 --threads 32; ,results_grid_configurations_924_29_2026-10-01_00-10-09.csv
+lapack_benchmark,lapack_eigen,669.9119,workload: --size 2048 --threads 32; ,results_grid_configurations_924_29_2026-10-01_00-10-09.csv
+lapack_benchmark,lapack_svd,508.3404,workload: --size 1820 --threads 32; ,results_grid_configurations_924_29_2026-10-01_00-10-09.csv
+numpy_benchmark,matmul,731.0497,workload: --size 2048 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+numpy_benchmark,svd,369.0105,workload: --size 1024 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+numpy_benchmark,fft,10231.6198,workload: --size 4660337 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+tuf_benchmark,tuf-metadata,1729.1168,data: --size 328087779; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+requests_benchmark,requests-json,590.0366,workload: --size 131072 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+raytrace,raytrace,672.7564,workload: --width 2275 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+chaos_fractal,chaos-fractal,2112.6146,data: --width 2048; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+deltablue,deltablue,998.7835,workload: --n 111111 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+pyflate,pyflate,788.1542,data: --size 5555555; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+go_board_game,go-board-game,253.332,workload: --size 100 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+resnet50_cpu,resnet50_inference,388.381,data: --img_size 256; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+resnet50_cpu,resnet50_training,509.2985,data: --img_size 256; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+bert_cpu,bert_eval,4981.9043,data: --seq_len 512; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+transformer_inference,transformer_inference,6410.7369,data: --seq_len 142; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+transformer_train,transformer_train,2430.2663,data: --seq_len 128; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+redis_benchmark,redis-benchmark,1584.7677,workload: --requests 2222222 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+ffmpeg_benchmark,ffmpeg,506.9603,data: --duration 293; workload: --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+openssl_benchmark,openssl,618.1931,data: --size 27777; workload: --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+zstd_benchmark,zstd,964.4311,data: --size 25000; workload: --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+c_compiler_benchmark,gcc_compile,512.9455,data: --func_size 100; workload: --threads 1 --opt O2; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+c_compiler_benchmark,clang_compile,222.1951,data: --func_size 100; workload: --threads 1 --opt O2; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+rocksdb_benchmark,rocksdb_cpu,207.0961,workload: --num 2000000 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,fft_batch,190.564,workload: --size 512 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,conv_heavy,1101.208,workload: --size 512 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,mandelbrot,1137.589,workload: --size 625 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,jacobi,3488.901,workload: --size 1024 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,canny,252.055,workload: --size 1024 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,optical_flow,507.252,workload: --size 568 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,motion_blur,309.043,workload: --size 1024 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,background_sub,192.107,workload: --size 540 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,color_tracking,1015.186,workload: --size 1200 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+opencv_benchmark,feature_match,700.753,workload: --size 512 --threads 1; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+biogo-benchmark,biogo-igor,791.863,workload: --seq 50000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+bleve_benchmark,bleve-index,1230.215,workload: --documents 2222 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+cockroachdb_benchmark,kv,714.0272,workload: --max-ops 600000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+cockroachdb_benchmark,tpcc,1057.8724,workload: --max-ops 15000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+esbuild_benchmark,ThreeJS,234.1293,data: --complexity 1111; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+esbuild_benchmark,RomeTS,988.6162,data: --complexity 1000; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+gc_garbage,gc_garbage,897.8594,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+go_compiler,go_compiler,135.8408,data: --complex 100; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+gopher_lua,gopher_lua,832.4793,data: --size 500000; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+go_json,json,861.9378,data: --size 25000; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+go_markdown,markdown_render,1332.6881,data: --size 555; workload: --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+tile38_sim,kdtree,429.044839,workload: --points 50000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+cassandra_benchmark,cassandra_stress_read,150.825,workload: --read-n 1000000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+kafka_benchmark,kafka_producer_perf,116.3328,workload: --num-records 777777777 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+guava_benchmark,guava_event,1226.0617,workload: --dataSize 100000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+guava_benchmark,guava_graph,418.7858,workload: --dataSize 200000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+guava_benchmark,guava_bloom,354.9587,workload: --dataSize 200000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+guava_benchmark,guava_cache,558.1957,workload: --dataSize 50000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+guava_benchmark,guava_immutable,505.8509,workload: --dataSize 200000 --threads 32; ,results_grid_configurations_924_2_2026-09-12_08-16-13.csv
+lapack_benchmark,lapack_solve,156.7644,workload: --size 1024 --threads 1; ,results_grid_configurations_924_2_2026-09-30_15-43-56.csv
+lapack_benchmark,lapack_eigen,38.9436,workload: --size 1024 --threads 1; ,results_grid_configurations_924_2_2026-09-30_15-43-56.csv
+lapack_benchmark,lapack_svd,42.1437,workload: --size 1024 --threads 1; ,results_grid_configurations_924_2_2026-09-30_15-43-56.csv
+redis_benchmark,redis-benchmark,3021.6708,workload: --requests 4000000 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+ffmpeg_benchmark,ffmpeg,1253.5086,data: --duration 480; workload: --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+openssl_benchmark,openssl,1166.9787,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+zstd_benchmark,zstd,3383.1306,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+c_compiler_benchmark,gcc_compile,1908.3134,data: --func_size 200; workload: --threads 32 --opt O3; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+c_compiler_benchmark,clang_compile,501.458,data: --func_size 200; workload: --threads 32 --opt O3; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+rocksdb_benchmark,rocksdb_cpu,1551.4678,workload: --num 4000000 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,fft_batch,1174.812,workload: --size 1024 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,conv_heavy,5753.387,workload: --size 1024 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,mandelbrot,1137.08,workload: --size 1024 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,jacobi,4393.123,workload: --size 2048 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,canny,1729.532,workload: --size 2048 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,optical_flow,2231.303,workload: --size 1024 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,motion_blur,1140.333,workload: --size 2048 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,background_sub,2282.903,workload: --size 1080 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,color_tracking,3631.235,workload: --size 2160 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+opencv_benchmark,feature_match,2709.869,workload: --size 1024 --threads 32; ,results_grid_configurations_924_30_2026-09-26_00-50-29.csv
+lapack_benchmark,lapack_solve,1582.0892,workload: --size 2048 --threads 32; ,results_grid_configurations_924_30_2026-10-01_00-56-30.csv
+lapack_benchmark,lapack_eigen,705.6251,workload: --size 2048 --threads 32; ,results_grid_configurations_924_30_2026-10-01_00-56-30.csv
+lapack_benchmark,lapack_svd,499.1223,workload: --size 1820 --threads 32; ,results_grid_configurations_924_30_2026-10-01_00-56-30.csv
+redis_benchmark,redis-benchmark,3179.9953,workload: --requests 4000000 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+ffmpeg_benchmark,ffmpeg,1254.9638,data: --duration 480; workload: --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+openssl_benchmark,openssl,1547.4772,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+zstd_benchmark,zstd,4630.9789,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+c_compiler_benchmark,gcc_compile,1263.6308,data: --func_size 200; workload: --threads 64 --opt O1; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+c_compiler_benchmark,clang_compile,527.7438,data: --func_size 200; workload: --threads 64 --opt O1; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+rocksdb_benchmark,rocksdb_cpu,3467.5594,workload: --num 4000000 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,fft_batch,1417.886,workload: --size 1024 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,conv_heavy,7472.931,workload: --size 1024 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,mandelbrot,1137.839,workload: --size 1024 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,jacobi,8252.339,workload: --size 2048 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,canny,1795.216,workload: --size 2048 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,optical_flow,2454.523,workload: --size 1024 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,motion_blur,1206.501,workload: --size 2048 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,background_sub,2173.89,workload: --size 1080 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,color_tracking,4419.955,workload: --size 2160 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+opencv_benchmark,feature_match,2771.06,workload: --size 1024 --threads 64; ,results_grid_configurations_924_31_2026-09-26_13-16-27.csv
+lapack_benchmark,lapack_solve,2814.8937,workload: --size 2048 --threads 64; ,results_grid_configurations_924_31_2026-10-01_01-43-01.csv
+lapack_benchmark,lapack_eigen,880.6845,workload: --size 2048 --threads 64; ,results_grid_configurations_924_31_2026-10-01_01-43-01.csv
+lapack_benchmark,lapack_svd,587.2731,workload: --size 1820 --threads 64; ,results_grid_configurations_924_31_2026-10-01_01-43-01.csv
+redis_benchmark,redis-benchmark,3130.9425,workload: --requests 4000000 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+ffmpeg_benchmark,ffmpeg,1260.1904,data: --duration 480; workload: --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+openssl_benchmark,openssl,1374.3589,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+zstd_benchmark,zstd,4644.2229,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+c_compiler_benchmark,gcc_compile,2076.0314,data: --func_size 200; workload: --threads 64 --opt O2; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+c_compiler_benchmark,clang_compile,545.3005,data: --func_size 200; workload: --threads 64 --opt O2; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+rocksdb_benchmark,rocksdb_cpu,3644.8074,workload: --num 4000000 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,fft_batch,1409.172,workload: --size 1024 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,conv_heavy,7612.756,workload: --size 1024 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,mandelbrot,1138.401,workload: --size 1024 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,jacobi,8215.396,workload: --size 2048 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,canny,1793.684,workload: --size 2048 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,optical_flow,2466.012,workload: --size 1024 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,motion_blur,1232.681,workload: --size 2048 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,background_sub,2057.357,workload: --size 1080 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,color_tracking,4284.261,workload: --size 2160 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+opencv_benchmark,feature_match,2773.596,workload: --size 1024 --threads 64; ,results_grid_configurations_924_32_2026-09-27_05-59-32.csv
+lapack_benchmark,lapack_solve,2844.8324,workload: --size 2048 --threads 64; ,results_grid_configurations_924_32_2026-10-01_02-54-31.csv
+lapack_benchmark,lapack_eigen,895.0405,workload: --size 2048 --threads 64; ,results_grid_configurations_924_32_2026-10-01_02-54-31.csv
+lapack_benchmark,lapack_svd,588.9716,workload: --size 1820 --threads 64; ,results_grid_configurations_924_32_2026-10-01_02-54-31.csv
+redis_benchmark,redis-benchmark,3102.5001,workload: --requests 4000000 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+ffmpeg_benchmark,ffmpeg,1302.9085,data: --duration 480; workload: --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+openssl_benchmark,openssl,1494.3194,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+zstd_benchmark,zstd,4625.4233,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+c_compiler_benchmark,gcc_compile,2106.5554,data: --func_size 200; workload: --threads 64 --opt O3; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+c_compiler_benchmark,clang_compile,534.4323,data: --func_size 200; workload: --threads 64 --opt O3; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+rocksdb_benchmark,rocksdb_cpu,3388.256,workload: --num 4000000 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,fft_batch,1356.683,workload: --size 1024 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,conv_heavy,7647.148,workload: --size 1024 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,mandelbrot,1139.144,workload: --size 1024 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,jacobi,8239.909,workload: --size 2048 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,canny,1677.336,workload: --size 2048 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,optical_flow,2455.404,workload: --size 1024 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,motion_blur,1205.382,workload: --size 2048 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,background_sub,2008.612,workload: --size 1080 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,color_tracking,4285.998,workload: --size 2160 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+opencv_benchmark,feature_match,2767.782,workload: --size 1024 --threads 64; ,results_grid_configurations_924_33_2026-09-27_22-54-26.csv
+lapack_benchmark,lapack_solve,2622.2288,workload: --size 2048 --threads 64; ,results_grid_configurations_924_33_2026-10-01_04-06-47.csv
+lapack_benchmark,lapack_eigen,869.3973,workload: --size 2048 --threads 64; ,results_grid_configurations_924_33_2026-10-01_04-06-47.csv
+lapack_benchmark,lapack_svd,594.8256,workload: --size 1820 --threads 64; ,results_grid_configurations_924_33_2026-10-01_04-06-47.csv
+redis_benchmark,redis-benchmark,3163.4747,workload: --requests 4000000 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+ffmpeg_benchmark,ffmpeg,1299.0417,data: --duration 480; workload: --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+openssl_benchmark,openssl,1686.9796,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+zstd_benchmark,zstd,4612.5691,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+c_compiler_benchmark,gcc_compile,1289.6006,data: --func_size 200; workload: --threads 64 --opt O1; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+c_compiler_benchmark,clang_compile,535.4558,data: --func_size 200; workload: --threads 64 --opt O1; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+rocksdb_benchmark,rocksdb_cpu,3343.5082,workload: --num 4000000 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,fft_batch,1410.416,workload: --size 1024 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,conv_heavy,7594.19,workload: --size 1024 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,mandelbrot,1138.134,workload: --size 1024 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,jacobi,8189.843,workload: --size 2048 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,canny,1707.698,workload: --size 2048 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,optical_flow,2463.838,workload: --size 1024 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,motion_blur,1218.211,workload: --size 2048 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,background_sub,2186.392,workload: --size 1080 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,color_tracking,4378.763,workload: --size 2160 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+opencv_benchmark,feature_match,2766.808,workload: --size 1024 --threads 64; ,results_grid_configurations_924_34_2026-09-28_15-44-57.csv
+lapack_benchmark,lapack_solve,2599.4217,workload: --size 2048 --threads 64; ,results_grid_configurations_924_34_2026-10-01_05-15-00.csv
+lapack_benchmark,lapack_eigen,908.1489,workload: --size 2048 --threads 64; ,results_grid_configurations_924_34_2026-10-01_05-15-00.csv
+lapack_benchmark,lapack_svd,587.9689,workload: --size 1820 --threads 64; ,results_grid_configurations_924_34_2026-10-01_05-15-00.csv
+redis_benchmark,redis-benchmark,3107.2626,workload: --requests 4000000 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+ffmpeg_benchmark,ffmpeg,1301.8573,data: --duration 480; workload: --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+openssl_benchmark,openssl,1573.1282,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+zstd_benchmark,zstd,4626.1605,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+c_compiler_benchmark,gcc_compile,2103.344,data: --func_size 200; workload: --threads 64 --opt O2; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+c_compiler_benchmark,clang_compile,530.9197,data: --func_size 200; workload: --threads 64 --opt O2; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+rocksdb_benchmark,rocksdb_cpu,3664.3484,workload: --num 4000000 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,fft_batch,1505.293,workload: --size 1024 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,conv_heavy,7532.315,workload: --size 1024 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,mandelbrot,1139.217,workload: --size 1024 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,jacobi,8214.013,workload: --size 2048 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,canny,1834.671,workload: --size 2048 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,optical_flow,2487.645,workload: --size 1024 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,motion_blur,1220.268,workload: --size 2048 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,background_sub,2021.804,workload: --size 1080 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,color_tracking,4271.093,workload: --size 2160 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+opencv_benchmark,feature_match,2784.645,workload: --size 1024 --threads 64; ,results_grid_configurations_924_35_2026-09-29_08-24-09.csv
+lapack_benchmark,lapack_solve,2780.9881,workload: --size 2048 --threads 64; ,results_grid_configurations_924_35_2026-10-01_06-23-23.csv
+lapack_benchmark,lapack_eigen,901.4083,workload: --size 2048 --threads 64; ,results_grid_configurations_924_35_2026-10-01_06-23-23.csv
+lapack_benchmark,lapack_svd,578.7976,workload: --size 1820 --threads 64; ,results_grid_configurations_924_35_2026-10-01_06-23-23.csv
+redis_benchmark,redis-benchmark,3061.3021,workload: --requests 4000000 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+ffmpeg_benchmark,ffmpeg,1289.5466,data: --duration 480; workload: --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+openssl_benchmark,openssl,1546.1388,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+zstd_benchmark,zstd,4634.4237,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+c_compiler_benchmark,gcc_compile,2096.8356,data: --func_size 200; workload: --threads 64 --opt O3; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+c_compiler_benchmark,clang_compile,539.0224,data: --func_size 200; workload: --threads 64 --opt O3; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+rocksdb_benchmark,rocksdb_cpu,3489.0677,workload: --num 4000000 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+opencv_benchmark,fft_batch,1465.474,workload: --size 1024 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+opencv_benchmark,conv_heavy,7471.664,workload: --size 1024 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+opencv_benchmark,mandelbrot,1138.114,workload: --size 1024 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+opencv_benchmark,jacobi,8231.719,workload: --size 2048 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+opencv_benchmark,canny,1838.451,workload: --size 2048 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+opencv_benchmark,optical_flow,2447.433,workload: --size 1024 --threads 64; ,results_grid_configurations_924_36_2026-09-30_01-25-39.csv
+lapack_benchmark,lapack_solve,2739.1588,workload: --size 2048 --threads 64; ,results_grid_configurations_924_36_2026-10-01_07-34-31.csv
+lapack_benchmark,lapack_eigen,883.0408,workload: --size 2048 --threads 64; ,results_grid_configurations_924_36_2026-10-01_07-34-31.csv
+lapack_benchmark,lapack_svd,603.7505,workload: --size 1820 --threads 64; ,results_grid_configurations_924_36_2026-10-01_07-34-31.csv
+opencv_benchmark,motion_blur,1181.197,workload: --size 2048 --threads 64; ,results_grid_configurations_924_36_2026-10-01_07-34-31.csv
+opencv_benchmark,background_sub,2068.341,workload: --size 1080 --threads 64; ,results_grid_configurations_924_36_2026-10-01_07-34-31.csv
+opencv_benchmark,color_tracking,4271.001,workload: --size 2160 --threads 64; ,results_grid_configurations_924_36_2026-10-01_07-34-31.csv
+opencv_benchmark,feature_match,2777.448,workload: --size 1024 --threads 64; ,results_grid_configurations_924_36_2026-10-01_07-34-31.csv
+numpy_benchmark,matmul,1163.4908,workload: --size 2048 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+numpy_benchmark,svd,621.1022,workload: --size 1024 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+numpy_benchmark,fft,16032.3978,workload: --size 4660337 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+tuf_benchmark,tuf-metadata,1039.9684,data: --size 328087779; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+requests_benchmark,requests-json,686.8516,workload: --size 131072 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+raytrace,raytrace,712.4331,workload: --width 2275 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+chaos_fractal,chaos-fractal,2119.0127,data: --width 2048; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+deltablue,deltablue,1057.3345,workload: --n 111111 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+pyflate,pyflate,809.2104,data: --size 5555555; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+go_board_game,go-board-game,240.0983,workload: --size 100 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+resnet50_cpu,resnet50_inference,421.7989,data: --img_size 256; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+resnet50_cpu,resnet50_training,511.1996,data: --img_size 256; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+bert_cpu,bert_eval,5288.1645,data: --seq_len 512; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+transformer_inference,transformer_inference,6458.7486,data: --seq_len 142; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+transformer_train,transformer_train,2119.0013,data: --seq_len 128; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+redis_benchmark,redis-benchmark,1648.5194,workload: --requests 2222222 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+ffmpeg_benchmark,ffmpeg,503.0802,data: --duration 293; workload: --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+openssl_benchmark,openssl,618.6323,data: --size 27777; workload: --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+zstd_benchmark,zstd,958.7395,data: --size 25000; workload: --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+c_compiler_benchmark,gcc_compile,514.3378,data: --func_size 100; workload: --threads 1 --opt O3; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+c_compiler_benchmark,clang_compile,226.5351,data: --func_size 100; workload: --threads 1 --opt O3; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+rocksdb_benchmark,rocksdb_cpu,232.8928,workload: --num 2000000 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,fft_batch,190.526,workload: --size 512 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,conv_heavy,1098.552,workload: --size 512 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,mandelbrot,1137.724,workload: --size 625 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,jacobi,3499.356,workload: --size 1024 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,canny,253.296,workload: --size 1024 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,optical_flow,507.593,workload: --size 568 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,motion_blur,309.95,workload: --size 1024 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,background_sub,192.651,workload: --size 540 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,color_tracking,1018.389,workload: --size 1200 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+opencv_benchmark,feature_match,700.808,workload: --size 512 --threads 1; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+biogo-benchmark,biogo-igor,1077.2074,workload: --seq 50000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+bleve_benchmark,bleve-index,2118.0237,workload: --documents 2222 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+cockroachdb_benchmark,kv,1080.2645,workload: --max-ops 600000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+cockroachdb_benchmark,tpcc,1265.3617,workload: --max-ops 15000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+esbuild_benchmark,ThreeJS,182.3493,data: --complexity 1111; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+esbuild_benchmark,RomeTS,998.336,data: --complexity 1000; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+gc_garbage,gc_garbage,1243.1504,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+go_compiler,go_compiler,124.891,data: --complex 100; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+gopher_lua,gopher_lua,1014.3937,data: --size 500000; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+go_json,json,928.5261,data: --size 25000; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+go_markdown,markdown_render,2570.5412,data: --size 555; workload: --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+tile38_sim,kdtree,579.747727,workload: --points 50000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+cassandra_benchmark,cassandra_stress_read,154.2818,workload: --read-n 1000000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+kafka_benchmark,kafka_producer_perf,83.5952,workload: --num-records 777777777 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+guava_benchmark,guava_event,1457.9879,workload: --dataSize 100000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+guava_benchmark,guava_graph,557.8515,workload: --dataSize 200000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+guava_benchmark,guava_bloom,675.6063,workload: --dataSize 200000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+guava_benchmark,guava_cache,884.0304,workload: --dataSize 50000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+guava_benchmark,guava_immutable,845.126,workload: --dataSize 200000 --threads 64; ,results_grid_configurations_924_3_2026-09-13_01-13-14.csv
+lapack_benchmark,lapack_solve,156.0443,workload: --size 1024 --threads 1; ,results_grid_configurations_924_3_2026-09-30_15-47-54.csv
+lapack_benchmark,lapack_eigen,38.5717,workload: --size 1024 --threads 1; ,results_grid_configurations_924_3_2026-09-30_15-47-54.csv
+lapack_benchmark,lapack_svd,42.0678,workload: --size 1024 --threads 1; ,results_grid_configurations_924_3_2026-09-30_15-47-54.csv
+numpy_benchmark,matmul,4110.0147,workload: --size 4096 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+numpy_benchmark,svd,1522.6813,workload: --size 2048 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+numpy_benchmark,fft,1720.955,workload: --size 8388608 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+tuf_benchmark,tuf-metadata,1731.3251,data: --size 536870912; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+requests_benchmark,requests-json,951.9048,workload: --size 247580 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+raytrace,raytrace,1142.984,workload: --width 3868 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+chaos_fractal,chaos-fractal,2107.9531,data: --width 4096; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+deltablue,deltablue,2612.6337,workload: --n 200000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+pyflate,pyflate,1307.9145,data: --size 9444444; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+go_board_game,go-board-game,872.4296,workload: --size 200 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+resnet50_cpu,resnet50_inference,3230.7914,data: --img_size 483; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+resnet50_cpu,resnet50_training,6715.2955,data: --img_size 512; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+bert_cpu,bert_eval,18267.6941,data: --seq_len 967; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+transformer_inference,transformer_inference,7030.7147,data: --seq_len 256; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+transformer_train,transformer_train,1855.8449,data: --seq_len 256; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+redis_benchmark,redis-benchmark,1363.7872,workload: --requests 2222222 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+ffmpeg_benchmark,ffmpeg,506.9641,data: --duration 293; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+openssl_benchmark,openssl,622.5531,data: --size 27777; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+zstd_benchmark,zstd,960.6405,data: --size 25000; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+c_compiler_benchmark,gcc_compile,316.0945,data: --func_size 100; workload: --threads 1 --opt O1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+c_compiler_benchmark,clang_compile,221.5132,data: --func_size 100; workload: --threads 1 --opt O1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+rocksdb_benchmark,rocksdb_cpu,276.1463,workload: --num 2000000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,fft_batch,190.328,workload: --size 512 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,conv_heavy,1113.333,workload: --size 512 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,mandelbrot,1137.91,workload: --size 625 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,jacobi,3496.355,workload: --size 1024 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,canny,253.444,workload: --size 1024 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,optical_flow,508.128,workload: --size 568 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,motion_blur,310.735,workload: --size 1024 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,background_sub,192.62,workload: --size 540 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,color_tracking,1018.828,workload: --size 1200 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+opencv_benchmark,feature_match,700.968,workload: --size 512 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+biogo-benchmark,biogo-igor,703.785,workload: --seq 100000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+bleve_benchmark,bleve-index,510.1688,workload: --documents 4000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+cockroachdb_benchmark,kv,2005.2359,workload: --max-ops 1200000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+cockroachdb_benchmark,tpcc,3164.9035,workload: --max-ops 30000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+esbuild_benchmark,ThreeJS,2246.3306,data: --complexity 2000; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+esbuild_benchmark,RomeTS,2098.7359,data: --complexity 2000; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+gc_garbage,gc_garbage,950.3614,data: --size 100000; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+go_compiler,go_compiler,24376.8422,data: --complex 188; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+gopher_lua,gopher_lua,872.3601,data: --size 1000000; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+go_json,json,995.1086,data: --size 50000; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+go_markdown,markdown_render,599.0826,data: --size 1000; workload: --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+tile38_sim,kdtree,836.929961,workload: --points 100000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+cassandra_benchmark,cassandra_stress_read,2543.9996,workload: --read-n 2000000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+kafka_benchmark,kafka_producer_perf,4038.1705,workload: --num-records 1400000000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+guava_benchmark,guava_event,986.04,workload: --dataSize 200000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+guava_benchmark,guava_graph,685.9017,workload: --dataSize 400000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+guava_benchmark,guava_bloom,446.2618,workload: --dataSize 400000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+guava_benchmark,guava_cache,1139.1694,workload: --dataSize 100000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+guava_benchmark,guava_immutable,717.8279,workload: --dataSize 400000 --threads 1; ,results_grid_configurations_924_4_2026-09-13_21-18-49.csv
+lapack_benchmark,lapack_solve,156.3398,workload: --size 1024 --threads 1; ,results_grid_configurations_924_4_2026-09-30_15-51-51.csv
+lapack_benchmark,lapack_eigen,38.7111,workload: --size 1024 --threads 1; ,results_grid_configurations_924_4_2026-09-30_15-51-51.csv
+lapack_benchmark,lapack_svd,42.2162,workload: --size 1024 --threads 1; ,results_grid_configurations_924_4_2026-09-30_15-51-51.csv
+numpy_benchmark,matmul,5464.6405,workload: --size 4096 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+numpy_benchmark,svd,2872.2437,workload: --size 2048 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+numpy_benchmark,fft,2780.5664,workload: --size 8388608 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+tuf_benchmark,tuf-metadata,2832.3726,data: --size 536870912; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+requests_benchmark,requests-json,1337.568,workload: --size 247580 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+raytrace,raytrace,1146.575,workload: --width 3868 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+chaos_fractal,chaos-fractal,2125.806,data: --width 4096; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+deltablue,deltablue,2965.4393,workload: --n 200000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+pyflate,pyflate,1340.8175,data: --size 9444444; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+go_board_game,go-board-game,1659.4591,workload: --size 200 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+resnet50_cpu,resnet50_inference,1149.8788,data: --img_size 483; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+resnet50_cpu,resnet50_training,1450.9853,data: --img_size 512; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+bert_cpu,bert_eval,15267.7662,data: --seq_len 967; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+transformer_inference,transformer_inference,16740.7272,data: --seq_len 256; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+transformer_train,transformer_train,2722.5062,data: --seq_len 256; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+redis_benchmark,redis-benchmark,1539.9845,workload: --requests 2222222 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+ffmpeg_benchmark,ffmpeg,508.7777,data: --duration 293; workload: --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+openssl_benchmark,openssl,615.0398,data: --size 27777; workload: --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+zstd_benchmark,zstd,966.0498,data: --size 25000; workload: --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+c_compiler_benchmark,gcc_compile,512.641,data: --func_size 100; workload: --threads 1 --opt O2; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+c_compiler_benchmark,clang_compile,222.9813,data: --func_size 100; workload: --threads 1 --opt O2; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+rocksdb_benchmark,rocksdb_cpu,229.3698,workload: --num 2000000 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,fft_batch,190.962,workload: --size 512 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,conv_heavy,1099.449,workload: --size 512 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,mandelbrot,1137.545,workload: --size 625 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,jacobi,3494.484,workload: --size 1024 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,canny,251.614,workload: --size 1024 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,optical_flow,507.35,workload: --size 568 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,motion_blur,310.324,workload: --size 1024 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,background_sub,193.249,workload: --size 540 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,color_tracking,1013.214,workload: --size 1200 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+opencv_benchmark,feature_match,701.303,workload: --size 512 --threads 1; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+biogo-benchmark,biogo-igor,1721.5381,workload: --seq 100000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+bleve_benchmark,bleve-index,2329.612,workload: --documents 4000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+cockroachdb_benchmark,kv,1409.5877,workload: --max-ops 1200000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+cockroachdb_benchmark,tpcc,1930.7152,workload: --max-ops 30000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+esbuild_benchmark,ThreeJS,357.7018,data: --complexity 2000; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+esbuild_benchmark,RomeTS,1640.9568,data: --complexity 2000; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+gc_garbage,gc_garbage,1812.735,data: --size 100000; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+go_compiler,go_compiler,1170.2007,data: --complex 188; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+gopher_lua,gopher_lua,1772.5696,data: --size 1000000; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+go_json,json,1718.7657,data: --size 50000; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+go_markdown,markdown_render,2196.3853,data: --size 1000; workload: --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+tile38_sim,kdtree,2814.362004,workload: --points 100000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+cassandra_benchmark,cassandra_stress_read,279.1703,workload: --read-n 2000000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+kafka_benchmark,kafka_producer_perf,194.1857,workload: --num-records 1400000000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+guava_benchmark,guava_event,1435.1925,workload: --dataSize 200000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+guava_benchmark,guava_graph,1046.7049,workload: --dataSize 400000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+guava_benchmark,guava_bloom,833.5121,workload: --dataSize 400000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+guava_benchmark,guava_cache,1354.5173,workload: --dataSize 100000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+guava_benchmark,guava_immutable,1286.6704,workload: --dataSize 400000 --threads 32; ,results_grid_configurations_924_5_2026-09-15_06-50-40.csv
+lapack_benchmark,lapack_solve,155.9777,workload: --size 1024 --threads 1; ,results_grid_configurations_924_5_2026-09-30_15-55-49.csv
+lapack_benchmark,lapack_eigen,38.6193,workload: --size 1024 --threads 1; ,results_grid_configurations_924_5_2026-09-30_15-55-49.csv
+lapack_benchmark,lapack_svd,42.0446,workload: --size 1024 --threads 1; ,results_grid_configurations_924_5_2026-09-30_15-55-49.csv
+numpy_benchmark,matmul,9611.666,workload: --size 4096 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+numpy_benchmark,svd,4868.118,workload: --size 2048 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+numpy_benchmark,fft,4583.9006,workload: --size 8388608 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+tuf_benchmark,tuf-metadata,1692.8829,data: --size 536870912; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+requests_benchmark,requests-json,1628.3344,workload: --size 247580 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+raytrace,raytrace,1146.4706,workload: --width 3868 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+chaos_fractal,chaos-fractal,2113.5296,data: --width 4096; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+deltablue,deltablue,4118.3486,workload: --n 200000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+pyflate,pyflate,1357.9267,data: --size 9444444; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+go_board_game,go-board-game,1360.0971,workload: --size 200 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+resnet50_cpu,resnet50_inference,1252.4711,data: --img_size 483; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+resnet50_cpu,resnet50_training,1303.1107,data: --img_size 512; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+bert_cpu,bert_eval,15427.3005,data: --seq_len 967; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+transformer_inference,transformer_inference,23329.8323,data: --seq_len 256; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+transformer_train,transformer_train,2367.7102,data: --seq_len 256; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+redis_benchmark,redis-benchmark,1287.8392,workload: --requests 2222222 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+ffmpeg_benchmark,ffmpeg,508.3182,data: --duration 293; workload: --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+openssl_benchmark,openssl,621.0841,data: --size 27777; workload: --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+zstd_benchmark,zstd,967.6034,data: --size 25000; workload: --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+c_compiler_benchmark,gcc_compile,515.4701,data: --func_size 100; workload: --threads 1 --opt O3; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+c_compiler_benchmark,clang_compile,223.9654,data: --func_size 100; workload: --threads 1 --opt O3; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+rocksdb_benchmark,rocksdb_cpu,260.2868,workload: --num 2000000 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,fft_batch,190.734,workload: --size 512 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,conv_heavy,1093.244,workload: --size 512 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,mandelbrot,1137.711,workload: --size 625 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,jacobi,3496.977,workload: --size 1024 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,canny,252.556,workload: --size 1024 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,optical_flow,507.56,workload: --size 568 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,motion_blur,310.731,workload: --size 1024 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,background_sub,191.978,workload: --size 540 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,color_tracking,1006.1,workload: --size 1200 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+opencv_benchmark,feature_match,700.88,workload: --size 512 --threads 1; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+biogo-benchmark,biogo-igor,2298.203,workload: --seq 100000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+bleve_benchmark,bleve-index,4052.0282,workload: --documents 4000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+cockroachdb_benchmark,kv,2338.6941,workload: --max-ops 1200000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+cockroachdb_benchmark,tpcc,2552.109,workload: --max-ops 30000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+esbuild_benchmark,ThreeJS,298.2129,data: --complexity 2000; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+esbuild_benchmark,RomeTS,1583.9569,data: --complexity 2000; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+gc_garbage,gc_garbage,2522.038,data: --size 100000; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+go_compiler,go_compiler,1056.1507,data: --complex 188; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+gopher_lua,gopher_lua,2147.2771,data: --size 1000000; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+go_json,json,1866.1025,data: --size 50000; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+go_markdown,markdown_render,4541.8652,data: --size 1000; workload: --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+tile38_sim,kdtree,4573.009039,workload: --points 100000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+cassandra_benchmark,cassandra_stress_read,292.7347,workload: --read-n 2000000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+kafka_benchmark,kafka_producer_perf,143.6974,workload: --num-records 1400000000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+guava_benchmark,guava_event,3219.48,workload: --dataSize 200000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+guava_benchmark,guava_graph,1464.2069,workload: --dataSize 400000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+guava_benchmark,guava_bloom,1490.5425,workload: --dataSize 400000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+guava_benchmark,guava_cache,1854.3636,workload: --dataSize 100000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+guava_benchmark,guava_immutable,2480.3397,workload: --dataSize 400000 --threads 64; ,results_grid_configurations_924_6_2026-09-16_11-53-36.csv
+lapack_benchmark,lapack_solve,156.0807,workload: --size 1024 --threads 1; ,results_grid_configurations_924_6_2026-09-30_15-59-46.csv
+lapack_benchmark,lapack_eigen,38.7979,workload: --size 1024 --threads 1; ,results_grid_configurations_924_6_2026-09-30_15-59-46.csv
+lapack_benchmark,lapack_svd,42.0616,workload: --size 1024 --threads 1; ,results_grid_configurations_924_6_2026-09-30_15-59-46.csv
+redis_benchmark,redis-benchmark,1714.1046,workload: --requests 2222222 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+ffmpeg_benchmark,ffmpeg,794.7839,data: --duration 293; workload: --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+openssl_benchmark,openssl,633.181,data: --size 27777; workload: --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+zstd_benchmark,zstd,1640.9173,data: --size 25000; workload: --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+c_compiler_benchmark,gcc_compile,380.6237,data: --func_size 100; workload: --threads 32 --opt O1; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+c_compiler_benchmark,clang_compile,238.4973,data: --func_size 100; workload: --threads 32 --opt O1; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+rocksdb_benchmark,rocksdb_cpu,686.9809,workload: --num 2000000 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,fft_batch,228.052,workload: --size 512 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,conv_heavy,1702.69,workload: --size 512 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,mandelbrot,1137.102,workload: --size 625 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,jacobi,4344.207,workload: --size 1024 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,canny,407.651,workload: --size 1024 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,optical_flow,643.134,workload: --size 568 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,motion_blur,329.11,workload: --size 1024 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,background_sub,610.627,workload: --size 540 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,color_tracking,1300.347,workload: --size 1200 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+opencv_benchmark,feature_match,747.005,workload: --size 512 --threads 32; ,results_grid_configurations_924_7_2026-09-18_00-44-32.csv
+lapack_benchmark,lapack_solve,214.5658,workload: --size 1024 --threads 32; ,results_grid_configurations_924_7_2026-09-30_16-03-44.csv
+lapack_benchmark,lapack_eigen,72.8704,workload: --size 1024 --threads 32; ,results_grid_configurations_924_7_2026-09-30_16-03-44.csv
+lapack_benchmark,lapack_svd,79.6408,workload: --size 1024 --threads 32; ,results_grid_configurations_924_7_2026-09-30_16-03-44.csv
+redis_benchmark,redis-benchmark,1711.7213,workload: --requests 2222222 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+ffmpeg_benchmark,ffmpeg,764.844,data: --duration 293; workload: --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+openssl_benchmark,openssl,725.1194,data: --size 27777; workload: --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+zstd_benchmark,zstd,1635.9501,data: --size 25000; workload: --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+c_compiler_benchmark,gcc_compile,653.4935,data: --func_size 100; workload: --threads 32 --opt O2; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+c_compiler_benchmark,clang_compile,242.6348,data: --func_size 100; workload: --threads 32 --opt O2; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+rocksdb_benchmark,rocksdb_cpu,735.3891,workload: --num 2000000 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,fft_batch,227.452,workload: --size 512 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,conv_heavy,1714.66,workload: --size 512 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,mandelbrot,1137.1,workload: --size 625 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,jacobi,4390.307,workload: --size 1024 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,canny,411.159,workload: --size 1024 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,optical_flow,638.315,workload: --size 568 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,motion_blur,329.598,workload: --size 1024 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,background_sub,611.167,workload: --size 540 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,color_tracking,1297.442,workload: --size 1200 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+opencv_benchmark,feature_match,733.125,workload: --size 512 --threads 32; ,results_grid_configurations_924_8_2026-09-18_05-58-08.csv
+lapack_benchmark,lapack_solve,223.7302,workload: --size 1024 --threads 32; ,results_grid_configurations_924_8_2026-09-30_16-09-52.csv
+lapack_benchmark,lapack_eigen,72.8059,workload: --size 1024 --threads 32; ,results_grid_configurations_924_8_2026-09-30_16-09-52.csv
+lapack_benchmark,lapack_svd,79.3919,workload: --size 1024 --threads 32; ,results_grid_configurations_924_8_2026-09-30_16-09-52.csv
+redis_benchmark,redis-benchmark,1647.1804,workload: --requests 2222222 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+ffmpeg_benchmark,ffmpeg,794.6594,data: --duration 293; workload: --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+openssl_benchmark,openssl,646.3161,data: --size 27777; workload: --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+zstd_benchmark,zstd,1633.2927,data: --size 25000; workload: --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+c_compiler_benchmark,gcc_compile,647.1394,data: --func_size 100; workload: --threads 32 --opt O3; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+c_compiler_benchmark,clang_compile,242.1253,data: --func_size 100; workload: --threads 32 --opt O3; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+rocksdb_benchmark,rocksdb_cpu,707.419,workload: --num 2000000 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,fft_batch,228.745,workload: --size 512 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,conv_heavy,1741.63,workload: --size 512 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,mandelbrot,1137.138,workload: --size 625 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,jacobi,4331.475,workload: --size 1024 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,canny,418.948,workload: --size 1024 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,optical_flow,637.634,workload: --size 568 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,motion_blur,324.04,workload: --size 1024 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,background_sub,597.842,workload: --size 540 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,color_tracking,1266.564,workload: --size 1200 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+opencv_benchmark,feature_match,727.862,workload: --size 512 --threads 32; ,results_grid_configurations_924_9_2026-09-18_11-18-07.csv
+lapack_benchmark,lapack_solve,223.0601,workload: --size 1024 --threads 32; ,results_grid_configurations_924_9_2026-09-30_16-16-10.csv
+lapack_benchmark,lapack_eigen,72.2132,workload: --size 1024 --threads 32; ,results_grid_configurations_924_9_2026-09-30_16-16-10.csv
+lapack_benchmark,lapack_svd,79.2841,workload: --size 1024 --threads 32; ,results_grid_configurations_924_9_2026-09-30_16-16-10.csv

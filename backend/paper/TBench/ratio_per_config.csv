@@ -1,0 +1,210 @@
+benchmark,workload,param_overrides,time_64_median,time_65_median,ratio_64over65,n_rows_64,n_rows_65
+bert_cpu,bert_eval,data: --seq_len 512; workload: --threads 1;,1820.0916,5296.3847,0.343648,1,1
+bert_cpu,bert_eval,data: --seq_len 512; workload: --threads 32;,137.1743,4981.9043,0.027535,1,1
+bert_cpu,bert_eval,data: --seq_len 512; workload: --threads 64;,139.4979,5288.1645,0.026379,1,1
+bert_cpu,bert_eval,data: --seq_len 967; workload: --threads 1;,4026.7859,18267.6941,0.220432,1,1
+bert_cpu,bert_eval,data: --seq_len 967; workload: --threads 32;,325.3829,15267.7662,0.021312,1,1
+bert_cpu,bert_eval,data: --seq_len 967; workload: --threads 64;,319.3718,15427.3005,0.020702,1,1
+biogo-benchmark,biogo-igor,workload: --seq 100000 --threads 1;,637.2036,703.785,0.905395,1,1
+biogo-benchmark,biogo-igor,workload: --seq 100000 --threads 32;,1287.1113,1721.5381,0.747652,1,1
+biogo-benchmark,biogo-igor,workload: --seq 50000 --threads 1;,302.5286,315.2073,0.959777,1,1
+biogo-benchmark,biogo-igor,workload: --seq 50000 --threads 32;,595.3818,791.863,0.751875,1,1
+biogo-benchmark,biogo-igor,workload: --seq 50000 --threads 64;,911.3333,1077.2074,0.846015,1,1
+bleve_benchmark,bleve-index,workload: --documents 2222 --threads 1;,227.7037,251.0879,0.906868,1,1
+bleve_benchmark,bleve-index,workload: --documents 2222 --threads 32;,719.8435,1230.215,0.585136,1,1
+bleve_benchmark,bleve-index,workload: --documents 2222 --threads 64;,1180.613,2118.0237,0.557413,1,1
+bleve_benchmark,bleve-index,workload: --documents 4000 --threads 1;,442.9925,510.1688,0.868325,1,1
+bleve_benchmark,bleve-index,workload: --documents 4000 --threads 32;,1397.1332,2329.612,0.599728,1,1
+c_compiler_benchmark,clang_compile,data: --func_size 100; workload: --threads 1 --opt O1;,382.7543,221.8458,1.725317,2,2
+c_compiler_benchmark,clang_compile,data: --func_size 100; workload: --threads 1 --opt O2;,374.8272,222.5882,1.683949,2,2
+c_compiler_benchmark,clang_compile,data: --func_size 100; workload: --threads 1 --opt O3;,377.6664,225.2502,1.676653,2,2
+c_compiler_benchmark,gcc_compile,data: --func_size 100; workload: --threads 1 --opt O1;,449.7853,315.9696,1.423508,2,2
+c_compiler_benchmark,gcc_compile,data: --func_size 100; workload: --threads 1 --opt O2;,682.9382,512.7932,1.3318,2,2
+c_compiler_benchmark,gcc_compile,data: --func_size 100; workload: --threads 1 --opt O3;,672.18,514.904,1.305447,2,2
+cassandra_benchmark,cassandra_stress_read,workload: --read-n 1000000 --threads 1;,1105.3674,1390.1266,0.795156,1,1
+cassandra_benchmark,cassandra_stress_read,workload: --read-n 1000000 --threads 32;,125.9527,150.825,0.835092,1,1
+cassandra_benchmark,cassandra_stress_read,workload: --read-n 1000000 --threads 64;,125.0402,154.2818,0.810466,1,1
+cassandra_benchmark,cassandra_stress_read,workload: --read-n 2000000 --threads 1;,1912.1132,2543.9996,0.751617,1,1
+cassandra_benchmark,cassandra_stress_read,workload: --read-n 2000000 --threads 32;,232.7021,279.1703,0.833549,1,1
+chaos_fractal,chaos-fractal,data: --width 2048; workload: --threads 1;,4424.4578,2110.6926,2.096211,1,1
+chaos_fractal,chaos-fractal,data: --width 2048; workload: --threads 32;,4575.0582,2112.6146,2.165591,1,1
+chaos_fractal,chaos-fractal,data: --width 2048; workload: --threads 64;,4139.4831,2119.0127,1.953496,1,1
+chaos_fractal,chaos-fractal,data: --width 4096; workload: --threads 1;,4330.8561,2107.9531,2.054532,1,1
+chaos_fractal,chaos-fractal,data: --width 4096; workload: --threads 32;,4858.0744,2125.806,2.285286,1,1
+chaos_fractal,chaos-fractal,data: --width 4096; workload: --threads 64;,4052.6798,2113.5296,1.917494,1,1
+cockroachdb_benchmark,kv,workload: --max-ops 1200000 --threads 1;,1398.079,2005.2359,0.697214,1,1
+cockroachdb_benchmark,kv,workload: --max-ops 1200000 --threads 32;,1211.6855,1409.5877,0.859603,1,1
+cockroachdb_benchmark,kv,workload: --max-ops 600000 --threads 1;,640.9009,773.879,0.828167,1,1
+cockroachdb_benchmark,kv,workload: --max-ops 600000 --threads 32;,623.8897,714.0272,0.873762,1,1
+cockroachdb_benchmark,kv,workload: --max-ops 600000 --threads 64;,1094.3385,1080.2645,1.013028,1,1
+cockroachdb_benchmark,tpcc,workload: --max-ops 15000 --threads 1;,2109.9211,1959.6637,1.076675,1,1
+cockroachdb_benchmark,tpcc,workload: --max-ops 15000 --threads 32;,1092.7448,1057.8724,1.032965,1,1
+cockroachdb_benchmark,tpcc,workload: --max-ops 15000 --threads 64;,1202.6686,1265.3617,0.950454,1,1
+cockroachdb_benchmark,tpcc,workload: --max-ops 30000 --threads 1;,3053.2833,3164.9035,0.964732,1,1
+cockroachdb_benchmark,tpcc,workload: --max-ops 30000 --threads 32;,1960.5002,1930.7152,1.015427,1,1
+deltablue,deltablue,workload: --n 111111 --threads 1;,788.294,854.3512,0.922681,1,1
+deltablue,deltablue,workload: --n 111111 --threads 32;,861.2092,998.7835,0.862258,1,1
+deltablue,deltablue,workload: --n 111111 --threads 64;,1097.1826,1057.3345,1.037687,1,1
+deltablue,deltablue,workload: --n 200000 --threads 1;,1785.4377,2612.6337,0.683386,1,1
+deltablue,deltablue,workload: --n 200000 --threads 32;,2284.9587,2965.4393,0.77053,1,1
+deltablue,deltablue,workload: --n 200000 --threads 64;,4240.6143,4118.3486,1.029688,1,1
+esbuild_benchmark,RomeTS,data: --complexity 1000; workload: --threads 1;,1230.8585,1194.7625,1.030212,1,1
+esbuild_benchmark,RomeTS,data: --complexity 1000; workload: --threads 32;,940.9868,988.6162,0.951822,1,1
+esbuild_benchmark,RomeTS,data: --complexity 1000; workload: --threads 64;,912.6905,998.336,0.914212,1,1
+esbuild_benchmark,RomeTS,data: --complexity 2000; workload: --threads 1;,2055.0095,2098.7359,0.979165,1,1
+esbuild_benchmark,RomeTS,data: --complexity 2000; workload: --threads 32;,1833.6455,1640.9568,1.117425,1,1
+esbuild_benchmark,ThreeJS,data: --complexity 1111; workload: --threads 1;,1375.2548,1380.7935,0.995989,1,1
+esbuild_benchmark,ThreeJS,data: --complexity 1111; workload: --threads 32;,209.8396,234.1293,0.896255,1,1
+esbuild_benchmark,ThreeJS,data: --complexity 1111; workload: --threads 64;,168.0275,182.3493,0.92146,1,1
+esbuild_benchmark,ThreeJS,data: --complexity 2000; workload: --threads 1;,2144.4609,2246.3306,0.954651,1,1
+esbuild_benchmark,ThreeJS,data: --complexity 2000; workload: --threads 32;,304.1418,357.7018,0.850266,1,1
+ffmpeg_benchmark,ffmpeg,data: --duration 293; workload: --threads 1;,384.911,506.9622,0.75925,6,6
+gc_garbage,gc_garbage,data: --size 100000; workload: --threads 1;,925.306,950.3614,0.973636,1,1
+gc_garbage,gc_garbage,data: --size 100000; workload: --threads 32;,1624.0493,1812.735,0.895911,1,1
+gc_garbage,gc_garbage,data: --size 50000; workload: --threads 1;,455.6683,464.5833,0.980811,1,1
+gc_garbage,gc_garbage,data: --size 50000; workload: --threads 32;,774.9129,897.8594,0.863067,1,1
+gc_garbage,gc_garbage,data: --size 50000; workload: --threads 64;,1134.686,1243.1504,0.91275,1,1
+go_board_game,go-board-game,workload: --size 100 --threads 1;,413.8721,160.7112,2.575254,1,1
+go_board_game,go-board-game,workload: --size 100 --threads 32;,488.2152,253.332,1.927175,1,1
+go_board_game,go-board-game,workload: --size 100 --threads 64;,552.5857,240.0983,2.301498,1,1
+go_board_game,go-board-game,workload: --size 200 --threads 1;,1978.22,872.4296,2.267484,1,1
+go_board_game,go-board-game,workload: --size 200 --threads 32;,2469.9649,1659.4591,1.488416,1,1
+go_board_game,go-board-game,workload: --size 200 --threads 64;,2608.3963,1360.0971,1.917802,1,1
+go_compiler,go_compiler,data: --complex 100; workload: --threads 1;,4889.511,4648.4692,1.051854,1,1
+go_compiler,go_compiler,data: --complex 100; workload: --threads 32;,173.26,135.8408,1.275464,1,1
+go_compiler,go_compiler,data: --complex 100; workload: --threads 64;,158.545,124.891,1.269467,1,1
+go_compiler,go_compiler,data: --complex 188; workload: --threads 1;,21280.0444,24376.8422,0.872961,1,1
+go_compiler,go_compiler,data: --complex 188; workload: --threads 32;,756.1903,1170.2007,0.646206,1,1
+go_json,json,data: --size 25000; workload: --threads 1;,852.0851,503.0802,1.693736,1,1
+go_json,json,data: --size 25000; workload: --threads 32;,893.193,861.9378,1.036262,1,1
+go_json,json,data: --size 25000; workload: --threads 64;,1074.4346,928.5261,1.15714,1,1
+go_json,json,data: --size 50000; workload: --threads 1;,1600.955,995.1086,1.608824,1,1
+go_json,json,data: --size 50000; workload: --threads 32;,1774.3855,1718.7657,1.03236,1,1
+go_markdown,markdown_render,data: --size 1000; workload: --threads 1;,752.837,599.0826,1.25665,1,1
+go_markdown,markdown_render,data: --size 1000; workload: --threads 32;,1330.5533,2196.3853,0.605792,1,1
+go_markdown,markdown_render,data: --size 555; workload: --threads 1;,413.7169,344.6572,1.200372,1,1
+go_markdown,markdown_render,data: --size 555; workload: --threads 32;,801.025,1332.6881,0.60106,1,1
+go_markdown,markdown_render,data: --size 555; workload: --threads 64;,1960.7927,2570.5412,0.762794,1,1
+gopher_lua,gopher_lua,data: --size 1000000; workload: --threads 1;,948.1845,872.3601,1.086919,1,1
+gopher_lua,gopher_lua,data: --size 1000000; workload: --threads 32;,1419.5709,1772.5696,0.800855,1,1
+gopher_lua,gopher_lua,data: --size 500000; workload: --threads 1;,472.6449,414.1114,1.141347,1,1
+gopher_lua,gopher_lua,data: --size 500000; workload: --threads 32;,697.1148,832.4793,0.837396,1,1
+gopher_lua,gopher_lua,data: --size 500000; workload: --threads 64;,927.1506,1014.3937,0.913995,1,1
+guava_benchmark,guava_bloom,workload: --dataSize 200000 --threads 1;,294.9432,204.4971,1.442285,1,1
+guava_benchmark,guava_bloom,workload: --dataSize 200000 --threads 32;,381.9312,354.9587,1.075988,1,1
+guava_benchmark,guava_bloom,workload: --dataSize 200000 --threads 64;,619.0139,675.6063,0.916235,1,1
+guava_benchmark,guava_bloom,workload: --dataSize 400000 --threads 1;,595.7207,446.2618,1.334913,1,1
+guava_benchmark,guava_bloom,workload: --dataSize 400000 --threads 32;,767.0276,833.5121,0.920236,1,1
+guava_benchmark,guava_cache,workload: --dataSize 100000 --threads 1;,839.5083,1139.1694,0.736948,1,1
+guava_benchmark,guava_cache,workload: --dataSize 100000 --threads 32;,1100.4354,1354.5173,0.812419,1,1
+guava_benchmark,guava_cache,workload: --dataSize 50000 --threads 1;,307.7288,396.4223,0.776265,1,1
+guava_benchmark,guava_cache,workload: --dataSize 50000 --threads 32;,405.4247,558.1957,0.726313,1,1
+guava_benchmark,guava_cache,workload: --dataSize 50000 --threads 64;,615.195,884.0304,0.695898,1,1
+guava_benchmark,guava_event,workload: --dataSize 100000 --threads 1;,489.509,635.1528,0.770695,1,1
+guava_benchmark,guava_event,workload: --dataSize 100000 --threads 32;,697.123,1226.0617,0.568587,1,1
+guava_benchmark,guava_event,workload: --dataSize 100000 --threads 64;,1354.3962,1457.9879,0.928949,1,1
+guava_benchmark,guava_event,workload: --dataSize 200000 --threads 1;,719.1233,986.04,0.729304,1,1
+guava_benchmark,guava_event,workload: --dataSize 200000 --threads 32;,992.8738,1435.1925,0.691805,1,1
+guava_benchmark,guava_graph,workload: --dataSize 200000 --threads 1;,219.6889,305.3173,0.719543,1,1
+guava_benchmark,guava_graph,workload: --dataSize 200000 --threads 32;,371.901,418.7858,0.888046,1,1
+guava_benchmark,guava_graph,workload: --dataSize 200000 --threads 64;,610.5923,557.8515,1.094543,1,1
+guava_benchmark,guava_graph,workload: --dataSize 400000 --threads 1;,449.933,685.9017,0.655973,1,1
+guava_benchmark,guava_graph,workload: --dataSize 400000 --threads 32;,900.3151,1046.7049,0.860142,1,1
+guava_benchmark,guava_immutable,workload: --dataSize 200000 --threads 1;,269.3303,314.9497,0.855153,1,1
+guava_benchmark,guava_immutable,workload: --dataSize 200000 --threads 32;,366.1968,505.8509,0.723922,1,1
+guava_benchmark,guava_immutable,workload: --dataSize 200000 --threads 64;,576.4713,845.126,0.682113,1,1
+guava_benchmark,guava_immutable,workload: --dataSize 400000 --threads 1;,589.3599,717.8279,0.821032,1,1
+guava_benchmark,guava_immutable,workload: --dataSize 400000 --threads 32;,846.6636,1286.6704,0.658027,1,1
+kafka_benchmark,kafka_producer_perf,workload: --num-records 1400000000 --threads 1;,2480.307,4038.1705,0.614216,1,1
+kafka_benchmark,kafka_producer_perf,workload: --num-records 1400000000 --threads 32;,149.1516,194.1857,0.768087,1,1
+kafka_benchmark,kafka_producer_perf,workload: --num-records 777777777 --threads 1;,1384.8478,2324.5401,0.595751,1,1
+kafka_benchmark,kafka_producer_perf,workload: --num-records 777777777 --threads 32;,90.1473,116.3328,0.774909,1,1
+kafka_benchmark,kafka_producer_perf,workload: --num-records 777777777 --threads 64;,98.0684,83.5952,1.173134,1,1
+lapack_benchmark,lapack_eigen,workload: --size 1024 --threads 1;,9.7183,36.3,0.26772,6,5
+lapack_benchmark,lapack_solve,workload: --size 1024 --threads 1;,90.6071,156.5625,0.578728,6,5
+lapack_benchmark,lapack_svd,workload: --size 1024 --threads 1;,22.8845,40.4657,0.56553,6,5
+numpy_benchmark,fft,workload: --size 4660337 --threads 1;,3499.2934,6490.7797,0.539118,1,1
+numpy_benchmark,fft,workload: --size 4660337 --threads 32;,6044.5253,10231.6198,0.590769,1,1
+numpy_benchmark,fft,workload: --size 4660337 --threads 64;,9819.0094,16032.3978,0.612448,1,1
+numpy_benchmark,fft,workload: --size 8388608 --threads 1;,1361.0826,1720.955,0.790888,1,1
+numpy_benchmark,fft,workload: --size 8388608 --threads 32;,1942.064,2780.5664,0.698442,1,1
+numpy_benchmark,fft,workload: --size 8388608 --threads 64;,3062.0955,4583.9006,0.668011,1,1
+numpy_benchmark,matmul,workload: --size 2048 --threads 1;,228.5252,522.4993,0.437369,1,1
+numpy_benchmark,matmul,workload: --size 2048 --threads 32;,346.9647,731.0497,0.474612,1,1
+numpy_benchmark,matmul,workload: --size 2048 --threads 64;,546.6282,1163.4908,0.469817,1,1
+numpy_benchmark,matmul,workload: --size 4096 --threads 1;,1774.2869,4110.0147,0.431698,1,1
+numpy_benchmark,matmul,workload: --size 4096 --threads 32;,2679.0538,5464.6405,0.490253,1,1
+numpy_benchmark,matmul,workload: --size 4096 --threads 64;,4238.6118,9611.666,0.440986,1,1
+numpy_benchmark,svd,workload: --size 1024 --threads 1;,113.4512,205.0815,0.553201,1,1
+numpy_benchmark,svd,workload: --size 1024 --threads 32;,222.1418,369.0105,0.601993,1,1
+numpy_benchmark,svd,workload: --size 1024 --threads 64;,407.921,621.1022,0.65677,1,1
+numpy_benchmark,svd,workload: --size 2048 --threads 1;,842.9292,1522.6813,0.553582,1,1
+numpy_benchmark,svd,workload: --size 2048 --threads 32;,1866.211,2872.2437,0.64974,1,1
+numpy_benchmark,svd,workload: --size 2048 --threads 64;,3226.3159,4868.118,0.662744,1,1
+opencv_benchmark,background_sub,workload: --size 540 --threads 1;,148.4485,192.62,0.770681,6,5
+opencv_benchmark,canny,workload: --size 1024 --threads 1;,206.5665,252.206,0.819039,6,5
+opencv_benchmark,color_tracking,workload: --size 1200 --threads 1;,157.7395,1018.389,0.154891,6,5
+opencv_benchmark,conv_heavy,workload: --size 512 --threads 1;,131.741,1101.208,0.119633,6,5
+opencv_benchmark,feature_match,workload: --size 512 --threads 1;,260.67,700.968,0.371871,6,5
+opencv_benchmark,fft_batch,workload: --size 512 --threads 1;,104.9325,190.53,0.55074,6,5
+opencv_benchmark,jacobi,workload: --size 1024 --threads 1;,445.7095,3494.484,0.127547,6,5
+opencv_benchmark,mandelbrot,workload: --size 625 --threads 1;,959.914,1137.724,0.843714,6,5
+opencv_benchmark,motion_blur,workload: --size 1024 --threads 1;,189.4895,310.324,0.610618,6,5
+opencv_benchmark,optical_flow,workload: --size 568 --threads 1;,317.3595,507.593,0.625224,6,5
+openssl_benchmark,openssl,data: --size 27777; workload: --threads 1;,604.613,619.4351,0.976072,6,6
+pyflate,pyflate,data: --size 5555555; workload: --threads 1;,3626.2958,768.564,4.718274,1,1
+pyflate,pyflate,data: --size 5555555; workload: --threads 32;,3801.874,788.1542,4.823769,1,1
+pyflate,pyflate,data: --size 5555555; workload: --threads 64;,3153.3259,809.2104,3.896794,1,1
+pyflate,pyflate,data: --size 9444444; workload: --threads 1;,6367.6933,1307.9145,4.868585,1,1
+pyflate,pyflate,data: --size 9444444; workload: --threads 32;,6343.4335,1340.8175,4.731019,1,1
+pyflate,pyflate,data: --size 9444444; workload: --threads 64;,5333.8606,1357.9267,3.927944,1,1
+raytrace,raytrace,workload: --width 2275 --threads 1;,1765.8284,671.518,2.629607,1,1
+raytrace,raytrace,workload: --width 2275 --threads 32;,1778.1051,672.7564,2.643015,1,1
+raytrace,raytrace,workload: --width 2275 --threads 64;,1692.7477,712.4331,2.376009,1,1
+raytrace,raytrace,workload: --width 3868 --threads 1;,3011.0762,1142.984,2.634399,1,1
+raytrace,raytrace,workload: --width 3868 --threads 32;,3025.0176,1146.575,2.638308,1,1
+raytrace,raytrace,workload: --width 3868 --threads 64;,2867.5131,1146.4706,2.501166,1,1
+redis_benchmark,redis-benchmark,workload: --requests 2222222 --threads 1;,1663.9538,1451.8859,1.146064,6,6
+requests_benchmark,requests-json,workload: --size 131072 --threads 1;,446.3683,428.1374,1.042582,1,1
+requests_benchmark,requests-json,workload: --size 131072 --threads 32;,492.165,590.0366,0.834126,1,1
+requests_benchmark,requests-json,workload: --size 131072 --threads 64;,634.5754,686.8516,0.92389,1,1
+requests_benchmark,requests-json,workload: --size 247580 --threads 1;,927.7765,951.9048,0.974653,1,1
+requests_benchmark,requests-json,workload: --size 247580 --threads 32;,1007.2557,1337.568,0.75305,1,1
+requests_benchmark,requests-json,workload: --size 247580 --threads 64;,1298.5155,1628.3344,0.79745,1,1
+resnet50_cpu,resnet50_inference,data: --img_size 256; workload: --threads 1;,559.1309,1425.795,0.392154,1,1
+resnet50_cpu,resnet50_inference,data: --img_size 256; workload: --threads 32;,65.2546,388.381,0.168017,1,1
+resnet50_cpu,resnet50_inference,data: --img_size 256; workload: --threads 64;,111.9914,421.7989,0.265509,1,1
+resnet50_cpu,resnet50_inference,data: --img_size 483; workload: --threads 1;,2341.7298,3230.7914,0.724816,1,1
+resnet50_cpu,resnet50_inference,data: --img_size 483; workload: --threads 32;,245.1863,1149.8788,0.213228,1,1
+resnet50_cpu,resnet50_inference,data: --img_size 483; workload: --threads 64;,297.1226,1252.4711,0.237229,1,1
+resnet50_cpu,resnet50_training,data: --img_size 256; workload: --threads 1;,706.3492,1769.979,0.399072,1,1
+resnet50_cpu,resnet50_training,data: --img_size 256; workload: --threads 32;,69.2832,509.2985,0.136037,1,1
+resnet50_cpu,resnet50_training,data: --img_size 256; workload: --threads 64;,198.8775,511.1996,0.389041,1,1
+resnet50_cpu,resnet50_training,data: --img_size 512; workload: --threads 1;,2947.5412,6715.2955,0.438929,1,1
+resnet50_cpu,resnet50_training,data: --img_size 512; workload: --threads 32;,250.8167,1450.9853,0.17286,1,1
+resnet50_cpu,resnet50_training,data: --img_size 512; workload: --threads 64;,409.9851,1303.1107,0.31462,1,1
+rocksdb_benchmark,rocksdb_cpu,workload: --num 2000000 --threads 1;,258.3218,229.3698,1.126224,6,5
+tile38_sim,kdtree,workload: --points 100000 --threads 1;,1903.5114,836.93,2.274398,1,1
+tile38_sim,kdtree,workload: --points 100000 --threads 32;,2832.16,2814.362,1.006324,1,1
+tile38_sim,kdtree,workload: --points 50000 --threads 1;,420.8699,273.4846,1.538917,1,1
+tile38_sim,kdtree,workload: --points 50000 --threads 32;,613.7139,429.0448,1.430419,1,1
+tile38_sim,kdtree,workload: --points 50000 --threads 64;,606.9716,579.7477,1.046958,1,1
+transformer_inference,transformer_inference,data: --seq_len 142; workload: --threads 1;,1970.0406,6726.741,0.292867,1,1
+transformer_inference,transformer_inference,data: --seq_len 142; workload: --threads 32;,149.7604,6410.7369,0.023361,1,1
+transformer_inference,transformer_inference,data: --seq_len 142; workload: --threads 64;,165.1271,6458.7486,0.025566,1,1
+transformer_inference,transformer_inference,data: --seq_len 256; workload: --threads 1;,3738.9637,7030.7147,0.531804,1,1
+transformer_inference,transformer_inference,data: --seq_len 256; workload: --threads 32;,281.3957,16740.7272,0.016809,1,1
+transformer_inference,transformer_inference,data: --seq_len 256; workload: --threads 64;,305.037,23329.8323,0.013075,1,1
+transformer_train,transformer_train,data: --seq_len 128; workload: --threads 1;,502.2723,1236.846,0.406091,1,1
+transformer_train,transformer_train,data: --seq_len 128; workload: --threads 32;,58.6661,2430.2663,0.02414,1,1
+transformer_train,transformer_train,data: --seq_len 128; workload: --threads 64;,100.3023,2119.0013,0.047335,1,1
+transformer_train,transformer_train,data: --seq_len 256; workload: --threads 1;,1062.4259,1855.8449,0.572476,1,1
+transformer_train,transformer_train,data: --seq_len 256; workload: --threads 32;,100.8404,2722.5062,0.03704,1,1
+transformer_train,transformer_train,data: --seq_len 256; workload: --threads 64;,135.8921,2367.7102,0.057394,1,1
+tuf_benchmark,tuf-metadata,data: --size 328087779; workload: --threads 1;,1957.3424,1013.6212,1.931039,1,1
+tuf_benchmark,tuf-metadata,data: --size 328087779; workload: --threads 32;,2617.5807,1729.1168,1.513825,1,1
+tuf_benchmark,tuf-metadata,data: --size 328087779; workload: --threads 64;,4388.4862,1039.9684,4.219826,1,1
+tuf_benchmark,tuf-metadata,data: --size 536870912; workload: --threads 1;,3424.2674,1731.3251,1.97783,1,1
+tuf_benchmark,tuf-metadata,data: --size 536870912; workload: --threads 32;,4124.7409,2832.3726,1.456285,1,1
+tuf_benchmark,tuf-metadata,data: --size 536870912; workload: --threads 64;,7168.5344,1692.8829,4.234513,1,1
+zstd_benchmark,zstd,data: --size 25000; workload: --threads 1;,737.6859,962.6887,0.766277,6,6

@@ -1,3 +1,4 @@
+import csv
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -5,27 +6,14 @@ import numpy as np
 
 
 def main() -> None:
-    values = np.array(
-        [
-            616.283521,
-            560.753647,
-            519.936251,
-            546.003440,
-            593.893258,
-            549.503819,
-            534.241755,
-            565.029452,
-            547.168775,
-            456.459395,
-            457.539390,
-            438.036167,
-            512.170731,
-            489.701887,
-            528.898260,
-            540.550845,
-        ],
-        dtype=float,
-    )
+    data_dir = Path(__file__).resolve().parent / "leaderboard_data" / "data" / "cpu_groups" / "zf_amd"
+    csv_path = data_dir / "zf_amd.csv"
+    with csv_path.open(encoding="utf-8-sig", newline="") as csv_file:
+        rows = list(csv.DictReader(csv_file))
+    values = np.array([
+        np.mean([float(row[f"round_{round_number}_time"]) for row in rows])
+        for round_number in range(1, 17)
+    ], dtype=float)
 
     n = int(values.size)
     mean = float(np.mean(values))
@@ -80,12 +68,16 @@ def main() -> None:
     ax.grid(axis="y", linestyle="--", alpha=0.3)
     ax.legend(loc="upper left")
 
-    output_path = Path(__file__).resolve().parent / "zf_amd.png"
     fig.tight_layout()
-    fig.savefig(output_path, dpi=180)
+    output_paths = [
+        Path(__file__).resolve().parent / "zf_amd.png",
+        data_dir / "zf_amd.png",
+    ]
+    for output_path in output_paths:
+        fig.savefig(output_path, dpi=180)
     plt.close(fig)
 
-    print(f"Saved: {output_path}")
+    print(f"Saved: {', '.join(str(path) for path in output_paths)}")
     print(
         f"n={n}, mean={mean:.6f}, var(pop)={var_pop:.6f}, std(pop)={std_pop:.6f}, "
         f"var(sample)={var_sample:.6f}, std(sample)={std_sample:.6f}, min={val_min:.6f}, max={val_max:.6f}"

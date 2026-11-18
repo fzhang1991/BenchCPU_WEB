@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -64,6 +65,7 @@ export default function Navbar() {
   const [benchMenuOpen, setBenchMenuOpen] = useState(false);
   const [mobileBenchOpen, setMobileBenchOpen] = useState(false);
   const shellRef = useRef<HTMLDivElement | null>(null);
+  const brandGroupRef = useRef<HTMLDivElement | null>(null);
 
   const t = useMemo(
     () => ({
@@ -124,6 +126,30 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    if (!benchMenuOpen) return;
+
+    const onDown = (e: MouseEvent) => {
+      if (!brandGroupRef.current?.contains(e.target as Node)) {
+        setBenchMenuOpen(false);
+      }
+    };
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setBenchMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [benchMenuOpen]);
+
   return (
     <header className={styles.navbar}>
       <div
@@ -131,31 +157,41 @@ export default function Navbar() {
         className={`${styles.container} ${mobileOpen ? styles.containerOpen : ""}`}
       >
         <div className={styles.topRow}>
+          <div ref={brandGroupRef} className={`${styles.brandGroup} ${styles.dropWrap}`}>
+            <Link href="/" className={styles.logo} aria-label={t.homeAria}>
+              <Image
+                src="/benchcpu-logo.png"
+                alt="BenchCPU"
+                width={2000}
+                height={1584}
+                className={styles.logoImage}
+              />
+            </Link>
+            <button
+              type="button"
+              className={`${styles.brandMenuButton} ${isActive("/") || isActive("/download") ? styles.navActive : ""}`}
+              aria-expanded={benchMenuOpen}
+              aria-controls="benchcpu-menu"
+              aria-label={t.benchCpu}
+              onClick={() => setBenchMenuOpen((v) => !v)}
+            >
+              <span>{t.benchCpu}</span>
+              <span className={styles.chev} aria-hidden="true">{benchMenuOpen ? "▲" : "▼"}</span>
+            </button>
+
+            {benchMenuOpen && (
+              <div className={styles.menu} id="benchcpu-menu">
+                <Link href="/" className={styles.menuItem} onClick={() => setBenchMenuOpen(false)}>
+                  <span className={styles.menuItemMain}>{t.intro}</span>
+                </Link>
+                <Link href="/download" className={styles.menuItem} onClick={() => setBenchMenuOpen(false)}>
+                  <span className={styles.menuItemMain}>{t.download}</span>
+                </Link>
+              </div>
+            )}
+          </div>
+
           <div className={styles.desktopNav}>
-            <div className={styles.dropWrap}>
-              <button
-                type="button"
-                className={`${styles.navItem} ${styles.dropBtn} ${isActive("/") || isActive("/download") ? styles.navActive : ""}`}
-                aria-expanded={benchMenuOpen}
-                aria-label={t.benchCpu}
-                onClick={() => setBenchMenuOpen((v) => !v)}
-              >
-                <span>{t.benchCpu}</span>
-                <span className={styles.chev}>{benchMenuOpen ? "▲" : "▼"}</span>
-              </button>
-
-              {benchMenuOpen && (
-                <div className={styles.menu}>
-                  <Link href="/" className={styles.menuItem} onClick={() => setBenchMenuOpen(false)}>
-                    <span className={styles.menuItemMain}>{t.intro}</span>
-                  </Link>
-                  <Link href="/download" className={styles.menuItem} onClick={() => setBenchMenuOpen(false)}>
-                    <span className={styles.menuItemMain}>{t.download}</span>
-                  </Link>
-                </div>
-              )}
-            </div>
-
             <Link
               href="/leaderboard"
               className={`${styles.navItem} ${isActive("/leaderboard") ? styles.navActive : ""}`}

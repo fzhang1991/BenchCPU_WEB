@@ -1,0 +1,34 @@
+\documentclass[namedate,webpdf,contemporary,large,nocrop,noinfo]{TBench-template}
+\usepackage[english]{babel}
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\@maketitle}{\textbf{\color{jnlclr}DOI: \@DOI}}{}{}{\errmessage{Could not remove the publication DOI field}}
+\makeatother
+
+\hypersetup{
+  pdftitle={Beyond a Single Score: Configuration-Space-Aware Evaluation of ARM and x86 Server Processors Using BenchCPU},
+  pdfauthor={},
+  pdfsubject={Anonymous abstract submission},
+  pdfkeywords={CPU evaluation, ARM and x86, BenchCPU, configuration sensitivity, microarchitectural analysis}
+}
+
+\begin{document}
+
+\journaltitle{BenchCouncil Transactions on Benchmarks, Standards and Evaluations}
+\copyrightyear{2026}
+\pubyear{2026}
+\appnotes{Abstract Submission}
+\firstpage{1}
+
+\title[Beyond a Single Score]{Beyond a Single Score: Configuration-Space-Aware Evaluation of ARM and x86 Server Processors Using BenchCPU}
+\author{}
+\authormark{}
+
+\abstract{CPU leaderboards rank processors by a single score, but does a top rank reflect a stable advantage across workloads and configurations, or merely performance under a particular set of evaluation conditions? A single score cannot answer this question or indicate whether an observed margin is statistically significant. To address this, this study leverages Evaluatology-Based CPU Benchmark--BenchCPU to evaluate representative ARM (Kunpeng 920) and x86 (Intel/AMD) server processors by adopting \textbf{configuration space sampling and reporting performance distributions}. By strictly distinguishing the CPU under evaluation, the testable or measurable hosting system, and the configuration parameters (input sizes, thread counts, compilers, optimization levels across 54 BenchCPU workloads), this approach ensures \textbf{traceability}. Documenting the exact sampled configuration parameters alongside performance distributions makes the evaluation fully traceable and reproducible, preventing cross-system differences from being solely attributed to CPU hardware. Reporting performance distributions enables statistical significance testing. Overall scores are reported as mean wall-clock runtimes with 95\% confidence intervals. Pairwise comparisons use geometric mean runtime ratios with 95\% confidence intervals; intervals containing one indicate no statistically significant difference. Across 16 rounds of random sampling from the configuration space, Intel Xeon Gold 5120T is significantly faster than Kunpeng 920 on 36 workloads, Kunpeng is significantly faster on 12, and 6 show no significant difference---effectively proving that marginal absolute differences in traditional benchmarks often lack statistical backing. Furthermore, our analysis yields several \textbf{insights}: (1) Across a workload suite, processor advantages can depend on workload configuration: for some workloads, changing input size or thread count reverses which processor is faster, a difference that a single score may mask; (2) Comparisons between random seeds and grid sampling reveal that workload-level conclusions can shift, highlighting severe sampling sensitivity in traditional point-evaluations; (3) Microarchitectural analysis of AMD EPYC 7543 shows that configuration sampling exposes varying pipeline bottlenecks, covering feature-space regions well beyond those of deterministic suites like SPEC CPU2026. These findings demonstrate that scientifically rigorous processor comparisons necessitate workload-specific distribution analysis, explicit system provenance, and configuration sampling, rather than unconditional architectural rankings.}
+
+\keywords{CPU evaluation, ARM and x86, BenchCPU, configuration sensitivity, microarchitectural analysis}
+
+\maketitle
+
+\end{document}

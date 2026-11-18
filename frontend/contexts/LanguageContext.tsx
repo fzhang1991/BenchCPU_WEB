@@ -13,23 +13,14 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<Lang>(() => {
+    if (typeof window === "undefined") {
+      return "zh";
+    }
 
-  useEffect(() => {
-    let cancelled = false;
-
-    queueMicrotask(() => {
-      if (cancelled) return;
-      const saved = window.localStorage.getItem("site-lang");
-      if (saved === "en" || saved === "zh") {
-        setLang(saved);
-      }
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    const saved = window.localStorage.getItem("site-lang");
+    return saved === "en" || saved === "zh" ? saved : "zh";
+  });
 
   useEffect(() => {
     window.localStorage.setItem("site-lang", lang);

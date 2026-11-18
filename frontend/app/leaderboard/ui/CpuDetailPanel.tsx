@@ -203,7 +203,7 @@ export default function CpuDetailPanel({ cpu, onClose, standalone = false }: Pro
             setError(null);
         });
 
-        fetch(`/backend/api/cpu-system-info?cpu=${encodeURIComponent(cpu)}`)
+        fetch(`/backend/api/cpu-system-info?cpu=${encodeURIComponent(cpu)}`, { cache: "no-store" })
             .then((r) => r.json())
             .then((sysInfo) => {
                 if (!cancelled) setSystemInfo(sysInfo.data ?? null);

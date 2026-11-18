@@ -1,0 +1,128 @@
+﻿machine,workload,seed_round,direction,seed_runtime_s,seed_params,grid_min_runtime_s,grid_min_config_index,grid_min_params,grid_max_runtime_s,grid_max_config_index,grid_max_params
+64,numpy/fft,2,above_grid_max,13456.5071,workload: --size 6058439 --threads 63;,1361.0826,4,data_size=8388608; threads=1,9819.0094,3,data_size=4660337; threads=64
+64,numpy/fft,4,above_grid_max,11821.651,workload: --size 6058439 --threads 54;,1361.0826,4,data_size=8388608; threads=1,9819.0094,3,data_size=4660337; threads=64
+64,numpy/fft,5,above_grid_max,13316.8826,workload: --size 6990506 --threads 51;,1361.0826,4,data_size=8388608; threads=1,9819.0094,3,data_size=4660337; threads=64
+64,numpy/fft,15,above_grid_max,11249.4754,workload: --size 6524472 --threads 44;,1361.0826,4,data_size=8388608; threads=1,9819.0094,3,data_size=4660337; threads=64
+64,tuf/metadata,7,above_grid_max,7660.4955,data: --size 536870912; workload: --threads 60;,1957.3424,1,data_size=328087779; threads=1,7168.5344,6,data_size=536870912; threads=64
+64,tuf/metadata,9,above_grid_max,7933.7556,data: --size 536870912; workload: --threads 62;,1957.3424,1,data_size=328087779; threads=1,7168.5344,6,data_size=536870912; threads=64
+64,raytrace,2,above_grid_max,3713.1736,workload: --width 3868 --threads 61;,1692.7477,3,data_size=2275; threads=64,3025.0176,5,data_size=3868; threads=32
+64,raytrace,4,above_grid_max,3166.1585,workload: --width 3413 --threads 39;,1692.7477,3,data_size=2275; threads=64,3025.0176,5,data_size=3868; threads=32
+64,raytrace,13,above_grid_max,3357.9443,workload: --width 3640 --threads 18;,1692.7477,3,data_size=2275; threads=64,3025.0176,5,data_size=3868; threads=32
+64,raytrace,14,above_grid_max,3310.6279,workload: --width 3640 --threads 47;,1692.7477,3,data_size=2275; threads=64,3025.0176,5,data_size=3868; threads=32
+64,raytrace,16,above_grid_max,3058.2236,workload: --width 3640 --threads 39;,1692.7477,3,data_size=2275; threads=64,3025.0176,5,data_size=3868; threads=32
+64,chaos_fractal,2,above_grid_max,4884.9599,data: --width 2275; workload: --threads 32;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,5,above_grid_max,5253.198,data: --width 3640; workload: --threads 18;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,6,above_grid_max,4871.3008,data: --width 3868; workload: --threads 48;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,7,above_grid_max,5181.748,data: --width 2503; workload: --threads 35;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,8,above_grid_max,5194.6888,data: --width 2958; workload: --threads 5;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,9,above_grid_max,5250.8778,data: --width 3640; workload: --threads 15;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,10,below_grid_min,3955.6326,data: --width 3185; workload: --threads 55;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,12,above_grid_max,5216.384,data: --width 2275; workload: --threads 21;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,14,above_grid_max,5236.4062,data: --width 3640; workload: --threads 21;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,chaos_fractal,15,above_grid_max,5225.3662,data: --width 2730; workload: --threads 6;,4052.6798,6,data_size=4096; threads=64,4858.0744,5,data_size=4096; threads=32
+64,pyflate,3,above_grid_max,6401.7367,data: --size 9444444; workload: --threads 35;,3153.3259,3,data_size=5555555; threads=64,6367.6933,4,data_size=9444444; threads=1
+64,pyflate,8,above_grid_max,7448.3676,data: --size 8888888; workload: --threads 43;,3153.3259,3,data_size=5555555; threads=64,6367.6933,4,data_size=9444444; threads=1
+64,pyflate,9,above_grid_max,7138.11,data: --size 8888888; workload: --threads 10;,3153.3259,3,data_size=5555555; threads=64,6367.6933,4,data_size=9444444; threads=1
+64,resnet50/inference,9,below_grid_min,63.9204,data: --img_size 256; workload: --threads 29;,65.2546,2,data_size=256; threads=32,2341.7298,4,data_size=483; threads=1
+64,resnet50/training,1,below_grid_min,69.2418,data: --img_size 256; workload: --threads 42;,69.2832,2,data_size=256; threads=32,2947.5412,4,data_size=512; threads=1
+64,bert/eval,3,below_grid_min,97.4214,data: --seq_len 512; workload: --threads 27;,137.1743,2,data_size=512; threads=32,4026.7859,4,data_size=967; threads=1
+64,bert/eval,6,below_grid_min,132.569,data: --seq_len 512; workload: --threads 59;,137.1743,2,data_size=512; threads=32,4026.7859,4,data_size=967; threads=1
+64,transformer_inference,2,below_grid_min,138.4192,data: --seq_len 156; workload: --threads 46;,149.7604,2,data_size=142; threads=32,3738.9637,4,data_size=256; threads=1
+64,transformer_inference,5,below_grid_min,129.7502,data: --seq_len 170; workload: --threads 28;,149.7604,2,data_size=142; threads=32,3738.9637,4,data_size=256; threads=1
+64,ffmpeg,10,above_grid_max,1200.5284,data: --duration 480; workload: --threads 42;,359.2983,3,data_size=293; threads=1; compiler=clang; optimization=O3,1045.7053,31,data_size=480; threads=64; compiler=clang; optimization=O1
+64,redis,5,above_grid_max,3972.4497,workload: --requests 3777777 --threads 61;,1641.131,1,data_size=2222222; threads=1; compiler=clang; optimization=O1,3775.8071,35,data_size=4000000; threads=64; compiler=gcc; optimization=O2
+64,redis,11,above_grid_max,4337.8497,workload: --requests 4000000 --threads 64;,1641.131,1,data_size=2222222; threads=1; compiler=clang; optimization=O1,3775.8071,35,data_size=4000000; threads=64; compiler=gcc; optimization=O2
+64,lapack/solve,9,above_grid_max,1410.1341,workload: --size 2048 --threads 59;,90.2442,2,data_size=1024; threads=1; compiler=clang; optimization=O2,852.377,30,data_size=2048; threads=32; compiler=gcc; optimization=O3
+64,lapack/solve,11,above_grid_max,1001.7335,workload: --size 2048 --threads 38;,90.2442,2,data_size=1024; threads=1; compiler=clang; optimization=O2,852.377,30,data_size=2048; threads=32; compiler=gcc; optimization=O3
+64,lapack/solve,15,above_grid_max,1526.3881,workload: --size 2048 --threads 59;,90.2442,2,data_size=1024; threads=1; compiler=clang; optimization=O2,852.377,30,data_size=2048; threads=32; compiler=gcc; optimization=O3
+64,lapack/eigen,3,above_grid_max,1368.619,workload: --size 1934 --threads 36;,9.5617,3,data_size=1024; threads=1; compiler=clang; optimization=O3,1292.7215,26,data_size=2048; threads=32; compiler=clang; optimization=O2
+64,lapack/eigen,14,above_grid_max,2196.1232,workload: --size 1934 --threads 58;,9.5617,3,data_size=1024; threads=1; compiler=clang; optimization=O3,1292.7215,26,data_size=2048; threads=32; compiler=clang; optimization=O2
+64,lapack/eigen,16,above_grid_max,1328.4648,workload: --size 2048 --threads 30;,9.5617,3,data_size=1024; threads=1; compiler=clang; optimization=O3,1292.7215,26,data_size=2048; threads=32; compiler=clang; optimization=O2
+64,lapack/svd,10,above_grid_max,1850.7583,workload: --size 1592 --threads 59;,22.7419,2,data_size=1024; threads=1; compiler=clang; optimization=O2,1192.945,30,data_size=1820; threads=32; compiler=gcc; optimization=O3
+64,lapack/svd,14,above_grid_max,1579.7229,workload: --size 1706 --threads 48;,22.7419,2,data_size=1024; threads=1; compiler=clang; optimization=O2,1192.945,30,data_size=1820; threads=32; compiler=gcc; optimization=O3
+64,opencv/mandelbrot,7,above_grid_max,1465.519,workload: --size 1024 --threads 63;,958.397,5,data_size=625; threads=1; compiler=gcc; optimization=O2,1331.091,15,data_size=625; threads=64; compiler=clang; optimization=O3
+64,opencv/mandelbrot,8,above_grid_max,1439.408,workload: --size 739 --threads 63;,958.397,5,data_size=625; threads=1; compiler=gcc; optimization=O2,1331.091,15,data_size=625; threads=64; compiler=clang; optimization=O3
+64,opencv/mandelbrot,13,above_grid_max,1418.781,workload: --size 967 --threads 64;,958.397,5,data_size=625; threads=1; compiler=gcc; optimization=O2,1331.091,15,data_size=625; threads=64; compiler=clang; optimization=O3
+64,opencv/jacobi,3,above_grid_max,4178.723,workload: --size 1137 --threads 55;,445.021,6,data_size=1024; threads=1; compiler=gcc; optimization=O3,3700.301,32,data_size=2048; threads=64; compiler=clang; optimization=O2
+64,opencv/canny,10,above_grid_max,1416.957,workload: --size 2048 --threads 53;,206.465,3,data_size=1024; threads=1; compiler=clang; optimization=O3,1402.049,31,data_size=2048; threads=64; compiler=clang; optimization=O1
+64,opencv/color_tracking,9,above_grid_max,1382.507,workload: --size 2160 --threads 60;,157.371,5,data_size=1200; threads=1; compiler=gcc; optimization=O2,1279.066,32,data_size=2160; threads=64; compiler=clang; optimization=O2
+64,opencv/feature_match,4,above_grid_max,1521.278,workload: --size 1024 --threads 61;,255.402,5,data_size=512; threads=1; compiler=gcc; optimization=O2,1284.453,33,data_size=1024; threads=64; compiler=clang; optimization=O3
+64,opencv/feature_match,13,above_grid_max,1459.001,workload: --size 1024 --threads 55;,255.402,5,data_size=512; threads=1; compiler=gcc; optimization=O2,1284.453,33,data_size=1024; threads=64; compiler=clang; optimization=O3
+64,guava/bloom,6,above_grid_max,2713.196,workload: --dataSize 400000 --threads 62;,294.9432,1,data_size=200000; threads=1,1213.7522,6,data_size=400000; threads=64
+64,kafka,16,below_grid_min,77.9592,workload: --num-records 777777777 --threads 46;,90.1473,2,data_size=777777777; threads=32,2480.307,4,data_size=1400000000; threads=1
+64,cockroachdb/kv,5,below_grid_min,497.5014,workload: --max-ops 600000 --threads 15;,623.8897,2,data_size=600000; threads=32,2481.1547,6,data_size=1200000; threads=64
+64,cockroachdb/tpcc,1,below_grid_min,966.8966,workload: --max-ops 16666 --threads 15;,1092.7448,2,data_size=15000; threads=32,3053.2833,4,data_size=30000; threads=1
+65,numpy/fft,2,above_grid_max,21210.2404,workload: --size 6058439 --threads 63;,1720.955,4,data_size=8388608; threads=1,16032.3978,3,data_size=4660337; threads=64
+65,numpy/fft,4,above_grid_max,19117.4274,workload: --size 6058439 --threads 54;,1720.955,4,data_size=8388608; threads=1,16032.3978,3,data_size=4660337; threads=64
+65,numpy/fft,5,above_grid_max,21092.3132,workload: --size 6990506 --threads 51;,1720.955,4,data_size=8388608; threads=1,16032.3978,3,data_size=4660337; threads=64
+65,numpy/fft,9,above_grid_max,16705.9459,workload: --size 7456540 --threads 33;,1720.955,4,data_size=8388608; threads=1,16032.3978,3,data_size=4660337; threads=64
+65,numpy/fft,15,above_grid_max,17783.6227,workload: --size 6524472 --threads 44;,1720.955,4,data_size=8388608; threads=1,16032.3978,3,data_size=4660337; threads=64
+65,numpy/fft,16,above_grid_max,19593.3128,workload: --size 7456540 --threads 41;,1720.955,4,data_size=8388608; threads=1,16032.3978,3,data_size=4660337; threads=64
+65,tuf/metadata,7,above_grid_max,2851.2781,data: --size 536870912; workload: --threads 60;,1013.6212,1,data_size=328087779; threads=1,2832.3726,5,data_size=536870912; threads=32
+65,tuf/metadata,9,above_grid_max,2908.2787,data: --size 536870912; workload: --threads 62;,1013.6212,1,data_size=328087779; threads=1,2832.3726,5,data_size=536870912; threads=32
+65,tuf/metadata,13,above_grid_max,2869.8419,data: --size 536870912; workload: --threads 37;,1013.6212,1,data_size=328087779; threads=1,2832.3726,5,data_size=536870912; threads=32
+65,raytrace,2,above_grid_max,1150.7673,workload: --width 3868 --threads 61;,671.518,1,data_size=2275; threads=1,1146.575,5,data_size=3868; threads=32
+65,chaos_fractal,1,above_grid_max,2126.4264,data: --width 2275; workload: --threads 21;,2107.9531,4,data_size=4096; threads=1,2125.806,5,data_size=4096; threads=32
+65,chaos_fractal,2,above_grid_max,2128.1416,data: --width 2275; workload: --threads 32;,2107.9531,4,data_size=4096; threads=1,2125.806,5,data_size=4096; threads=32
+65,chaos_fractal,4,above_grid_max,2133.7258,data: --width 2048; workload: --threads 52;,2107.9531,4,data_size=4096; threads=1,2125.806,5,data_size=4096; threads=32
+65,chaos_fractal,10,above_grid_max,2131.3487,data: --width 3185; workload: --threads 55;,2107.9531,4,data_size=4096; threads=1,2125.806,5,data_size=4096; threads=32
+65,chaos_fractal,16,above_grid_max,2137.1505,data: --width 2048; workload: --threads 44;,2107.9531,4,data_size=4096; threads=1,2125.806,5,data_size=4096; threads=32
+65,deltablue,7,above_grid_max,4229.6245,workload: --n 200000 --threads 64;,854.3512,1,data_size=111111; threads=1,4118.3486,6,data_size=200000; threads=64
+65,pyflate,2,above_grid_max,1360.8121,data: --size 9444444; workload: --threads 53;,768.564,1,data_size=5555555; threads=1,1357.9267,6,data_size=9444444; threads=64
+65,resnet50/inference,9,below_grid_min,375.7576,data: --img_size 256; workload: --threads 29;,388.381,2,data_size=256; threads=32,3230.7914,4,data_size=483; threads=1
+65,bert/eval,1,below_grid_min,4693.4415,data: --seq_len 512; workload: --threads 8;,4981.9043,2,data_size=512; threads=32,18267.6941,4,data_size=967; threads=1
+65,bert/eval,3,below_grid_min,4781.6399,data: --seq_len 512; workload: --threads 27;,4981.9043,2,data_size=512; threads=32,18267.6941,4,data_size=967; threads=1
+65,bert/eval,6,below_grid_min,4754.2792,data: --seq_len 512; workload: --threads 59;,4981.9043,2,data_size=512; threads=32,18267.6941,4,data_size=967; threads=1
+65,transformer_inference,1,below_grid_min,5956.4603,data: --seq_len 142; workload: --threads 30;,6410.7369,2,data_size=142; threads=32,23329.8323,6,data_size=256; threads=64
+65,transformer_inference,2,below_grid_min,5631.9284,data: --seq_len 156; workload: --threads 46;,6410.7369,2,data_size=142; threads=32,23329.8323,6,data_size=256; threads=64
+65,transformer_inference,4,below_grid_min,6112.6377,data: --seq_len 170; workload: --threads 60;,6410.7369,2,data_size=142; threads=32,23329.8323,6,data_size=256; threads=64
+65,transformer_inference,5,below_grid_min,5489.6865,data: --seq_len 170; workload: --threads 28;,6410.7369,2,data_size=142; threads=32,23329.8323,6,data_size=256; threads=64
+65,transformer_inference,8,below_grid_min,5788.5431,data: --seq_len 156; workload: --threads 2;,6410.7369,2,data_size=142; threads=32,23329.8323,6,data_size=256; threads=64
+65,transformer_inference,10,below_grid_min,6052.1503,data: --seq_len 142; workload: --threads 19;,6410.7369,2,data_size=142; threads=32,23329.8323,6,data_size=256; threads=64
+65,transformer_inference,14,below_grid_min,5469.6496,data: --seq_len 170; workload: --threads 31;,6410.7369,2,data_size=142; threads=32,23329.8323,6,data_size=256; threads=64
+65,transformer_train,6,above_grid_max,3044.4431,data: --seq_len 227; workload: --threads 40;,1236.846,1,data_size=128; threads=1,2722.5062,5,data_size=256; threads=32
+65,transformer_train,8,above_grid_max,2756.1719,data: --seq_len 184; workload: --threads 19;,1236.846,1,data_size=128; threads=1,2722.5062,5,data_size=256; threads=32
+65,transformer_train,11,above_grid_max,2783.9251,data: --seq_len 241; workload: --threads 39;,1236.846,1,data_size=128; threads=1,2722.5062,5,data_size=256; threads=32
+65,transformer_train,16,above_grid_max,2769.0916,data: --seq_len 199; workload: --threads 54;,1236.846,1,data_size=128; threads=1,2722.5062,5,data_size=256; threads=32
+65,ffmpeg,1,above_grid_max,1315.6263,data: --duration 480; workload: --threads 35;,501.3384,1,data_size=293; threads=1; compiler=clang; optimization=O1,1306.5774,27,data_size=480; threads=32; compiler=clang; optimization=O3
+65,ffmpeg,10,above_grid_max,1315.2623,data: --duration 480; workload: --threads 42;,501.3384,1,data_size=293; threads=1; compiler=clang; optimization=O1,1306.5774,27,data_size=480; threads=32; compiler=clang; optimization=O3
+65,zstd,11,above_grid_max,4647.7447,data: --size 50000; workload: --threads 56;,958.7395,3,data_size=25000; threads=1; compiler=clang; optimization=O3,4644.2229,32,data_size=50000; threads=64; compiler=clang; optimization=O2
+65,gcc_compile,8,above_grid_max,2150.1466,data: --func_size 188; workload: --opt O2 --threads 53;,315.8446,1,data_size=100; threads=1; compiler=clang; optimization=O1,2106.5554,33,data_size=200; threads=64; compiler=clang; optimization=O3
+65,lapack/solve,9,above_grid_max,2350.5559,workload: --size 2048 --threads 59;,155.8523,2,data_size=1024; threads=1; compiler=clang; optimization=O2,1605.6445,30,data_size=2048; threads=32; compiler=gcc; optimization=O3
+65,lapack/solve,11,above_grid_max,1774.5309,workload: --size 2048 --threads 38;,155.8523,2,data_size=1024; threads=1; compiler=clang; optimization=O2,1605.6445,30,data_size=2048; threads=32; compiler=gcc; optimization=O3
+65,lapack/solve,15,above_grid_max,2343.5324,workload: --size 2048 --threads 59;,155.8523,2,data_size=1024; threads=1; compiler=clang; optimization=O2,1605.6445,30,data_size=2048; threads=32; compiler=gcc; optimization=O3
+65,lapack/eigen,14,above_grid_max,2432.71,workload: --size 1934 --threads 58;,33.9725,6,data_size=1024; threads=1; compiler=gcc; optimization=O3,1622.3323,26,data_size=2048; threads=32; compiler=clang; optimization=O2
+65,lapack/svd,10,above_grid_max,1834.0564,workload: --size 1592 --threads 59;,39.9108,6,data_size=1024; threads=1; compiler=gcc; optimization=O3,1500.2467,27,data_size=1820; threads=32; compiler=clang; optimization=O3
+65,lapack/svd,14,above_grid_max,1816.9038,workload: --size 1706 --threads 48;,39.9108,6,data_size=1024; threads=1; compiler=gcc; optimization=O3,1500.2467,27,data_size=1820; threads=32; compiler=clang; optimization=O3
+65,opencv/fft_batch,9,above_grid_max,1441.969,workload: --size 1024 --threads 53;,190.328,4,data_size=512; threads=1; compiler=gcc; optimization=O1,1417.886,31,data_size=1024; threads=64; compiler=clang; optimization=O1
+65,opencv/mandelbrot,1,below_grid_min,929.143,workload: --size 739 --threads 34;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,2,below_grid_min,929.364,workload: --size 682 --threads 58;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,4,below_grid_min,1115.635,workload: --size 796 --threads 26;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,6,above_grid_max,1245.718,workload: --size 910 --threads 37;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,7,below_grid_min,918.891,workload: --size 1024 --threads 63;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,8,above_grid_max,1245.802,workload: --size 739 --threads 63;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,9,below_grid_min,928.881,workload: --size 910 --threads 4;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,10,below_grid_min,1116.07,workload: --size 967 --threads 58;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,11,below_grid_min,928.944,workload: --size 1024 --threads 49;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,12,below_grid_min,928.858,workload: --size 910 --threads 40;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,14,below_grid_min,1116.539,workload: --size 739 --threads 51;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,15,below_grid_min,917.651,workload: --size 853 --threads 27;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/mandelbrot,16,below_grid_min,917.888,workload: --size 625 --threads 5;,1137.08,30,data_size=1024; threads=32; compiler=gcc; optimization=O3,1140.118,17,data_size=625; threads=64; compiler=gcc; optimization=O2
+65,opencv/jacobi,1,below_grid_min,1418.285,workload: --size 1024 --threads 18;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/jacobi,4,below_grid_min,1426.319,workload: --size 1024 --threads 19;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/jacobi,7,below_grid_min,1316.69,workload: --size 2048 --threads 12;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/jacobi,9,below_grid_min,3484.954,workload: --size 1137 --threads 42;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/jacobi,10,below_grid_min,2144.348,workload: --size 1365 --threads 30;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/jacobi,11,below_grid_min,1651.858,workload: --size 1479 --threads 30;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/jacobi,14,below_grid_min,3263.304,workload: --size 1592 --threads 41;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/jacobi,16,below_grid_min,1318.337,workload: --size 1479 --threads 15;,3485.366,1,data_size=1024; threads=1; compiler=clang; optimization=O1,8522.079,14,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,opencv/motion_blur,16,above_grid_max,1233.577,workload: --size 2048 --threads 53;,309.043,2,data_size=1024; threads=1; compiler=clang; optimization=O2,1232.681,32,data_size=2048; threads=64; compiler=clang; optimization=O2
+65,opencv/background_sub,1,above_grid_max,2382.678,workload: --size 1080 --threads 19;,191.543,1,data_size=540; threads=1; compiler=clang; optimization=O1,2354.932,25,data_size=1080; threads=32; compiler=clang; optimization=O1
+65,opencv/feature_match,16,below_grid_min,679.698,workload: --size 512 --threads 41;,700.753,2,data_size=512; threads=1; compiler=clang; optimization=O2,2773.596,32,data_size=1024; threads=64; compiler=clang; optimization=O2
+65,guava/bloom,6,above_grid_max,1539.6584,workload: --dataSize 400000 --threads 62;,204.4971,1,data_size=200000; threads=1,1490.5425,6,data_size=400000; threads=64
+65,cassandra,8,below_grid_min,146.1418,workload: --read-n 1000000 --threads 19;,150.825,2,data_size=1000000; threads=32,2543.9996,4,data_size=2000000; threads=1
+65,kafka,15,below_grid_min,83.0921,workload: --num-records 855555555 --threads 54;,83.5952,3,data_size=777777777; threads=64,4038.1705,4,data_size=1400000000; threads=1
+65,cockroachdb/kv,5,below_grid_min,677.0108,workload: --max-ops 600000 --threads 15;,714.0272,2,data_size=600000; threads=32,2338.6941,6,data_size=1200000; threads=64
+65,cockroachdb/tpcc,1,below_grid_min,1041.6299,workload: --max-ops 16666 --threads 15;,1057.8724,2,data_size=15000; threads=32,3164.9035,4,data_size=30000; threads=1
+65,cockroachdb/tpcc,15,above_grid_max,3319.6854,workload: --max-ops 30000 --threads 60;,1057.8724,2,data_size=15000; threads=32,3164.9035,4,data_size=30000; threads=1
+65,gc_garbage,1,above_grid_max,3841.0388,data: --size 100000; workload: --threads 55;,464.5833,1,data_size=50000; threads=1,2522.038,6,data_size=100000; threads=64

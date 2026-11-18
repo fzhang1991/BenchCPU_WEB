@@ -1,0 +1,6 @@
+Noncausal, free-switching arithmetic max of piecewise retirement rates at equal checkpoint-local CPU time. Stop once 100M instructions are credited. Not an executable switched trace or an achievable hardware upper bound.
+Existing plot CSV: 1000 telemetry rows, approximately 1M sampled ticks/block.
+workload | threshold | Base IPC | gated IPC | gated change % | noncausal max-envelope IPC | envelope change %
+505 | 400 | 0.621670085 | 0.520755617 | -16.232801 | 0.622408926 | +0.118848
+519 | 400 | 0.642586984 | 0.597781214 | -6.972717 | 0.642762547 | +0.027321
+549 | 500 | 0.876490844 | 0.815817683 | -6.922281 | 0.876822518 | +0.037841

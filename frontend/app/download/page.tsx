@@ -6,7 +6,7 @@ const GITHUB_URL = "https://github.com/BenchCouncil/BenchCPU";
 
 const ENV_SETUP_COMMAND = `# Environment setup
 sudo apt-get update
-sudo apt-get install -y python3 python3-venv python3-pip gcc g++ clang openjdk-17-jdk
+sudo apt-get install -y python3 python3-venv python3-pip gcc g++ clang openjdk-17-jdk cmake
 pip3 install pyyaml
 
 # Go (x86_64) - adapt for ARM64
@@ -25,7 +25,10 @@ const QUICK_RUN_COMMAND = `# Setup and run a pair of workloads with override par
 python3 scripts/run_cpu.py --workloads numpy_benchmark.matmul ffmpeg_benchmark.ffmpeg \
     --setup-env --set-param numpy_benchmark.matmul.workload.size=2048 --verbose`;
 
-const FULL_RUN_COMMAND = `# CPU Bench full preset suite
+const FULL_RUN_COMMAND = `# Setup all benchmarks
+python3 scripts/setup_env.py --all --verbose
+
+# CPU Bench full preset suite
 python3 run_v_0_0_1.py --config configs/benchcpu-config-2026-08.json --tag tag_name`;
 
 export default function DownloadPage() {
@@ -37,7 +40,7 @@ export default function DownloadPage() {
         ? {
             title: "BenchCPU 快速开始",
             step1Title: "1. 下载 BenchCPU 基准测试程序和配置文件并运行",
-            step1Text: "先准备基础环境，再获取 BenchCPU 源码。可以先运行少量 workload 验证环境，也可以使用发布配置文件运行完整 preset suite。",
+            step1Text: "先准备基础环境，再获取 BenchCPU 源码。可以先运行少量负载验证环境，也可以使用发布配置文件运行完整负载。注意，初次运行需要安装相关依赖，请确保被测机器联网。",
             repoLabel: "GitHub 下载源码",
             envTitle: "环境准备",
             cloneTitle: "获取源码",

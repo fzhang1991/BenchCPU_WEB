@@ -1,0 +1,55 @@
+workload,n_configs,median_ratio,mean_ratio,min_ratio,max_ratio,thr1_median,thr32_64_median,classification
+bert_cpu.bert_eval,6,0.027,0.11,0.0207,0.3436,0.282,0.0238,64 much faster
+biogo-benchmark.biogo-igor,5,0.846,0.8421,0.7477,0.9598,0.9326,0.7519,64 faster
+bleve_benchmark.bleve-index,5,0.5997,0.7035,0.5574,0.9069,0.8876,0.5851,64 faster
+c_compiler_benchmark.clang_compile,3,1.6839,1.6953,1.6767,1.7253,1.6839,,65 faster
+c_compiler_benchmark.gcc_compile,3,1.3318,1.3536,1.3054,1.4235,1.3318,,65 faster
+cassandra_benchmark.cassandra_stress_read,5,0.8105,0.8052,0.7516,0.8351,0.7734,0.8335,64 faster
+chaos_fractal.chaos-fractal,6,2.0754,2.0788,1.9175,2.2853,2.0754,2.0595,65 faster
+cockroachdb_benchmark.kv,5,0.8596,0.8544,0.6972,1.013,0.7627,0.8738,comparable
+cockroachdb_benchmark.tpcc,5,1.0154,1.0081,0.9505,1.0767,1.0207,1.0154,comparable
+deltablue.deltablue,6,0.8925,0.8844,0.6834,1.0377,0.803,0.946,comparable
+esbuild_benchmark.RomeTS,5,0.9792,0.9986,0.9142,1.1174,1.0047,0.9518,comparable
+esbuild_benchmark.ThreeJS,5,0.9215,0.9237,0.8503,0.996,0.9753,0.8963,comparable
+ffmpeg_benchmark.ffmpeg,1,0.7592,0.7592,0.7592,0.7592,0.7592,,64 faster
+gc_garbage.gc_garbage,5,0.9128,0.9252,0.8631,0.9808,0.9772,0.8959,comparable
+go_board_game.go-board-game,6,2.0973,2.0796,1.4884,2.5753,2.4214,1.9225,65 faster
+go_compiler.go_compiler,5,1.0519,1.0232,0.6462,1.2755,0.9624,1.2695,comparable
+go_json.json,5,1.1571,1.3057,1.0324,1.6937,1.6513,1.0363,comparable
+go_markdown.markdown_render,5,0.7628,0.8853,0.6011,1.2566,1.2285,0.6058,64 faster
+gopher_lua.gopher_lua,5,0.914,0.9561,0.8009,1.1413,1.1141,0.8374,comparable
+guava_benchmark.guava_bloom,5,1.076,1.1379,0.9162,1.4423,1.3886,0.9202,comparable
+guava_benchmark.guava_cache,5,0.7369,0.7496,0.6959,0.8124,0.7566,0.7263,64 faster
+guava_benchmark.guava_event,5,0.7293,0.7379,0.5686,0.9289,0.75,0.6918,64 faster
+guava_benchmark.guava_graph,5,0.8601,0.8436,0.656,1.0945,0.6878,0.888,comparable
+guava_benchmark.guava_immutable,5,0.7239,0.748,0.658,0.8552,0.8381,0.6821,64 faster
+kafka_benchmark.kafka_producer_perf,5,0.7681,0.7852,0.5958,1.1731,0.605,0.7749,64 faster
+lapack_benchmark.lapack_eigen,1,0.2677,0.2677,0.2677,0.2677,0.2677,,64 much faster
+lapack_benchmark.lapack_solve,1,0.5787,0.5787,0.5787,0.5787,0.5787,,64 faster
+lapack_benchmark.lapack_svd,1,0.5655,0.5655,0.5655,0.5655,0.5655,,64 faster
+numpy_benchmark.fft,6,0.6402,0.6499,0.5391,0.7909,0.665,0.6402,64 faster
+numpy_benchmark.matmul,6,0.4554,0.4575,0.4317,0.4903,0.4345,0.4722,64 much faster
+numpy_benchmark.svd,6,0.6259,0.613,0.5532,0.6627,0.5534,0.6533,64 faster
+opencv_benchmark.background_sub,1,0.7707,0.7707,0.7707,0.7707,0.7707,,64 faster
+opencv_benchmark.canny,1,0.819,0.819,0.819,0.819,0.819,,64 faster
+opencv_benchmark.color_tracking,1,0.1549,0.1549,0.1549,0.1549,0.1549,,64 much faster
+opencv_benchmark.conv_heavy,1,0.1196,0.1196,0.1196,0.1196,0.1196,,64 much faster
+opencv_benchmark.feature_match,1,0.3719,0.3719,0.3719,0.3719,0.3719,,64 much faster
+opencv_benchmark.fft_batch,1,0.5507,0.5507,0.5507,0.5507,0.5507,,64 faster
+opencv_benchmark.jacobi,1,0.1275,0.1275,0.1275,0.1275,0.1275,,64 much faster
+opencv_benchmark.mandelbrot,1,0.8437,0.8437,0.8437,0.8437,0.8437,,64 faster
+opencv_benchmark.motion_blur,1,0.6106,0.6106,0.6106,0.6106,0.6106,,64 faster
+opencv_benchmark.optical_flow,1,0.6252,0.6252,0.6252,0.6252,0.6252,,64 faster
+openssl_benchmark.openssl,1,0.9761,0.9761,0.9761,0.9761,0.9761,,comparable
+pyflate.pyflate,6,4.7246,4.4944,3.8968,4.8686,4.7934,4.3295,65 faster
+raytrace.raytrace,6,2.632,2.5704,2.376,2.643,2.632,2.5697,65 faster
+redis_benchmark.redis-benchmark,1,1.1461,1.1461,1.1461,1.1461,1.1461,,comparable
+requests_benchmark.requests-json,6,0.879,0.8876,0.7531,1.0426,1.0086,0.8158,comparable
+resnet50_cpu.resnet50_inference,6,0.2514,0.3335,0.168,0.7248,0.5585,0.2252,64 much faster
+resnet50_cpu.resnet50_training,6,0.3518,0.3084,0.136,0.4389,0.419,0.2437,64 much faster
+rocksdb_benchmark.rocksdb_cpu,1,1.1262,1.1262,1.1262,1.1262,1.1262,,comparable
+tile38_sim.kdtree,5,1.4304,1.4594,1.0063,2.2744,1.9067,1.047,65 faster
+transformer_inference.transformer_inference,6,0.0245,0.1506,0.0131,0.5318,0.4123,0.0201,64 much faster
+transformer_train.transformer_train,6,0.0524,0.1907,0.0241,0.5725,0.4893,0.0422,64 much faster
+tuf_benchmark.tuf-metadata,6,1.9544,2.5556,1.4563,4.2345,1.9544,2.8668,65 faster
+zstd_benchmark.zstd,1,0.7663,0.7663,0.7663,0.7663,0.7663,,64 faster

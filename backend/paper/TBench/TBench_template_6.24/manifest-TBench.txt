@@ -1,0 +1,39 @@
+Copyright © 2025 BenchCouncil Press on Behalf of International Open Benchmark Council
+
+
+## TBench LaTeX Template
+
+This is the official LaTeX class and template for the journal 'BenchCouncil Transactions on Benchmarks, Standards and Evaluations'(TBench).
+
+## License and Origin
+
+This template is based on the original LaTeX class `mam-authoring-template.cls` created by Peter Jones for the journal *Microscopy and Microanalysis*.
+
+- Original Overleaf project: 
+https://www.overleaf.com/latex/templates/microscopy-and-microanalysis-template/ndmcfsytwfbm
+
+- License: [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+
+
+% CONTENTS OF TBENCH-TEMPLATE BUNDLE %
+=================================================
+
+TBench-template.tex
+ Main article template using the TBench class
+
+TBench-template-sample.pdf
+Compiled documentation of the TBench LaTeX template 
+
+manifest-Tbench.txt
+This file
+
+README
+  small readme documentation
+
+Directory TBench-template/doc/
+
+TBench-template-doc.tex -- LaTeX source file of documentation
+TBench-template-sample.pdf -- documentation for TBench-template.cls
+
+
+

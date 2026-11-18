@@ -1,0 +1,570 @@
+[
+  {
+    "benchmark": "505",
+    "interval": 4719,
+    "start_cycle": 0,
+    "end_cycle": 181574641,
+    "normalized_weight": 0.11553096996194781,
+    "cumulative_normalized_weight": 0.11553096996194781
+  },
+  {
+    "benchmark": "505",
+    "interval": 6191,
+    "start_cycle": 181574641,
+    "end_cycle": 321279564,
+    "normalized_weight": 0.0858484776793958,
+    "cumulative_normalized_weight": 0.2013794476413436
+  },
+  {
+    "benchmark": "505",
+    "interval": 64,
+    "start_cycle": 321279564,
+    "end_cycle": 457028690,
+    "normalized_weight": 0.07475508056367906,
+    "cumulative_normalized_weight": 0.27613452820502266
+  },
+  {
+    "benchmark": "505",
+    "interval": 4149,
+    "start_cycle": 457028690,
+    "end_cycle": 604650676,
+    "normalized_weight": 0.07155708139515883,
+    "cumulative_normalized_weight": 0.3476916096001815
+  },
+  {
+    "benchmark": "505",
+    "interval": 8227,
+    "start_cycle": 604650676,
+    "end_cycle": 746933940,
+    "normalized_weight": 0.06955828191484671,
+    "cumulative_normalized_weight": 0.41724989151502817
+  },
+  {
+    "benchmark": "505",
+    "interval": 5800,
+    "start_cycle": 746933940,
+    "end_cycle": 914706548,
+    "normalized_weight": 0.06865878214871665,
+    "cumulative_normalized_weight": 0.4859086736637448
+  },
+  {
+    "benchmark": "505",
+    "interval": 8178,
+    "start_cycle": 914706548,
+    "end_cycle": 1053573224,
+    "normalized_weight": 0.06785928235658659,
+    "cumulative_normalized_weight": 0.5537679560203314
+  },
+  {
+    "benchmark": "505",
+    "interval": 3848,
+    "start_cycle": 1053573224,
+    "end_cycle": 1203513109,
+    "normalized_weight": 0.06596038285030047,
+    "cumulative_normalized_weight": 0.6197283388706318
+  },
+  {
+    "benchmark": "505",
+    "interval": 6690,
+    "start_cycle": 1203513109,
+    "end_cycle": 1430735995,
+    "normalized_weight": 0.04647208791725715,
+    "cumulative_normalized_weight": 0.6662004267878889
+  },
+  {
+    "benchmark": "505",
+    "interval": 1919,
+    "start_cycle": 1430735995,
+    "end_cycle": 1590472060,
+    "normalized_weight": 0.04227458900860686,
+    "cumulative_normalized_weight": 0.7084750157964957
+  },
+  {
+    "benchmark": "505",
+    "interval": 7595,
+    "start_cycle": 1590472060,
+    "end_cycle": 1729212588,
+    "normalized_weight": 0.03158109178891614,
+    "cumulative_normalized_weight": 0.7400561075854118
+  },
+  {
+    "benchmark": "505",
+    "interval": 8995,
+    "start_cycle": 1729212588,
+    "end_cycle": 1911529093,
+    "normalized_weight": 0.0310813919188381,
+    "cumulative_normalized_weight": 0.7711374995042499
+  },
+  {
+    "benchmark": "505",
+    "interval": 5643,
+    "start_cycle": 1911529093,
+    "end_cycle": 2062871458,
+    "normalized_weight": 0.030981391944838094,
+    "cumulative_normalized_weight": 0.802118891449088
+  },
+  {
+    "benchmark": "505",
+    "interval": 9327,
+    "start_cycle": 2062871458,
+    "end_cycle": 2171773530,
+    "normalized_weight": 0.029782092256656012,
+    "cumulative_normalized_weight": 0.8319009837057441
+  },
+  {
+    "benchmark": "505",
+    "interval": 8518,
+    "start_cycle": 2171773530,
+    "end_cycle": 2315897208,
+    "normalized_weight": 0.02708369295823983,
+    "cumulative_normalized_weight": 0.8589846766639839
+  },
+  {
+    "benchmark": "505",
+    "interval": 5462,
+    "start_cycle": 2315897208,
+    "end_cycle": 2564792205,
+    "normalized_weight": 0.02278629407556354,
+    "cumulative_normalized_weight": 0.8817709707395475
+  },
+  {
+    "benchmark": "505",
+    "interval": 6893,
+    "start_cycle": 2564792205,
+    "end_cycle": 2731554739,
+    "normalized_weight": 0.020887494569251413,
+    "cumulative_normalized_weight": 0.9026584653087989
+  },
+  {
+    "benchmark": "505",
+    "interval": 1982,
+    "start_cycle": 2731554739,
+    "end_cycle": 2909162911,
+    "normalized_weight": 0.020287794725173374,
+    "cumulative_normalized_weight": 0.9229462600339723
+  },
+  {
+    "benchmark": "505",
+    "interval": 8282,
+    "start_cycle": 2909162911,
+    "end_cycle": 3114907023,
+    "normalized_weight": 0.018988595062965286,
+    "cumulative_normalized_weight": 0.9419348550969375
+  },
+  {
+    "benchmark": "505",
+    "interval": 6687,
+    "start_cycle": 3114907023,
+    "end_cycle": 3322899449,
+    "normalized_weight": 0.01718969553067916,
+    "cumulative_normalized_weight": 0.9591245506276167
+  },
+  {
+    "benchmark": "505",
+    "interval": 8961,
+    "start_cycle": 3322899449,
+    "end_cycle": 3458993307,
+    "normalized_weight": 0.0162901957645491,
+    "cumulative_normalized_weight": 0.9754147463921659
+  },
+  {
+    "benchmark": "505",
+    "interval": 5114,
+    "start_cycle": 3458993307,
+    "end_cycle": 3636775148,
+    "normalized_weight": 0.01019389734958669,
+    "cumulative_normalized_weight": 0.9856086437417525
+  },
+  {
+    "benchmark": "505",
+    "interval": 2440,
+    "start_cycle": 3636775148,
+    "end_cycle": 3959205331,
+    "normalized_weight": 0.006096338414952012,
+    "cumulative_normalized_weight": 0.9917049821567046
+  },
+  {
+    "benchmark": "505",
+    "interval": 8381,
+    "start_cycle": 3959205331,
+    "end_cycle": 4087045409,
+    "normalized_weight": 0.005496698570858372,
+    "cumulative_normalized_weight": 0.9972016807275629
+  },
+  {
+    "benchmark": "505",
+    "interval": 9071,
+    "start_cycle": 4087045409,
+    "end_cycle": 4198357187,
+    "normalized_weight": 0.0027983192724369893,
+    "cumulative_normalized_weight": 0.9999999999999999
+  },
+  {
+    "benchmark": "519",
+    "interval": 155,
+    "start_cycle": 0,
+    "end_cycle": 148415250,
+    "normalized_weight": 0.23751940345745653,
+    "cumulative_normalized_weight": 0.23751940345745653
+  },
+  {
+    "benchmark": "519",
+    "interval": 482,
+    "start_cycle": 148415250,
+    "end_cycle": 314993574,
+    "normalized_weight": 0.12081181753167514,
+    "cumulative_normalized_weight": 0.35833122098913167
+  },
+  {
+    "benchmark": "519",
+    "interval": 2757,
+    "start_cycle": 314993574,
+    "end_cycle": 463311678,
+    "normalized_weight": 0.08798066483689743,
+    "cumulative_normalized_weight": 0.4463118858260291
+  },
+  {
+    "benchmark": "519",
+    "interval": 17470,
+    "start_cycle": 463311678,
+    "end_cycle": 629687325,
+    "normalized_weight": 0.07499443201079281,
+    "cumulative_normalized_weight": 0.5213063178368219
+  },
+  {
+    "benchmark": "519",
+    "interval": 1950,
+    "start_cycle": 629687325,
+    "end_cycle": 777999751,
+    "normalized_weight": 0.057960470767325876,
+    "cumulative_normalized_weight": 0.5792667886041478
+  },
+  {
+    "benchmark": "519",
+    "interval": 15857,
+    "start_cycle": 777999751,
+    "end_cycle": 938335014,
+    "normalized_weight": 0.04587358869248351,
+    "cumulative_normalized_weight": 0.6251403772966313
+  },
+  {
+    "benchmark": "519",
+    "interval": 739,
+    "start_cycle": 938335014,
+    "end_cycle": 1086661524,
+    "normalized_weight": 0.0448617315923755,
+    "cumulative_normalized_weight": 0.6700021088890068
+  },
+  {
+    "benchmark": "519",
+    "interval": 12785,
+    "start_cycle": 1086661524,
+    "end_cycle": 1249462237,
+    "normalized_weight": 0.044355803042321486,
+    "cumulative_normalized_weight": 0.7143579119313282
+  },
+  {
+    "benchmark": "519",
+    "interval": 12287,
+    "start_cycle": 1249462237,
+    "end_cycle": 1404639242,
+    "normalized_weight": 0.03963343655445821,
+    "cumulative_normalized_weight": 0.7539913484857864
+  },
+  {
+    "benchmark": "519",
+    "interval": 7496,
+    "start_cycle": 1404639242,
+    "end_cycle": 1562207090,
+    "normalized_weight": 0.03715989697014592,
+    "cumulative_normalized_weight": 0.7911512454559323
+  },
+  {
+    "benchmark": "519",
+    "interval": 4070,
+    "start_cycle": 1562207090,
+    "end_cycle": 1727091953,
+    "normalized_weight": 0.034011719315332686,
+    "cumulative_normalized_weight": 0.8251629647712649
+  },
+  {
+    "benchmark": "519",
+    "interval": 15079,
+    "start_cycle": 1727091953,
+    "end_cycle": 1891693610,
+    "normalized_weight": 0.03108835434692415,
+    "cumulative_normalized_weight": 0.8562513191181891
+  },
+  {
+    "benchmark": "519",
+    "interval": 2274,
+    "start_cycle": 1891693610,
+    "end_cycle": 2042510523,
+    "normalized_weight": 0.030638628968471325,
+    "cumulative_normalized_weight": 0.8868899480866604
+  },
+  {
+    "benchmark": "519",
+    "interval": 14524,
+    "start_cycle": 2042510523,
+    "end_cycle": 2195741449,
+    "normalized_weight": 0.030638628968471325,
+    "cumulative_normalized_weight": 0.9175285770551318
+  },
+  {
+    "benchmark": "519",
+    "interval": 2545,
+    "start_cycle": 2195741449,
+    "end_cycle": 2364723409,
+    "normalized_weight": 0.030132700418417317,
+    "cumulative_normalized_weight": 0.9476612774735491
+  },
+  {
+    "benchmark": "519",
+    "interval": 5448,
+    "start_cycle": 2364723409,
+    "end_cycle": 2513053496,
+    "normalized_weight": 0.016471829521811747,
+    "cumulative_normalized_weight": 0.9641331069953608
+  },
+  {
+    "benchmark": "519",
+    "interval": 4220,
+    "start_cycle": 2513053496,
+    "end_cycle": 2662214270,
+    "normalized_weight": 0.015347466072857958,
+    "cumulative_normalized_weight": 0.9794805730682188
+  },
+  {
+    "benchmark": "519",
+    "interval": 2441,
+    "start_cycle": 2662214270,
+    "end_cycle": 2810796591,
+    "normalized_weight": 0.014447915310308876,
+    "cumulative_normalized_weight": 0.9939284883785277
+  },
+  {
+    "benchmark": "519",
+    "interval": 1519,
+    "start_cycle": 2810796591,
+    "end_cycle": 2947982262,
+    "normalized_weight": 0.0019676210348226163,
+    "cumulative_normalized_weight": 0.9958961094133503
+  },
+  {
+    "benchmark": "519",
+    "interval": 2657,
+    "start_cycle": 2947982262,
+    "end_cycle": 3092698409,
+    "normalized_weight": 0.0019676210348226163,
+    "cumulative_normalized_weight": 0.9978637304481729
+  },
+  {
+    "benchmark": "519",
+    "interval": 17076,
+    "start_cycle": 3092698409,
+    "end_cycle": 3243045181,
+    "normalized_weight": 0.0014054393103457223,
+    "cumulative_normalized_weight": 0.9992691697585186
+  },
+  {
+    "benchmark": "519",
+    "interval": 9551,
+    "start_cycle": 3243045181,
+    "end_cycle": 3391368656,
+    "normalized_weight": 0.0007308302414813571,
+    "cumulative_normalized_weight": 1.0
+  },
+  {
+    "benchmark": "549",
+    "interval": 11928,
+    "start_cycle": 0,
+    "end_cycle": 142766681,
+    "normalized_weight": 0.27801594439681115,
+    "cumulative_normalized_weight": 0.27801594439681115
+  },
+  {
+    "benchmark": "549",
+    "interval": 12478,
+    "start_cycle": 142766681,
+    "end_cycle": 221590955,
+    "normalized_weight": 0.10010897997820402,
+    "cumulative_normalized_weight": 0.37812492437501516
+  },
+  {
+    "benchmark": "549",
+    "interval": 7551,
+    "start_cycle": 221590955,
+    "end_cycle": 383763052,
+    "normalized_weight": 0.06567128686574264,
+    "cumulative_normalized_weight": 0.4437962112407578
+  },
+  {
+    "benchmark": "549",
+    "interval": 7992,
+    "start_cycle": 383763052,
+    "end_cycle": 485821284,
+    "normalized_weight": 0.043075291384941726,
+    "cumulative_normalized_weight": 0.4868715026256995
+  },
+  {
+    "benchmark": "549",
+    "interval": 3475,
+    "start_cycle": 485821284,
+    "end_cycle": 650716341,
+    "normalized_weight": 0.040157891968421615,
+    "cumulative_normalized_weight": 0.5270293945941211
+  },
+  {
+    "benchmark": "549",
+    "interval": 505,
+    "start_cycle": 650716341,
+    "end_cycle": 747811310,
+    "normalized_weight": 0.03889939222012156,
+    "cumulative_normalized_weight": 0.5659287868142426
+  },
+  {
+    "benchmark": "549",
+    "interval": 336,
+    "start_cycle": 747811310,
+    "end_cycle": 836704451,
+    "normalized_weight": 0.037526492494701504,
+    "cumulative_normalized_weight": 0.6034552793089442
+  },
+  {
+    "benchmark": "549",
+    "interval": 10277,
+    "start_cycle": 836704451,
+    "end_cycle": 923443526,
+    "normalized_weight": 0.03071909385618123,
+    "cumulative_normalized_weight": 0.6341743731651254
+  },
+  {
+    "benchmark": "549",
+    "interval": 4930,
+    "start_cycle": 923443526,
+    "end_cycle": 1045235053,
+    "normalized_weight": 0.029746594050681193,
+    "cumulative_normalized_weight": 0.6639209672158065
+  },
+  {
+    "benchmark": "549",
+    "interval": 9559,
+    "start_cycle": 1045235053,
+    "end_cycle": 1124065858,
+    "normalized_weight": 0.027057894588421085,
+    "cumulative_normalized_weight": 0.6909788618042276
+  },
+  {
+    "benchmark": "549",
+    "interval": 674,
+    "start_cycle": 1124065858,
+    "end_cycle": 1270430777,
+    "normalized_weight": 0.02642869471426106,
+    "cumulative_normalized_weight": 0.7174075565184886
+  },
+  {
+    "benchmark": "549",
+    "interval": 14924,
+    "start_cycle": 1270430777,
+    "end_cycle": 1367484245,
+    "normalized_weight": 0.026371494725701057,
+    "cumulative_normalized_weight": 0.7437790512441897
+  },
+  {
+    "benchmark": "549",
+    "interval": 1280,
+    "start_cycle": 1367484245,
+    "end_cycle": 1491016046,
+    "normalized_weight": 0.02591379481724104,
+    "cumulative_normalized_weight": 0.7696928460614307
+  },
+  {
+    "benchmark": "549",
+    "interval": 8181,
+    "start_cycle": 1491016046,
+    "end_cycle": 1588280070,
+    "normalized_weight": 0.02545619490876102,
+    "cumulative_normalized_weight": 0.7951490409701918
+  },
+  {
+    "benchmark": "549",
+    "interval": 10187,
+    "start_cycle": 1588280070,
+    "end_cycle": 1678950550,
+    "normalized_weight": 0.024312095137580973,
+    "cumulative_normalized_weight": 0.8194611361077727
+  },
+  {
+    "benchmark": "549",
+    "interval": 608,
+    "start_cycle": 1678950550,
+    "end_cycle": 1757812472,
+    "normalized_weight": 0.023568395286320945,
+    "cumulative_normalized_weight": 0.8430295313940936
+  },
+  {
+    "benchmark": "549",
+    "interval": 7188,
+    "start_cycle": 1757812472,
+    "end_cycle": 1861303949,
+    "normalized_weight": 0.02311079537784093,
+    "cumulative_normalized_weight": 0.8661403267719345
+  },
+  {
+    "benchmark": "549",
+    "interval": 2908,
+    "start_cycle": 1861303949,
+    "end_cycle": 1940100448,
+    "normalized_weight": 0.02299639540072092,
+    "cumulative_normalized_weight": 0.8891367221726555
+  },
+  {
+    "benchmark": "549",
+    "interval": 3914,
+    "start_cycle": 1940100448,
+    "end_cycle": 2027584773,
+    "normalized_weight": 0.02293919541216092,
+    "cumulative_normalized_weight": 0.9120759175848164
+  },
+  {
+    "benchmark": "549",
+    "interval": 12964,
+    "start_cycle": 2027584773,
+    "end_cycle": 2106370790,
+    "normalized_weight": 0.022881995423600917,
+    "cumulative_normalized_weight": 0.9349579130084174
+  },
+  {
+    "benchmark": "549",
+    "interval": 9245,
+    "start_cycle": 2106370790,
+    "end_cycle": 2185115113,
+    "normalized_weight": 0.020593795881240825,
+    "cumulative_normalized_weight": 0.9555517088896581
+  },
+  {
+    "benchmark": "549",
+    "interval": 1147,
+    "start_cycle": 2185115113,
+    "end_cycle": 2263958104,
+    "normalized_weight": 0.016188996762200647,
+    "cumulative_normalized_weight": 0.9717407056518588
+  },
+  {
+    "benchmark": "549",
+    "interval": 2871,
+    "start_cycle": 2263958104,
+    "end_cycle": 2342806035,
+    "normalized_weight": 0.014415697116860578,
+    "cumulative_normalized_weight": 0.9861564027687193
+  },
+  {
+    "benchmark": "549",
+    "interval": 4002,
+    "start_cycle": 2342806035,
+    "end_cycle": 2421662180,
+    "normalized_weight": 0.013843597231280555,
+    "cumulative_normalized_weight": 0.9999999999999999
+  }
+]

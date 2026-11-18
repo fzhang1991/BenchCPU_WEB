@@ -442,7 +442,7 @@
 
 .tableMetaRow {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
@@ -782,6 +782,14 @@
   width: 100%;
   padding: 0 8px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.metricCellValueRow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
 }
 
 .metricValue {
@@ -1147,7 +1155,6 @@
   }
 
   .tableMetaRow {
-    flex-direction: column;
     align-items: flex-start;
   }
 

@@ -87,6 +87,27 @@ def _find_cpu_asset(prefix: str, suffix: str) -> Optional[Path]:
     for candidate in _cpu_asset_candidates(prefix, file_name):
         if candidate.exists():
             return candidate
+
+    group_dir = _resolve_csv_path(f"data/cpu_groups/{prefix}")
+    if suffix == ".csv" and prefix.startswith("zf_"):
+        numeric_csv = group_dir / f"{prefix[3:]}.csv"
+        if numeric_csv.exists():
+            return numeric_csv
+    if suffix == "_system_info.json":
+        timestamped_system_files = sorted(group_dir.glob("system_info_*.json"))
+        if timestamped_system_files:
+            return timestamped_system_files[0]
+    if prefix == "zf_63":
+        report_name = {
+            "_specspeedint.html": "CPU2017.001.intspeed.html",
+            "_specspeedfp.html": "CPU2017.001.fpspeed.html",
+            "_specrateint.html": "CPU2017.001.intrate.html",
+            "_specratefp.html": "CPU2017.001.fprate.html",
+        }.get(suffix)
+        if report_name:
+            report_path = group_dir / report_name
+            if report_path.exists():
+                return report_path
     return None
 
 
@@ -107,7 +128,7 @@ def _discover_cpu_catalog() -> List[Dict[str, Any]]:
         if not cpu_name:
             continue
 
-        raw_time = row.get("time")
+        raw_time = row.get("CPUbench time", row.get("time"))
         cpu_time = None
         if raw_time is not None and pd.notna(raw_time):
             try:
@@ -371,7 +392,11 @@ def api_cpu_detail(cpu: str = Query(..., description="CPU name")) -> Dict[str, A
     round_time_cols: List[str] = []
     for c in df.columns:
         name = str(c)
-        if name.endswith("_time") or re.fullmatch(r"Round\d+\s+Time\s*\(s\)", name, flags=re.IGNORECASE):
+        if (
+            name.endswith("_time")
+            or re.fullmatch(r"round_\d+", name, flags=re.IGNORECASE)
+            or re.fullmatch(r"Round\d+\s+Time\s*\(s\)", name, flags=re.IGNORECASE)
+        ):
             round_time_cols.append(name)
 
     base_cols: List[str] = []
@@ -385,6 +410,13 @@ def api_cpu_detail(cpu: str = Query(..., description="CPU name")) -> Dict[str, A
         selected_cols = list(df.columns)
 
     df_clean = df[selected_cols].copy()
+    df_clean = df_clean.rename(
+        columns={
+            name: f"{name}_time"
+            for name in round_time_cols
+            if re.fullmatch(r"round_\d+", name, flags=re.IGNORECASE)
+        }
+    )
     if workload_col and workload_col != "workload_name":
         df_clean = df_clean.rename(columns={workload_col: "workload_name"})
 
